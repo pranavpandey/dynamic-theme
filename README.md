@@ -18,6 +18,7 @@ A text (JSON) based theme engine for apps supporting Android 4.0 (API 14) and ab
 - [Installation](https://github.com/pranavpandey/dynamic-theme#installation)
 - [Usage](https://github.com/pranavpandey/dynamic-theme#usage)
     - [Dependency](https://github.com/pranavpandey/dynamic-theme#dependency)
+    - [Proguard](https://github.com/pranavpandey/dynamic-theme#proguard)
 - [License](https://github.com/pranavpandey/dynamic-theme#license)
 
 ---
@@ -29,7 +30,7 @@ It can be installed by adding the following dependency to your `build.gradle` fi
 ```groovy
 dependencies {
     // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-theme:1.0.0'
+    implementation 'com.pranavpandey.android:dynamic-theme:1.0.1'
 }
 ```
 
@@ -45,6 +46,26 @@ dependencies {
 
 It depends on the [dynamic-utils](https://github.com/pranavpandey/dynamic-utils) to perform
 various internal operations. So, its functions can also be used to perform other useful operations.
+
+### Proguard
+This library uses [Gson](https://github.com/google/gson) and has custom strategy to process the 
+theme data. It will automatically apply the appropriate rules if proguard is enabled in the 
+project.
+
+The following rules will be applied by this library:
+
+```yml
+# Gson uses generic type information stored in a class file when working with fields.
+# Proguard removes such information by default, so configure it to keep all of it.
+-keepattributes Signature
+
+# For using Gson annotation.
+-keepattributes *Annotation*
+
+# Gson specific classes.
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.** { *; }
+```
 
 ---
 
