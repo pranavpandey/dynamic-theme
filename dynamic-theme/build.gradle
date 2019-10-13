@@ -25,6 +25,8 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode mavenVersionCode
         versionName mavenVersion
+
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     sourceSets {
