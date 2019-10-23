@@ -32,6 +32,7 @@ import com.pranavpandey.android.dynamic.theme.Theme;
 import com.pranavpandey.android.dynamic.utils.DynamicBitmapUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicFileUtils;
+import com.pranavpandey.android.dynamic.utils.DynamicIntentUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicUnitUtils;
 
 import org.json.JSONObject;
@@ -160,13 +161,28 @@ public class DynamicThemeUtils {
      * @return {@code true} if the intent is valid for the theme.
      */
     public static boolean isValidThemeIntent(@Nullable Context context, @Nullable Intent intent) {
-        return DynamicFileUtils.isValidMimeType(context, intent, Theme.MIME, Theme.EXTENSION)
-                || intent != null && intent.getData() != null
-                && ((intent.getData().getHost() != null
-                && intent.getData().getHost().contains(Theme.HOST))
-                || (intent.getData().getScheme() != null
-                && intent.getData().getScheme().equals(Theme.SCHEME)
-                && intent.getData().getHost().contains(Theme.PARAMETER)));
+        if (intent == null) {
+            return false;
+        }
+
+        if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_SEND)) {
+            String theme = intent.getStringExtra(Intent.EXTRA_TEXT);
+
+            return DynamicFileUtils.isValidMimeType(context,
+                    (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM),
+                    Theme.MIME, Theme.EXTENSION)
+                    || (theme != null && ((theme.contains(Theme.HOST)
+                    || (theme.contains(Theme.SCHEME)
+                    && theme.contains(Theme.PARAMETER)))));
+        } else {
+            return DynamicFileUtils.isValidMimeType(context, intent, Theme.MIME, Theme.EXTENSION)
+                    || intent.getData() != null
+                    && ((intent.getData().getHost() != null
+                    && intent.getData().getHost().contains(Theme.HOST))
+                    || (intent.getData().getScheme() != null
+                    && intent.getData().getScheme().equals(Theme.SCHEME)
+                    && intent.getData().getHost().contains(Theme.PARAMETER)));
+        }
     }
 
     /**
@@ -225,6 +241,31 @@ public class DynamicThemeUtils {
      */
     public static @NonNull String getThemeUrl(@Nullable AppTheme theme) {
         return Theme.URL + encodeTheme(theme);
+    }
+
+    /**
+     * Returns the theme uri from the intent.
+     *
+     * @param intent The intent to get the theme uri.
+     *
+     * @return The theme uri according to the intent data.
+     *
+     * @see Intent#EXTRA_TEXT
+     * @see Intent#EXTRA_STREAM
+     * @see Intent#getData()
+     */
+    public static @Nullable Uri getThemeUri(@Nullable Intent intent) {
+        if (intent == null) {
+            return null;
+        }
+
+        if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_SEND)
+                && intent.getStringExtra(Intent.EXTRA_TEXT) != null
+                && isValidTheme(intent.getStringExtra(Intent.EXTRA_TEXT))) {
+            return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT));
+        } else {
+            return DynamicIntentUtils.getStreamOrData(intent, Intent.ACTION_SEND);
+        }
     }
 
     /**

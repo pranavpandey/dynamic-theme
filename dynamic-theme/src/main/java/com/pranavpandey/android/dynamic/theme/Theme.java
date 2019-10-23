@@ -73,6 +73,7 @@ public @interface Theme {
      * Constant value for the theme preview width.
      */
     int PREVIEW_WIDTH = 300;
+
     /**
      * Constant value for the theme preview height.
      */
