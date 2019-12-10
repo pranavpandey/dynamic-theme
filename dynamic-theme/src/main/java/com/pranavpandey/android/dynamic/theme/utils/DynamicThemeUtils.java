@@ -16,8 +16,11 @@
 
 package com.pranavpandey.android.dynamic.theme.utils;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -40,6 +43,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -269,6 +273,56 @@ public class DynamicThemeUtils {
     }
 
     /**
+     * Broadcast the theme data to the supported apps.
+     *
+     * @param context The context to broadcast the theme.
+     * @param theme The theme for the receiver.
+     * @param value The theme value for the receiver.
+     * @param data The theme data for the receiver.
+     * @param considerSender {@code true} to consider the sender package if applicable.
+     */
+    public static void broadcastDynamicTheme(@NonNull Context context,
+            @Nullable @Theme.ToString String theme, @Nullable @Theme.ToString String value,
+            @Nullable String data, boolean considerSender) {
+        List<ResolveInfo> receivers = context.getPackageManager()
+                .queryBroadcastReceivers(new Intent(Theme.Intent.ACTION),
+                        PackageManager.GET_META_DATA);
+
+        for (ResolveInfo resolveInfo : receivers) {
+            if (considerSender || !context.getPackageName()
+                    .equals(resolveInfo.resolvePackageName)) {
+                Intent intent = new Intent(Theme.Intent.ACTION);
+                intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+                intent.putExtra(Theme.Intent.EXTRA_THEME, theme);
+                intent.putExtra(Theme.Intent.EXTRA_VALUE, value);
+                intent.putExtra(Theme.Intent.EXTRA_DATA, data);
+                intent.setPackage(resolveInfo.resolvePackageName);
+                intent.setComponent(new ComponentName(
+                        resolveInfo.activityInfo.packageName,
+                        resolveInfo.activityInfo.name));
+
+                context.sendOrderedBroadcast(intent, Theme.Permission.DYNAMIC_THEME);
+            }
+        }
+    }
+
+    /**
+     * Broadcast the theme data to the supported apps.
+     *
+     * @param context The context to broadcast the theme.
+     * @param theme The theme for the receiver.
+     * @param value The theme value for the receiver.
+     * @param data The theme data for the receiver.
+     *
+     * @see #broadcastDynamicTheme(Context, String, String, String, boolean)
+     */
+    public static void broadcastDynamicTheme(@NonNull Context context,
+            @Nullable @Theme.ToString String theme,
+            @Nullable @Theme.ToString String value, @Nullable String data) {
+        broadcastDynamicTheme(context, theme, value, data, false);
+    }
+
+    /**
      * Converts the color integer into its string equivalent.
      *
      * @param value The value to be converted.
@@ -326,7 +380,7 @@ public class DynamicThemeUtils {
         if (value.equals(Theme.Value.AUTO) || value.equals(Theme.Value.Short.AUTO)) {
             return Theme.AUTO;
         } else {
-            return Integer.valueOf(value);
+            return Integer.parseInt(value);
         }
     }
 
@@ -356,7 +410,7 @@ public class DynamicThemeUtils {
         if (value.equals(Theme.Value.AUTO) || value.equals(Theme.Value.Short.AUTO)) {
             return Theme.AUTO;
         } else {
-            return Integer.valueOf(value);
+            return Integer.parseInt(value);
         }
     }
 

@@ -23,11 +23,115 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Constant values for the dynamic theme.
+ * Constant values for the theme.
  */
 @Retention(RetentionPolicy.SOURCE)
 @IntDef(value = { Theme.APP, Theme.AUTO, Theme.CUSTOM, Theme.SYSTEM, Theme.DAY, Theme.NIGHT })
 public @interface Theme {
+
+    /**
+     * Permissions for the dynamic theme.
+     */
+    @StringDef(value = { Permission.DYNAMIC_THEME, Permission.READ_THEME, Permission.WRITE_THEME })
+    @interface Permission {
+
+        /**
+         * Permission to broadcast the dynamic theme events.
+         */
+        String DYNAMIC_THEME = "com.pranavpandey.theme.permission.DYNAMIC_THEME";
+
+        /**
+         * Permission to read the theme presets.
+         */
+        String READ_THEME = "com.pranavpandey.theme.permission.READ_THEME";
+
+        /**
+         * Permission to write the theme presets.
+         */
+        String WRITE_THEME = "com.pranavpandey.theme.permission.WRITE_THEME";
+    }
+
+    /**
+     * String constant values for the dynamic theme intent.
+     */
+    @interface Intent {
+
+        /**
+         * Intent action constant for the dynamic theme.
+         */
+        String ACTION = "com.pranavpandey.theme.intent.action.DYNAMIC_THEME";
+
+        /**
+         * Intent extra key for the theme data.
+         */
+        String EXTRA_THEME = "adt_extra_theme";
+
+        /**
+         * Intent extra key for the theme value.
+         */
+        String EXTRA_VALUE = "adt_extra_value";
+
+        /**
+         * Intent extra key for the theme data.
+         */
+        String EXTRA_DATA = "adt_extra_data";
+    }
+
+    /**
+     * Constant values for the dynamic theme.
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(value = { Dynamic.AUTO, Dynamic.VALUE, Dynamic.DATA, Dynamic.DISABLE })
+    @interface Dynamic {
+
+        /**
+         * Constant for the auto dynamic theme.
+         */
+        int AUTO = Theme.AUTO;
+
+        /**
+         * Constant for the value dynamic theme.
+         */
+        int VALUE = 1;
+
+        /**
+         * Constant for the data dynamic theme.
+         */
+        int DATA = 2;
+
+        /**
+         * Constant to disable the dynamic theme.
+         */
+        int DISABLE = Theme.DISABLE;
+
+        /**
+         * String constant values for the dynamic theme.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { ToString.AUTO, ToString.VALUE, ToString.DATA, ToString.DISABLE })
+        @interface ToString {
+
+            /**
+             * String constant for the auto dynamic theme.
+             */
+            String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the value dynamic theme.
+             */
+            String VALUE = "1";
+
+            /**
+             * String constant for the data dynamic theme.
+             */
+            String DATA = "2";
+
+            /**
+             * String constant to disable the dynamic theme.
+             */
+            String DISABLE = Theme.ToString.DISABLE;
+        }
+    }
 
     /**
      * Scheme for the theme.
@@ -73,7 +177,6 @@ public @interface Theme {
      * Constant value for the theme preview width.
      */
     int PREVIEW_WIDTH = 300;
-
     /**
      * Constant value for the theme preview height.
      */
@@ -100,6 +203,11 @@ public @interface Theme {
     int CUSTOM = -2;
 
     /**
+     * Constant to disable the theme.
+     */
+    int DISABLE = 0;
+
+    /**
      * Constant for the system theme.
      */
     int SYSTEM = 1;
@@ -115,12 +223,17 @@ public @interface Theme {
     int NIGHT = 3;
 
     /**
-     * String constant values for the dynamic theme.
+     * String constant values for the theme.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { ToString.AUTO, ToString.CUSTOM,
+    @StringDef(value = { ToString.APP, ToString.AUTO, ToString.CUSTOM,
             ToString.SYSTEM, ToString.DAY, ToString.NIGHT })
     @interface ToString {
+
+        /**
+         * String constant for the app theme.
+         */
+        String APP = "-4";
 
         /**
          * String constant for the automatic theme.
@@ -131,6 +244,11 @@ public @interface Theme {
          * String constant for the custom theme.
          */
         String CUSTOM = "-2";
+
+        /**
+         * String constant to disable the theme.
+         */
+        String DISABLE = "0";
 
         /**
          * String constant for the system theme.
@@ -531,8 +649,7 @@ public @interface Theme {
          * Constant for the show value.
          */
         String SHOW = "show";
-
-
+        
         /**
          * Short constants for the theme values.
          */
@@ -736,7 +853,7 @@ public @interface Theme {
      * Constant values for the background aware functionality.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { BackgroundAware.AUTO, BackgroundAware.DISABLE, BackgroundAware.ENABLE})
+    @IntDef(value = { BackgroundAware.AUTO, BackgroundAware.DISABLE, BackgroundAware.ENABLE })
     @interface BackgroundAware {
 
         /**
