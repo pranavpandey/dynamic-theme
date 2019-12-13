@@ -290,13 +290,13 @@ public class DynamicThemeUtils {
 
         for (ResolveInfo resolveInfo : receivers) {
             if (considerSender || !context.getPackageName()
-                    .equals(resolveInfo.resolvePackageName)) {
+                    .equals(resolveInfo.activityInfo.packageName)) {
                 Intent intent = new Intent(Theme.Intent.ACTION);
                 intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
                 intent.putExtra(Theme.Intent.EXTRA_THEME, theme);
                 intent.putExtra(Theme.Intent.EXTRA_VALUE, value);
                 intent.putExtra(Theme.Intent.EXTRA_DATA, data);
-                intent.setPackage(resolveInfo.resolvePackageName);
+                intent.setPackage(resolveInfo.activityInfo.packageName);
                 intent.setComponent(new ComponentName(
                         resolveInfo.activityInfo.packageName,
                         resolveInfo.activityInfo.name));
