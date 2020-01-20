@@ -620,6 +620,15 @@ public interface AppTheme<T extends AppTheme> {
     /**
      * Returns the corner size used by this theme in dips.
      *
+     * @param resolve {@code true} to resolve auto corner size in dips.
+     *
+     * @return The corner size used by this theme in dips.
+     */
+    int getCornerSizeDp(boolean resolve);
+
+    /**
+     * Returns the corner size used by this theme in dips.
+     *
      * @return The corner size used by this theme in dips.
      */
     int getCornerSizeDp();
