@@ -712,16 +712,16 @@ public interface AppTheme<T extends AppTheme> {
     @NonNull T autoGenerateColors();
 
     /**
-     * Converts this theme into its Json equivalent.
+     * Converts this theme into its JSON equivalent.
      *
-     * @return The Json equivalent of this theme.
+     * @return The JSON equivalent of this theme.
      */
     @NonNull String toJsonString();
 
     /**
-     * Convert this theme into a pretty json string.
+     * Convert this theme into a pretty JSON string.
      *
-     * @return The converted json string.
+     * @return The converted JSON string.
      */
     @NonNull String toDynamicString();
 }

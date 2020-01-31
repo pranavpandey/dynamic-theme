@@ -22,7 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * A {@link com.google.gson.Gson} annotation to exclude the field from the json string.
+ * A {@link com.google.gson.Gson} annotation to exclude the field from the JSON string.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

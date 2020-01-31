@@ -21,7 +21,7 @@ import com.google.gson.FieldAttributes;
 import com.pranavpandey.android.dynamic.theme.annotation.Exclude;
 
 /**
- * A {@link com.google.gson.Gson} exclusion strategy to exclude the field from the json string.
+ * A {@link com.google.gson.Gson} exclusion strategy to exclude the field from the JSON string.
  */
 public class ExcludeStrategy implements ExclusionStrategy {
 
