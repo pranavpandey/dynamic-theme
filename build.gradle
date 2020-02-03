@@ -20,7 +20,7 @@ buildscript {
             'minSdk'    : 14,
             'targetSdk' : 29,
             'buildTools': '29.0.3',
-            'dynamic'   : '3.0.2',
+            'dynamic'   : '3.1.0',
             'gson'      : '2.8.6',
     ]
 
@@ -63,8 +63,8 @@ ext {
     mavenGroup = 'com.pranavpandey.android'
     mavenArtifactId = 'dynamic-theme'
     mavenInceptionYear = 2019
-    mavenVersion = '1.0.2'
-    mavenVersionCode = 3
+    mavenVersion = '1.1.0'
+    mavenVersionCode = 4
 
     developerId = 'pranavpandey'
     developerName = 'Pranav Pandey'
