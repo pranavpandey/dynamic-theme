@@ -11,29 +11,43 @@ A text (JSON) based theme engine for apps supporting Android 4.0 (API 14) and ab
 > It uses [AndroidX](https://developer.android.com/jetpack/androidx/) so, first
 [migrate](https://developer.android.com/jetpack/androidx/migrate) your project to AndroidX.
 
+<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-preview.png">
+
+```
+{
+  "backgroundColor": "#252525",
+  "tintBackgroundColor": "auto",
+  "surfaceColor": "auto",
+  "tintSurfaceColor": "auto",
+  "primaryColor": "#FF9933",
+  "tintPrimaryColor": "auto",
+  "primaryColorDark": "auto",
+  "tintPrimaryColorDark": "auto",
+  "accentColor": "#8BC34A",
+  "tintAccentColor": "auto",
+  "accentColorDark": "auto",
+  "tintAccentColorDark": "auto",
+  "textPrimaryColor": "auto",
+  "textPrimaryColorInverse": "auto",
+  "textSecondaryColor": "auto",
+  "textSecondaryColorInverse": "auto",
+  "fontScale": "auto",
+  "cornerRadius": "auto",
+  "backgroundAware": "auto"
+}
+```
+
 ---
 
 ## Contents
 
-- [Installation](https://github.com/pranavpandey/dynamic-theme#installation)
 - [Format](https://github.com/pranavpandey/dynamic-theme#format)
+- [Installation](https://github.com/pranavpandey/dynamic-theme#installation)
 - [Usage](https://github.com/pranavpandey/dynamic-theme#usage)
     - [Dependency](https://github.com/pranavpandey/dynamic-theme#dependency)
     - [Proguard](https://github.com/pranavpandey/dynamic-theme#proguard)
+- [Palettes](https://github.com/pranavpandey/dynamic-theme#palettes)
 - [License](https://github.com/pranavpandey/dynamic-theme#license)
-
----
-
-## Installation
-
-It can be installed by adding the following dependency to your `build.gradle` file:
-
-```groovy
-dependencies {
-    // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-theme:1.1.0'
-}
-```
 
 ---
 
@@ -130,9 +144,24 @@ or import a dynamic theme file on the Android (Java) platform.
 
 ---
 
+## Installation
+
+It can be installed by adding the following dependency to your `build.gradle` file:
+
+```groovy
+dependencies {
+    // For AndroidX enabled projects.
+    implementation 'com.pranavpandey.android:dynamic-theme:1.1.0'
+}
+```
+
+---
+
 ## Usage
 
 It can be used in raw JSON format or can be implemented on the Android (Java) platform.
+
+> For complete reference, please read the [documentation](https://pranavpandey.github.io/dynamic-theme).
 
 ### Android (Java)
 
@@ -172,16 +201,13 @@ public class DynamicAppTheme implements AppTheme<DynamicAppTheme> {
 }
 ```
 
-> For complete reference, please read the [documentation](https://pranavpandey.github.io/dynamic-theme).
-
----
-
 ### Dependency
 
 It depends on the [dynamic-utils](https://github.com/pranavpandey/dynamic-utils) to perform
 various internal operations. So, its functions can also be used to perform other useful operations.
 
 ### Proguard
+
 This library uses [Gson](https://github.com/google/gson) and has custom strategy to process the 
 theme data. It will automatically apply the appropriate rules if proguard is enabled in the 
 project.
@@ -200,6 +226,21 @@ The following rules will be applied by this library:
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.** { *; }
 ```
+
+---
+
+## Palettes
+
+Palettes is a universal manager for apps supporting the dynamic theme on Android. 
+It provides some default configurations that can be extended to create custom ones. 
+Let's give it a try to explore its other useful features.
+
+- A collection of theme presets that can be applied in the supported apps.
+- Extend them to create custom ones according to the requirement.
+- Preview them natively in the supported apps and widgets.
+- Experimental option to enable dark mode in devices that don't have a system setting.
+
+[Palettes - Theme Manager](https://play.google.com/store/apps/details?id=com.pranavpandey.theme)
 
 ---
 
