@@ -46,6 +46,9 @@ public class ThemeContract {
         int ITEM = 2;
     }
 
+    /**
+     * Interface to hold the presets constants.
+     */
     public @interface Preset {
 
         /**

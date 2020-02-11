@@ -165,8 +165,8 @@ It can be used in raw JSON format or can be implemented on the Android (Java) pl
 
 ### Android (Java)
 
-Just implement the AppTheme or AppWidgetTheme to create a dynamic theme. A possible implementation 
-can be found [here](https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/model/DynamicAppTheme.java).
+Just implement the [AppTheme][app theme] or [AppWidgetTheme][app widget theme] to create a 
+dynamic theme. A possible implementation can be found [here][theme implementation].
 
 ```java
 public class DynamicAppTheme implements AppTheme<DynamicAppTheme> {
@@ -269,3 +269,7 @@ Pranav Pandey
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+    
+[app theme]: https://github.com/pranavpandey/dynamic-theme/blob/master/dynamic-theme/src/main/java/com/pranavpandey/android/dynamic/theme/AppTheme.java
+[app widget theme]: https://github.com/pranavpandey/dynamic-theme/blob/master/dynamic-theme/src/main/java/com/pranavpandey/android/dynamic/theme/AppWidgetTheme.java
+[theme implementation]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/model/DynamicAppTheme.java
