@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Pranav Pandey
+ * Copyright 2020 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,8 @@ import java.lang.annotation.RetentionPolicy;
  * Constant values for the theme.
  */
 @Retention(RetentionPolicy.SOURCE)
-@IntDef(value = { Theme.APP, Theme.AUTO, Theme.CUSTOM, Theme.SYSTEM, Theme.DAY, Theme.NIGHT })
+@IntDef(value = { Theme.APP, Theme.AUTO, Theme.CUSTOM,
+        Theme.DISABLE, Theme.SYSTEM, Theme.DAY, Theme.NIGHT })
 public @interface Theme {
 
     /**
@@ -227,7 +228,7 @@ public @interface Theme {
      */
     @Retention(RetentionPolicy.SOURCE)
     @StringDef(value = { ToString.APP, ToString.AUTO, ToString.CUSTOM,
-            ToString.SYSTEM, ToString.DAY, ToString.NIGHT })
+            ToString.DISABLE, ToString.SYSTEM, ToString.DAY, ToString.NIGHT })
     @interface ToString {
 
         /**
@@ -293,9 +294,6 @@ public @interface Theme {
          */
         int BATTERY = 2;
 
-        /**
-         * String constant values for the night theme.
-         */
         @Retention(RetentionPolicy.SOURCE)
         @StringDef(value = { Night.ToString.AUTO, Night.ToString.CUSTOM,
                 Night.ToString.SYSTEM, Night.ToString.BATTERY })

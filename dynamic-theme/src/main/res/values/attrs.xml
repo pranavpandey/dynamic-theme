@@ -27,7 +27,7 @@
 
     <!-- true to enable dynamic RTL support for the widgets.
          When enabled, widgets will adjust gravity or text alignment automatically to support
-         the Right to Left layouts. -->
+         the RTL (right-to-left) layouts. -->
     <attr name="ads_rtlSupport" format="boolean" />
 
     <!-- Font scaling factor (in percent) for the supported widgets. -->
