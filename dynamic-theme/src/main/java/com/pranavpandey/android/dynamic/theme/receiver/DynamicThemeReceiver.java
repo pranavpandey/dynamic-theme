@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Pranav Pandey
+ * Copyright 2020 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,9 @@ import androidx.annotation.Nullable;
 import com.pranavpandey.android.dynamic.theme.Theme;
 
 /**
- * Broadcast receiver to receive the theme data.
+ * A {@link BroadcastReceiver} to receive the theme data.
  *
- * <p><p>Just extend this broadcast receiver and declare it in the projects's manifest to
+ * <p><p>Extend this broadcast receiver and declare it in the projects's manifest to
  * receive the theme data.
  */
 public abstract class DynamicThemeReceiver extends BroadcastReceiver {

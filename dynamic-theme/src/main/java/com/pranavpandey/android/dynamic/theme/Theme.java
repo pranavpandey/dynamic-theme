@@ -877,7 +877,7 @@ public @interface Theme {
          */
         @Retention(RetentionPolicy.SOURCE)
         @StringDef(value = { Theme.BackgroundAware.ToString.AUTO,
-                Theme.BackgroundAware.ToString.DISABLE, Theme.BackgroundAware.ToString.ENABLE})
+                Theme.BackgroundAware.ToString.DISABLE, Theme.BackgroundAware.ToString.ENABLE })
         @interface ToString {
 
             /**
