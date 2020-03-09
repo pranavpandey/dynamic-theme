@@ -150,9 +150,14 @@ public @interface Theme {
     String QUERY = "theme=";
 
     /**
+     * Share path for the URL.
+     */
+    String PATH = "/share";
+
+    /**
      * URL for the theme.
      */
-    String URL = "theme.pranavpandey.com/?" + QUERY;
+    String URL = "theme.pranavpandey.com" + PATH + "?" + QUERY;
 
     /**
      * Query parameter for the theme.

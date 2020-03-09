@@ -182,7 +182,9 @@ public class DynamicThemeUtils {
             return DynamicFileUtils.isValidMimeType(context, intent, Theme.MIME, Theme.EXTENSION)
                     || intent.getData() != null
                     && ((intent.getData().getHost() != null
-                    && intent.getData().getHost().contains(Theme.HOST))
+                    && intent.getData().getPath() != null
+                    && intent.getData().getHost().contains(Theme.HOST)
+                    && intent.getData().getPath().contains(Theme.PATH))
                     || (intent.getData().getScheme() != null
                     && intent.getData().getScheme().equals(Theme.SCHEME)
                     && intent.getData().getHost().contains(Theme.PARAMETER)));
