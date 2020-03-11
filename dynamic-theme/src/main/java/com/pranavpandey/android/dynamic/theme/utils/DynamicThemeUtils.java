@@ -175,19 +175,18 @@ public class DynamicThemeUtils {
             return DynamicFileUtils.isValidMimeType(context,
                     (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM),
                     Theme.MIME, Theme.EXTENSION)
-                    || (theme != null && ((theme.contains(Theme.HOST)
-                    || (theme.contains(Theme.SCHEME)
-                    && theme.contains(Theme.PARAMETER)))));
+                    || (theme != null && theme.contains(Theme.QUERY)
+                    && (theme.contains(Theme.HOST) || theme.contains(Theme.SCHEME)));
         } else {
-            return DynamicFileUtils.isValidMimeType(context, intent, Theme.MIME, Theme.EXTENSION)
-                    || intent.getData() != null
-                    && ((intent.getData().getHost() != null
-                    && intent.getData().getPath() != null
-                    && intent.getData().getHost().contains(Theme.HOST)
-                    && intent.getData().getPath().contains(Theme.PATH))
-                    || (intent.getData().getScheme() != null
-                    && intent.getData().getScheme().equals(Theme.SCHEME)
-                    && intent.getData().getHost().contains(Theme.PARAMETER)));
+            String data = null;
+            if (intent.getData() != null) {
+                data = intent.getData().toString();
+            }
+
+            return DynamicFileUtils.isValidMimeType(context,
+                    intent, Theme.MIME, Theme.EXTENSION)
+                    || (data != null && data.contains(Theme.QUERY)
+                    && (data.contains(Theme.HOST) || data.contains(Theme.SCHEME)));
         }
     }
 
@@ -198,7 +197,7 @@ public class DynamicThemeUtils {
      *
      * @return The encoded theme string.
      */
-    public static @Nullable String encodeTheme(@Nullable AppTheme theme) {
+    public static @Nullable String encodeTheme(@Nullable AppTheme<?> theme) {
         if (theme == null) {
             return null;
         }
@@ -245,7 +244,7 @@ public class DynamicThemeUtils {
      *
      * @return The encoded theme string with the url.
      */
-    public static @NonNull String getThemeUrl(@Nullable AppTheme theme) {
+    public static @NonNull String getThemeUrl(@Nullable AppTheme<?> theme) {
         return Theme.URL + encodeTheme(theme);
     }
 
