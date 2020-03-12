@@ -299,6 +299,9 @@ public @interface Theme {
          */
         int BATTERY = 2;
 
+        /**
+         * String constant values for the night theme.
+         */
         @Retention(RetentionPolicy.SOURCE)
         @StringDef(value = { Night.ToString.AUTO, Night.ToString.CUSTOM,
                 Night.ToString.SYSTEM, Night.ToString.BATTERY })

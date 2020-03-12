@@ -34,4 +34,3 @@ deploy:
   local-dir: dynamic-theme/build/docs/javadoc/release
   on:
     all_branches: true
-    tags: true

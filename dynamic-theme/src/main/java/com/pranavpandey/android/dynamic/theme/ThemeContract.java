@@ -47,7 +47,7 @@ public class ThemeContract {
     }
 
     /**
-     * Interface to hold the presets constants.
+     * Interface to hold the preset constants.
      */
     public @interface Preset {
 
