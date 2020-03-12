@@ -367,7 +367,7 @@
 </dd>
 <dt><a href="com/pranavpandey/android/dynamic/theme/receiver/DynamicThemeReceiver.html" title="class in com.pranavpandey.android.dynamic.theme.receiver"><span class="typeNameLink">DynamicThemeReceiver</span></a> - Class in <a href="com/pranavpandey/android/dynamic/theme/receiver/package-summary.html">com.pranavpandey.android.dynamic.theme.receiver</a></dt>
 <dd>
-<div class="block">Broadcast receiver to receive the theme data.</div>
+<div class="block">A <a href="https://developer.android.com/reference/android/content/BroadcastReceiver.html?is-external=true" title="class or interface in android.content"><code>BroadcastReceiver</code></a> to receive the theme data.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/pranavpandey/android/dynamic/theme/receiver/DynamicThemeReceiver.html#DynamicThemeReceiver--">DynamicThemeReceiver()</a></span> - Constructor for class com.pranavpandey.android.dynamic.theme.receiver.<a href="com/pranavpandey/android/dynamic/theme/receiver/DynamicThemeReceiver.html" title="class in com.pranavpandey.android.dynamic.theme.receiver">DynamicThemeReceiver</a></dt>
 <dd>&nbsp;</dd>
@@ -399,7 +399,7 @@
 <dd>
 <div class="block">Short constant for the enable value.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html#encodeTheme-com.pranavpandey.android.dynamic.theme.AppTheme-">encodeTheme(AppTheme)</a></span> - Static method in class com.pranavpandey.android.dynamic.theme.utils.<a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html" title="class in com.pranavpandey.android.dynamic.theme.utils">DynamicThemeUtils</a></dt>
+<dt><span class="memberNameLink"><a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html#encodeTheme-com.pranavpandey.android.dynamic.theme.AppTheme-">encodeTheme(AppTheme&lt;?&gt;)</a></span> - Static method in class com.pranavpandey.android.dynamic.theme.utils.<a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html" title="class in com.pranavpandey.android.dynamic.theme.utils">DynamicThemeUtils</a></dt>
 <dd>
 <div class="block">Encodes a dynamic theme.</div>
 </dd>
@@ -593,7 +593,7 @@
 <dd>
 <div class="block">Returns the theme uri from the intent.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html#getThemeUrl-com.pranavpandey.android.dynamic.theme.AppTheme-">getThemeUrl(AppTheme)</a></span> - Static method in class com.pranavpandey.android.dynamic.theme.utils.<a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html" title="class in com.pranavpandey.android.dynamic.theme.utils">DynamicThemeUtils</a></dt>
+<dt><span class="memberNameLink"><a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html#getThemeUrl-com.pranavpandey.android.dynamic.theme.AppTheme-">getThemeUrl(AppTheme&lt;?&gt;)</a></span> - Static method in class com.pranavpandey.android.dynamic.theme.utils.<a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html" title="class in com.pranavpandey.android.dynamic.theme.utils">DynamicThemeUtils</a></dt>
 <dd>
 <div class="block">Returns the encoded theme string with the url.</div>
 </dd>
@@ -838,6 +838,10 @@
 <dt><span class="memberNameLink"><a href="com/pranavpandey/android/dynamic/theme/ThemeContract.Preset.Column.html#PARENT">PARENT</a></span> - Static variable in annotation type com.pranavpandey.android.dynamic.theme.<a href="com/pranavpandey/android/dynamic/theme/ThemeContract.Preset.Column.html" title="annotation in com.pranavpandey.android.dynamic.theme">ThemeContract.Preset.Column</a></dt>
 <dd>
 <div class="block">Column name for the preset parent theme string.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/pranavpandey/android/dynamic/theme/Theme.html#PATH">PATH</a></span> - Static variable in annotation type com.pranavpandey.android.dynamic.theme.<a href="com/pranavpandey/android/dynamic/theme/Theme.html" title="annotation in com.pranavpandey.android.dynamic.theme">Theme</a></dt>
+<dd>
+<div class="block">Share path for the URL.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html#PATTERN_LINE">PATTERN_LINE</a></span> - Static variable in class com.pranavpandey.android.dynamic.theme.utils.<a href="com/pranavpandey/android/dynamic/theme/utils/DynamicThemeUtils.html" title="class in com.pranavpandey.android.dynamic.theme.utils">DynamicThemeUtils</a></dt>
 <dd>
@@ -1273,7 +1277,9 @@
 <div class="block">Interface to hold the content provider match codes.</div>
 </dd>
 <dt><a href="com/pranavpandey/android/dynamic/theme/ThemeContract.Preset.html" title="annotation in com.pranavpandey.android.dynamic.theme"><span class="typeNameLink">ThemeContract.Preset</span></a> - Annotation Type in <a href="com/pranavpandey/android/dynamic/theme/package-summary.html">com.pranavpandey.android.dynamic.theme</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Interface to hold the presets constants.</div>
+</dd>
 <dt><a href="com/pranavpandey/android/dynamic/theme/ThemeContract.Preset.Column.html" title="annotation in com.pranavpandey.android.dynamic.theme"><span class="typeNameLink">ThemeContract.Preset.Column</span></a> - Annotation Type in <a href="com/pranavpandey/android/dynamic/theme/package-summary.html">com.pranavpandey.android.dynamic.theme</a></dt>
 <dd>
 <div class="block">Interface to hold the preset database columns.</div>
