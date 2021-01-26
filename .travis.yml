@@ -1,5 +1,5 @@
 language: android
-jdk: oraclejdk8
+jdk: oraclejdk11
 
 before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
@@ -10,7 +10,7 @@ android:
   components:
     - tools
     - platform-tools
-    - build-tools-29.0.3
+    - build-tools-30.0.3
     - android-29
     - extra-android-support
     - extra-android-m2repository
@@ -21,14 +21,14 @@ script:
   - ./gradlew build
 
 after_success:
-  - ./gradlew javadocRelease
+  - ./gradlew generateJavadoc
 
 deploy:
-  provider: pages:git
+  provider: pages
   token: $GITHUB_TOKEN
   edge: true
   keep_history: true
   local_dir: dynamic-theme/build/docs/javadoc/release
   on:
-    all_branches: true
+    branch: master
     tags: true
