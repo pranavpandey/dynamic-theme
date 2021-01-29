@@ -28,7 +28,7 @@ import com.pranavpandey.android.dynamic.theme.Theme;
 /**
  * A {@link BroadcastReceiver} to receive the theme data.
  *
- * <p><p>Extend this broadcast receiver and declare it in the projects's manifest to
+ * <p>Extend this broadcast receiver and declare it in the project's manifest to
  * receive the theme data.
  */
 public abstract class DynamicThemeReceiver extends BroadcastReceiver {

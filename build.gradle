@@ -30,7 +30,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha04'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha05'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
     }
 }
@@ -51,7 +51,7 @@ ext {
     projectDesc = 'A text (JSON) based theme engine for Android apps.'
     versionDesc = 'A text (JSON) based theme engine for apps supporting ' +
             'Android 4.0 (API 14) and above devices.'
-    referenceTitle = 'Dynamic Theme Reference'
+    referenceTitle = 'Dynamic Theme API reference'
 
     siteUrl = 'https://github.com/pranavpandey/dynamic-theme'
     gitUrl = 'https://github.com/pranavpandey/dynamic-theme'
