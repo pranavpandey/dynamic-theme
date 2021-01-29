@@ -22,19 +22,38 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.InvertedLuminanceSource;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Reader;
+import com.google.zxing.Writer;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.common.GlobalHistogramBinarizer;
+import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.qrcode.QRCodeReader;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.pranavpandey.android.dynamic.theme.AppTheme;
 import com.pranavpandey.android.dynamic.theme.Theme;
 import com.pranavpandey.android.dynamic.theme.ThemeContract;
 import com.pranavpandey.android.dynamic.utils.DynamicBitmapUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
+import com.pranavpandey.android.dynamic.utils.DynamicDrawableUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicFileUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicIntentUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicUnitUtils;
@@ -42,6 +61,7 @@ import com.pranavpandey.android.dynamic.utils.DynamicUnitUtils;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -534,6 +554,9 @@ public class DynamicThemeUtils {
         try {
             if (uri.getQueryParameterNames().contains(Theme.PARAMETER)) {
                 data = DynamicThemeUtils.decodeTheme(uri.getQueryParameter(Theme.PARAMETER));
+            } else if (DynamicFileUtils.isValidMimeType(context, uri,
+                    Theme.MIME_IMAGE_MATCH, Theme.EXTENSION_IMAGE)) {
+                data = scanThemeCode(DynamicBitmapUtils.getBitmap(context, uri));
             } else {
                 data = DynamicFileUtils.readStringFromFile(context, uri);
             }
@@ -640,6 +663,127 @@ public class DynamicThemeUtils {
     public static @Nullable Bitmap createRemoteThemeBitmap(@NonNull View view) {
         return DynamicBitmapUtils.createBitmap(view,
                 Theme.PREVIEW_WIDTH, Theme.PREVIEW_HEIGHT_REMOTE);
+    }
+
+    /**
+     * Generates a QR code from the dynamic theme.
+     *
+     * @param theme The theme to generate the QR code.
+     * @param background The optional background for the overlay.
+     * @param overlay The optional QR code overlay.
+     *
+     * @return The generated QR code from the dynamic theme.
+     */
+    public static @Nullable Bitmap generateThemeCode(@Nullable AppTheme<?> theme,
+            @Nullable Drawable background, @Nullable Drawable overlay) {
+        if (theme == null) {
+            return null;
+        }
+
+        Bitmap bitmap = null;
+        Writer writer = new QRCodeWriter();
+        Map<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
+        hints.put(EncodeHintType.CHARACTER_SET, Theme.CHARACTER_SET);
+        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+        hints.put(EncodeHintType.MARGIN, Theme.CODE_MARGIN);
+
+        @ColorInt int backgroundColor = theme.getBackgroundColor();
+        @ColorInt int dataColor = DynamicColorUtils.getContrastColor(
+                theme.getPrimaryColor(), theme.getBackgroundColor(), Theme.CODE_CONTRAST);
+        @ColorInt int overlayBackgroundColor = DynamicColorUtils.getContrastColor(
+                theme.getAccentColor(), backgroundColor);
+        @ColorInt int overlayColor = DynamicColorUtils.getContrastColor(
+                theme.getTintAccentColor(), overlayBackgroundColor);
+
+        try {
+            BitMatrix bitMatrix = writer.encode(getThemeUrl(theme),
+                    BarcodeFormat.QR_CODE, Theme.CODE_SIZE, Theme.CODE_SIZE, hints);
+            int width = bitMatrix.getWidth();
+            int height = bitMatrix.getHeight();
+            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    bitmap.setPixel(x, y, bitMatrix.get(x, y) ? dataColor : backgroundColor);
+                }
+            }
+
+            Canvas canvas = new Canvas(bitmap);
+
+            if (background != null) {
+                Bitmap backgroundBitmap = DynamicBitmapUtils.getBitmap(
+                        DynamicDrawableUtils.colorizeDrawable(background, overlayBackgroundColor),
+                        Theme.OVERLAY_BACKGROUND_SIZE, Theme.OVERLAY_BACKGROUND_SIZE,
+                        false, 0);
+
+                if (backgroundBitmap != null) {
+                    canvas.drawBitmap(backgroundBitmap,
+                            bitmap.getWidth() / 2f - backgroundBitmap.getWidth() / 2f,
+                            bitmap.getHeight() / 2f - backgroundBitmap.getHeight() / 2f, null);
+                }
+            }
+
+            if (overlay != null) {
+                Bitmap overlayBitmap = DynamicBitmapUtils.getBitmap(
+                        DynamicDrawableUtils.colorizeDrawable(overlay, overlayColor),
+                        Theme.OVERLAY_SIZE, Theme.OVERLAY_SIZE, false, 0);
+
+                if (overlayBitmap != null) {
+                    canvas.drawBitmap(overlayBitmap,
+                            bitmap.getWidth() / 2f - overlayBitmap.getWidth() / 2f,
+                            bitmap.getHeight() / 2f - overlayBitmap.getHeight() / 2f, null);
+                }
+            }
+        } catch (Exception ignored) {
+        }
+
+        return bitmap;
+    }
+
+    /**
+     * Scans the dynamic theme QR code.
+     *
+     * @param bitmap The bitmap to be scanned.
+     *
+     * @return The dynamic theme string from the QR code bitmap.
+     */
+    public static @Nullable String scanThemeCode(@Nullable Bitmap bitmap) {
+        if (bitmap == null) {
+            return null;
+        }
+
+        Bitmap resized = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        bitmap.recycle();
+
+        String contents = null;
+        int[] pixels = new int[resized.getWidth() * resized.getHeight()];
+        resized.getPixels(pixels, 0, resized.getWidth(),
+                0, 0, resized.getWidth(), resized.getHeight());
+
+        LuminanceSource source = new RGBLuminanceSource(
+                resized.getWidth(), resized.getHeight(), pixels);
+        BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
+        Reader reader = new QRCodeReader();
+        Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
+        hints.put(DecodeHintType.CHARACTER_SET, Theme.CHARACTER_SET);
+        hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+
+        try {
+            contents = reader.decode(binaryBitmap, hints).getText();
+        } catch (Exception ignored) {
+            source = new InvertedLuminanceSource(source);
+            binaryBitmap = new BinaryBitmap(new GlobalHistogramBinarizer(source));
+
+            try {
+                contents = reader.decode(binaryBitmap, hints).getText();
+            } catch (Exception ignore) {
+            }
+        } finally {
+            resized.recycle();
+            reader.reset();
+        }
+
+        return contents;
     }
 
     /**
