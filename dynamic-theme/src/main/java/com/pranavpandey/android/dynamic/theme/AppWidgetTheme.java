@@ -22,7 +22,7 @@ import androidx.annotation.NonNull;
 /**
  * Interface to implement an app widget theme.
  */
-public interface AppWidgetTheme<T extends AppTheme> extends AppTheme<T> {
+public interface AppWidgetTheme<T extends AppTheme<?>> extends AppTheme<T> {
 
     /**
      * Maximum value for the opacity.

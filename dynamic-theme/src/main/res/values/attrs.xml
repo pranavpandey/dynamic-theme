@@ -38,6 +38,49 @@
 
     <!-- Color attributes used by the theme and widgets across the whole library. -->
     <declare-styleable name="DynamicTheme">
+        <!-- Color options to tint the background dynamically. -->
+        <attr name="ads_backgroundColorType" format="enum">
+            <!-- Constant for the no color. -->
+            <enum name="none" value="0" />
+            <!-- Constant for the primary color. -->
+            <enum name="primary" value="1" />
+            <!-- Constant for the dark primary color. -->
+            <enum name="primary_dark" value="2" />
+            <!-- Constant for the accent color. -->
+            <enum name="accent" value="3" />
+            <!-- Constant for the dark accent color. -->
+            <enum name="accent_dark" value="4" />
+            <!-- Constant for the primary tint color. -->
+            <enum name="tint_primary" value="5" />
+            <!-- Constant for the dark primary tint color. -->
+            <enum name="tint_primary_dark" value="6" />
+            <!-- Constant for the accent tint color. -->
+            <enum name="tint_accent" value="7" />
+            <!-- Constant for the dark accent tint color. -->
+            <enum name="tint_accent_dark" value="8" />
+            <!-- Constant for the custom color. It must be supplied via ads_color attribute. -->
+            <enum name="custom" value="9" />
+            <!-- Constant for the background color. -->
+            <enum name="background" value="10" />
+            <!-- Constant for the tint background color. -->
+            <enum name="tint_background" value="11" />
+            <!-- Constant for the text primary color. -->
+            <enum name="text_primary" value="12" />
+            <!-- Constant for the text secondary color. -->
+            <enum name="text_secondary" value="13" />
+            <!-- Constant for the inverse text primary color. -->
+            <enum name="text_primary_inverse" value="14" />
+            <!-- Constant for the inverse text secondary color. -->
+            <enum name="text_secondary_inverse" value="15" />
+            <!-- Constant for the surface color. -->
+            <enum name="surface" value="16" />
+            <!-- Constant for the tint surface color. -->
+            <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
+        </attr>
         <!-- Color options to tint the widgets dynamically. -->
         <attr name="ads_colorType" format="enum">
             <!-- Constant for the no color. -->
@@ -76,6 +119,10 @@
             <enum name="surface" value="16" />
             <!-- Constant for the tint surface color. -->
             <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
         </attr>
         <!-- Link color options to tint the widgets dynamically. -->
         <attr name="ads_linkColorType" format="enum">
@@ -115,9 +162,13 @@
             <enum name="surface" value="16" />
             <!-- Constant for the tint surface color. -->
             <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
         </attr>
-        <!-- Color options to tint the background dynamically. -->
-        <attr name="ads_backgroundColorType" format="enum">
+        <!-- Error color options to tint the widgets dynamically. -->
+        <attr name="ads_errorColorType" format="enum">
             <!-- Constant for the no color. -->
             <enum name="none" value="0" />
             <!-- Constant for the primary color. -->
@@ -154,6 +205,10 @@
             <enum name="surface" value="16" />
             <!-- Constant for the tint surface color. -->
             <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
         </attr>
         <!-- Color options to tint the scroll bar of the scrollable widgets dynamically. -->
         <attr name="ads_scrollBarColorType" format="enum">
@@ -193,6 +248,10 @@
             <enum name="surface" value="16" />
             <!-- Constant for the tint surface color. -->
             <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
         </attr>
         <!-- Color options to change the text color of supported widgets. -->
         <attr name="ads_textColorType" format="enum">
@@ -233,6 +292,10 @@
             <enum name="surface" value="16" />
             <!-- Constant for the tint surface color. -->
             <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
         </attr>
         <!-- Color options to change the normal state color of supported widgets. -->
         <attr name="ads_stateNormalColorType" format="enum">
@@ -273,6 +336,10 @@
             <enum name="surface" value="16" />
             <!-- Constant for the tint surface color. -->
             <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
         </attr>
         <!-- Color options to change the selected state color of supported widgets. -->
         <attr name="ads_stateSelectedColorType" format="enum">
@@ -313,6 +380,10 @@
             <enum name="surface" value="16" />
             <!-- Constant for the tint surface color. -->
             <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
         </attr>
         <!-- Color options to change the contrast with color of supported widgets. -->
         <attr name="ads_contrastWithColorType" format="enum">
@@ -353,11 +424,17 @@
             <enum name="surface" value="16" />
             <!-- Constant for the tint surface color. -->
             <enum name="tint_surface" value="17" />
+            <!-- Constant for the error color. -->
+            <enum name="error" value="18" />
+            <!-- Constant for the tint error color. -->
+            <enum name="tint_error" value="19" />
         </attr>
         <!-- Background aware options to adjust colors accordingly. -->
         <attr name="ads_backgroundAware" format="enum">
             <!-- Constant for the automatic background aware. -->
             <enum name="auto" value="-3" />
+            <!-- Constant for the unknown background aware. -->
+            <enum name="unknown" value="-2" />
             <!-- Constant to disable the background aware. -->
             <enum name="disable" value="0" />
             <!-- Constant to enable the background aware. -->
@@ -373,6 +450,8 @@
         <attr name="ads_altColor" format="color" />
         <!-- Link color value if the color type is set to custom. -->
         <attr name="ads_linkColor" format="color" />
+        <!-- Error color value if the color type is set to custom. -->
+        <attr name="ads_errorColor" format="color" />
         <!-- Scroll bar color value if the scroll bar color type is set to custom. -->
         <attr name="ads_scrollBarColor" format="color" />
         <!-- Color value if the text color type is set to custom. -->
@@ -391,10 +470,24 @@
         <attr name="ads_tintBackground" format="boolean" />
         <!-- Corner radius to be used by the supported widgets like button, card view, etc. -->
         <attr name="ads_cornerRadius" format="dimension" />
+        <!-- Stroke width to be used by the supported widgets like card view, etc. -->
+        <attr name="ads_strokeWidth" format="dimension" />
+        <!-- true to apply corner radius for surface widgets according to the app theme.
+             When disabled, widgets corner radius will be applied according to the default
+             implementation. -->
+        <attr name="ads_dynamicCornerRadius" format="boolean" />
         <!-- true to enable elevation on the same background for surface widgets.
              When disabled, widgets elevation will be disabled (or 0) if the dynamic theme
              surface color is exactly same as background color. -->
         <attr name="ads_elevationOnSameBackground" format="boolean" />
+        <!-- true if the view is floating like popup, dialog, etc. -->
+        <attr name="ads_floatingView" format="boolean" />
+        <!-- Color for the card background. -->
+        <attr name="ads_cardBackgroundColor" format="color" />
+        <!-- Corner radius for the card view. -->
+        <attr name="ads_cardCornerRadius" format="dimension" />
+        <!-- Elevation for the card view. -->
+        <attr name="ads_cardElevation" format="dimension" />
     </declare-styleable>
 	
 </resources>

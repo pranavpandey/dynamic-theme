@@ -16,6 +16,76 @@
 -->
 
 <manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pranavpandey.android.dynamic.theme">
+
+    <!-- Query packages on API 30 and above devices. -->
+    <queries>
+        <package android:name="com.pranavpandey.theme" />
+    </queries>
+
+    <!-- Query intents on API 30 and above devices. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="file"
+                android:host="*"
+                android:mimeType="application/vnd.dynamic.theme" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="file"
+                android:host="*"
+                android:mimeType="application/octet-stream" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="file"
+                android:host="*"
+                android:mimeType="*/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="content"
+                android:host="*"
+                android:mimeType="application/vnd.dynamic.theme" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="content"
+                android:host="*"
+                android:mimeType="application/octet-stream" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="content"
+                android:host="*"
+                android:mimeType="*/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="http"
+                android:host="theme.pranavpandey.com" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="https"
+                android:host="theme.pranavpandey.com" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="pranavpandey"
+                android:host="theme" />
+        </intent>
+    </queries>
 
 </manifest>

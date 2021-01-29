@@ -26,35 +26,16 @@ import java.lang.annotation.RetentionPolicy;
  * Constant values for the theme.
  */
 @Retention(RetentionPolicy.SOURCE)
-@IntDef(value = { Theme.APP, Theme.AUTO, Theme.CUSTOM,
-        Theme.DISABLE, Theme.SYSTEM, Theme.DAY, Theme.NIGHT })
+@IntDef(value = { Theme.APP, Theme.AUTO, Theme.CUSTOM, Theme.DISABLE,
+        Theme.SYSTEM, Theme.DAY, Theme.NIGHT, Theme.REMOTE })
 public @interface Theme {
-
-    /**
-     * Permissions for the dynamic theme.
-     */
-    @StringDef(value = { Permission.DYNAMIC_THEME, Permission.READ_THEME, Permission.WRITE_THEME })
-    @interface Permission {
-
-        /**
-         * Permission to broadcast the dynamic theme events.
-         */
-        String DYNAMIC_THEME = "com.pranavpandey.theme.permission.DYNAMIC_THEME";
-
-        /**
-         * Permission to read the theme presets.
-         */
-        String READ_THEME = "com.pranavpandey.theme.permission.READ_THEME";
-
-        /**
-         * Permission to write the theme presets.
-         */
-        String WRITE_THEME = "com.pranavpandey.theme.permission.WRITE_THEME";
-    }
 
     /**
      * String constant values for the dynamic theme intent.
      */
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef(value = { Intent.ACTION, Intent.EXTRA_THEME,
+            Intent.EXTRA_VALUE, Intent.EXTRA_DATA })
     @interface Intent {
 
         /**
@@ -135,9 +116,55 @@ public @interface Theme {
     }
 
     /**
+     * Constant values for the dynamic theme style.
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(value = { Style.AUTO, Style.CUSTOM })
+    @interface Style {
+
+        /**
+         * Constant for the auto theme style.
+         */
+        int AUTO = Theme.AUTO;
+
+        /**
+         * Constant for the custom theme style.
+         */
+        int CUSTOM = Theme.CUSTOM;
+
+        /**
+         * String constant values for the dynamic theme style.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
+        @interface ToString {
+
+            /**
+             * String constant for the auto theme style.
+             */
+            String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the custom theme style.
+             */
+            String CUSTOM = Theme.ToString.CUSTOM;
+        }
+    }
+
+    /**
      * Scheme for the theme.
      */
-    String SCHEME = "pranavpandey";
+    String SCHEME = "https";
+
+    /**
+     * Custom scheme for the theme.
+     */
+    String SCHEME_CUSTOM = "pranavpandey";
+
+    /**
+     * Scheme separator for the theme.
+     */
+    String SCHEME_SEPARATOR = "://";
 
     /**
      * Host for the theme.
@@ -145,19 +172,24 @@ public @interface Theme {
     String HOST = "theme.pranavpandey.com";
 
     /**
-     * Query parameter for the URL.
-     */
-    String QUERY = "theme=";
-
-    /**
      * Share path for the URL.
      */
     String PATH = "/share";
 
     /**
+     * Query parameter for the URL.
+     */
+    String QUERY = "theme=";
+
+    /**
+     * Scheme separator for the theme.
+     */
+    String QUERY_SEPARATOR = "?";
+
+    /**
      * URL for the theme.
      */
-    String URL = "theme.pranavpandey.com" + PATH + "?" + QUERY;
+    String URL = SCHEME + SCHEME_SEPARATOR + HOST + PATH + QUERY_SEPARATOR + QUERY;
 
     /**
      * Query parameter for the theme.
@@ -165,9 +197,24 @@ public @interface Theme {
     String PARAMETER = "theme";
 
     /**
+     * Character set for the theme content.
+     */
+    String CHARACTER_SET = "UTF-8";
+
+    /**
      * Mime type for the theme file.
      */
     String MIME = "application/vnd.dynamic.theme";
+
+    /**
+     * Mime type for the theme iamge file.
+     */
+    String MIME_IMAGE = "image/png";
+    
+    /**
+     * Mime type matcher for the theme image file.
+     */
+    String MIME_IMAGE_MATCH = "image";
 
     /**
      * Extension for the theme file.
@@ -175,23 +222,64 @@ public @interface Theme {
     String EXTENSION = ".theme";
 
     /**
+     * Extension for the theme image file.
+     */
+    String EXTENSION_IMAGE = ".png";
+
+    /**
      * Default name for the theme file.
      */
     String NAME = "dynamic";
 
     /**
-     * Constant value for the theme preview width.
+     * Constant value for the theme preview width in dips.
      */
     int PREVIEW_WIDTH = 300;
+
     /**
-     * Constant value for the theme preview height.
+     * Constant value for the theme preview height in dips.
      */
     int PREVIEW_HEIGHT = 160;
+
+    /**
+     * Constant value for the remote heme preview height in dips.
+     */
+    int PREVIEW_HEIGHT_REMOTE = 120;
+
+    /**
+     * Constant value for the theme code size in pixels.
+     */
+    int CODE_SIZE = 500;
+
+    /**
+     * Constant value for the theme code margin in pixels.
+     */
+    int CODE_MARGIN = 1;
+
+    /**
+     * Constant value for the theme code visible contrast.
+     */
+    float CODE_CONTRAST = 0.4f;
+
+    /**
+     * Constant value for the theme code overlay size in pixels.
+     */
+    int OVERLAY_SIZE = 36;
+
+    /**
+     * Constant value for the QR ode overlay background size in pixels.
+     */
+    int OVERLAY_BACKGROUND_SIZE = 72;
 
     /**
      * Default theme resource id.
      */
     int DEFAULT_RES = -1;
+
+    /**
+     * Constant to open the theme.
+     */
+    int OPEN = -5;
 
     /**
      * Constant for the app theme.
@@ -229,11 +317,16 @@ public @interface Theme {
     int NIGHT = 3;
 
     /**
+     * Constant for the remote theme.
+     */
+    int REMOTE = 4;
+
+    /**
      * String constant values for the theme.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { ToString.APP, ToString.AUTO, ToString.CUSTOM,
-            ToString.DISABLE, ToString.SYSTEM, ToString.DAY, ToString.NIGHT })
+    @StringDef(value = { ToString.APP, ToString.AUTO, ToString.CUSTOM, ToString.DISABLE,
+            ToString.SYSTEM, ToString.DAY, ToString.NIGHT, ToString.REMOTE })
     @interface ToString {
 
         /**
@@ -270,6 +363,11 @@ public @interface Theme {
          * String constant for the night theme.
          */
         String NIGHT = "3";
+
+        /**
+         * String constant for the remote theme.
+         */
+        String REMOTE = "4";
     }
 
     /**
@@ -277,7 +375,7 @@ public @interface Theme {
      */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(value = { Night.AUTO, Night.CUSTOM, Night.SYSTEM, Night.BATTERY })
-    public @interface Night {
+    @interface Night {
 
         /**
          * Constant for the night theme according to the time.
@@ -303,8 +401,7 @@ public @interface Theme {
          * String constant values for the night theme.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Night.ToString.AUTO, Night.ToString.CUSTOM,
-                Night.ToString.SYSTEM, Night.ToString.BATTERY })
+        @StringDef(value = { ToString.AUTO, ToString.CUSTOM, ToString.SYSTEM, ToString.BATTERY })
         @interface ToString {
 
             /**
@@ -333,6 +430,14 @@ public @interface Theme {
      * Constants for the theme keys.
      */
     @Retention(RetentionPolicy.SOURCE)
+    @StringDef(value = { Key.BRACKETS, Key.QUOTE, Key.SPLIT, Key.DARK, Key.INVERSE,
+            Key.SHARE, Key.RES, Key.WIDGET_ID, Key.BACKGROUND, Key.TINT_BACKGROUND,
+            Key.SURFACE, Key.TINT_SURFACE, Key.PRIMARY, Key.TINT_PRIMARY,
+            Key.PRIMARY_DARK, Key.TINT_PRIMARY_DARK, Key.ACCENT, Key.TINT_ACCENT,
+            Key.ACCENT_DARK, Key.TINT_ACCENT_DARK, Key.ERROR, Key.TINT_ERROR,
+            Key.TEXT_PRIMARY, Key.TEXT_PRIMARY_INVERSE, Key.TEXT_SECONDARY,
+            Key.TEXT_SECONDARY_INVERSE, Key.FONT_SCALE, Key.CORNER_RADIUS,
+            Key.BACKGROUND_AWARE, Key.STYLE, Key.HEADER, Key.OPACITY })
     @interface Key {
 
         /**
@@ -436,6 +541,16 @@ public @interface Theme {
         String TINT_ACCENT_DARK = "tintAccentColorDark";
 
         /**
+         * Serialized name for the error color.
+         */
+        String ERROR = "errorColor";
+
+        /**
+         * Serialized name for the tint error color.
+         */
+        String TINT_ERROR = "tintErrorColor";
+
+        /**
          * Serialized name for the text primary color.
          */
         String TEXT_PRIMARY = "textPrimaryColor";
@@ -471,6 +586,11 @@ public @interface Theme {
         String BACKGROUND_AWARE = "backgroundAware";
 
         /**
+         * Serialized name for the style.
+         */
+        String STYLE = "style";
+
+        /**
          * Serialized name for the header.
          */
         String HEADER = "header";
@@ -484,6 +604,14 @@ public @interface Theme {
          * Short constants for the theme keys.
          */
         @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { Key.BRACKETS, Short.QUOTE, Short.SPLIT, Short.DARK,
+                Short.INVERSE, Short.BACKGROUND, Short.TINT_BACKGROUND, Short.SURFACE,
+                Short.TINT_SURFACE, Short.PRIMARY, Short.TINT_PRIMARY, Short.PRIMARY_DARK,
+                Short.TINT_PRIMARY_DARK, Short.ACCENT, Short.TINT_ACCENT, Short.ACCENT_DARK,
+                Short.TINT_ACCENT_DARK, Short.ERROR, Short.TINT_ERROR, Short.TEXT_PRIMARY,
+                Short.TEXT_PRIMARY_INVERSE, Short.TEXT_SECONDARY, Short.TEXT_SECONDARY_INVERSE,
+                Short.FONT_SCALE, Short.CORNER_RADIUS, Short.BACKGROUND_AWARE, Short.STYLE,
+                Short.HEADER, Short.OPACITY })
         @interface Short {
 
             /**
@@ -615,6 +743,21 @@ public @interface Theme {
              * Short serialized name for the opacity.
              */
             String OPACITY = "20";
+
+            /**
+             * Short serialized name for the error color.
+             */
+            String ERROR = "21";
+
+            /**
+             * Short serialized name for the tint error color.
+             */
+            String TINT_ERROR = "22";
+
+            /**
+             * Short serialized name for the style.
+             */
+            String STYLE = "23";
         }
     }
 
@@ -622,6 +765,8 @@ public @interface Theme {
      * Constants for the theme values.
      */
     @Retention(RetentionPolicy.SOURCE)
+    @StringDef(value = { Value.SPLIT, Value.HASH, Value.AUTO, Value.CUSTOM,
+            Value.DISABLE, Value.ENABLE, Value.HIDE, Value.SHOW })
     @interface Value {
 
         /**
@@ -638,6 +783,11 @@ public @interface Theme {
          * Constant for the auto value.
          */
         String AUTO = "auto";
+
+        /**
+         * Constant for the custom value.
+         */
+        String CUSTOM = "custom";
 
         /**
          * Constant for the disable value.
@@ -663,6 +813,8 @@ public @interface Theme {
          * Short constants for the theme values.
          */
         @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { Short.SPLIT, Short.HASH, Short.AUTO, Short.CUSTOM,
+                Short.DISABLE, Short.ENABLE, Short.HIDE, Short.SHOW })
         @interface Short {
 
             /**
@@ -679,6 +831,11 @@ public @interface Theme {
              * Short constant for the auto value.
              */
             String AUTO = "A";
+
+            /**
+             * Short constant for the custom value.
+             */
+            String CUSTOM = "C";
 
             /**
              * Short constant for the disable value.
@@ -703,16 +860,29 @@ public @interface Theme {
     }
 
     /**
+     * Interface to hold the color constants.
+     */
+    @interface Color {
+
+        /**
+         * Constant for the unknown color.
+         */
+        int UNKNOWN = 0x1;
+    }
+
+    /**
      * Interface to hold the color type constant values according to the
-     * {@link com.pranavpandey.android.dynamic.theme.R.attr#ads_colorType}.
+     * {@link R.attr#ads_colorType}.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { ColorType.NONE, ColorType.PRIMARY, ColorType.PRIMARY_DARK,
-            ColorType.ACCENT, ColorType.ACCENT_DARK, ColorType.TINT_PRIMARY,
-            ColorType.TINT_PRIMARY_DARK, ColorType.TINT_ACCENT, ColorType.TINT_ACCENT_DARK,
-            ColorType.CUSTOM, ColorType.BACKGROUND, ColorType.TINT_BACKGROUND,
-            ColorType.TEXT_PRIMARY, ColorType.TEXT_SECONDARY, ColorType.TEXT_PRIMARY_INVERSE,
-            ColorType.TEXT_SECONDARY_INVERSE, ColorType.SURFACE, ColorType.TINT_SURFACE })
+    @IntDef(value = { ColorType.UNKNOWN, ColorType.NONE, ColorType.CUSTOM,
+            ColorType.BACKGROUND, ColorType.TINT_BACKGROUND, ColorType.SURFACE,
+            ColorType.TINT_SURFACE, ColorType.PRIMARY, ColorType.TINT_PRIMARY,
+            ColorType.PRIMARY_DARK, ColorType.TINT_PRIMARY_DARK, ColorType.ACCENT,
+            ColorType.TINT_ACCENT, ColorType.ACCENT_DARK, ColorType.TINT_ACCENT_DARK,
+            ColorType.ERROR, ColorType.TINT_ERROR, ColorType.TEXT_PRIMARY,
+            ColorType.TEXT_PRIMARY_INVERSE, ColorType.TEXT_SECONDARY,
+            ColorType.TEXT_SECONDARY_INVERSE })
     @interface ColorType {
 
         /**
@@ -809,6 +979,16 @@ public @interface Theme {
          * Constant for the tint surface color.
          */
         int TINT_SURFACE = 17;
+
+        /**
+         * Constant for the error color.
+         */
+        int ERROR = 18;
+
+        /**
+         * Constant for the tint error color.
+         */
+        int TINT_ERROR = 19;
     }
 
     /**
@@ -837,8 +1017,7 @@ public @interface Theme {
          * String constant values for the visibility.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Theme.Visibility.ToString.AUTO,
-                Theme.Visibility.ToString.HIDE, Theme.Visibility.ToString.SHOW })
+        @StringDef(value = { ToString.AUTO, ToString.HIDE, ToString.SHOW })
         @interface ToString {
 
             /**
@@ -862,13 +1041,19 @@ public @interface Theme {
      * Constant values for the background aware functionality.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { BackgroundAware.AUTO, BackgroundAware.DISABLE, BackgroundAware.ENABLE })
+    @IntDef(value = { BackgroundAware.AUTO, BackgroundAware.UNKNOWN,
+            BackgroundAware.DISABLE, BackgroundAware.ENABLE })
     @interface BackgroundAware {
 
         /**
          * Constant for the automatic background aware.
          */
         int AUTO = Theme.AUTO;
+
+        /**
+         * Constant for the unknown background aware.
+         */
+        int UNKNOWN = Theme.CUSTOM;
 
         /**
          * Constant to disable the background aware.
@@ -884,14 +1069,18 @@ public @interface Theme {
          * String constant values for the background aware functionality.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Theme.BackgroundAware.ToString.AUTO,
-                Theme.BackgroundAware.ToString.DISABLE, Theme.BackgroundAware.ToString.ENABLE })
+        @StringDef(value = { ToString.AUTO, ToString.UNKNOWN, ToString.DISABLE, ToString.ENABLE })
         @interface ToString {
 
             /**
              * String constant for the automatic background aware.
              */
             String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the unknown background aware.
+             */
+            String UNKNOWN = Theme.ToString.CUSTOM;
 
             /**
              * String constant to disable the background aware.
@@ -903,5 +1092,102 @@ public @interface Theme {
              */
             String ENABLE = "1";
         }
+    }
+
+    /**
+     * Theme actions to perform the operations accordingly.
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(value = { Action.SELECT_ALL, Action.SELECT_APP, Action.SELECT, Action.INVALID,
+            Action.APPLY, Action.COPY, Action.SHARE, Action.SHARE_DATA, Action.SHARE_FILE,
+            Action.SHARE_CODE, Action.EDIT, Action.SAVE,  Action.SAVE_FILE, Action.SAVE_CODE,
+            Action.IMPORT, Action.IMPORT_FILE, Action.DELETE })
+    @interface Action {
+
+        /**
+         * Constant for the import theme selection action with all the themes including
+         * remote theme.
+         */
+        int SELECT_ALL = -3;
+
+        /**
+         * Constant for the import theme selection action with all the themes.
+         */
+        int SELECT_APP = -2;
+
+        /**
+         * Constant for the import theme selection action with day and night themes.
+         */
+        int SELECT = -1;
+
+        /**
+         * Constant for the invalid theme action.
+         */
+        int INVALID = 0;
+
+        /**
+         * Constant for the apply theme action.
+         */
+        int APPLY = 1;
+
+        /**
+         * Constant for the copy theme action.
+         */
+        int COPY = 2;
+
+        /**
+         * Constant for the share theme action.
+         */
+        int SHARE = 3;
+
+        /**
+         * Constant for the share theme (only text) action.
+         */
+        int SHARE_DATA = 4;
+
+        /**
+         * Constant for the share theme (with file) action.
+         */
+        int SHARE_FILE = 5;
+
+        /**
+         * Constant for the share theme (with code) action.
+         */
+        int SHARE_CODE = 6;
+
+        /**
+         * Constant for the edit theme action.
+         */
+        int EDIT = 7;
+
+        /**
+         * Constant for the save theme action.
+         */
+        int SAVE = 8;
+
+        /**
+         * Constant for the save theme (file) action.
+         */
+        int SAVE_FILE = 9;
+
+        /**
+         * Constant for the save theme (code) action.
+         */
+        int SAVE_CODE = 10;
+
+        /**
+         * Constant for the import theme action.
+         */
+        int IMPORT = 11;
+
+        /**
+         * Constant for the import (from file) theme action.
+         */
+        int IMPORT_FILE = 12;
+
+        /**
+         * Constant for the delete theme action.
+         */
+        int DELETE = 13;
     }
 }

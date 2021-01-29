@@ -34,9 +34,8 @@ import com.pranavpandey.android.dynamic.theme.Theme;
 public abstract class DynamicThemeReceiver extends BroadcastReceiver {
 
     @Override
-    public void onReceive(@NonNull final Context context, @Nullable Intent intent) {
-        if (intent != null && intent.getAction() != null
-                && intent.getAction().equals(Theme.Intent.ACTION)) {
+    public void onReceive(final @NonNull Context context, @Nullable Intent intent) {
+        if (intent != null && Theme.Intent.ACTION.equals(intent.getAction())) {
             if (intent.hasExtra(Theme.Intent.EXTRA_THEME)
                     || intent.hasExtra(Theme.Intent.EXTRA_DATA)) {
                 onReceiveTheme(intent.getStringExtra(Theme.Intent.EXTRA_THEME),

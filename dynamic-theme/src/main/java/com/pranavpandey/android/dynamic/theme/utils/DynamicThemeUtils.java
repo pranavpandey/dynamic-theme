@@ -32,6 +32,7 @@ import androidx.annotation.Nullable;
 
 import com.pranavpandey.android.dynamic.theme.AppTheme;
 import com.pranavpandey.android.dynamic.theme.Theme;
+import com.pranavpandey.android.dynamic.theme.ThemeContract;
 import com.pranavpandey.android.dynamic.utils.DynamicBitmapUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicFileUtils;
@@ -44,6 +45,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -92,6 +94,8 @@ public class DynamicThemeUtils {
         map.put(Theme.Key.TINT_ACCENT, Theme.Key.Short.TINT_ACCENT);
         map.put(Theme.Key.ACCENT_DARK, Theme.Key.Short.ACCENT_DARK);
         map.put(Theme.Key.TINT_ACCENT_DARK, Theme.Key.Short.TINT_ACCENT_DARK);
+        map.put(Theme.Key.ERROR, Theme.Key.Short.ERROR);
+        map.put(Theme.Key.TINT_ERROR, Theme.Key.Short.TINT_ERROR);
         map.put(Theme.Key.TEXT_PRIMARY, Theme.Key.Short.TEXT_PRIMARY);
         map.put(Theme.Key.TEXT_PRIMARY_INVERSE, Theme.Key.Short.TEXT_PRIMARY_INVERSE);
         map.put(Theme.Key.TEXT_SECONDARY, Theme.Key.Short.TEXT_SECONDARY);
@@ -99,6 +103,7 @@ public class DynamicThemeUtils {
         map.put(Theme.Key.FONT_SCALE, Theme.Key.Short.FONT_SCALE);
         map.put(Theme.Key.CORNER_RADIUS, Theme.Key.Short.CORNER_RADIUS);
         map.put(Theme.Key.BACKGROUND_AWARE, Theme.Key.Short.BACKGROUND_AWARE);
+        map.put(Theme.Key.STYLE, Theme.Key.Short.STYLE);
         map.put(Theme.Key.HEADER, Theme.Key.Short.HEADER);
         map.put(Theme.Key.OPACITY, Theme.Key.Short.OPACITY);
         map.put(Theme.Value.AUTO, Theme.Value.Short.AUTO);
@@ -108,219 +113,6 @@ public class DynamicThemeUtils {
         map.put(Theme.Value.SHOW, Theme.Value.Short.SHOW);
 
         return map;
-    }
-
-    /**
-     * Formats the theme string and remove extra double quotes and white spaces.
-     *
-     * @param string The theme string to be formatted.
-     *
-     * @return The formatted theme string.
-     */
-    public static @NonNull String formatTheme(@NonNull String string) {
-        String[] query = string.trim().split(Theme.QUERY);
-        String theme = query.length > 1 && !TextUtils.isEmpty(query[1])
-                ? decodeTheme(query[1]) : string.trim();
-
-        if (theme == null) {
-            theme = string.trim();
-        }
-
-        return theme.replaceAll(PATTERN_LINE, "")
-                .replaceAll(PATTERN_SPACE, "")
-                .replaceAll(PATTERN_QUOTES, "\"");
-    }
-
-    /**
-     * Checks whether the string is a valid JSON.
-     *
-     * @param string The string to be checked.
-     *
-     * @return {@code true} if the supplied string is a valid JSON.
-     */
-    public static boolean isValidTheme(@Nullable String string) {
-        boolean validTheme = false;
-
-        try {
-            if (string != null) {
-                new JSONObject(formatTheme(string));
-                validTheme = true;
-            }
-        } catch (Exception e) {
-            try {
-                validTheme = string.toLowerCase().contains(Theme.URL);
-            } catch (Exception ignored) {
-            }
-        }
-
-        return validTheme;
-    }
-
-    /**
-     * Checks whether the intent is valid for the theme.
-     *
-     * @param context The context to match the uri mime type.
-     * @param intent The intent to get the data.
-     *
-     * @return {@code true} if the intent is valid for the theme.
-     */
-    public static boolean isValidThemeIntent(@Nullable Context context, @Nullable Intent intent) {
-        if (intent == null) {
-            return false;
-        }
-
-        if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_SEND)) {
-            String theme = intent.getStringExtra(Intent.EXTRA_TEXT);
-
-            return DynamicFileUtils.isValidMimeType(context,
-                    (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM),
-                    Theme.MIME, Theme.EXTENSION)
-                    || (theme != null && theme.contains(Theme.QUERY)
-                    && (theme.contains(Theme.HOST) || theme.contains(Theme.SCHEME)));
-        } else {
-            String data = null;
-            if (intent.getData() != null) {
-                data = intent.getData().toString();
-            }
-
-            return DynamicFileUtils.isValidMimeType(context,
-                    intent, Theme.MIME, Theme.EXTENSION)
-                    || (data != null && data.contains(Theme.QUERY)
-                    && (data.contains(Theme.HOST) || data.contains(Theme.SCHEME)));
-        }
-    }
-
-    /**
-     * Encodes a dynamic theme.
-     *
-     * @param theme The theme to be encoded.
-     *
-     * @return The encoded theme string.
-     */
-    public static @Nullable String encodeTheme(@Nullable AppTheme<?> theme) {
-        if (theme == null) {
-            return null;
-        }
-
-        String string = formatTheme(theme.toDynamicString());
-        Map<String, String> map = getThemeMap();
-
-        for (Map.Entry<String, String> element : map.entrySet()) {
-            string = string.replaceAll(element.getKey(), element.getValue());
-        }
-
-        return Uri.encode(string);
-    }
-
-    /**
-     * Decodes a theme string.
-     *
-     * @param theme The theme string to be decoded.
-     *
-     * @return The decoded theme string.
-     */
-    public static @Nullable String decodeTheme(@Nullable String theme) {
-        if (TextUtils.isEmpty(theme)) {
-            return null;
-        }
-
-        theme = Uri.decode(theme);
-        Map<String, String> map = new LinkedHashMap<>();
-
-        for (String pair : theme.split(Theme.Key.Short.SPLIT)) {
-            String[] keyValue = pair.split(Theme.Value.Short.SPLIT);
-            if (keyValue.length > 1 && !TextUtils.isEmpty(keyValue[1])) {
-                map.put(keyValue[0], keyValue[1]);
-            }
-        }
-
-        return new JSONObject(map).toString();
-    }
-
-    /**
-     * Returns the encoded theme string with the url.
-     *
-     * @param theme The theme to be processed.
-     *
-     * @return The encoded theme string with the url.
-     */
-    public static @NonNull String getThemeUrl(@Nullable AppTheme<?> theme) {
-        return Theme.URL + encodeTheme(theme);
-    }
-
-    /**
-     * Returns the theme uri from the intent.
-     *
-     * @param intent The intent to get the theme uri.
-     *
-     * @return The theme uri according to the intent data.
-     *
-     * @see Intent#EXTRA_TEXT
-     * @see Intent#EXTRA_STREAM
-     * @see Intent#getData()
-     */
-    public static @Nullable Uri getThemeUri(@Nullable Intent intent) {
-        if (intent == null) {
-            return null;
-        }
-
-        if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_SEND)
-                && intent.getStringExtra(Intent.EXTRA_TEXT) != null
-                && isValidTheme(intent.getStringExtra(Intent.EXTRA_TEXT))) {
-            return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT));
-        } else {
-            return DynamicIntentUtils.getStreamOrData(intent, Intent.ACTION_SEND);
-        }
-    }
-
-    /**
-     * Broadcast the theme data to the supported apps.
-     *
-     * @param context The context to broadcast the theme.
-     * @param theme The theme for the receiver.
-     * @param value The theme value for the receiver.
-     * @param data The theme data for the receiver.
-     * @param considerSender {@code true} to consider the sender package if applicable.
-     */
-    public static void broadcastDynamicTheme(@NonNull Context context,
-            @Nullable @Theme.ToString String theme, @Nullable @Theme.ToString String value,
-            @Nullable String data, boolean considerSender) {
-        List<ResolveInfo> receivers = context.getPackageManager()
-                .queryBroadcastReceivers(new Intent(Theme.Intent.ACTION),
-                        PackageManager.GET_META_DATA);
-
-        for (ResolveInfo resolveInfo : receivers) {
-            if (considerSender || !context.getPackageName()
-                    .equals(resolveInfo.activityInfo.packageName)) {
-                Intent intent = new Intent(Theme.Intent.ACTION);
-                intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
-                intent.putExtra(Theme.Intent.EXTRA_THEME, theme);
-                intent.putExtra(Theme.Intent.EXTRA_VALUE, value);
-                intent.putExtra(Theme.Intent.EXTRA_DATA, data);
-                intent.setPackage(resolveInfo.activityInfo.packageName);
-                intent.setComponent(new ComponentName(
-                        resolveInfo.activityInfo.packageName,
-                        resolveInfo.activityInfo.name));
-
-                context.sendOrderedBroadcast(intent, Theme.Permission.DYNAMIC_THEME);
-            }
-        }
-    }
-
-    /**
-     * Broadcast the theme data to the supported apps.
-     *
-     * @param context The context to broadcast the theme.
-     * @param theme The theme for the receiver.
-     * @param value The theme value for the receiver.
-     * @param data The theme data for the receiver.
-     *
-     * @see #broadcastDynamicTheme(Context, String, String, String, boolean)
-     */
-    public static void broadcastDynamicTheme(@NonNull Context context,
-            @Nullable @Theme.ToString String theme,
-            @Nullable @Theme.ToString String value, @Nullable String data) {
-        broadcastDynamicTheme(context, theme, value, data, false);
     }
 
     /**
@@ -350,8 +142,7 @@ public class DynamicThemeUtils {
         if (value.equals(Theme.Value.AUTO) || value.equals(Theme.Value.Short.AUTO)) {
             return Theme.AUTO;
         } else {
-            value = value.replace(Theme.Value.Short.HASH, Theme.Value.HASH);
-            return Color.parseColor(value);
+            return Color.parseColor(value.replace(Theme.Value.Short.HASH, Theme.Value.HASH));
         }
     }
 
@@ -422,15 +213,16 @@ public class DynamicThemeUtils {
      *
      * @return The string equivalent of the background aware.
      */
-    public static @NonNull String getValueFromBackgroundAware(@Theme.BackgroundAware int value) {
+    public static @Theme.Value @NonNull String getValueFromBackgroundAware(
+            @Theme.BackgroundAware int value) {
         switch (value) {
-            default:
-            case Theme.BackgroundAware.AUTO:
-                return Theme.Value.AUTO;
             case Theme.BackgroundAware.DISABLE:
                 return Theme.Value.DISABLE;
             case Theme.BackgroundAware.ENABLE:
                 return Theme.Value.ENABLE;
+            case Theme.BackgroundAware.AUTO:
+            default:
+                return Theme.Value.AUTO;
         }
     }
 
@@ -441,18 +233,55 @@ public class DynamicThemeUtils {
      *
      * @return The integer equivalent of the background aware.
      */
-    public static @Theme.BackgroundAware int getValueFromBackgroundAware(@NonNull String value) {
+    public static @Theme.BackgroundAware int getValueFromBackgroundAware(
+            @Theme.Value @NonNull String value) {
         switch (value) {
-            default:
-            case Theme.Value.AUTO:
-            case Theme.Value.Short.AUTO:
-                return Theme.BackgroundAware.AUTO;
             case Theme.Value.DISABLE:
             case Theme.Value.Short.DISABLE:
                 return Theme.BackgroundAware.DISABLE;
             case Theme.Value.ENABLE:
             case Theme.Value.Short.ENABLE:
                 return Theme.BackgroundAware.ENABLE;
+            case Theme.Value.AUTO:
+            case Theme.Value.Short.AUTO:
+            default:
+                return Theme.BackgroundAware.AUTO;
+        }
+    }
+
+    /**
+     * Converts the style into its string equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The string equivalent of the style.
+     */
+    public static @Theme.Value @NonNull String getValueFromStyle(@Theme.Style int value) {
+        switch (value) {
+            case Theme.Style.CUSTOM:
+                return Theme.Value.CUSTOM;
+            case Theme.Style.AUTO:
+            default:
+                return Theme.Value.AUTO;
+        }
+    }
+
+    /**
+     * Converts the style string into its integer equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The integer equivalent of the style.
+     */
+    public static @Theme.Style int getValueFromStyle(@Theme.Value @NonNull String value) {
+        switch (value) {
+            case Theme.Value.CUSTOM:
+            case Theme.Value.Short.CUSTOM:
+                return Theme.Style.CUSTOM;
+            case Theme.Value.AUTO:
+            case Theme.Value.Short.AUTO:
+            default:
+                return Theme.Style.AUTO;
         }
     }
 
@@ -465,13 +294,13 @@ public class DynamicThemeUtils {
      */
     public static @NonNull String getValueFromVisibility(@Theme.Visibility int value) {
         switch (value) {
-            default:
-            case Theme.Visibility.AUTO:
-                return Theme.Value.AUTO;
             case Theme.Visibility.HIDE:
                 return Theme.Value.HIDE;
             case Theme.Visibility.SHOW:
                 return Theme.Value.SHOW;
+            case Theme.Visibility.AUTO:
+            default:
+                return Theme.Value.AUTO;
         }
     }
 
@@ -484,29 +313,284 @@ public class DynamicThemeUtils {
      */
     public static @Theme.Visibility int getValueFromVisibility(@NonNull String value) {
         switch (value) {
-            default:
-            case Theme.Value.AUTO:
-            case Theme.Value.Short.AUTO:
-                return Theme.Visibility.AUTO;
             case Theme.Value.HIDE:
             case Theme.Value.Short.HIDE:
                 return Theme.Visibility.HIDE;
             case Theme.Value.SHOW:
             case Theme.Value.Short.SHOW:
                 return Theme.Visibility.SHOW;
+            case Theme.Value.AUTO:
+            case Theme.Value.Short.AUTO:
+            default:
+                return Theme.Visibility.AUTO;
         }
     }
 
     /**
-     * Creates a bitmap to be shared along with the dynamic theme.
+     * Formats the theme string and remove extra double quotes and white spaces.
      *
-     * @param view The theme preview to get the bitmap.
+     * @param string The theme string to be formatted.
      *
-     * @return The bitmap to be shared along with the dynamic theme.
+     * @return The formatted theme string.
      */
-    public @NonNull static Bitmap createThemeBitmap(@NonNull View view) {
-        return DynamicBitmapUtils.createBitmapFromView(view,
-                Theme.PREVIEW_WIDTH, Theme.PREVIEW_HEIGHT);
+    public static @NonNull String formatTheme(@NonNull String string) {
+        String[] query = string.trim().split(Theme.QUERY);
+        String theme = query.length > 1 && !TextUtils.isEmpty(query[1])
+                ? decodeTheme(query[1]) : string.trim();
+
+        if (theme == null) {
+            theme = string.trim();
+        }
+
+        try {
+            theme = theme.replaceAll(PATTERN_LINE, "")
+                    .replaceAll(PATTERN_SPACE, "")
+                    .replaceAll(PATTERN_QUOTES, "\"");
+        } catch (Exception ignored) {
+        }
+
+        return theme;
+    }
+
+    /**
+     * Checks whether the string is a valid JSON.
+     *
+     * @param string The string to be checked.
+     *
+     * @return {@code true} if the supplied string is a valid JSON.
+     */
+    public static boolean isValidTheme(@Nullable String string) {
+        boolean validTheme = false;
+
+        try {
+            if (string != null) {
+                new JSONObject(formatTheme(string));
+                validTheme = true;
+            }
+        } catch (Exception e) {
+            try {
+                validTheme = string.toLowerCase(Locale.ROOT).contains(Theme.URL);
+            } catch (Exception ignored) {
+            }
+        }
+
+        return validTheme;
+    }
+
+    /**
+     * Checks whether the intent is valid for the theme.
+     *
+     * @param context The context to match the uri mime type.
+     * @param intent The intent to get the data.
+     *
+     * @return {@code true} if the intent is valid for the theme.
+     */
+    public static boolean isValidThemeIntent(@Nullable Context context, @Nullable Intent intent) {
+        if (intent == null) {
+            return false;
+        }
+
+        if (Intent.ACTION_SEND.equals(intent.getAction())) {
+            String theme = intent.getStringExtra(Intent.EXTRA_TEXT);
+
+            return DynamicFileUtils.isValidMimeType(context,
+                    (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM),
+                    Theme.MIME, Theme.EXTENSION)
+                    || DynamicFileUtils.isValidMimeType(context,
+                    (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM),
+                    Theme.MIME_IMAGE_MATCH, Theme.EXTENSION)
+                    || (theme != null && theme.contains(Theme.QUERY)
+                    && (theme.contains(Theme.HOST) || theme.contains(Theme.SCHEME_CUSTOM)));
+        } else {
+            String data = intent.getData() != null ? intent.getData().toString() : null;
+
+            return DynamicFileUtils.isValidMimeType(context,
+                    intent, Theme.MIME, Theme.EXTENSION)
+                    || DynamicFileUtils.isValidMimeType(context,
+                    intent, Theme.MIME_IMAGE_MATCH, Theme.EXTENSION)
+                    || (data != null && data.contains(Theme.QUERY)
+                    && (data.contains(Theme.HOST) || data.contains(Theme.SCHEME_CUSTOM)));
+        }
+    }
+
+    /**
+     * Encodes a dynamic theme.
+     *
+     * @param theme The theme to be encoded.
+     *
+     * @return The encoded theme string.
+     */
+    public static @Nullable String encodeTheme(@Nullable AppTheme<?> theme) {
+        if (theme == null) {
+            return null;
+        }
+
+        String string = null;
+
+        try {
+            string = formatTheme(theme.toDynamicString());
+            Map<String, String> map = getThemeMap();
+
+            for (Map.Entry<String, String> element : map.entrySet()) {
+                string = string.replaceAll(element.getKey(), element.getValue());
+            }
+
+            string = Uri.encode(string);
+        } catch (Exception ignored) {
+        }
+
+        return string;
+    }
+
+    /**
+     * Decodes a theme string.
+     *
+     * @param theme The theme string to be decoded.
+     *
+     * @return The decoded theme string.
+     */
+    public static @Nullable String decodeTheme(@Nullable String theme) {
+        if (TextUtils.isEmpty(theme)) {
+            return null;
+        }
+
+        String decodedTheme = null;
+
+        try {
+            decodedTheme = Uri.decode(theme);
+            Map<String, String> map = new LinkedHashMap<>();
+
+            for (String pair : decodedTheme.split(Theme.Key.Short.SPLIT)) {
+                String[] keyValue = pair.split(Theme.Value.Short.SPLIT);
+                if (keyValue.length > 1 && !TextUtils.isEmpty(keyValue[1])) {
+                    map.put(keyValue[0], keyValue[1]);
+                }
+            }
+
+            decodedTheme = new JSONObject(map).toString();
+        } catch (Exception ignored) {
+        }
+
+        return decodedTheme;
+    }
+
+    /**
+     * Returns the encoded theme string with the url.
+     *
+     * @param theme The theme to be processed.
+     *
+     * @return The encoded theme string with the url.
+     */
+    public static @NonNull String getThemeUrl(@Nullable AppTheme<?> theme) {
+        return Theme.URL + encodeTheme(theme);
+    }
+
+    /**
+     * Returns the theme uri from the intent.
+     *
+     * @param intent The intent to get the theme uri.
+     *
+     * @return The theme uri according to the intent data.
+     *
+     * @see Intent#EXTRA_TEXT
+     * @see Intent#EXTRA_STREAM
+     * @see Intent#getData()
+     */
+    public static @Nullable Uri getThemeUri(@Nullable Intent intent) {
+        if (intent == null) {
+            return null;
+        }
+
+        try {
+            if (Intent.ACTION_SEND.equals(intent.getAction())
+                    && intent.getStringExtra(Intent.EXTRA_TEXT) != null
+                    && isValidTheme(intent.getStringExtra(Intent.EXTRA_TEXT))) {
+                return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT));
+            } else {
+                return DynamicIntentUtils.getStreamOrData(intent, Intent.ACTION_SEND);
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * Returns the theme data from the uri.
+     *
+     * @param context The context to retrieve the resources.
+     * @param uri The uri to get the theme data.
+     *
+     * @return The theme data according to the uri.
+     *
+     * @see #getThemeUri(Intent)
+     */
+    public static @Nullable String getThemeData(@Nullable Context context, @Nullable Uri uri) {
+        if (context == null || uri == null) {
+            return null;
+        }
+
+        String data = null;
+
+        try {
+            if (uri.getQueryParameterNames().contains(Theme.PARAMETER)) {
+                data = DynamicThemeUtils.decodeTheme(uri.getQueryParameter(Theme.PARAMETER));
+            } else {
+                data = DynamicFileUtils.readStringFromFile(context, uri);
+            }
+        } catch (Exception ignored) {
+        }
+
+        return data;
+    }
+
+    /**
+     * Returns the theme data from the intent.
+     *
+     * @param context The context to retrieve the resources.
+     * @param intent The intent to get the theme data.
+     *
+     * @return The theme data according to the intent data.
+     *
+     * @see #getThemeUri(Intent)
+     */
+    public static @Nullable String getThemeData(
+            @Nullable Context context, @Nullable Intent intent) {
+        return getThemeData(context, getThemeUri(intent));
+    }
+
+    /**
+     * Returns the theme name from the intent.
+     *
+     * @param context The context to retrieve the resources.
+     * @param intent The intent to get the theme name.
+     * @param defaultName The default name for the theme.
+     *
+     * @return The theme name according to the intent data.
+     *
+     * @see #getThemeUri(Intent)
+     */
+    public static @Nullable String getThemeName(@Nullable Context context,
+            @Nullable Intent intent, @Nullable String defaultName) {
+        if (context == null || intent == null) {
+            return null;
+        }
+
+        String name = null;
+
+        try {
+            Uri uri = getThemeUri(intent);
+
+            if (uri != null) {
+                if (uri.getQueryParameterNames().contains(Theme.PARAMETER)) {
+                    name = defaultName;
+                } else {
+                    name = DynamicFileUtils.getFileNameFromUri(context, uri);
+                }
+            }
+        } catch (Exception ignored) {
+        }
+
+        return name;
     }
 
     /**
@@ -520,18 +604,91 @@ public class DynamicThemeUtils {
      */
     public static @Nullable File requestThemeFile(@NonNull Context context,
             @NonNull String theme, @NonNull String data) {
-        String themeName = File.separator + theme + Theme.EXTENSION;
-        File themeFile = new File(DynamicFileUtils.getTempDir(context) + themeName);
+        File themeFile = null;
 
         try {
+            String themeName = File.separator + theme + Theme.EXTENSION;
+            themeFile = new File(DynamicFileUtils.getTempDir(context) + themeName);
+
             DynamicFileUtils.verifyFile(themeFile.getParentFile());
             DynamicFileUtils.writeStringToFile(context, data,
                     DynamicFileUtils.getUriFromFile(context, themeFile));
-
-            return themeFile;
         } catch (Exception ignored) {
         }
 
-        return null;
+        return themeFile;
+    }
+
+    /**
+     * Creates a bitmap to be shared along with the dynamic theme.
+     *
+     * @param view The theme preview to get the bitmap.
+     *
+     * @return The bitmap to be shared along with the dynamic theme.
+     */
+    public static @Nullable Bitmap createThemeBitmap(@NonNull View view) {
+        return DynamicBitmapUtils.createBitmap(view, Theme.PREVIEW_WIDTH, Theme.PREVIEW_HEIGHT);
+    }
+
+    /**
+     * Creates a bitmap to be shared along with the remote dynamic theme.
+     *
+     * @param view The remote theme preview to get the bitmap.
+     *
+     * @return The bitmap to be shared along with the remote dynamic theme.
+     */
+    public static @Nullable Bitmap createRemoteThemeBitmap(@NonNull View view) {
+        return DynamicBitmapUtils.createBitmap(view,
+                Theme.PREVIEW_WIDTH, Theme.PREVIEW_HEIGHT_REMOTE);
+    }
+
+    /**
+     * Broadcast the theme data to the supported apps.
+     *
+     * @param context The context to broadcast the theme.
+     * @param theme The theme for the receiver.
+     * @param value The theme value for the receiver.
+     * @param data The theme data for the receiver.
+     * @param considerSender {@code true} to consider the sender package if applicable.
+     */
+    public static void broadcastDynamicTheme(@NonNull Context context,
+            @Nullable @Theme.ToString String theme, @Nullable @Theme.ToString String value,
+            @Nullable String data, boolean considerSender) {
+        List<ResolveInfo> receivers = context.getPackageManager()
+                .queryBroadcastReceivers(new Intent(Theme.Intent.ACTION),
+                        PackageManager.GET_META_DATA);
+
+        for (ResolveInfo resolveInfo : receivers) {
+            if (considerSender || !context.getPackageName()
+                    .equals(resolveInfo.activityInfo.packageName)) {
+                Intent intent = new Intent(Theme.Intent.ACTION);
+                intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+                intent.putExtra(Theme.Intent.EXTRA_THEME, theme);
+                intent.putExtra(Theme.Intent.EXTRA_VALUE, value);
+                intent.putExtra(Theme.Intent.EXTRA_DATA, data);
+                intent.setPackage(resolveInfo.activityInfo.packageName);
+                intent.setComponent(new ComponentName(
+                        resolveInfo.activityInfo.packageName,
+                        resolveInfo.activityInfo.name));
+
+                context.sendOrderedBroadcast(intent, ThemeContract.Permission.DYNAMIC_THEME);
+            }
+        }
+    }
+
+    /**
+     * Broadcast the theme data to the supported apps.
+     *
+     * @param context The context to broadcast the theme.
+     * @param theme The theme for the receiver.
+     * @param value The theme value for the receiver.
+     * @param data The theme data for the receiver.
+     *
+     * @see #broadcastDynamicTheme(Context, String, String, String, boolean)
+     */
+    public static void broadcastDynamicTheme(@NonNull Context context,
+            @Nullable @Theme.ToString String theme,
+            @Nullable @Theme.ToString String value, @Nullable String data) {
+        broadcastDynamicTheme(context, theme, value, data, false);
     }
 }
