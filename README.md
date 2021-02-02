@@ -11,29 +11,32 @@ A text (JSON) based theme engine for apps supporting Android 4.0 (API 14) and ab
 > It uses [AndroidX](https://developer.android.com/jetpack/androidx/) so, first
 [migrate](https://developer.android.com/jetpack/androidx/migrate) your project to AndroidX.
 
-<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-preview.png">
+<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-code.png" width="400">&nbsp;&nbsp;<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-preview.png" width="400">
 
 ```
 {
-  "backgroundColor": "#252525",
+  "backgroundColor": "#37474F",
   "tintBackgroundColor": "auto",
   "surfaceColor": "auto",
   "tintSurfaceColor": "auto",
-  "primaryColor": "#FF9933",
+  "primaryColor": "#37474F",
   "tintPrimaryColor": "auto",
   "primaryColorDark": "auto",
   "tintPrimaryColorDark": "auto",
-  "accentColor": "#8BC34A",
+  "accentColor": "#CDDC39",
   "tintAccentColor": "auto",
   "accentColorDark": "auto",
   "tintAccentColorDark": "auto",
+  "errorColor": "auto",
+  "tintErrorColor": "auto",
   "textPrimaryColor": "auto",
   "textPrimaryColorInverse": "auto",
   "textSecondaryColor": "auto",
   "textSecondaryColorInverse": "auto",
   "fontScale": "auto",
   "cornerRadius": "auto",
-  "backgroundAware": "auto"
+  "backgroundAware": "auto",
+  "style": "auto"
 }
 ```
 
@@ -76,6 +79,8 @@ A `JSON` is the original format for the dynamic theme that provides cross-app fu
   "tintAccentColor": "auto|color",
   "accentColorDark": "auto|color",
   "tintAccentColorDark": "auto|color",
+  "errorColor": "auto|color",
+  "tintErrorColor": "auto|color",
   "textPrimaryColor": "auto|color",
   "textPrimaryColorInverse": "auto|color",
   "textSecondaryColor": "auto|color",
@@ -83,6 +88,7 @@ A `JSON` is the original format for the dynamic theme that provides cross-app fu
   "fontScale": "auto|integer",
   "cornerRadius": "auto|integer",
   "backgroundAware": "auto|disable|enable",
+  "style": "auto|custom",
   "header": "auto|hide|show",
   "opacity": "auto|integer"
 }
@@ -96,46 +102,36 @@ can be imported easily in various apps or platforms.
 
 #### Mappings
 
-| JSON                      | URL | 
-| :------------------------ | --- |
-| {,}                       |     |
-| ""                        |     |
-| Split (Key)               | -   |
-| Dark                      | Z   |
-| Inverse                   | Z   |
-| backgroundColor           | 0   |
-| tintBackgroundColor       | 1   |
-| surfaceColor              | 2   |
-| tintSurfaceColor          | 3   |
-| primaryColor              | 4   |
-| tintPrimaryColor          | 5   |
-| primaryColorDark          | 4Z  |
-| tintPrimaryColorDark      | 7   |
-| accentColor               | 8   |
-| tintAccentColor           | 9   |
-| accentColorDark           | 8Z  |
-| tintAccentColorDark       | 11  |
-| textPrimaryColor          | 12  |
-| textPrimaryColorInverse   | 12Z |
-| textSecondaryColor        | 14  | 
-| textSecondaryColorInverse | 14Z |
-| fontScale                 | 16  |
-| cornerRadius              | 17  |
-| backgroundAware           | 18  |
-| header                    | 19  |
-| opacity                   | 20  |
+| JSON               | URL | JSON                      | URL |
+| :----------------- | --- | :------------------------ | --- |
+| {,}                |     | ""                        |     |
+| Split (Key)        | -   | Dark \| Inverse           | Z   |
+| backgroundColor    | 0   | tintBackgroundColor       | 1   |
+| surfaceColor       | 2   | tintSurfaceColor          | 3   |
+| primaryColor       | 4   | tintPrimaryColor          | 5   |
+| primaryColorDark   | 4Z  | tintPrimaryColorDark      | 7   |
+| accentColor        | 8   | tintAccentColor           | 9   |
+| accentColorDark    | 8Z  | tintAccentColorDark       | 11  |
+| errorColor         | 21  | tintErrorColor            | 22  |
+| textPrimaryColor   | 12  | textPrimaryColorInverse   | 12Z |
+| textSecondaryColor | 14  | textSecondaryColorInverse | 14Z |
+| fontScale          | 16  | cornerRadius              | 17  |
+| backgroundAware    | 18  | style                     | 23  |
+| header             | 19  | opacity                   | 20  |
 
 #### Values
 
-| JSON          | URL | 
-| :-------------| --- |
-| Split (Value) | v   |
-| #             | X   |
+| JSON          | URL | JSON   | URL |
+| :-------------| --- | :----- | --- |
+| Split (Value) | v   | #      | X   |
 | auto          | A   |
-| disable       | D   |
-| enable        | E   |
-| hide          | H   |
-| show          | S   |
+| disable       | D   | enable | E   |
+| hide          | H   | show   | S   |
+
+### Code
+
+A `QR code` representation of the theme `URL` to easily share themes across various platforms 
+and devices.
 
 ### File
 
