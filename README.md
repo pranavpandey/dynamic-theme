@@ -225,6 +225,8 @@ The following rules will be applied by this library:
 
 ---
 
+<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/palettes.png" width="160" height="160" align="right" hspace="20">
+
 ## Palettes
 
 Palettes is a universal manager for apps supporting the dynamic theme on Android. 
