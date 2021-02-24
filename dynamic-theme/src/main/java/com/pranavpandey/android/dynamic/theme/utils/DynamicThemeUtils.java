@@ -815,7 +815,7 @@ public class DynamicThemeUtils {
                         resolveInfo.activityInfo.packageName,
                         resolveInfo.activityInfo.name));
 
-                context.sendOrderedBroadcast(intent, ThemeContract.Permission.DYNAMIC_THEME);
+                context.sendBroadcast(intent, ThemeContract.Permission.DYNAMIC_THEME);
             }
         }
     }
