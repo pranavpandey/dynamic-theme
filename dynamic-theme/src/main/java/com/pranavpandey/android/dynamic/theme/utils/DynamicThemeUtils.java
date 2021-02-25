@@ -354,22 +354,22 @@ public class DynamicThemeUtils {
      * @return The formatted theme string.
      */
     public static @NonNull String formatTheme(@NonNull String string) {
-        String[] query = string.trim().split(Theme.QUERY);
-        String theme = query.length > 1 && !TextUtils.isEmpty(query[1])
-                ? decodeTheme(query[1]) : string.trim();
-
-        if (theme == null) {
-            theme = string.trim();
-        }
-
         try {
-            theme = theme.replaceAll(PATTERN_LINE, "")
+            String[] query = string.trim().split(Theme.QUERY);
+            String theme = query.length > 1 && !TextUtils.isEmpty(query[1])
+                    ? decodeTheme(query[1]) : string.trim();
+
+            if (theme == null) {
+                theme = string.trim();
+            }
+
+            return theme.replaceAll(PATTERN_LINE, "")
                     .replaceAll(PATTERN_SPACE, "")
                     .replaceAll(PATTERN_QUOTES, "\"");
         } catch (Exception ignored) {
         }
 
-        return theme;
+        return string;
     }
 
     /**
