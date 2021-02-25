@@ -159,7 +159,7 @@ public class DynamicThemeUtils {
      * @return The integer equivalent of the color.
      */
     public static int getValueFromColor(@NonNull String value) {
-        if (value.equals(Theme.Value.AUTO) || value.equals(Theme.Value.Short.AUTO)) {
+        if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
             return Theme.AUTO;
         } else {
             return Color.parseColor(value.replace(Theme.Value.Short.HASH, Theme.Value.HASH));
@@ -189,7 +189,7 @@ public class DynamicThemeUtils {
      * @return The integer equivalent of the font scale.
      */
     public static int getValueFromFontScale(@NonNull String value) {
-        if (value.equals(Theme.Value.AUTO) || value.equals(Theme.Value.Short.AUTO)) {
+        if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
             return Theme.AUTO;
         } else {
             return Integer.parseInt(value);
@@ -219,7 +219,7 @@ public class DynamicThemeUtils {
      * @return The integer equivalent of the corner radius.
      */
     public static int getValueFromCornerRadius(@NonNull String value) {
-        if (value.equals(Theme.Value.AUTO) || value.equals(Theme.Value.Short.AUTO)) {
+        if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
             return Theme.AUTO;
         } else {
             return Integer.parseInt(value);
