@@ -850,6 +850,22 @@ public interface AppTheme<T extends AppTheme<?>> {
     @NonNull T setStyle(@Theme.Style int style);
 
     /**
+     * Returns the highlight color for this theme.
+     *
+     * @param contrastWithColor The contrast with color to be used.
+     *
+     * @return The highlight color for this theme.
+     */
+    @ColorInt int getHighlightColor(@ColorInt int contrastWithColor);
+
+    /**
+     * Returns the highlight color for this theme.
+     *
+     * @return The highlight color for this theme.
+     */
+    @ColorInt int getHighlightColor();
+
+    /**
      * Returns {@code true} if this theme is dark.
      *
      * @return {@code true} if this theme is dark.
