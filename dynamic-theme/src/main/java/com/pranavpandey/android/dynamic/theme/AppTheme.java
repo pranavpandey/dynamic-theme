@@ -887,6 +887,13 @@ public interface AppTheme<T extends AppTheme<?>> {
     boolean isBackgroundSurface();
 
     /**
+     * Returns whether to show the dividers for this theme.
+     *
+     * @return {@code true} to show the dividers for this theme.
+     */
+    boolean isShowDivider();
+
+    /**
      * Auto generate tint or inverse colors according to the base colors. They can be set
      * individually by calling the appropriate methods.
      *
