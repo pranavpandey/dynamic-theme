@@ -23,7 +23,7 @@ buildscript {
             'dynamic'   : '3.4.1',
             'gson'      : '2.8.6',
             'palette'   : '1.0.0',
-            'zxing'     : '3.4.1'
+            'zxing'     : '3.3.3'
     ]
 
     repositories {
