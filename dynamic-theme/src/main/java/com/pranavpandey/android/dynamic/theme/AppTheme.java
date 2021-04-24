@@ -891,7 +891,7 @@ public interface AppTheme<T extends AppTheme<?>> {
      *
      * @return {@code true} to show the dividers for this theme.
      */
-    boolean isShowDivider();
+    boolean isShowDividers();
 
     /**
      * Auto generate tint or inverse colors according to the base colors. They can be set
