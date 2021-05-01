@@ -18,10 +18,10 @@
 <resources>
 
     <!-- Fill -->
-    <color name="ads_icon_fill_dark">@android:color/black</color>
-    <color name="ads_icon_fill_light">@android:color/white</color>
-    <color name="ads_icon_fill_light_secondary">#E6FFFFFF</color>
-    <color name="ads_app_shortcut_background">@android:color/white</color>
+    <color name="adt_icon_fill_dark">@android:color/black</color>
+    <color name="adt_icon_fill_light">@android:color/white</color>
+    <color name="adt_icon_fill_light_secondary">#E6FFFFFF</color>
+    <color name="adt_app_shortcut_background">@android:color/white</color>
 
     <!-- Branding -->
     <color name="adt_gray">#607D8B</color>

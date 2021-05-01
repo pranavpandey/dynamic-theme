@@ -18,10 +18,10 @@
 <resources>
 
     <!-- Fill -->
-    <item name="ads_fill_alpha_shadow" format="float" type="dimen">0.1</item>
-    <item name="ads_fill_alpha_base" format="float" type="dimen">0.2</item>
-    <item name="ads_fill_alpha_medium" format="float" type="dimen">0.4</item>
-    <item name="ads_fill_alpha_secondary" format="float" type="dimen">0.6</item>
-    <item name="ads_fill_alpha_dark" format="float" type="dimen">0.8</item>
+    <item name="adt_fill_alpha_shadow" format="float" type="dimen">0.1</item>
+    <item name="adt_fill_alpha_base" format="float" type="dimen">0.2</item>
+    <item name="adt_fill_alpha_medium" format="float" type="dimen">0.4</item>
+    <item name="adt_fill_alpha_secondary" format="float" type="dimen">0.6</item>
+    <item name="adt_fill_alpha_dark" format="float" type="dimen">0.8</item>
 
 </resources>

@@ -872,7 +872,7 @@ public @interface Theme {
 
     /**
      * Interface to hold the color type constant values according to the
-     * {@link R.attr#ads_colorType}.
+     * {@link R.attr#adt_colorType}.
      */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(value = { ColorType.UNKNOWN, ColorType.NONE, ColorType.CUSTOM,

@@ -35,8 +35,8 @@
         android:pathData="m46.51 44.09c1.16 0 2.11 0.94 2.11 2.11c0 1.16 -0.94 2.11 -2.11 2.11c-1.16 0 -2.11 -0.94 -2.11 -2.11c0 -1.16 0.94 -2.11 2.11 -2.11zm14.18 -7.81c-0.39 0 -0.78 0.07 -1.15 0.23l-15.25 6.31c-1.78 0.74 -2.51 3.05 -1.63 5.17l9.41 22.69c0.7 1.68 2.19 2.73 3.67 2.73c0.39 0 0.78 -0.07 1.15 -0.23l15.25 -6.31c1.78 -0.74 2.51 -3.05 1.63 -5.17l-9.41 -22.69c-0.7 -1.68 -2.19 -2.73 -3.67 -2.73z" />
 
     <path
-        android:fillColor="@color/ads_icon_fill_light"
+        android:fillColor="@color/adt_icon_fill_light"
         android:pathData="m38.53 53.27 -4.52 11.28c-0.76 1.96 0.15 4.22 2.03 5.02l2.49 1.08v-17.38zm3.74 4.29v12.2c0 2.12 1.68 3.85 3.72 3.85h2.7l-6.42 -16.05z"
-        android:fillAlpha="@dimen/ads_fill_alpha_secondary" />
+        android:fillAlpha="@dimen/adt_fill_alpha_secondary" />
 
 </vector>
