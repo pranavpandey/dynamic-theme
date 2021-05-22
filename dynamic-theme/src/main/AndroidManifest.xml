@@ -19,12 +19,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pranavpandey.android.dynamic.theme">
 
-    <!-- Query packages on API 30 and above devices. -->
+    <!-- Query packages on API 30 and above. -->
     <queries>
         <package android:name="com.pranavpandey.theme" />
     </queries>
 
-    <!-- Query intents on API 30 and above devices. -->
+    <!-- Query intents on API 30 and above. -->
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />

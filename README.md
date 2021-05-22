@@ -4,9 +4,9 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![Build Status](https://travis-ci.org/pranavpandey/dynamic-theme.svg?branch=master)](https://travis-ci.org/pranavpandey/dynamic-theme)
-[![Download](https://api.bintray.com/packages/pranavpandey/android/dynamic-theme/images/download.svg)](https://bintray.com/pranavpandey/android/dynamic-theme/_latestVersion)
+[![Release](https://img.shields.io/maven-central/v/com.pranavpandey.android/dynamic-theme)](https://search.maven.org/artifact/com.pranavpandey.android/dynamic-theme)
 
-A text (JSON) based theme engine for apps supporting Android 4.0 (API 14) and above devices.
+A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 
 > It uses [AndroidX](https://developer.android.com/jetpack/androidx/) so, first
 [migrate](https://developer.android.com/jetpack/androidx/migrate) your project to AndroidX.
