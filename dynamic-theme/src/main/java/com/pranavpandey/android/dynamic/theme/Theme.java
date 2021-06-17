@@ -19,6 +19,8 @@ package com.pranavpandey.android.dynamic.theme;
 import androidx.annotation.IntDef;
 import androidx.annotation.StringDef;
 
+import com.google.zxing.common.CharacterSetECI;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -199,7 +201,7 @@ public @interface Theme {
     /**
      * Character set for the theme content.
      */
-    String CHARACTER_SET = "UTF-8";
+    String CHARACTER_SET = CharacterSetECI.UTF8.name();
 
     /**
      * Mime type for the theme file.
@@ -207,7 +209,7 @@ public @interface Theme {
     String MIME = "application/vnd.dynamic.theme";
 
     /**
-     * Mime type for the theme iamge file.
+     * Mime type for the theme image file.
      */
     String MIME_IMAGE = "image/png";
     
@@ -249,12 +251,12 @@ public @interface Theme {
     /**
      * Constant value for the theme code size in pixels.
      */
-    int CODE_SIZE = 500;
+    int CODE_SIZE = 480;
 
     /**
      * Constant value for the theme code margin in pixels.
      */
-    int CODE_MARGIN = 1;
+    int CODE_MARGIN = 0;
 
     /**
      * Constant value for the theme code visible contrast.
@@ -264,12 +266,12 @@ public @interface Theme {
     /**
      * Constant value for the theme code overlay size in pixels.
      */
-    int OVERLAY_SIZE = 36;
+    int OVERLAY_SIZE = 40;
 
     /**
      * Constant value for the QR ode overlay background size in pixels.
      */
-    int OVERLAY_BACKGROUND_SIZE = 72;
+    int OVERLAY_BACKGROUND_SIZE = 80;
 
     /**
      * Default theme resource id.

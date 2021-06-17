@@ -24,6 +24,9 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -53,7 +56,6 @@ import com.pranavpandey.android.dynamic.theme.Theme;
 import com.pranavpandey.android.dynamic.theme.ThemeContract;
 import com.pranavpandey.android.dynamic.utils.DynamicBitmapUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
-import com.pranavpandey.android.dynamic.utils.DynamicDrawableUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicFileUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicIntentUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicUnitUtils;
@@ -62,6 +64,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.EnumMap;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -689,11 +692,10 @@ public class DynamicThemeUtils {
 
         @ColorInt int backgroundColor = theme.getBackgroundColor();
         @ColorInt int dataColor = DynamicColorUtils.getContrastColor(
-                theme.getPrimaryColor(), theme.getBackgroundColor(), Theme.CODE_CONTRAST);
-        @ColorInt int overlayBackgroundColor = DynamicColorUtils.getContrastColor(
-                theme.getAccentColor(), backgroundColor);
+                theme.getPrimaryColor(), backgroundColor, Theme.CODE_CONTRAST);
+        @ColorInt int overlayBackgroundColor = backgroundColor;
         @ColorInt int overlayColor = DynamicColorUtils.getContrastColor(
-                theme.getTintAccentColor(), overlayBackgroundColor);
+                theme.getAccentColor(), overlayBackgroundColor, Theme.CODE_CONTRAST);
 
         try {
             BitMatrix bitMatrix = writer.encode(getThemeUrl(theme),
@@ -708,30 +710,34 @@ public class DynamicThemeUtils {
                 }
             }
 
-            Canvas canvas = new Canvas(bitmap);
+            final Canvas canvas = new Canvas(bitmap);
+            final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
             if (background != null) {
-                Bitmap backgroundBitmap = DynamicBitmapUtils.getBitmap(
-                        DynamicDrawableUtils.colorizeDrawable(background, overlayBackgroundColor),
+                Bitmap backgroundBitmap = DynamicBitmapUtils.getBitmap(background,
                         Theme.OVERLAY_BACKGROUND_SIZE, Theme.OVERLAY_BACKGROUND_SIZE,
                         false, 0);
 
                 if (backgroundBitmap != null) {
+                    paint.setColorFilter(new PorterDuffColorFilter(
+                            overlayBackgroundColor, PorterDuff.Mode.SRC_ATOP));
                     canvas.drawBitmap(backgroundBitmap,
                             bitmap.getWidth() / 2f - backgroundBitmap.getWidth() / 2f,
-                            bitmap.getHeight() / 2f - backgroundBitmap.getHeight() / 2f, null);
+                            bitmap.getHeight() / 2f - backgroundBitmap.getHeight() / 2f,
+                            paint);
                 }
             }
 
             if (overlay != null) {
-                Bitmap overlayBitmap = DynamicBitmapUtils.getBitmap(
-                        DynamicDrawableUtils.colorizeDrawable(overlay, overlayColor),
+                Bitmap overlayBitmap = DynamicBitmapUtils.getBitmap(overlay,
                         Theme.OVERLAY_SIZE, Theme.OVERLAY_SIZE, false, 0);
 
                 if (overlayBitmap != null) {
+                    paint.setColorFilter(new PorterDuffColorFilter(
+                            overlayColor, PorterDuff.Mode.SRC_ATOP));
                     canvas.drawBitmap(overlayBitmap,
                             bitmap.getWidth() / 2f - overlayBitmap.getWidth() / 2f,
-                            bitmap.getHeight() / 2f - overlayBitmap.getHeight() / 2f, null);
+                            bitmap.getHeight() / 2f - overlayBitmap.getHeight() / 2f, paint);
                 }
             }
         } catch (Exception ignored) {
@@ -767,6 +773,8 @@ public class DynamicThemeUtils {
         Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
         hints.put(DecodeHintType.CHARACTER_SET, Theme.CHARACTER_SET);
         hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+        hints.put(DecodeHintType.POSSIBLE_FORMATS, EnumSet.allOf(BarcodeFormat.class));
+        hints.put(DecodeHintType.PURE_BARCODE, Boolean.FALSE);
 
         try {
             contents = reader.decode(binaryBitmap, hints).getText();
