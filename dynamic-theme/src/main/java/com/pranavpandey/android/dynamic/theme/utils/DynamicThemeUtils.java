@@ -127,9 +127,13 @@ public class DynamicThemeUtils {
         map.put(Theme.Key.CORNER_RADIUS, Theme.Key.Short.CORNER_RADIUS);
         map.put(Theme.Key.BACKGROUND_AWARE, Theme.Key.Short.BACKGROUND_AWARE);
         map.put(Theme.Key.STYLE, Theme.Key.Short.STYLE);
+        map.put(Theme.Key.TYPE, Theme.Key.Short.TYPE);
         map.put(Theme.Key.HEADER, Theme.Key.Short.HEADER);
         map.put(Theme.Key.OPACITY, Theme.Key.Short.OPACITY);
         map.put(Theme.Value.AUTO, Theme.Value.Short.AUTO);
+        map.put(Theme.Value.DAY, Theme.Value.Short.DAY);
+        map.put(Theme.Value.NIGHT, Theme.Value.Short.NIGHT);
+        map.put(Theme.Value.CUSTOM, Theme.Value.Short.CUSTOM);
         map.put(Theme.Value.DISABLE, Theme.Value.Short.DISABLE);
         map.put(Theme.Value.ENABLE, Theme.Value.Short.ENABLE);
         map.put(Theme.Value.HIDE, Theme.Value.Short.HIDE);
@@ -243,6 +247,7 @@ public class DynamicThemeUtils {
                 return Theme.Value.DISABLE;
             case Theme.BackgroundAware.ENABLE:
                 return Theme.Value.ENABLE;
+            case Theme.BackgroundAware.UNKNOWN:
             case Theme.BackgroundAware.AUTO:
             default:
                 return Theme.Value.AUTO;
@@ -305,6 +310,54 @@ public class DynamicThemeUtils {
             case Theme.Value.Short.AUTO:
             default:
                 return Theme.Style.AUTO;
+        }
+    }
+
+    /**
+     * Converts the type into its string equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The string equivalent of the type.
+     */
+    public static @Theme.Value @NonNull String getValueFromType(@Theme int value) {
+        switch (value) {
+            case Theme.DAY:
+                return Theme.Value.DAY;
+            case Theme.NIGHT:
+                return Theme.Value.NIGHT;
+            case Theme.CUSTOM:
+                return Theme.Value.CUSTOM;
+            case Theme.AUTO:
+            case Theme.APP:
+            case Theme.REMOTE:
+            default:
+                return Theme.Value.AUTO;
+        }
+    }
+
+    /**
+     * Converts the type string into its integer equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The integer equivalent of the type.
+     */
+    public static @Theme int getValueFromType(@Theme.ToString @NonNull String value) {
+        switch (value) {
+            case Theme.Value.DAY:
+            case Theme.Value.Short.DAY:
+                return Theme.DAY;
+            case Theme.Value.NIGHT:
+            case Theme.Value.Short.NIGHT:
+                return Theme.NIGHT;
+            case Theme.Value.CUSTOM:
+            case Theme.Value.Short.CUSTOM:
+                return Theme.CUSTOM;
+            case Theme.Value.AUTO:
+            case Theme.Value.Short.AUTO:
+            default:
+                return Theme.AUTO;
         }
     }
 

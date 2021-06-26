@@ -850,6 +850,22 @@ public interface AppTheme<T extends AppTheme<?>> {
     @NonNull T setStyle(@Theme.Style int style);
 
     /**
+     * Get the type value used by this theme.
+     *
+     * @return The type value used by this theme.
+     */
+    @Theme int getType();
+
+    /**
+     * Set the type value used by this theme.
+     *
+     * @param type The type value to be set.
+     *
+     * @return The {@link T} object to allow for chaining of calls to set methods.
+     */
+    @NonNull T setType(@Theme int type);
+
+    /**
      * Returns the highlight color for this theme.
      *
      * @param contrastWithColor The contrast with color to be used.
