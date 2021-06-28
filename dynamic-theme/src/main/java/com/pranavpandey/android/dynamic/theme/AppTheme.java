@@ -113,6 +113,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * Returns the surface color used by this theme.
      *
      * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The surface color used by this theme.
+     */
+    @ColorInt int getSurfaceColor(boolean resolve, boolean inverse);
+
+    /**
+     * Returns the surface color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
      *
      * @return The surface color used by this theme.
      */
@@ -149,6 +159,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @see #setTintSurfaceColor(int)
      */
     @NonNull T setSurfaceColor(@ColorInt int surfaceColor);
+
+    /**
+     * Returns the primary color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The primary color used by this theme.
+     */
+    @ColorInt int getPrimaryColor(boolean resolve, boolean inverse);
 
     /**
      * Returns the primary color used by this theme.
@@ -195,6 +215,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * Returns the dark primary color used by this theme.
      *
      * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The dark primary color used by this theme.
+     */
+    @ColorInt int getPrimaryColorDark(boolean resolve, boolean inverse);
+
+    /**
+     * Returns the dark primary color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
      *
      * @return The dark primary color used by this theme.
      */
@@ -231,6 +261,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @see #setTintPrimaryColorDark(int)
      */
     @NonNull T setPrimaryColorDark(@ColorInt int primaryColorDark);
+
+    /**
+     * Returns the accent color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The accent color used by this theme.
+     */
+    @ColorInt int getAccentColor(boolean resolve, boolean inverse);
 
     /**
      * Returns the accent color used by this theme.
@@ -277,6 +317,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * Returns the dark accent color used by this theme.
      *
      * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The dark accent color used by this theme.
+     */
+    @ColorInt int getAccentColorDark(boolean resolve, boolean inverse);
+
+    /**
+     * Returns the dark accent color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
      *
      * @return The dark accent color used by this theme.
      */
@@ -313,6 +363,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @see #setTintAccentColorDark(int)
      */
     @NonNull T setAccentColorDark(@ColorInt int accentColorDark);
+
+    /**
+     * Returns the error color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The error color used by this theme.
+     */
+    @ColorInt int getErrorColor(boolean resolve, boolean inverse);
 
     /**
      * Returns the error color used by this theme.
@@ -394,6 +454,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * Returns the surface tint color used by this theme.
      *
      * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The surface tint color used by this theme.
+     */
+    @ColorInt int getTintSurfaceColor(boolean resolve, boolean inverse);
+
+    /**
+     * Returns the surface tint color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
      *
      * @return The surface tint color used by this theme.
      */
@@ -414,6 +484,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @return The {@link T} object to allow for chaining of calls to set methods.
      */
     @NonNull T setTintSurfaceColor(@ColorInt int tintSurfaceColor);
+
+    /**
+     * Returns the primary tint color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The primary tint color used by this theme.
+     */
+    @ColorInt int getTintPrimaryColor(boolean resolve, boolean inverse);
 
     /**
      * Returns the primary tint color used by this theme.
@@ -444,6 +524,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * Returns the dark primary tint color used by this theme.
      *
      * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The dark primary tint color used by this theme.
+     */
+    @ColorInt int getTintPrimaryColorDark(boolean resolve, boolean inverse);
+
+    /**
+     * Returns the dark primary tint color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
      *
      * @return The dark primary tint color used by this theme.
      */
@@ -464,6 +554,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @return The {@link T} object to allow for chaining of calls to set methods.
      */
     @NonNull T setTintPrimaryColorDark(@ColorInt int tintPrimaryColorDark);
+
+    /**
+     * Returns the accent tint color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The accent tint color used by this theme.
+     */
+    @ColorInt int getTintAccentColor(boolean resolve, boolean inverse);
 
     /**
      * Returns the accent tint color used by this theme.
@@ -494,6 +594,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * Returns the dark accent tint color used by this theme.
      *
      * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The dark accent tint color used by this theme.
+     */
+    @ColorInt int getTintAccentColorDark(boolean resolve, boolean inverse);
+
+    /**
+     * Returns the dark accent tint color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
      *
      * @return The dark accent tint color used by this theme.
      */
@@ -514,6 +624,16 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @return The {@link T} object to allow for chaining of calls to set methods.
      */
     @NonNull T setTintAccentColorDark(@ColorInt int tintAccentColorDark);
+
+    /**
+     * Returns the error tint color used by this theme.
+     *
+     * @param resolve {@code true} to resolve the auto color.
+     * @param inverse {@code true} to resolve the inverse color.
+     *
+     * @return The error tint color used by this theme.
+     */
+    @ColorInt int getTintErrorColor(boolean resolve, boolean inverse);
 
     /**
      * Returns the error tint color used by this theme.
@@ -908,6 +1028,13 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @return {@code true} to show the dividers for this theme.
      */
     boolean isShowDividers();
+
+    /**
+     * Returns whether to the dynamic colors are used by this theme.
+     *
+     * @return {@code true} if the dynamic colors are used by this theme.
+     */
+    boolean isDynamicColor();
 
     /**
      * Auto generate tint or inverse colors according to the base colors. They can be set
