@@ -296,18 +296,18 @@ public class DynamicColors implements Parcelable {
 
         clear();
 
-        if (newColors.getTertiaryColor() != null) {
-            colors.put(Theme.ColorType.BACKGROUND, newColors.getTertiaryColor().toArgb());
-            colors.put(Theme.ColorType.SURFACE, Theme.AUTO);
-        }
-
-        colors.put(Theme.ColorType.PRIMARY, newColors.getPrimaryColor().toArgb());
-        colors.put(Theme.ColorType.PRIMARY_DARK, Theme.AUTO);
-        colors.put(Theme.ColorType.ERROR, Theme.AUTO);
+        colors.put(Theme.ColorType.ACCENT, newColors.getPrimaryColor().toArgb());
 
         if (newColors.getSecondaryColor() != null) {
-            colors.put(Theme.ColorType.ACCENT, newColors.getSecondaryColor().toArgb());
-            colors.put(Theme.ColorType.ACCENT_DARK, Theme.AUTO);
+            colors.put(Theme.ColorType.PRIMARY, newColors.getSecondaryColor().toArgb());
+        } else {
+            colors.put(Theme.ColorType.PRIMARY, newColors.getPrimaryColor().toArgb());
+        }
+
+        if (newColors.getTertiaryColor() != null) {
+            colors.put(Theme.ColorType.BACKGROUND, newColors.getTertiaryColor().toArgb());
+        } else {
+            colors.put(Theme.ColorType.BACKGROUND, newColors.getPrimaryColor().toArgb());
         }
     }
 
