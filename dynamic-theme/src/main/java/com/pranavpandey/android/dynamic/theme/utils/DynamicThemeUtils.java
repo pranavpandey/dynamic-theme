@@ -278,6 +278,36 @@ public class DynamicThemeUtils {
     }
 
     /**
+     * Converts the opacity into its string equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The string equivalent of the opacity.
+     */
+    public static @Theme.Value @NonNull String getValueFromOpacity(int value) {
+        if (value == Theme.AUTO) {
+            return Theme.Value.AUTO;
+        } else {
+            return Integer.toString(value);
+        }
+    }
+
+    /**
+     * Converts the opacity string into its integer equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The integer equivalent of the opacity.
+     */
+    public static int getValueFromOpacity(@NonNull String value) {
+        if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
+            return Theme.AUTO;
+        } else {
+            return Integer.parseInt(value);
+        }
+    }
+
+    /**
      * Converts the style into its string equivalent.
      *
      * @param value The value to be converted.
@@ -743,12 +773,14 @@ public class DynamicThemeUtils {
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         hints.put(EncodeHintType.MARGIN, Theme.CODE_MARGIN);
 
-        @ColorInt int backgroundColor = theme.getBackgroundColor();
-        @ColorInt int dataColor = DynamicColorUtils.getContrastColor(
-                theme.getPrimaryColor(), backgroundColor, Theme.CODE_CONTRAST);
-        @ColorInt int overlayBackgroundColor = backgroundColor;
-        @ColorInt int overlayColor = DynamicColorUtils.getContrastColor(
-                theme.getAccentColor(), overlayBackgroundColor, Theme.CODE_CONTRAST);
+        @ColorInt int backgroundColor = DynamicColorUtils.removeAlpha(theme.getBackgroundColor());
+        @ColorInt int dataColor = DynamicColorUtils.removeAlpha(
+                DynamicColorUtils.getContrastColor(theme.getPrimaryColor(),
+                        backgroundColor, Theme.CODE_CONTRAST));
+        @ColorInt int overlayBackgroundColor = DynamicColorUtils.removeAlpha(backgroundColor);
+        @ColorInt int overlayColor = DynamicColorUtils.removeAlpha(
+                DynamicColorUtils.getContrastColor(theme.getAccentColor(),
+                        overlayBackgroundColor, Theme.CODE_CONTRAST));
 
         try {
             BitMatrix bitMatrix = writer.encode(getThemeUrl(theme),

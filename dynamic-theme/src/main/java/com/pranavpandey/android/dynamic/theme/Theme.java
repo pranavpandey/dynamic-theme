@@ -392,6 +392,97 @@ public @interface Theme {
     }
 
     /**
+     * Constant values for the background aware functionality.
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(value = { BackgroundAware.AUTO, BackgroundAware.UNKNOWN,
+            BackgroundAware.DISABLE, BackgroundAware.ENABLE })
+    @interface BackgroundAware {
+
+        /**
+         * Constant for the automatic background aware.
+         */
+        int AUTO = Theme.AUTO;
+
+        /**
+         * Constant for the unknown background aware.
+         */
+        int UNKNOWN = Theme.CUSTOM;
+
+        /**
+         * Constant to disable the background aware.
+         */
+        int DISABLE = 0;
+
+        /**
+         * Constant to enable the background aware.
+         */
+        int ENABLE = 1;
+
+        /**
+         * String constant values for the background aware functionality.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { ToString.AUTO, ToString.UNKNOWN, ToString.DISABLE, ToString.ENABLE })
+        @interface ToString {
+
+            /**
+             * String constant for the automatic background aware.
+             */
+            String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the unknown background aware.
+             */
+            String UNKNOWN = Theme.ToString.CUSTOM;
+
+            /**
+             * String constant to disable the background aware.
+             */
+            String DISABLE = "0";
+
+            /**
+             * String constant to enable the background aware.
+             */
+            String ENABLE = "1";
+        }
+    }
+
+    @Retention(RetentionPolicy.SOURCE)
+    @interface Opacity {
+
+        /**
+         * Minimum value for the opacity.
+         */
+        int MIN = 0;
+
+        /**
+         * Maximum value for the opacity.
+         */
+        int MAX = 255;
+
+        /**
+         * Minimum value for the floating opacity.
+         */
+        int FLOATING = 235;
+
+        /**
+         * Minimum value for the widget opacity.
+         */
+        int WIDGET = 175;
+
+        /**
+         * Constant value for the translucent opacity.
+         */
+        int TRANSLUCENT = 150;
+
+        /**
+         * Default value for the opacity.
+         */
+        int DEFAULT = MAX;
+    }
+
+    /**
      * Constant values for the dynamic theme style.
      */
     @Retention(RetentionPolicy.SOURCE)
@@ -1095,63 +1186,6 @@ public @interface Theme {
              * String constant for the always show visibility.
              */
             String SHOW = "1";
-        }
-    }
-
-    /**
-     * Constant values for the background aware functionality.
-     */
-    @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { BackgroundAware.AUTO, BackgroundAware.UNKNOWN,
-            BackgroundAware.DISABLE, BackgroundAware.ENABLE })
-    @interface BackgroundAware {
-
-        /**
-         * Constant for the automatic background aware.
-         */
-        int AUTO = Theme.AUTO;
-
-        /**
-         * Constant for the unknown background aware.
-         */
-        int UNKNOWN = Theme.CUSTOM;
-
-        /**
-         * Constant to disable the background aware.
-         */
-        int DISABLE = 0;
-
-        /**
-         * Constant to enable the background aware.
-         */
-        int ENABLE = 1;
-
-        /**
-         * String constant values for the background aware functionality.
-         */
-        @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.UNKNOWN, ToString.DISABLE, ToString.ENABLE })
-        @interface ToString {
-
-            /**
-             * String constant for the automatic background aware.
-             */
-            String AUTO = Theme.ToString.AUTO;
-
-            /**
-             * String constant for the unknown background aware.
-             */
-            String UNKNOWN = Theme.ToString.CUSTOM;
-
-            /**
-             * String constant to disable the background aware.
-             */
-            String DISABLE = "0";
-
-            /**
-             * String constant to enable the background aware.
-             */
-            String ENABLE = "1";
         }
     }
 

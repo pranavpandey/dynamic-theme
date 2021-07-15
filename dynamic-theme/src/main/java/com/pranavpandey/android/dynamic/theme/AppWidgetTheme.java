@@ -16,23 +16,12 @@
 
 package com.pranavpandey.android.dynamic.theme;
 
-import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
 /**
  * Interface to implement an app widget theme.
  */
 public interface AppWidgetTheme<T extends AppTheme<?>> extends AppTheme<T> {
-
-    /**
-     * Maximum value for the opacity.
-     */
-    int OPACITY_MAX = 255;
-
-    /**
-     * Default value for the opacity.
-     */
-    int OPACITY_DEFAULT = OPACITY_MAX;
 
     /**
      * Get the app widget id used by this theme.
@@ -81,20 +70,4 @@ public interface AppWidgetTheme<T extends AppTheme<?>> extends AppTheme<T> {
      * @return The {@link T} object to allow for chaining of calls to set methods.
      */
     @NonNull T setHeaderString(@NonNull @Theme.Visibility.ToString String header);
-
-    /**
-     * Get the opacity value used by this theme.
-     *
-     * @return The opacity value used by this theme.
-     */
-    int getOpacity();
-
-    /**
-     * Set the opacity value used by this theme.
-     *
-     * @param opacity The opacity value to be set.
-     *
-     * @return The {@link T} object to allow for chaining of calls to set methods.
-     */
-    @NonNull T setOpacity(@IntRange(from = 0, to = OPACITY_MAX) int opacity);
 }

@@ -33,6 +33,12 @@
     <!-- Font scaling factor (in percent) for the supported widgets. -->
     <attr name="adt_fontScale" format="integer" />
 
+    <!-- Corner radius to be used by the supported widgets like button, card view, etc. -->
+    <attr name="adt_cornerRadius" format="dimension" />
+
+    <!-- Background opacity for the supported widgets. -->
+    <attr name="adt_opacity" format="integer" />
+
     <!-- true to apply window insets. -->
     <attr name="adt_windowInsets" format="boolean" />
 
@@ -468,8 +474,6 @@
         <attr name="adt_styleBorderless" format="boolean" />
         <!-- true to tint background according to the widget color. -->
         <attr name="adt_tintBackground" format="boolean" />
-        <!-- Corner radius to be used by the supported widgets like button, card view, etc. -->
-        <attr name="adt_cornerRadius" format="dimension" />
         <!-- Stroke width to be used by the supported widgets like card view, etc. -->
         <attr name="adt_strokeWidth" format="dimension" />
         <!-- true to apply corner radius for surface widgets according to the app theme.

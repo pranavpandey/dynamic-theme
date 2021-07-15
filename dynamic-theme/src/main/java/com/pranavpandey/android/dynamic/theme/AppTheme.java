@@ -938,7 +938,7 @@ public interface AppTheme<T extends AppTheme<?>> {
     @Theme.BackgroundAware int getBackgroundAware();
 
     /**
-     * Checks whether the background functionality is enabled.
+     * Checks whether the background aware functionality is enabled.
      *
      * @return {@code true} if the background aware functionality is enabled.
      */
@@ -952,6 +952,38 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @return The {@link T} object to allow for chaining of calls to set methods.
      */
     @NonNull T setBackgroundAware(@Theme.BackgroundAware int backgroundAware);
+
+    /**
+     * Get the opacity value used by this theme.
+     *
+     * @param resolve {@code true} to resolve auto opacity.
+     *
+     * @return The opacity value used by this theme.
+     */
+    int getOpacity(boolean resolve);
+
+    /**
+     * Get the opacity value used by this theme.
+     *
+     * @return The opacity value used by this theme.
+     */
+    int getOpacity();
+
+    /**
+     * Set the opacity value used by this theme.
+     *
+     * @param opacity The opacity value to be set.
+     *
+     * @return The {@link T} object to allow for chaining of calls to set methods.
+     */
+    @NonNull T setOpacity(int opacity);
+
+    /**
+     * Checks whether this theme is translucent.
+     *
+     * @return {@code true} if this theme is translucent.
+     */
+    boolean isTranslucent();
 
     /**
      * Get the style value used by this theme.
