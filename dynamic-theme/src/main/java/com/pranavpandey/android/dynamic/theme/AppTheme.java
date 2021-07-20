@@ -1102,4 +1102,11 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @return The converted JSON string.
      */
     @NonNull String toDynamicString();
+
+    /**
+     * Returns the style for the theme code.
+     *
+     * @return The style for the theme code.
+     */
+    @Theme.Code.Style int getThemeCodeStyle();
 }

@@ -28,7 +28,8 @@ import java.lang.annotation.RetentionPolicy;
  * Constant values for the theme.
  */
 @Retention(RetentionPolicy.SOURCE)
-@IntDef(value = { Theme.AUTO, Theme.CUSTOM, Theme.APP, Theme.DAY, Theme.NIGHT, Theme.REMOTE })
+@IntDef(value = { Theme.AUTO, Theme.CUSTOM, Theme.APP, Theme.DAY, Theme.NIGHT,
+        Theme.WIDGET, Theme.REMOTE })
 public @interface Theme {
 
     /**
@@ -127,31 +128,6 @@ public @interface Theme {
     int PREVIEW_HEIGHT_REMOTE = 120;
 
     /**
-     * Constant value for the theme code size in pixels.
-     */
-    int CODE_SIZE = 480;
-
-    /**
-     * Constant value for the theme code margin in pixels.
-     */
-    int CODE_MARGIN = 0;
-
-    /**
-     * Constant value for the theme code visible contrast.
-     */
-    float CODE_CONTRAST = 0.4f;
-
-    /**
-     * Constant value for the theme code overlay size in pixels.
-     */
-    int OVERLAY_SIZE = 40;
-
-    /**
-     * Constant value for the QR ode overlay background size in pixels.
-     */
-    int OVERLAY_BACKGROUND_SIZE = 80;
-
-    /**
      * Default theme resource id.
      */
     int DEFAULT_RES = -1;
@@ -197,16 +173,21 @@ public @interface Theme {
     int NIGHT = 3;
 
     /**
+     * Constant for the widget theme.
+     */
+    int WIDGET = 4;
+
+    /**
      * Constant for the remote theme.
      */
-    int REMOTE = 4;
+    int REMOTE = 5;
 
     /**
      * String constant values for the theme.
      */
     @Retention(RetentionPolicy.SOURCE)
     @StringDef(value = { ToString.AUTO, ToString.CUSTOM, ToString.APP,
-            ToString.DAY, ToString.NIGHT, ToString.REMOTE })
+            ToString.DAY, ToString.NIGHT, ToString.WIDGET, ToString.REMOTE })
     @interface ToString {
 
         /**
@@ -245,9 +226,14 @@ public @interface Theme {
         String NIGHT = "3";
 
         /**
+         * String constant for the widget theme.
+         */
+        String WIDGET = "4";
+
+        /**
          * String constant for the remote theme.
          */
-        String REMOTE = "4";
+        String REMOTE = "5";
     }
 
     /**
@@ -985,13 +971,18 @@ public @interface Theme {
      * Interface to hold the color constants.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Color.SYSTEM, Color.WALLPAPER })
+    @IntDef(value = { Color.APP, Color.SYSTEM, Color.WALLPAPER })
     @interface Color {
 
         /**
          * Constant for the unknown color.
          */
         int UNKNOWN = 0x1;
+
+        /**
+         * Constant for the app color.
+         */
+        int APP = Theme.APP;
 
         /**
          * Constant for the system color.
@@ -1007,8 +998,13 @@ public @interface Theme {
          * Interface to hold the string color constants.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Color.ToString.SYSTEM, Color.ToString.WALLPAPER })
+        @StringDef(value = { ToString.APP, ToString.SYSTEM, Color.ToString.WALLPAPER })
         @interface ToString {
+
+            /**
+             * String constant for the app color.
+             */
+            String APP = Theme.ToString.APP;
 
             /**
              * String constant for the system color.
@@ -1186,6 +1182,59 @@ public @interface Theme {
              * String constant for the always show visibility.
              */
             String SHOW = "1";
+        }
+    }
+
+    /**
+     * Interface to hold the theme code values.
+     */
+    @interface Code {
+
+        /**
+         * Constant value for the theme code size in pixels.
+         */
+        int SIZE = 480;
+
+        /**
+         * Constant value for the theme code quiet zone.
+         */
+        int QUIET_ZONE = 2;
+
+        /**
+         * Constant value for the theme code visible contrast.
+         */
+        float CONTRAST = 0.5f;
+
+        /**
+         * Constant value for the theme code overlay size in pixels.
+         */
+        int OVERLAY_SIZE = 8;
+
+        /**
+         * Interface to hold the theme code style constants.
+         */
+        @IntDef(value = { Style.SQUARE, Style.ROUND, Style.OVAL })
+        @interface Style {
+
+            /**
+             * Constant value for the {@code square} style.
+             */
+            int SQUARE = 0;
+
+            /**
+             * Constant value for the {@code rounded} style.
+             */
+            int ROUND = 1;
+
+            /**
+             * Constant value for the {@code oval} style.
+             */
+            int OVAL = 2;
+
+            /**
+             * Default value for the code style.
+             */
+            int DEFAULT  = SQUARE;
         }
     }
 
