@@ -12,6 +12,7 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 [migrate](https://developer.android.com/jetpack/androidx/migrate) your project to AndroidX.
 <br/>Since v3.1.0, it is dependent on Java 8 due to the dependency on
 [Dynamic Utils](https://github.com/pranavpandey/dynamic-utils).
+
 <img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-code.png" width="400">&nbsp;&nbsp;<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-preview.png" width="400">
 
 ```
