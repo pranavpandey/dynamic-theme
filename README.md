@@ -10,7 +10,8 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 
 > It uses [AndroidX](https://developer.android.com/jetpack/androidx/) so, first
 [migrate](https://developer.android.com/jetpack/androidx/migrate) your project to AndroidX.
-
+<br/>Since v3.1.0, it is dependent on Java 8 due to the dependency on
+[Dynamic Utils](https://github.com/pranavpandey/dynamic-utils).
 <img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-code.png" width="400">&nbsp;&nbsp;<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-preview.png" width="400">
 
 ```
@@ -36,6 +37,7 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
   "fontScale": "auto",
   "cornerRadius": "auto",
   "backgroundAware": "auto",
+  "opacity": "auto",
   "style": "auto"
 }
 ```
@@ -88,9 +90,9 @@ A `JSON` is the original format for the dynamic theme that provides cross-app fu
   "fontScale": "auto|integer",
   "cornerRadius": "auto|integer",
   "backgroundAware": "auto|disable|enable",
+  "opacity": "auto|integer",
   "style": "auto|custom",
-  "header": "auto|hide|show",
-  "opacity": "auto|integer"
+  "header": "auto|hide|show"
 }
 ```
 
@@ -116,8 +118,8 @@ can be imported easily in various apps or platforms.
 | textPrimaryColor   | 12  | textPrimaryColorInverse   | 12Z |
 | textSecondaryColor | 14  | textSecondaryColorInverse | 14Z |
 | fontScale          | 16  | cornerRadius              | 17  |
-| backgroundAware    | 18  | style                     | 23  |
-| header             | 19  | opacity                   | 20  |
+| backgroundAware    | 18  | opacity                   | 20  |
+| style              | 23  | header                    | 19  |
 
 #### Values
 
@@ -147,7 +149,7 @@ It can be installed by adding the following dependency to your `build.gradle` fi
 ```groovy
 dependencies {
     // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-theme:3.0.0'
+    implementation 'com.pranavpandey.android:dynamic-theme:3.1.0'
 }
 ```
 
