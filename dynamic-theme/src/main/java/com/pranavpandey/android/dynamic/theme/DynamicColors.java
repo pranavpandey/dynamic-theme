@@ -149,6 +149,8 @@ public class DynamicColors implements Parcelable {
      * @param colors The color map to be used.
      * @param colorType The type of the color.
      * @param fallback The fallback color if the request color type is not found.
+     *
+     * @return The color according to its type from the supplied map.
      */
     public @ColorInt int get(@NonNull Map<Integer, Integer> colors,
             @Theme.ColorType int colorType, @ColorInt int fallback) {
@@ -165,6 +167,8 @@ public class DynamicColors implements Parcelable {
      *
      * @param colorType The type of the color.
      * @param fallback The fallback color if the request color type is not found.
+     *
+     * @return The original color according to its type.
      */
     public @ColorInt int getOriginal(@Theme.ColorType int colorType, @ColorInt int fallback) {
         return get(getOriginal(), colorType, fallback);
@@ -173,7 +177,7 @@ public class DynamicColors implements Parcelable {
     /**
      * Get the map of mutated colors according to the supplied theme.
      *
-     * @param theme @param theme The dynamic theme to be used.
+     * @param theme The dynamic theme to be used.
      *
      * @return The map of mutated colors according to the supplied theme.
      */
@@ -191,6 +195,8 @@ public class DynamicColors implements Parcelable {
      * @param colorType The type of the color.
      * @param fallback The fallback color if the request color type is not found.
      * @param theme The dynamic theme to be used.
+     *
+     * @return The mutated color according to its type.
      */
     public @ColorInt int getMutated(@Theme.ColorType int colorType,
             @ColorInt int fallback, @NonNull AppTheme<?> theme) {
