@@ -20,27 +20,27 @@
     <!-- Default contrast with color from the theme.
          Generally, it should be a background color so that widgets can change their color
          accordingly if they are background aware. -->
-    <attr name="adt_contrastWithDefault" format="color" />
+    <attr name="adt_contrastWithDefault" format="color|reference" />
 
     <!-- Default color control normal color to generate the color state list dynamically. -->
-    <attr name="adt_colorControlNormal" format="color" />
+    <attr name="adt_colorControlNormal" format="color|reference" />
 
     <!-- true to enable dynamic RTL support for the widgets.
          When enabled, widgets will adjust gravity or text alignment automatically to support
          the RTL (right-to-left) layouts. -->
-    <attr name="adt_rtlSupport" format="boolean" />
+    <attr name="adt_rtlSupport" format="boolean|reference" />
 
     <!-- Font scaling factor (in percent) for the supported widgets. -->
-    <attr name="adt_fontScale" format="integer" />
+    <attr name="adt_fontScale" format="integer|reference" />
 
     <!-- Corner radius to be used by the supported widgets like button, card view, etc. -->
-    <attr name="adt_cornerRadius" format="dimension" />
+    <attr name="adt_cornerRadius" format="dimension|reference" />
 
     <!-- Background opacity for the supported widgets. -->
-    <attr name="adt_opacity" format="integer" />
+    <attr name="adt_opacity" format="integer|reference" />
 
     <!-- true to apply window insets. -->
-    <attr name="adt_windowInsets" format="boolean" />
+    <attr name="adt_windowInsets" format="boolean|reference" />
 
     <!-- Color attributes used by the theme and widgets across the whole library. -->
     <declare-styleable name="DynamicTheme">
@@ -447,51 +447,51 @@
             <enum name="enable" value="1" />
         </attr>
         <!-- Theme string that will be applied to the supported views. -->
-        <attr name="adt_theme" format="string" />
+        <attr name="adt_theme" format="string|reference" />
         <!-- Color value if the background color type is set to custom. -->
-        <attr name="adt_backgroundColor" format="color" />
+        <attr name="adt_backgroundColor" format="color|reference" />
         <!-- Color value if the color type is set to custom. -->
-        <attr name="adt_color" format="color" />
+        <attr name="adt_color" format="color|reference" />
         <!-- Alternate color that will be applied to the supported views. -->
-        <attr name="adt_altColor" format="color" />
+        <attr name="adt_altColor" format="color|reference" />
         <!-- Link color value if the color type is set to custom. -->
-        <attr name="adt_linkColor" format="color" />
+        <attr name="adt_linkColor" format="color|reference" />
         <!-- Error color value if the color type is set to custom. -->
-        <attr name="adt_errorColor" format="color" />
+        <attr name="adt_errorColor" format="color|reference" />
         <!-- Scroll bar color value if the scroll bar color type is set to custom. -->
-        <attr name="adt_scrollBarColor" format="color" />
+        <attr name="adt_scrollBarColor" format="color|reference" />
         <!-- Color value if the text color type is set to custom. -->
-        <attr name="adt_textColor" format="color" />
+        <attr name="adt_textColor" format="color|reference" />
         <!-- Color value if the selected item color type is set to custom. -->
-        <attr name="adt_stateSelectedColor" format="color" />
+        <attr name="adt_stateSelectedColor" format="color|reference" />
         <!-- Color value if the normal state color type is set to custom. -->
-        <attr name="adt_stateNormalColor" format="color" />
+        <attr name="adt_stateNormalColor" format="color|reference" />
         <!-- Color value if the contrast with color type is set to custom. -->
-        <attr name="adt_contrastWithColor" format="color" />
+        <attr name="adt_contrastWithColor" format="color|reference" />
         <!-- Color alpha value for the supported widgets. -->
-        <attr name="adt_colorAlpha" format="integer" />
+        <attr name="adt_colorAlpha" format="integer|reference" />
         <!-- true if the button is borderless to tint it accordingly. -->
-        <attr name="adt_styleBorderless" format="boolean" />
+        <attr name="adt_styleBorderless" format="boolean|reference" />
         <!-- true to tint background according to the widget color. -->
-        <attr name="adt_tintBackground" format="boolean" />
+        <attr name="adt_tintBackground" format="boolean|reference" />
         <!-- Stroke width to be used by the supported widgets like card view, etc. -->
-        <attr name="adt_strokeWidth" format="dimension" />
+        <attr name="adt_strokeWidth" format="dimension|reference" />
         <!-- true to apply corner radius for surface widgets according to the app theme.
              When disabled, widgets corner radius will be applied according to the default
              implementation. -->
-        <attr name="adt_dynamicCornerRadius" format="boolean" />
+        <attr name="adt_dynamicCornerRadius" format="boolean|reference" />
         <!-- true to enable elevation on the same background for surface widgets.
              When disabled, widgets elevation will be disabled (or 0) if the dynamic theme
              surface color is exactly same as background color. -->
-        <attr name="adt_elevationOnSameBackground" format="boolean" />
+        <attr name="adt_elevationOnSameBackground" format="boolean|reference" />
         <!-- true if the view is floating like popup, dialog, etc. -->
-        <attr name="adt_floatingView" format="boolean" />
+        <attr name="adt_floatingView" format="boolean|reference" />
         <!-- Color for the card background. -->
-        <attr name="adt_cardBackgroundColor" format="color" />
+        <attr name="adt_cardBackgroundColor" format="color|reference" />
         <!-- Corner radius for the card view. -->
-        <attr name="adt_cardCornerRadius" format="dimension" />
+        <attr name="adt_cardCornerRadius" format="dimension|reference" />
         <!-- Elevation for the card view. -->
-        <attr name="adt_cardElevation" format="dimension" />
+        <attr name="adt_cardElevation" format="dimension|reference" />
     </declare-styleable>
 	
 </resources>
