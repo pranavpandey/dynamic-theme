@@ -27,6 +27,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -44,18 +46,18 @@ import com.google.zxing.InvertedLuminanceSource;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
-import com.google.zxing.Writer;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.GlobalHistogramBinarizer;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
-import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.google.zxing.qrcode.encoder.ByteMatrix;
+import com.google.zxing.qrcode.encoder.Encoder;
 import com.pranavpandey.android.dynamic.theme.AppTheme;
 import com.pranavpandey.android.dynamic.theme.Theme;
 import com.pranavpandey.android.dynamic.theme.ThemeContract;
 import com.pranavpandey.android.dynamic.utils.DynamicBitmapUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
+import com.pranavpandey.android.dynamic.utils.DynamicDeviceUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicFileUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicIntentUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicUnitUtils;
@@ -140,6 +142,35 @@ public class DynamicThemeUtils {
         map.put(Theme.Value.SHOW, Theme.Value.Short.SHOW);
 
         return map;
+    }
+
+    /**
+     * Returns the file name to save the theme.
+     *
+     * @param prefix The prefix before the file name.
+     * @param extension The file extension to be used.
+     *
+     * @return The file name to save the theme.
+     */
+    public static @NonNull String getFileName(
+            @Nullable  String prefix, @NonNull String extension) {
+        if (prefix == null) {
+            prefix = "";
+        }
+
+        return prefix + DynamicDeviceUtils.getDateWithSeparator(
+                System.currentTimeMillis()) + extension;
+    }
+
+    /**
+     * Returns the file name to save the theme.
+     *
+     * @param extension The file extension to be used.
+     *
+     * @return The file name to save the theme.
+     */
+    public static @NonNull String getFileName(@NonNull String extension) {
+        return getFileName(Theme.Key.SHARE + "-", extension);
     }
 
     /**
@@ -360,6 +391,7 @@ public class DynamicThemeUtils {
                 return Theme.Value.CUSTOM;
             case Theme.AUTO:
             case Theme.APP:
+            case Theme.WIDGET:
             case Theme.REMOTE:
             default:
                 return Theme.Value.AUTO;
@@ -755,80 +787,187 @@ public class DynamicThemeUtils {
      * Generates a QR code from the dynamic theme.
      *
      * @param theme The theme to generate the QR code.
-     * @param background The optional background for the overlay.
      * @param overlay The optional QR code overlay.
      *
      * @return The generated QR code from the dynamic theme.
      */
-    public static @Nullable Bitmap generateThemeCode(@Nullable AppTheme<?> theme,
-            @Nullable Drawable background, @Nullable Drawable overlay) {
+    public static @Nullable Bitmap generateThemeCode(
+            @Nullable AppTheme<?> theme, @Nullable Drawable overlay) {
         if (theme == null) {
             return null;
         }
 
         Bitmap bitmap = null;
-        Writer writer = new QRCodeWriter();
         Map<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
         hints.put(EncodeHintType.CHARACTER_SET, Theme.CHARACTER_SET);
-        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-        hints.put(EncodeHintType.MARGIN, Theme.CODE_MARGIN);
 
         @ColorInt int backgroundColor = DynamicColorUtils.removeAlpha(theme.getBackgroundColor());
         @ColorInt int dataColor = DynamicColorUtils.removeAlpha(
-                DynamicColorUtils.getContrastColor(theme.getPrimaryColor(),
-                        backgroundColor, Theme.CODE_CONTRAST));
+                DynamicColorUtils.getContrastColor(theme.getTintBackgroundColor(),
+                        backgroundColor, Theme.Code.CONTRAST));
         @ColorInt int overlayBackgroundColor = DynamicColorUtils.removeAlpha(backgroundColor);
         @ColorInt int overlayColor = DynamicColorUtils.removeAlpha(
                 DynamicColorUtils.getContrastColor(theme.getAccentColor(),
-                        overlayBackgroundColor, Theme.CODE_CONTRAST));
+                        overlayBackgroundColor, Theme.Code.CONTRAST));
+        @ColorInt int finderExternalColor = DynamicColorUtils.removeAlpha(
+                DynamicColorUtils.getContrastColor(theme.getTintBackgroundColor(),
+                        backgroundColor, Theme.Code.CONTRAST));
+        @ColorInt int finderInternalColor = DynamicColorUtils.removeAlpha(
+                DynamicColorUtils.getContrastColor(theme.getPrimaryColor(),
+                        backgroundColor, Theme.Code.CONTRAST));
+        @Theme.Code.Style int style = theme.getThemeCodeStyle();
 
         try {
-            BitMatrix bitMatrix = writer.encode(getThemeUrl(theme),
-                    BarcodeFormat.QR_CODE, Theme.CODE_SIZE, Theme.CODE_SIZE, hints);
-            int width = bitMatrix.getWidth();
-            int height = bitMatrix.getHeight();
-            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            ByteMatrix byteMatrix = Encoder.encode(getThemeUrl(theme),
+                    ErrorCorrectionLevel.L, hints).getMatrix();
+            int quietZone = Theme.Code.QUIET_ZONE;
+            int inputWidth = byteMatrix.getWidth();
+            int inputHeight = byteMatrix.getHeight();
+            int inputCenterX = inputWidth / 2;
+            int inputCenterY = inputHeight / 2;
+            int qrWidth = inputWidth + (quietZone * 2);
+            int qrHeight = inputHeight + (quietZone * 2);
+            int outputWidth = Math.max(Theme.Code.SIZE, qrWidth);
+            int outputHeight = Math.max(Theme.Code.SIZE, qrHeight);
+            int outputCenterX = outputWidth / 2;
+            int outputCenterY = outputHeight / 2;
 
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bitmap.setPixel(x, y, bitMatrix.get(x, y) ? dataColor : backgroundColor);
-                }
-            }
-
+            bitmap = Bitmap.createBitmap(outputWidth, outputHeight, Bitmap.Config.ARGB_8888);
             final Canvas canvas = new Canvas(bitmap);
             final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            paint.setStrokeCap(style == Theme.Code.Style.OVAL
+                    ? Paint.Cap.ROUND : style == Theme.Code.Style.ROUND
+                    ? Paint.Cap.BUTT : Paint.Cap.SQUARE);
+            paint.setColor(backgroundColor);
+            canvas.drawPaint(paint);
 
-            if (background != null) {
-                Bitmap backgroundBitmap = DynamicBitmapUtils.getBitmap(background,
-                        Theme.OVERLAY_BACKGROUND_SIZE, Theme.OVERLAY_BACKGROUND_SIZE,
-                        false, 0);
+            int multiple = Math.min(outputWidth / qrWidth, outputHeight / qrHeight);
+            int leftPadding = (outputWidth - (inputWidth * multiple)) / 2;
+            int topPadding = (outputHeight - (inputHeight * multiple)) / 2;
 
-                if (backgroundBitmap != null) {
-                    paint.setColorFilter(new PorterDuffColorFilter(
-                            overlayBackgroundColor, PorterDuff.Mode.SRC_ATOP));
-                    canvas.drawBitmap(backgroundBitmap,
-                            bitmap.getWidth() / 2f - backgroundBitmap.getWidth() / 2f,
-                            bitmap.getHeight() / 2f - backgroundBitmap.getHeight() / 2f,
-                            paint);
+            final int FINDER_SIZE = 7;
+            final float SCALE_DOWN_FACTOR = style == Theme.Code.Style.ROUND
+                    || style == Theme.Code.Style.OVAL ? 21f / 30f : 31f / 32f;
+            final int OVERLAY_SIZE = overlay != null ? Theme.Code.OVERLAY_SIZE : 0;
+            final int OVERLAY_SIZE_CENTER = OVERLAY_SIZE / 2;
+
+            int dataSize = (int) (multiple * SCALE_DOWN_FACTOR);
+            int dataRadius = dataSize / 2;
+            int finderDiameter = multiple * FINDER_SIZE;
+            int overlaySize = multiple * OVERLAY_SIZE;
+            float corner = theme.getCornerSizeDp(false) == Theme.AUTO
+                    ? 0 : Math.min(theme.getCornerRadius(), finderDiameter / 2);
+
+            for (int inputY = 0, outputY = topPadding; inputY < inputHeight;
+                 inputY++, outputY += multiple) {
+                for (int inputX = 0, outputX = leftPadding; inputX < inputWidth;
+                     inputX++, outputX += multiple) {
+                    if (byteMatrix.get(inputX, inputY) == 1) {
+                        if (!(inputX <= FINDER_SIZE && inputY <= FINDER_SIZE
+                                || inputX >= inputWidth - FINDER_SIZE
+                                && inputY <= FINDER_SIZE
+                                || inputX <= FINDER_SIZE
+                                && inputY >= inputHeight - FINDER_SIZE
+                                || inputX >= inputCenterX - OVERLAY_SIZE_CENTER
+                                && inputX <= inputCenterX + OVERLAY_SIZE_CENTER
+                                && inputY >= inputCenterY - OVERLAY_SIZE_CENTER
+                                && inputY <= inputCenterY + OVERLAY_SIZE_CENTER)) {
+                            paint.setColor(dataColor);
+                            if (style == Theme.Code.Style.OVAL) {
+                                canvas.drawCircle(outputX, outputY, dataRadius, paint);
+                            } else {
+                                canvas.drawRect(new Rect(outputX, outputY, outputX + dataSize,
+                                        outputY + dataSize), paint);
+                            }
+                        }
+                    }
                 }
             }
+
+            drawCodeFinder(canvas, leftPadding, topPadding, finderDiameter, paint,
+                    backgroundColor, finderExternalColor, finderInternalColor, corner, style);
+            drawCodeFinder(canvas, leftPadding + (inputWidth - FINDER_SIZE) * multiple,
+                    topPadding, finderDiameter, paint, backgroundColor, finderExternalColor,
+                    finderInternalColor, corner, style);
+            drawCodeFinder(canvas, leftPadding, topPadding + (inputHeight - FINDER_SIZE)
+                            * multiple, finderDiameter, paint, backgroundColor,
+                    finderExternalColor, finderInternalColor, corner, style);
 
             if (overlay != null) {
                 Bitmap overlayBitmap = DynamicBitmapUtils.getBitmap(overlay,
-                        Theme.OVERLAY_SIZE, Theme.OVERLAY_SIZE, false, 0);
+                        overlaySize, overlaySize, false, 0);
 
                 if (overlayBitmap != null) {
                     paint.setColorFilter(new PorterDuffColorFilter(
                             overlayColor, PorterDuff.Mode.SRC_ATOP));
-                    canvas.drawBitmap(overlayBitmap,
-                            bitmap.getWidth() / 2f - overlayBitmap.getWidth() / 2f,
-                            bitmap.getHeight() / 2f - overlayBitmap.getHeight() / 2f, paint);
+                    canvas.drawBitmap(overlayBitmap, outputCenterX - overlaySize / 2f,
+                            outputCenterY - overlaySize / 2f, paint);
                 }
             }
         } catch (Exception ignored) {
         }
 
         return bitmap;
+    }
+
+    /**
+     * Draws the finder for the QR code according to the supplied parameters.
+     *
+     * @param canvas The canvas to be used.
+     * @param x The x-axis start location.
+     * @param y The y-axis start location.
+     * @param diameter The diameter to be used.
+     * @param paint The paint ot be used.
+     * @param background The background color to be set.
+     * @param parent The parent color to be set.
+     * @param child The child color to be set.
+     * @param corner The corner radius to be set.
+     * @param style The style to be used.
+     */
+    private static void drawCodeFinder(@Nullable Canvas canvas, int x,
+            int y, int diameter, @Nullable Paint paint, @ColorInt int background,
+            @ColorInt int parent, @ColorInt int child, float corner, @Theme.Code.Style int style) {
+        if (canvas == null || paint == null) {
+            return;
+        }
+
+        final int PARENT_SIZE = diameter * 5 / 7;
+        final int PARENT_OFFSET = diameter / 7;
+        final int CHILD_SIZE = diameter * 3 / 7;
+        final int CHILD_OFFSET = diameter * 2 / 7;
+
+        if (style == Theme.Code.Style.OVAL) {
+            paint.setColor(parent);
+            canvas.drawCircle(x + PARENT_OFFSET + CHILD_OFFSET,
+                    y + PARENT_OFFSET + CHILD_OFFSET, diameter / 2f, paint);
+            paint.setColor(background);
+            canvas.drawCircle(x + PARENT_OFFSET + CHILD_OFFSET,
+                    y + PARENT_OFFSET + CHILD_OFFSET, PARENT_SIZE / 2f, paint);
+            paint.setColor(child);
+            canvas.drawCircle(x + PARENT_OFFSET + CHILD_OFFSET,
+                    y + PARENT_OFFSET + CHILD_OFFSET, CHILD_SIZE / 2f, paint);
+        } else if (style == Theme.Code.Style.ROUND) {
+            paint.setColor(parent);
+            canvas.drawRoundRect(new RectF(x, y, x + diameter,
+                    y + diameter), corner, corner, paint);
+            paint.setColor(background);
+            canvas.drawRoundRect(new RectF(x + PARENT_OFFSET, y + PARENT_OFFSET,
+                    x + diameter - PARENT_OFFSET, y + diameter - PARENT_OFFSET),
+                    corner, corner, paint);
+            paint.setColor(child);
+            canvas.drawRoundRect(new RectF(x + CHILD_OFFSET, y + CHILD_OFFSET,
+                    x + diameter - CHILD_OFFSET, y + diameter - CHILD_OFFSET),
+                    corner, corner, paint);
+        } else {
+            paint.setColor(parent);
+            canvas.drawRect(new Rect(x, y, x + diameter, y + diameter), paint);
+            paint.setColor(background);
+            canvas.drawRect(x + PARENT_OFFSET, y + PARENT_OFFSET,
+                    x + diameter - PARENT_OFFSET, y + diameter - PARENT_OFFSET, paint);
+            paint.setColor(child);
+            canvas.drawRect(x + CHILD_OFFSET, y + CHILD_OFFSET,
+                    x + diameter - CHILD_OFFSET, y + diameter - CHILD_OFFSET, paint);
+        }
     }
 
     /**
@@ -859,17 +998,28 @@ public class DynamicThemeUtils {
         hints.put(DecodeHintType.CHARACTER_SET, Theme.CHARACTER_SET);
         hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
         hints.put(DecodeHintType.POSSIBLE_FORMATS, EnumSet.allOf(BarcodeFormat.class));
-        hints.put(DecodeHintType.PURE_BARCODE, Boolean.FALSE);
 
         try {
             contents = reader.decode(binaryBitmap, hints).getText();
-        } catch (Exception ignored) {
-            source = new InvertedLuminanceSource(source);
+        } catch (Exception again) {
             binaryBitmap = new BinaryBitmap(new GlobalHistogramBinarizer(source));
 
             try {
                 contents = reader.decode(binaryBitmap, hints).getText();
-            } catch (Exception ignore) {
+            } catch (Exception tryAgain1) {
+                source = new InvertedLuminanceSource(source);
+                binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+                try {
+                    contents = reader.decode(binaryBitmap, hints).getText();
+                } catch (Exception tryOnceMore) {
+                    binaryBitmap = new BinaryBitmap(new GlobalHistogramBinarizer(source));
+
+                    try {
+                        contents = reader.decode(binaryBitmap, hints).getText();
+                    } catch (Exception ignore) {
+                    }
+                }
             }
         } finally {
             resized.recycle();
