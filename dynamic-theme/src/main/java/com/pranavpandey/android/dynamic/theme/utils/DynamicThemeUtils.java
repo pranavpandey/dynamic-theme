@@ -133,6 +133,7 @@ public class DynamicThemeUtils {
         map.put(Theme.Key.HEADER, Theme.Key.Short.HEADER);
         map.put(Theme.Key.OPACITY, Theme.Key.Short.OPACITY);
         map.put(Theme.Value.AUTO, Theme.Value.Short.AUTO);
+        map.put(Theme.Value.APP, Theme.Value.Short.APP);
         map.put(Theme.Value.DAY, Theme.Value.Short.DAY);
         map.put(Theme.Value.NIGHT, Theme.Value.Short.NIGHT);
         map.put(Theme.Value.CUSTOM, Theme.Value.Short.CUSTOM);
@@ -383,6 +384,8 @@ public class DynamicThemeUtils {
      */
     public static @Theme.Value @NonNull String getValueFromType(@Theme int value) {
         switch (value) {
+            case Theme.APP:
+                return Theme.Value.APP;
             case Theme.DAY:
                 return Theme.Value.DAY;
             case Theme.NIGHT:
@@ -390,7 +393,6 @@ public class DynamicThemeUtils {
             case Theme.CUSTOM:
                 return Theme.Value.CUSTOM;
             case Theme.AUTO:
-            case Theme.APP:
             case Theme.WIDGET:
             case Theme.REMOTE:
             default:
@@ -407,6 +409,9 @@ public class DynamicThemeUtils {
      */
     public static @Theme int getValueFromType(@Theme.ToString @NonNull String value) {
         switch (value) {
+            case Theme.Value.APP:
+            case Theme.Value.Short.APP:
+                return Theme.APP;
             case Theme.Value.DAY:
             case Theme.Value.Short.DAY:
                 return Theme.DAY;

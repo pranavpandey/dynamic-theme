@@ -20,6 +20,8 @@ import androidx.annotation.NonNull;
 
 /**
  * Interface to implement an app widget theme.
+ *
+ * @param <T> The type of the dynamic theme.
  */
 public interface AppWidgetTheme<T extends AppTheme<?>> extends AppTheme<T> {
 

@@ -22,6 +22,8 @@ import androidx.annotation.StyleRes;
 
 /**
  * Interface to implement an app theme.
+ *
+ * @param <T> The type of the dynamic theme.
  */
 public interface AppTheme<T extends AppTheme<?>> {
 
@@ -1000,6 +1002,15 @@ public interface AppTheme<T extends AppTheme<?>> {
      * @return The {@link T} object to allow for chaining of calls to set methods.
      */
     @NonNull T setStyle(@Theme.Style int style);
+
+    /**
+     * Get the type value used by this theme.
+     *
+     * @param resolve {@code true} to resolve theme style.
+     *
+     * @return The type value used by this theme.
+     */
+    @Theme int getType(boolean resolve);
 
     /**
      * Get the type value used by this theme.

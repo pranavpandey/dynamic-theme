@@ -28,8 +28,8 @@ import java.lang.annotation.RetentionPolicy;
  * Constant values for the theme.
  */
 @Retention(RetentionPolicy.SOURCE)
-@IntDef(value = { Theme.AUTO, Theme.CUSTOM, Theme.APP, Theme.DAY, Theme.NIGHT,
-        Theme.WIDGET, Theme.REMOTE })
+@IntDef(value = { Theme.AUTO, Theme.CUSTOM, Theme.APP, Theme.DAY,
+        Theme.NIGHT, Theme.WIDGET, Theme.REMOTE })
 public @interface Theme {
 
     /**
@@ -853,8 +853,8 @@ public @interface Theme {
      * Constants for the theme values.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { Value.SPLIT, Value.HASH, Value.AUTO, Value.DAY, Value.NIGHT,
-            Value.CUSTOM, Value.DISABLE, Value.ENABLE, Value.HIDE, Value.SHOW })
+    @StringDef(value = { Value.SPLIT, Value.HASH, Value.AUTO, Value.APP, Value.DAY,
+            Value.NIGHT, Value.CUSTOM, Value.DISABLE, Value.ENABLE, Value.HIDE, Value.SHOW })
     @interface Value {
 
         /**
@@ -871,6 +871,11 @@ public @interface Theme {
          * Constant for the auto value.
          */
         String AUTO = "auto";
+
+        /**
+         * Constant for the app value.
+         */
+        String APP = "app";
 
         /**
          * Constant for the day (light) value.
@@ -911,8 +916,8 @@ public @interface Theme {
          * Short constants for the theme values.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Short.SPLIT, Short.HASH, Short.AUTO, Short.DAY, Short.NIGHT,
-                Short.CUSTOM, Short.DISABLE, Short.ENABLE, Short.HIDE, Short.SHOW })
+        @StringDef(value = { Short.SPLIT, Short.HASH, Short.AUTO, Short.APP, Short.DAY,
+                Short.NIGHT, Short.CUSTOM, Short.DISABLE, Short.ENABLE, Short.HIDE, Short.SHOW })
         @interface Short {
 
             /**
@@ -929,6 +934,11 @@ public @interface Theme {
              * Short constant for the auto value.
              */
             String AUTO = "A";
+
+            /**
+             * Short constant for the app value.
+             */
+            String APP = "P";
 
             /**
              * Short constant for the day (light) value.
