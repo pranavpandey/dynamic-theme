@@ -16,6 +16,7 @@
 
 package com.pranavpandey.android.dynamic.theme;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.annotation.StringDef;
 
@@ -1221,6 +1222,22 @@ public @interface Theme {
         int OVERLAY_SIZE = 8;
 
         /**
+         * Interface to hold the theme code color constants.
+         */
+        @interface Color {
+
+            /**
+             * Constant value for the background color.
+             */
+            @ColorInt int BACKGROUND = android.graphics.Color.WHITE;
+
+            /**
+             * Constant value for the data color.
+             */
+            @ColorInt int DATA = android.graphics.Color.BLACK;
+        }
+
+        /**
          * Interface to hold the theme code style constants.
          */
         @IntDef(value = { Style.SQUARE, Style.ROUND, Style.OVAL })
@@ -1244,7 +1261,12 @@ public @interface Theme {
             /**
              * Default value for the code style.
              */
-            int DEFAULT  = SQUARE;
+            int DEFAULT = SQUARE;
+
+            /**
+             * Default value for the code corners.
+             */
+            int CORNER = 0;
         }
     }
 

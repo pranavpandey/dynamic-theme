@@ -14,16 +14,28 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.theme;
+package com.pranavpandey.android.dynamic.theme.base;
 
-import com.pranavpandey.android.dynamic.theme.base.WidgetTheme;
+import androidx.annotation.NonNull;
 
 /**
- * An abstract class to implement an app widget theme.
+ * A {@link BaseTheme} to implement a string theme.
  *
  * @param <T> The type of the dynamic theme.
- * @param <V> The type of the app theme.
  */
-public abstract class AppWidgetTheme<T extends AppWidgetTheme<T, V>, V extends AppTheme<V>>
-        extends AppTheme<V> implements WidgetTheme<T, V> {
+public interface StringTheme<T extends StringTheme<T>> extends BaseTheme<T> {
+
+    /**
+     * Converts this theme into its JSON equivalent.
+     *
+     * @return The JSON equivalent of this theme.
+     */
+    @NonNull String toJsonString();
+
+    /**
+     * Convert this theme into a pretty JSON string.
+     *
+     * @return The converted JSON string.
+     */
+    @NonNull String toDynamicString();
 }

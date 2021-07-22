@@ -14,16 +14,24 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.theme;
+package com.pranavpandey.android.dynamic.theme.base;
 
-import com.pranavpandey.android.dynamic.theme.base.WidgetTheme;
+import androidx.annotation.NonNull;
 
 /**
- * An abstract class to implement an app widget theme.
+ * A {@link BaseTheme} to implement the fallback theme.
  *
  * @param <T> The type of the dynamic theme.
- * @param <V> The type of the app theme.
  */
-public abstract class AppWidgetTheme<T extends AppWidgetTheme<T, V>, V extends AppTheme<V>>
-        extends AppTheme<V> implements WidgetTheme<T, V> {
+public interface FallbackTheme<T extends FallbackTheme<T>> {
+
+    /**
+     * Returns the fallback dynamic theme to resolve the runtime values like auto color.
+     *
+     * @param resolve {@code true} to resolve the current theme,
+     *                otherwise return the default theme.
+     *
+     * @return The fallback dynamic theme to resolve the runtime values.
+     */
+    @NonNull T getThemeFallback(boolean resolve);
 }

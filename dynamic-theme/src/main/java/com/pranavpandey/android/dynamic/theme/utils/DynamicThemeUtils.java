@@ -52,9 +52,14 @@ import com.google.zxing.qrcode.QRCodeReader;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
 import com.google.zxing.qrcode.encoder.Encoder;
-import com.pranavpandey.android.dynamic.theme.AppTheme;
 import com.pranavpandey.android.dynamic.theme.Theme;
 import com.pranavpandey.android.dynamic.theme.ThemeContract;
+import com.pranavpandey.android.dynamic.theme.base.AccentTheme;
+import com.pranavpandey.android.dynamic.theme.base.BackgroundTheme;
+import com.pranavpandey.android.dynamic.theme.base.CodeTheme;
+import com.pranavpandey.android.dynamic.theme.base.CornerTheme;
+import com.pranavpandey.android.dynamic.theme.base.PrimaryTheme;
+import com.pranavpandey.android.dynamic.theme.base.StringTheme;
 import com.pranavpandey.android.dynamic.utils.DynamicBitmapUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicDeviceUtils;
@@ -563,7 +568,7 @@ public class DynamicThemeUtils {
      *
      * @return The encoded theme string.
      */
-    public static @Nullable String encodeTheme(@Nullable AppTheme<?> theme) {
+    public static @Nullable String encodeTheme(@Nullable StringTheme<?> theme) {
         if (theme == null) {
             return null;
         }
@@ -624,7 +629,7 @@ public class DynamicThemeUtils {
      *
      * @return The encoded theme string with the url.
      */
-    public static @NonNull String getThemeUrl(@Nullable AppTheme<?> theme) {
+    public static @NonNull String getThemeUrl(@Nullable StringTheme<?> theme) {
         return Theme.URL + encodeTheme(theme);
     }
 
@@ -797,7 +802,7 @@ public class DynamicThemeUtils {
      * @return The generated QR code from the dynamic theme.
      */
     public static @Nullable Bitmap generateThemeCode(
-            @Nullable AppTheme<?> theme, @Nullable Drawable overlay) {
+            @Nullable CodeTheme<?> theme, @Nullable Drawable overlay) {
         if (theme == null) {
             return null;
         }
@@ -806,21 +811,40 @@ public class DynamicThemeUtils {
         Map<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
         hints.put(EncodeHintType.CHARACTER_SET, Theme.CHARACTER_SET);
 
-        @ColorInt int backgroundColor = DynamicColorUtils.removeAlpha(theme.getBackgroundColor());
-        @ColorInt int dataColor = DynamicColorUtils.removeAlpha(
-                DynamicColorUtils.getContrastColor(theme.getTintBackgroundColor(),
-                        backgroundColor, Theme.Code.CONTRAST));
-        @ColorInt int overlayBackgroundColor = DynamicColorUtils.removeAlpha(backgroundColor);
-        @ColorInt int overlayColor = DynamicColorUtils.removeAlpha(
-                DynamicColorUtils.getContrastColor(theme.getAccentColor(),
-                        overlayBackgroundColor, Theme.Code.CONTRAST));
-        @ColorInt int finderExternalColor = DynamicColorUtils.removeAlpha(
-                DynamicColorUtils.getContrastColor(theme.getTintBackgroundColor(),
-                        backgroundColor, Theme.Code.CONTRAST));
-        @ColorInt int finderInternalColor = DynamicColorUtils.removeAlpha(
-                DynamicColorUtils.getContrastColor(theme.getPrimaryColor(),
-                        backgroundColor, Theme.Code.CONTRAST));
-        @Theme.Code.Style int style = theme.getThemeCodeStyle();
+        final @ColorInt int backgroundColor;
+        final @ColorInt int dataColor;
+        final @ColorInt int overlayColor;
+        final @ColorInt int finderExternalColor;
+        final @ColorInt int finderInternalColor;
+        final @Theme.Code.Style int style = theme.getThemeCodeStyle();
+
+        if (theme instanceof BackgroundTheme) {
+            backgroundColor = DynamicColorUtils.removeAlpha(
+                    ((BackgroundTheme<?>) theme).getBackgroundColor());
+            dataColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
+                    .getContrastColor(((BackgroundTheme<?>) theme).getTintBackgroundColor(),
+                            backgroundColor, Theme.Code.CONTRAST));
+        } else {
+            backgroundColor = Theme.Code.Color.BACKGROUND;
+            dataColor = Theme.Code.Color.DATA;
+        }
+
+        if (theme instanceof AccentTheme) {
+            overlayColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
+                    .getContrastColor(((AccentTheme<?>) theme).getAccentColor(),
+                            backgroundColor, Theme.Code.CONTRAST));
+        } else {
+            overlayColor = dataColor;
+        }
+
+        finderExternalColor = dataColor;
+        if (theme instanceof PrimaryTheme) {
+            finderInternalColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
+                    .getContrastColor(((PrimaryTheme<?>) theme).getPrimaryColor(),
+                            backgroundColor, Theme.Code.CONTRAST));
+        } else {
+            finderInternalColor = finderExternalColor;
+        }
 
         try {
             ByteMatrix byteMatrix = Encoder.encode(getThemeUrl(theme),
@@ -860,8 +884,15 @@ public class DynamicThemeUtils {
             int dataRadius = dataSize / 2;
             int finderDiameter = multiple * FINDER_SIZE;
             int overlaySize = multiple * OVERLAY_SIZE;
-            float corner = theme.getCornerSizeDp(false) == Theme.AUTO
-                    ? 0 : Math.min(theme.getCornerRadius(), finderDiameter / 2);
+            final float corner;
+
+            if (theme instanceof CornerTheme) {
+                corner = ((CornerTheme<?>) theme).getCornerSizeDp(false)
+                        == Theme.AUTO ? Theme.Code.Style.DEFAULT : Math.min(((CornerTheme<?>)
+                        theme).getCornerRadius(), finderDiameter / 2);
+            } else {
+                corner = Theme.Code.Style.DEFAULT;
+            }
 
             for (int inputY = 0, outputY = topPadding; inputY < inputHeight;
                  inputY++, outputY += multiple) {

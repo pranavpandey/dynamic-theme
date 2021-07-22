@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.theme;
+package com.pranavpandey.android.dynamic.theme.base;
 
-import com.pranavpandey.android.dynamic.theme.base.WidgetTheme;
+import androidx.annotation.ColorInt;
 
 /**
- * An abstract class to implement an app widget theme.
+ * A {@link BaseTheme} to implement a stroke theme.
  *
  * @param <T> The type of the dynamic theme.
- * @param <V> The type of the app theme.
  */
-public abstract class AppWidgetTheme<T extends AppWidgetTheme<T, V>, V extends AppTheme<V>>
-        extends AppTheme<V> implements WidgetTheme<T, V> {
+public interface StrokeTheme<T extends StrokeTheme<T>> extends BaseTheme<T> {
+
+    /**
+     * Returns the stroke color used by this theme.
+     *
+     * @return The stroke color used by this theme.
+     */
+    @ColorInt int getStrokeColor();
 }

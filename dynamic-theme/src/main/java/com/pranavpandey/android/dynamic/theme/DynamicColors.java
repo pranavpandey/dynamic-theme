@@ -26,6 +26,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.pranavpandey.android.dynamic.theme.base.DynamicColor;
 import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
 
 import java.util.ArrayList;
@@ -181,7 +182,7 @@ public class DynamicColors implements Parcelable {
      *
      * @return The map of mutated colors according to the supplied theme.
      */
-    public @NonNull Map<Integer, Integer> getMutated(@NonNull AppTheme<?> theme) {
+    public @NonNull Map<Integer, Integer> getMutated(@NonNull DynamicColor<?> theme) {
         if (theme.isDarkTheme()) {
             return theme.isInverseTheme() ? mLight : mDark;
         }
@@ -199,7 +200,7 @@ public class DynamicColors implements Parcelable {
      * @return The mutated color according to its type.
      */
     public @ColorInt int getMutated(@Theme.ColorType int colorType,
-            @ColorInt int fallback, @NonNull AppTheme<?> theme) {
+            @ColorInt int fallback, @NonNull DynamicColor<?> theme) {
         return get(getMutated(theme), colorType, fallback);
     }
 
@@ -355,7 +356,7 @@ public class DynamicColors implements Parcelable {
      * @param theme The dynamic theme to be used.
      */
     public void mutate(@NonNull Map<Integer, Integer> dark,
-            @NonNull Map<Integer, Integer> light, @NonNull AppTheme<?> theme) {
+            @NonNull Map<Integer, Integer> light, @NonNull DynamicColor<?> theme) {
         dark.clear();
         light.clear();
 
@@ -398,7 +399,7 @@ public class DynamicColors implements Parcelable {
      *
      * @param theme The dynamic theme to be used.
      */
-    public void mutate(@NonNull AppTheme<?> theme) {
+    public void mutate(@NonNull DynamicColor<?> theme) {
         mutate(getDark(), getLight(), theme);
     }
 

@@ -14,16 +14,11 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.theme;
-
-import com.pranavpandey.android.dynamic.theme.base.WidgetTheme;
+package com.pranavpandey.android.dynamic.theme.base;
 
 /**
- * An abstract class to implement an app widget theme.
+ * An interface to implement the base theme.
  *
  * @param <T> The type of the dynamic theme.
- * @param <V> The type of the app theme.
  */
-public abstract class AppWidgetTheme<T extends AppWidgetTheme<T, V>, V extends AppTheme<V>>
-        extends AppTheme<V> implements WidgetTheme<T, V> {
-}
+public interface BaseTheme<T extends BaseTheme<T>> { }
