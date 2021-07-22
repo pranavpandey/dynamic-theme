@@ -137,6 +137,7 @@ public class DynamicThemeUtils {
         map.put(Theme.Key.TYPE, Theme.Key.Short.TYPE);
         map.put(Theme.Key.HEADER, Theme.Key.Short.HEADER);
         map.put(Theme.Key.OPACITY, Theme.Key.Short.OPACITY);
+        map.put(Theme.Key.CONTRAST, Theme.Key.Short.CONTRAST);
         map.put(Theme.Value.AUTO, Theme.Value.Short.AUTO);
         map.put(Theme.Value.APP, Theme.Value.Short.APP);
         map.put(Theme.Value.DAY, Theme.Value.Short.DAY);
@@ -311,6 +312,36 @@ public class DynamicThemeUtils {
             case Theme.Value.Short.AUTO:
             default:
                 return Theme.BackgroundAware.AUTO;
+        }
+    }
+
+    /**
+     * Converts the contrast into its string equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The string equivalent of the contrast.
+     */
+    public static @Theme.Value @NonNull String getValueFromContrast(int value) {
+        if (value == Theme.AUTO) {
+            return Theme.Value.AUTO;
+        } else {
+            return Integer.toString(value);
+        }
+    }
+
+    /**
+     * Converts the contrast string into its integer equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The integer equivalent of the contrast.
+     */
+    public static int getValueFromContrast(@NonNull String value) {
+        if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
+            return Theme.AUTO;
+        } else {
+            return Integer.parseInt(value);
         }
     }
 
@@ -816,14 +847,14 @@ public class DynamicThemeUtils {
         final @ColorInt int overlayColor;
         final @ColorInt int finderExternalColor;
         final @ColorInt int finderInternalColor;
-        final @Theme.Code.Style int style = theme.getThemeCodeStyle();
+        final @Theme.Code.Style int style = theme.getCodeStyle();
 
         if (theme instanceof BackgroundTheme) {
             backgroundColor = DynamicColorUtils.removeAlpha(
                     ((BackgroundTheme<?>) theme).getBackgroundColor());
             dataColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
                     .getContrastColor(((BackgroundTheme<?>) theme).getTintBackgroundColor(),
-                            backgroundColor, Theme.Code.CONTRAST));
+                            backgroundColor, theme.getCodeContrastRatio()));
         } else {
             backgroundColor = Theme.Code.Color.BACKGROUND;
             dataColor = Theme.Code.Color.DATA;
@@ -832,7 +863,7 @@ public class DynamicThemeUtils {
         if (theme instanceof AccentTheme) {
             overlayColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
                     .getContrastColor(((AccentTheme<?>) theme).getAccentColor(),
-                            backgroundColor, Theme.Code.CONTRAST));
+                            backgroundColor, theme.getCodeContrastRatio()));
         } else {
             overlayColor = dataColor;
         }
@@ -841,7 +872,7 @@ public class DynamicThemeUtils {
         if (theme instanceof PrimaryTheme) {
             finderInternalColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
                     .getContrastColor(((PrimaryTheme<?>) theme).getPrimaryColor(),
-                            backgroundColor, Theme.Code.CONTRAST));
+                            backgroundColor, theme.getCodeContrastRatio()));
         } else {
             finderInternalColor = finderExternalColor;
         }

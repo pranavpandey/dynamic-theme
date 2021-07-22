@@ -164,6 +164,9 @@ public class DynamicThemeTypeAdapter<T extends BaseTheme<T>> extends TypeAdapter
                 writer.name(Theme.Key.BACKGROUND_AWARE);
                 writer.value(DynamicThemeUtils.getValueFromBackgroundAware(
                         ((BackgroundAware<?>) value).getBackgroundAware(false)));
+                writer.name(Theme.Key.CONTRAST);
+                writer.value(DynamicThemeUtils.getValueFromContrast(
+                        ((BackgroundAware<?>) value).getContrast(false)));
             }
 
             if (value instanceof TranslucentTheme) {
@@ -354,6 +357,13 @@ public class DynamicThemeTypeAdapter<T extends BaseTheme<T>> extends TypeAdapter
                             ((BackgroundAware<?>) mDynamicTheme).setBackgroundAware(
                                     DynamicThemeUtils.getValueFromBackgroundAware(
                                             reader.nextString()));
+                        }
+                        break;
+                    case Theme.Key.CONTRAST:
+                    case Theme.Key.Short.CONTRAST:
+                        if (mDynamicTheme instanceof BackgroundAware) {
+                            ((BackgroundAware<?>) mDynamicTheme).setContrast(DynamicThemeUtils
+                                    .getValueFromContrast(reader.nextString()));
                         }
                         break;
                     case Theme.Key.OPACITY:

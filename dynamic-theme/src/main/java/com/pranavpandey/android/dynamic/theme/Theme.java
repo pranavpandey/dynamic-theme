@@ -436,6 +436,30 @@ public @interface Theme {
     }
 
     @Retention(RetentionPolicy.SOURCE)
+    @interface Contrast {
+
+        /**
+         * Minimum value for the contrast.
+         */
+        int MIN = 0;
+
+        /**
+         * Maximum value for the contrast.
+         */
+        int MAX = 100;
+
+        /**
+         * Minimum value for the code contrast.
+         */
+        int Code = 50;
+
+        /**
+         * Default value for the contrast.
+         */
+        int DEFAULT = 45;
+    }
+
+    @Retention(RetentionPolicy.SOURCE)
     @interface Opacity {
 
         /**
@@ -516,7 +540,7 @@ public @interface Theme {
             Key.ACCENT_DARK, Key.TINT_ACCENT_DARK, Key.ERROR, Key.TINT_ERROR,
             Key.TEXT_PRIMARY, Key.TEXT_PRIMARY_INVERSE, Key.TEXT_SECONDARY,
             Key.TEXT_SECONDARY_INVERSE, Key.FONT_SCALE, Key.CORNER_RADIUS,
-            Key.BACKGROUND_AWARE, Key.STYLE, Key.TYPE, Key.HEADER, Key.OPACITY })
+            Key.BACKGROUND_AWARE, Key.STYLE, Key.TYPE, Key.HEADER, Key.OPACITY, Key.CONTRAST })
     @interface Key {
 
         /**
@@ -685,6 +709,11 @@ public @interface Theme {
         String OPACITY = "opacity";
 
         /**
+         * Serialized name for the contrast.
+         */
+        String CONTRAST = "contrast";
+
+        /**
          * Short constants for the theme keys.
          */
         @Retention(RetentionPolicy.SOURCE)
@@ -695,7 +724,7 @@ public @interface Theme {
                 Short.TINT_ACCENT_DARK, Short.ERROR, Short.TINT_ERROR, Short.TEXT_PRIMARY,
                 Short.TEXT_PRIMARY_INVERSE, Short.TEXT_SECONDARY, Short.TEXT_SECONDARY_INVERSE,
                 Short.FONT_SCALE, Short.CORNER_RADIUS, Short.BACKGROUND_AWARE, Short.STYLE,
-                Short.TYPE, Short.HEADER, Short.OPACITY })
+                Short.TYPE, Short.HEADER, Short.OPACITY, Short.CONTRAST })
         @interface Short {
 
             /**
@@ -847,6 +876,11 @@ public @interface Theme {
              * Short serialized name for the type.
              */
             String TYPE = "24";
+
+            /**
+             * Short serialized name for the contrast.
+             */
+            String CONTRAST = "25";
         }
     }
 
@@ -1212,9 +1246,9 @@ public @interface Theme {
         int QUIET_ZONE = 2;
 
         /**
-         * Constant value for the theme code visible contrast.
+         * Constant value for the theme code visible contrast ratio.
          */
-        float CONTRAST = 0.5f;
+        float CONTRAST_RATIO = 0.5f;
 
         /**
          * Constant value for the theme code overlay size in pixels.

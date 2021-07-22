@@ -25,5 +25,4 @@ import com.pranavpandey.android.dynamic.theme.base.WidgetTheme;
  * @param <V> The type of the app theme.
  */
 public abstract class AppWidgetTheme<T extends AppWidgetTheme<T, V>, V extends AppTheme<V>>
-        extends AppTheme<V> implements WidgetTheme<T, V> {
-}
+        extends AppTheme<V> implements WidgetTheme<T, V> { }

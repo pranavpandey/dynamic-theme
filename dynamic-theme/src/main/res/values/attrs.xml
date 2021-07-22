@@ -36,6 +36,9 @@
     <!-- Corner radius to be used by the supported widgets like button, card view, etc. -->
     <attr name="adt_cornerRadius" format="dimension|reference" />
 
+    <!-- Contrast factor for the background aware theme. -->
+    <attr name="adt_contrast" format="integer|reference" />
+
     <!-- Background opacity for the supported widgets. -->
     <attr name="adt_opacity" format="integer|reference" />
 

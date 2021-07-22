@@ -58,4 +58,36 @@ public interface BackgroundAware<T extends BackgroundAware<T>> extends BaseTheme
      * @return The {@link T} object to allow for chaining of calls to set methods.
      */
     @NonNull T setBackgroundAware(@Theme.BackgroundAware int backgroundAware);
+
+    /**
+     * Get the contrast value used by this theme.
+     *
+     * @param resolve {@code true} to resolve auto contrast.
+     *
+     * @return The contrast value used by this theme.
+     */
+    int getContrast(boolean resolve);
+
+    /**
+     * Get the contrast value used by this theme.
+     *
+     * @return The contrast value used by this theme.
+     */
+    int getContrast();
+
+    /**
+     * Returns the contrast ratio for by this theme.
+     *
+     * @return The contrast ratio for by this theme.
+     */
+    float getContrastRatio();
+
+    /**
+     * Set the contrast value used by this theme.
+     *
+     * @param contrast The contrast value to be set.
+     *
+     * @return The {@link T} object to allow for chaining of calls to set methods.
+     */
+    @NonNull T setContrast(int contrast);
 }
