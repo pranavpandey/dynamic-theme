@@ -55,4 +55,9 @@ public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, F
     public @NonNull String getCodeData() {
         return DynamicThemeUtils.getThemeUrl(this);
     }
+
+    @Override
+    public float getCodeContrastRatio() {
+        return Math.max(Theme.Code.CONTRAST_RATIO, getContrastRatio());
+    }
 }
