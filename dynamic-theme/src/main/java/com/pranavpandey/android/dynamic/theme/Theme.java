@@ -439,6 +439,16 @@ public @interface Theme {
     @interface Contrast {
 
         /**
+         * Constant value for the auto contrast.
+         */
+        int AUTO = Theme.AUTO;
+
+        /**
+         * Constant value for the unknown contrast.
+         */
+        int UNKNOWN = Theme.CUSTOM;
+
+        /**
          * Minimum value for the contrast.
          */
         int MIN = 0;
