@@ -51,6 +51,13 @@ public interface TranslucentTheme<T extends TranslucentTheme<T>> extends BaseThe
     @NonNull T setOpacity(int opacity);
 
     /**
+     * Returns the opacity after converting it into the float range.
+     *
+     * @return The opacity after converting it into the float range.
+     */
+    float getAlpha();
+
+    /**
      * Checks whether this theme is translucent.
      *
      * @return {@code true} if this theme is translucent.

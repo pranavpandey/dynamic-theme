@@ -16,9 +16,6 @@
 
 package com.pranavpandey.android.dynamic.theme;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.FloatRange;
-
 import com.pranavpandey.android.dynamic.theme.base.AutoTheme;
 import com.pranavpandey.android.dynamic.theme.base.BackgroundAware;
 import com.pranavpandey.android.dynamic.theme.base.BaseTheme;
@@ -33,7 +30,6 @@ import com.pranavpandey.android.dynamic.theme.base.StyleTheme;
 import com.pranavpandey.android.dynamic.theme.base.TextTheme;
 import com.pranavpandey.android.dynamic.theme.base.TranslucentTheme;
 import com.pranavpandey.android.dynamic.theme.base.TypeTheme;
-import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
 
 /**
  * An abstract class to implement an app theme.
@@ -43,32 +39,4 @@ import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
 public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, FallbackTheme<T>,
         ResourceTheme<T>, DynamicColor<T>, TextTheme<T>, AutoTheme<T>, CornerTheme<T>,
         BackgroundAware<T>, StrokeTheme<T>, TranslucentTheme<T>, StyleTheme<T>, TypeTheme<T>,
-        StringTheme<T>, CodeTheme<T> {
-
-    /**
-     * Returns opacity after converting it into the float range.
-     *
-     * @return The opacity after converting it into the float range.
-     */
-    public @FloatRange(from = 0f, to = 1f) float getAlpha() {
-        return getOpacity() / 255f;
-    }
-
-    /**
-     * Returns background color after considering the opacity value of this theme.
-     *
-     * @return The background color with alpha according to the opacity value.
-     */
-    public @ColorInt int getBackgroundColorWithOpacity() {
-        return DynamicColorUtils.setAlpha(getBackgroundColor(), getOpacity());
-    }
-
-    /**
-     * Returns stroke color after considering the opacity value of this theme.
-     *
-     * @return The stroke color with alpha according to the opacity value.
-     */
-    public @ColorInt int getStrokeColorWithOpacity() {
-        return DynamicColorUtils.setAlpha(getStrokeColor(), getOpacity());
-    }
-}
+        StringTheme<T>, CodeTheme<T> { }
