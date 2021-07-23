@@ -16,6 +16,8 @@
 
 package com.pranavpandey.android.dynamic.theme.base;
 
+import androidx.annotation.NonNull;
+
 import com.pranavpandey.android.dynamic.theme.Theme;
 
 /**
@@ -24,6 +26,13 @@ import com.pranavpandey.android.dynamic.theme.Theme;
  * @param <T> The type of the dynamic theme.
  */
 public interface CodeTheme<T extends CodeTheme<T>> extends StringTheme<T> {
+
+    /**
+     * Returns the data for the theme code.
+     *
+     * @return The data for the theme code.
+     */
+    @NonNull String getCodeData();
 
     /**
      * Returns the style for the theme code.

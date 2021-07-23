@@ -878,7 +878,7 @@ public class DynamicThemeUtils {
         }
 
         try {
-            ByteMatrix byteMatrix = Encoder.encode(getThemeUrl(theme),
+            ByteMatrix byteMatrix = Encoder.encode(theme.getCodeData(),
                     ErrorCorrectionLevel.L, hints).getMatrix();
             int quietZone = Theme.Code.QUIET_ZONE;
             int inputWidth = byteMatrix.getWidth();

@@ -16,6 +16,8 @@
 
 package com.pranavpandey.android.dynamic.theme;
 
+import androidx.annotation.NonNull;
+
 import com.pranavpandey.android.dynamic.theme.base.AutoTheme;
 import com.pranavpandey.android.dynamic.theme.base.BackgroundAware;
 import com.pranavpandey.android.dynamic.theme.base.BaseTheme;
@@ -30,6 +32,7 @@ import com.pranavpandey.android.dynamic.theme.base.StyleTheme;
 import com.pranavpandey.android.dynamic.theme.base.TextTheme;
 import com.pranavpandey.android.dynamic.theme.base.TranslucentTheme;
 import com.pranavpandey.android.dynamic.theme.base.TypeTheme;
+import com.pranavpandey.android.dynamic.theme.utils.DynamicThemeUtils;
 
 /**
  * An abstract class to implement an app theme.
@@ -39,4 +42,17 @@ import com.pranavpandey.android.dynamic.theme.base.TypeTheme;
 public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, FallbackTheme<T>,
         ResourceTheme<T>, DynamicColor<T>, TextTheme<T>, AutoTheme<T>, CornerTheme<T>,
         BackgroundAware<T>, StrokeTheme<T>, TranslucentTheme<T>, StyleTheme<T>, TypeTheme<T>,
-        StringTheme<T>, CodeTheme<T> { }
+        StringTheme<T>, CodeTheme<T> {
+
+    @Override
+    public boolean isDynamicColor() {
+        return getBackgroundColor(false, false) == Theme.AUTO
+                || getPrimaryColor(false, false) == Theme.AUTO
+                || getAccentColor(false, false) == Theme.AUTO;
+    }
+
+    @Override
+    public @NonNull String getCodeData() {
+        return DynamicThemeUtils.getThemeUrl(this);
+    }
+}
