@@ -379,6 +379,63 @@ public @interface Theme {
     }
 
     /**
+     * Constant values for the corner size.
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @interface Corner {
+
+        /**
+         * Constant value for the auto corner size.
+         */
+        int AUTO = Theme.AUTO;
+
+        /**
+         * Constant value for the unknown corner size.
+         */
+        int UNKNOWN = Theme.CUSTOM;
+
+        /**
+         * Minimum value for the corner in dips.
+         */
+        int MIN = 0;
+
+        /**
+         * Maximum value for the corner in dips.
+         */
+        int MAX = 28;
+
+        /**
+         * Default value for the corner in dips.
+         */
+        int DEFAULT = 2;
+
+        /**
+         * Minimum corner size in dips to provide the rounded theme overlay.
+         */
+        int MIN_ROUND = 8;
+
+        /**
+         * Minimum corner size in dips to provide the oval theme overlay.
+         */
+        int MIN_OVAL = 16;
+
+        /**
+         * Factor to decide the maximum corner size for the widgets.
+         */
+        float FACTOR_MAX = 2f;
+
+        /**
+         * Factor to decide the maximum corner size for the widget boxes.
+         */
+        float FACTOR_MAX_BOX = FACTOR_MAX;
+
+        /**
+         * Larger factor to decide the maximum corner size for the widgets.
+         */
+        float FACTOR_MAX_LARGE = 4f;
+    }
+
+    /**
      * Constant values for the background aware functionality.
      */
     @Retention(RetentionPolicy.SOURCE)
@@ -435,6 +492,9 @@ public @interface Theme {
         }
     }
 
+    /**
+     * Constant values for the contrast.
+     */
     @Retention(RetentionPolicy.SOURCE)
     @interface Contrast {
 
@@ -469,6 +529,9 @@ public @interface Theme {
         int DEFAULT = 45;
     }
 
+    /**
+     * Constant values for the opacity.
+     */
     @Retention(RetentionPolicy.SOURCE)
     @interface Opacity {
 

@@ -60,4 +60,12 @@ public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, F
     public float getCodeContrastRatio() {
         return Math.max(Theme.Code.CONTRAST_RATIO, getContrastRatio());
     }
+
+    @Override
+    public @Theme.Code.Style int getCodeStyle() {
+        return getCornerSizeDp(false) == Theme.AUTO 
+                || getCornerSizeDp() < Theme.Corner.MIN_ROUND
+                ? Theme.Code.Style.DEFAULT : getCornerSizeDp() < Theme.Corner.MIN_OVAL
+                ? Theme.Code.Style.ROUND : Theme.Code.Style.OVAL;
+    }
 }

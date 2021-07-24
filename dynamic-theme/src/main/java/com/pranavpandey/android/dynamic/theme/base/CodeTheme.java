@@ -35,16 +35,16 @@ public interface CodeTheme<T extends CodeTheme<T>> extends StringTheme<T> {
     @NonNull String getCodeData();
 
     /**
-     * Returns the style for the theme code.
-     *
-     * @return The style for the theme code.
-     */
-    @Theme.Code.Style int getCodeStyle();
-
-    /**
      * Returns the code contrast ratio for by this theme.
      *
      * @return The code contrast ratio for by this theme.
      */
     float getCodeContrastRatio();
+
+    /**
+     * Returns the style for the theme code.
+     *
+     * @return The style for the theme code.
+     */
+    @Theme.Code.Style int getCodeStyle();
 }
