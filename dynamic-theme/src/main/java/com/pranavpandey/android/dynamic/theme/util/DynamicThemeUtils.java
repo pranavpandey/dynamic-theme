@@ -57,12 +57,12 @@ import com.pranavpandey.android.dynamic.theme.ThemeContract;
 import com.pranavpandey.android.dynamic.theme.base.CodeTheme;
 import com.pranavpandey.android.dynamic.theme.base.CornerTheme;
 import com.pranavpandey.android.dynamic.theme.base.StringTheme;
-import com.pranavpandey.android.dynamic.utils.DynamicBitmapUtils;
-import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
-import com.pranavpandey.android.dynamic.utils.DynamicDeviceUtils;
-import com.pranavpandey.android.dynamic.utils.DynamicFileUtils;
-import com.pranavpandey.android.dynamic.utils.DynamicIntentUtils;
-import com.pranavpandey.android.dynamic.utils.DynamicUnitUtils;
+import com.pranavpandey.android.dynamic.util.DynamicBitmapUtils;
+import com.pranavpandey.android.dynamic.util.DynamicColorUtils;
+import com.pranavpandey.android.dynamic.util.DynamicDeviceUtils;
+import com.pranavpandey.android.dynamic.util.DynamicFileUtils;
+import com.pranavpandey.android.dynamic.util.DynamicIntentUtils;
+import com.pranavpandey.android.dynamic.util.DynamicUnitUtils;
 
 import org.json.JSONObject;
 

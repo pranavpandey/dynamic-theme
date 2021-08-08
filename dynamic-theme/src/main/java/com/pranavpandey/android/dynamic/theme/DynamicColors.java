@@ -27,7 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.pranavpandey.android.dynamic.theme.base.DynamicColor;
-import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
+import com.pranavpandey.android.dynamic.util.DynamicColorUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
