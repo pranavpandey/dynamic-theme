@@ -27,12 +27,6 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
-var altColor = "altColor";
-var rowColor = "rowColor";
-var tableTab = "tableTab";
-var activeTableTab = "activeTableTab";
 var pathtoroot = "../../../../../";
 var useModuleDirectories = true;
 loadScripts(document, 'script');</script>
@@ -90,14 +84,14 @@ loadScripts(document, 'script');</script>
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
-<li><a href="#method.detail">Method</a></li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Method</li>
 </ul>
 </div>
 <a id="skip.navbar.top">
@@ -116,26 +110,66 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">com.pranavpandey.android.dynamic.theme</a></div>
-<h2 title="Interface AppWidgetTheme" class="title">Interface AppWidgetTheme&lt;T extends <a href="AppTheme.html" title="interface in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;?&gt;&gt;</h2>
+<h2 title="Class AppWidgetTheme" class="title">Class AppWidgetTheme&lt;T extends AppWidgetTheme&lt;T,&#8203;V&gt;,&#8203;V extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;V&gt;&gt;</h2>
 </div>
 <div class="contentContainer">
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li><a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">com.pranavpandey.android.dynamic.theme.AppTheme</a>&lt;V&gt;</li>
+<li>
+<ul class="inheritance">
+<li>com.pranavpandey.android.dynamic.theme.AppWidgetTheme&lt;T,&#8203;V&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
 <dl>
-<dt>All Superinterfaces:</dt>
-<dd><code><a href="AppTheme.html" title="interface in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;T&gt;</code></dd>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - The type of the dynamic theme.</dd>
+<dd><code>V</code> - The type of the app theme.</dd>
+</dl>
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><code><a href="base/AccentTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">AccentTheme</a>&lt;V&gt;</code>, <code><a href="base/AutoTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">AutoTheme</a>&lt;V&gt;</code>, <code><a href="base/BackgroundAware.html" title="interface in com.pranavpandey.android.dynamic.theme.base">BackgroundAware</a>&lt;V&gt;</code>, <code><a href="base/BackgroundTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">BackgroundTheme</a>&lt;V&gt;</code>, <code><a href="base/BaseTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">BaseTheme</a>&lt;V&gt;</code>, <code><a href="base/CodeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">CodeTheme</a>&lt;V&gt;</code>, <code><a href="base/CornerTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">CornerTheme</a>&lt;V&gt;</code>, <code><a href="base/DynamicColor.html" title="interface in com.pranavpandey.android.dynamic.theme.base">DynamicColor</a>&lt;V&gt;</code>, <code><a href="base/ErrorTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">ErrorTheme</a>&lt;V&gt;</code>, <code><a href="base/FallbackTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">FallbackTheme</a>&lt;V&gt;</code>, <code><a href="base/PrimaryTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">PrimaryTheme</a>&lt;V&gt;</code>, <code><a href="base/ResourceTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">ResourceTheme</a>&lt;V&gt;</code>, <code><a href="base/StringTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StringTheme</a>&lt;V&gt;</code>, <code><a href="base/StrokeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StrokeTheme</a>&lt;V&gt;</code>, <code><a href="base/StyleTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StyleTheme</a>&lt;V&gt;</code>, <code><a href="base/SurfaceTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">SurfaceTheme</a>&lt;V&gt;</code>, <code><a href="base/TextTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">TextTheme</a>&lt;V&gt;</code>, <code><a href="base/TranslucentTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">TranslucentTheme</a>&lt;V&gt;</code>, <code><a href="base/TypeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">TypeTheme</a>&lt;V&gt;</code>, <code><a href="base/WidgetTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">WidgetTheme</a>&lt;T,&#8203;V&gt;</code></dd>
 </dl>
 <hr>
-<pre>public interface <span class="typeNameLabel">AppWidgetTheme&lt;T extends <a href="AppTheme.html" title="interface in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;?&gt;&gt;</span>
-extends <a href="AppTheme.html" title="interface in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;T&gt;</pre>
-<div class="block">Interface to implement an app widget theme.</div>
+<pre>public abstract class <span class="typeNameLabel">AppWidgetTheme&lt;T extends AppWidgetTheme&lt;T,&#8203;V&gt;,&#8203;V extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;V&gt;&gt;</span>
+extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;V&gt;
+implements <a href="base/WidgetTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">WidgetTheme</a>&lt;T,&#8203;V&gt;</pre>
+<div class="block">An abstract class to implement an app widget theme.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Constructor</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">AppWidgetTheme</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ========== METHOD SUMMARY =========== -->
 <section role="region">
 <ul class="blockList">
@@ -143,62 +177,145 @@ extends <a href="AppTheme.html" title="interface in com.pranavpandey.android.dyn
 <!--   -->
 </a>
 <h3>Method Summary</h3>
-<table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Method</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr id="i0" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHeader()">getHeader</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the header state used by this theme.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHeaderString()">getHeaderString</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Returns the header state string used by this theme.</div>
-</td>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWidgetId()">getWidgetId</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the app widget id used by this theme.</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="AppWidgetTheme.html" title="type parameter in AppWidgetTheme">T</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setHeader(int)">setHeader</a></span>&#8203;(int&nbsp;header)</code></th>
-<td class="colLast">
-<div class="block">Set the header state used by this theme.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="AppWidgetTheme.html" title="type parameter in AppWidgetTheme">T</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setHeaderString(java.lang.String)">setHeaderString</a></span>&#8203;(java.lang.String&nbsp;header)</code></th>
-<td class="colLast">
-<div class="block">Set the header state used by this theme.</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="AppWidgetTheme.html" title="type parameter in AppWidgetTheme">T</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setWidgetId(int)">setWidgetId</a></span>&#8203;(int&nbsp;widgetId)</code></th>
-<td class="colLast">
-<div class="block">Set the widget id used by this theme.</div>
-</td>
-</tr>
-</table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.AppTheme">
 <!--   -->
 </a>
-<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.<a href="AppTheme.html" title="interface in com.pranavpandey.android.dynamic.theme">AppTheme</a></h3>
-<code><a href="AppTheme.html#autoGenerateColors()">autoGenerateColors</a>, <a href="AppTheme.html#autoGenerateColors(boolean,boolean)">autoGenerateColors</a>, <a href="AppTheme.html#getAccentColor()">getAccentColor</a>, <a href="AppTheme.html#getAccentColor(boolean)">getAccentColor</a>, <a href="AppTheme.html#getAccentColor(boolean,boolean)">getAccentColor</a>, <a href="AppTheme.html#getAccentColorDark()">getAccentColorDark</a>, <a href="AppTheme.html#getAccentColorDark(boolean)">getAccentColorDark</a>, <a href="AppTheme.html#getAccentColorDark(boolean,boolean)">getAccentColorDark</a>, <a href="AppTheme.html#getBackgroundAware()">getBackgroundAware</a>, <a href="AppTheme.html#getBackgroundAware(boolean)">getBackgroundAware</a>, <a href="AppTheme.html#getBackgroundColor()">getBackgroundColor</a>, <a href="AppTheme.html#getBackgroundColor(boolean)">getBackgroundColor</a>, <a href="AppTheme.html#getBackgroundColor(boolean,boolean)">getBackgroundColor</a>, <a href="AppTheme.html#getCornerRadius()">getCornerRadius</a>, <a href="AppTheme.html#getCornerRadius(boolean)">getCornerRadius</a>, <a href="AppTheme.html#getCornerSizeDp()">getCornerSizeDp</a>, <a href="AppTheme.html#getCornerSizeDp(boolean)">getCornerSizeDp</a>, <a href="AppTheme.html#getErrorColor()">getErrorColor</a>, <a href="AppTheme.html#getErrorColor(boolean)">getErrorColor</a>, <a href="AppTheme.html#getErrorColor(boolean,boolean)">getErrorColor</a>, <a href="AppTheme.html#getFontScale()">getFontScale</a>, <a href="AppTheme.html#getFontScale(boolean)">getFontScale</a>, <a href="AppTheme.html#getFontScaleRelative()">getFontScaleRelative</a>, <a href="AppTheme.html#getHighlightColor()">getHighlightColor</a>, <a href="AppTheme.html#getHighlightColor(int)">getHighlightColor</a>, <a href="AppTheme.html#getOpacity()">getOpacity</a>, <a href="AppTheme.html#getOpacity(boolean)">getOpacity</a>, <a href="AppTheme.html#getPrimaryColor()">getPrimaryColor</a>, <a href="AppTheme.html#getPrimaryColor(boolean)">getPrimaryColor</a>, <a href="AppTheme.html#getPrimaryColor(boolean,boolean)">getPrimaryColor</a>, <a href="AppTheme.html#getPrimaryColorDark()">getPrimaryColorDark</a>, <a href="AppTheme.html#getPrimaryColorDark(boolean)">getPrimaryColorDark</a>, <a href="AppTheme.html#getPrimaryColorDark(boolean,boolean)">getPrimaryColorDark</a>, <a href="AppTheme.html#getStrokeColor()">getStrokeColor</a>, <a href="AppTheme.html#getStyle()">getStyle</a>, <a href="AppTheme.html#getSurfaceColor()">getSurfaceColor</a>, <a href="AppTheme.html#getSurfaceColor(boolean)">getSurfaceColor</a>, <a href="AppTheme.html#getSurfaceColor(boolean,boolean)">getSurfaceColor</a>, <a href="AppTheme.html#getTextPrimaryColor()">getTextPrimaryColor</a>, <a href="AppTheme.html#getTextPrimaryColor(boolean)">getTextPrimaryColor</a>, <a href="AppTheme.html#getTextPrimaryColor(boolean,boolean)">getTextPrimaryColor</a>, <a href="AppTheme.html#getTextPrimaryColorInverse()">getTextPrimaryColorInverse</a>, <a href="AppTheme.html#getTextPrimaryColorInverse(boolean)">getTextPrimaryColorInverse</a>, <a href="AppTheme.html#getTextPrimaryColorInverse(boolean,boolean)">getTextPrimaryColorInverse</a>, <a href="AppTheme.html#getTextSecondaryColor()">getTextSecondaryColor</a>, <a href="AppTheme.html#getTextSecondaryColor(boolean)">getTextSecondaryColor</a>, <a href="AppTheme.html#getTextSecondaryColor(boolean,boolean)">getTextSecondaryColor</a>, <a href="AppTheme.html#getTextSecondaryColorInverse()">getTextSecondaryColorInverse</a>, <a href="AppTheme.html#getTextSecondaryColorInverse(boolean)">getTextSecondaryColorInverse</a>, <a href="AppTheme.html#getTextSecondaryColorInverse(boolean,boolean)">getTextSecondaryColorInverse</a>, <a href="AppTheme.html#getThemeCodeStyle()">getThemeCodeStyle</a>, <a href="AppTheme.html#getThemeFallback(boolean)">getThemeFallback</a>, <a href="AppTheme.html#getThemeRes()">getThemeRes</a>, <a href="AppTheme.html#getTintAccentColor()">getTintAccentColor</a>, <a href="AppTheme.html#getTintAccentColor(boolean)">getTintAccentColor</a>, <a href="AppTheme.html#getTintAccentColor(boolean,boolean)">getTintAccentColor</a>, <a href="AppTheme.html#getTintAccentColorDark()">getTintAccentColorDark</a>, <a href="AppTheme.html#getTintAccentColorDark(boolean)">getTintAccentColorDark</a>, <a href="AppTheme.html#getTintAccentColorDark(boolean,boolean)">getTintAccentColorDark</a>, <a href="AppTheme.html#getTintBackgroundColor()">getTintBackgroundColor</a>, <a href="AppTheme.html#getTintBackgroundColor(boolean)">getTintBackgroundColor</a>, <a href="AppTheme.html#getTintBackgroundColor(boolean,boolean)">getTintBackgroundColor</a>, <a href="AppTheme.html#getTintErrorColor()">getTintErrorColor</a>, <a href="AppTheme.html#getTintErrorColor(boolean)">getTintErrorColor</a>, <a href="AppTheme.html#getTintErrorColor(boolean,boolean)">getTintErrorColor</a>, <a href="AppTheme.html#getTintPrimaryColor()">getTintPrimaryColor</a>, <a href="AppTheme.html#getTintPrimaryColor(boolean)">getTintPrimaryColor</a>, <a href="AppTheme.html#getTintPrimaryColor(boolean,boolean)">getTintPrimaryColor</a>, <a href="AppTheme.html#getTintPrimaryColorDark()">getTintPrimaryColorDark</a>, <a href="AppTheme.html#getTintPrimaryColorDark(boolean)">getTintPrimaryColorDark</a>, <a href="AppTheme.html#getTintPrimaryColorDark(boolean,boolean)">getTintPrimaryColorDark</a>, <a href="AppTheme.html#getTintSurfaceColor()">getTintSurfaceColor</a>, <a href="AppTheme.html#getTintSurfaceColor(boolean)">getTintSurfaceColor</a>, <a href="AppTheme.html#getTintSurfaceColor(boolean,boolean)">getTintSurfaceColor</a>, <a href="AppTheme.html#getType()">getType</a>, <a href="AppTheme.html#isBackgroundAware()">isBackgroundAware</a>, <a href="AppTheme.html#isBackgroundSurface()">isBackgroundSurface</a>, <a href="AppTheme.html#isDarkTheme()">isDarkTheme</a>, <a href="AppTheme.html#isDynamicColor()">isDynamicColor</a>, <a href="AppTheme.html#isFontScale()">isFontScale</a>, <a href="AppTheme.html#isInverseTheme()">isInverseTheme</a>, <a href="AppTheme.html#isShowDividers()">isShowDividers</a>, <a href="AppTheme.html#isTranslucent()">isTranslucent</a>, <a href="AppTheme.html#setAccentColor(int)">setAccentColor</a>, <a href="AppTheme.html#setAccentColor(int,boolean)">setAccentColor</a>, <a href="AppTheme.html#setAccentColorDark(int)">setAccentColorDark</a>, <a href="AppTheme.html#setAccentColorDark(int,boolean)">setAccentColorDark</a>, <a href="AppTheme.html#setBackgroundAware(int)">setBackgroundAware</a>, <a href="AppTheme.html#setBackgroundColor(int)">setBackgroundColor</a>, <a href="AppTheme.html#setBackgroundColor(int,boolean)">setBackgroundColor</a>, <a href="AppTheme.html#setCornerRadius(int)">setCornerRadius</a>, <a href="AppTheme.html#setCornerRadiusDp(float)">setCornerRadiusDp</a>, <a href="AppTheme.html#setErrorColor(int)">setErrorColor</a>, <a href="AppTheme.html#setErrorColor(int,boolean)">setErrorColor</a>, <a href="AppTheme.html#setFontScale(int)">setFontScale</a>, <a href="AppTheme.html#setOpacity(int)">setOpacity</a>, <a href="AppTheme.html#setPrimaryColor(int)">setPrimaryColor</a>, <a href="AppTheme.html#setPrimaryColor(int,boolean)">setPrimaryColor</a>, <a href="AppTheme.html#setPrimaryColorDark(int)">setPrimaryColorDark</a>, <a href="AppTheme.html#setPrimaryColorDark(int,boolean)">setPrimaryColorDark</a>, <a href="AppTheme.html#setStyle(int)">setStyle</a>, <a href="AppTheme.html#setSurfaceColor(int)">setSurfaceColor</a>, <a href="AppTheme.html#setSurfaceColor(int,boolean)">setSurfaceColor</a>, <a href="AppTheme.html#setTextPrimaryColor(int)">setTextPrimaryColor</a>, <a href="AppTheme.html#setTextPrimaryColor(int,boolean)">setTextPrimaryColor</a>, <a href="AppTheme.html#setTextPrimaryColorInverse(int)">setTextPrimaryColorInverse</a>, <a href="AppTheme.html#setTextSecondaryColor(int)">setTextSecondaryColor</a>, <a href="AppTheme.html#setTextSecondaryColor(int,boolean)">setTextSecondaryColor</a>, <a href="AppTheme.html#setTextSecondaryColorInverse(int)">setTextSecondaryColorInverse</a>, <a href="AppTheme.html#setThemeRes(int)">setThemeRes</a>, <a href="AppTheme.html#setTintAccentColor(int)">setTintAccentColor</a>, <a href="AppTheme.html#setTintAccentColorDark(int)">setTintAccentColorDark</a>, <a href="AppTheme.html#setTintBackgroundColor(int)">setTintBackgroundColor</a>, <a href="AppTheme.html#setTintErrorColor(int)">setTintErrorColor</a>, <a href="AppTheme.html#setTintPrimaryColor(int)">setTintPrimaryColor</a>, <a href="AppTheme.html#setTintPrimaryColorDark(int)">setTintPrimaryColorDark</a>, <a href="AppTheme.html#setTintSurfaceColor(int)">setTintSurfaceColor</a>, <a href="AppTheme.html#setType(int)">setType</a>, <a href="AppTheme.html#toDynamicString()">toDynamicString</a>, <a href="AppTheme.html#toJsonString()">toJsonString</a></code></li>
+<h3>Methods inherited from class&nbsp;com.pranavpandey.android.dynamic.theme.<a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a></h3>
+<code><a href="AppTheme.html#getCodeBackgroundColor()">getCodeBackgroundColor</a>, <a href="AppTheme.html#getCodeContrastRatio()">getCodeContrastRatio</a>, <a href="AppTheme.html#getCodeData()">getCodeData</a>, <a href="AppTheme.html#getCodeDataColor()">getCodeDataColor</a>, <a href="AppTheme.html#getCodeFinderColor()">getCodeFinderColor</a>, <a href="AppTheme.html#getCodeOverlayColor()">getCodeOverlayColor</a>, <a href="AppTheme.html#getCodeStyle()">getCodeStyle</a>, <a href="AppTheme.html#isDynamicColor()">isDynamicColor</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.AccentTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/AccentTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">AccentTheme</a></h3>
+<code><a href="base/AccentTheme.html#getAccentColor()">getAccentColor</a>, <a href="base/AccentTheme.html#getAccentColor(boolean)">getAccentColor</a>, <a href="base/AccentTheme.html#getAccentColor(boolean,boolean)">getAccentColor</a>, <a href="base/AccentTheme.html#getAccentColorDark()">getAccentColorDark</a>, <a href="base/AccentTheme.html#getAccentColorDark(boolean)">getAccentColorDark</a>, <a href="base/AccentTheme.html#getAccentColorDark(boolean,boolean)">getAccentColorDark</a>, <a href="base/AccentTheme.html#getTintAccentColor()">getTintAccentColor</a>, <a href="base/AccentTheme.html#getTintAccentColor(boolean)">getTintAccentColor</a>, <a href="base/AccentTheme.html#getTintAccentColor(boolean,boolean)">getTintAccentColor</a>, <a href="base/AccentTheme.html#getTintAccentColorDark()">getTintAccentColorDark</a>, <a href="base/AccentTheme.html#getTintAccentColorDark(boolean)">getTintAccentColorDark</a>, <a href="base/AccentTheme.html#getTintAccentColorDark(boolean,boolean)">getTintAccentColorDark</a>, <a href="base/AccentTheme.html#setAccentColor(int)">setAccentColor</a>, <a href="base/AccentTheme.html#setAccentColor(int,boolean)">setAccentColor</a>, <a href="base/AccentTheme.html#setAccentColorDark(int)">setAccentColorDark</a>, <a href="base/AccentTheme.html#setAccentColorDark(int,boolean)">setAccentColorDark</a>, <a href="base/AccentTheme.html#setTintAccentColor(int)">setTintAccentColor</a>, <a href="base/AccentTheme.html#setTintAccentColorDark(int)">setTintAccentColorDark</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.AutoTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/AutoTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">AutoTheme</a></h3>
+<code><a href="base/AutoTheme.html#autoGenerateColors()">autoGenerateColors</a>, <a href="base/AutoTheme.html#autoGenerateColors(boolean,boolean)">autoGenerateColors</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.BackgroundAware">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/BackgroundAware.html" title="interface in com.pranavpandey.android.dynamic.theme.base">BackgroundAware</a></h3>
+<code><a href="base/BackgroundAware.html#getBackgroundAware()">getBackgroundAware</a>, <a href="base/BackgroundAware.html#getBackgroundAware(boolean)">getBackgroundAware</a>, <a href="base/BackgroundAware.html#getContrast()">getContrast</a>, <a href="base/BackgroundAware.html#getContrast(boolean)">getContrast</a>, <a href="base/BackgroundAware.html#getContrastRatio()">getContrastRatio</a>, <a href="base/BackgroundAware.html#isBackgroundAware()">isBackgroundAware</a>, <a href="base/BackgroundAware.html#setBackgroundAware(int)">setBackgroundAware</a>, <a href="base/BackgroundAware.html#setContrast(int)">setContrast</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.BackgroundTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/BackgroundTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">BackgroundTheme</a></h3>
+<code><a href="base/BackgroundTheme.html#getBackgroundColor()">getBackgroundColor</a>, <a href="base/BackgroundTheme.html#getBackgroundColor(boolean)">getBackgroundColor</a>, <a href="base/BackgroundTheme.html#getBackgroundColor(boolean,boolean)">getBackgroundColor</a>, <a href="base/BackgroundTheme.html#getTintBackgroundColor()">getTintBackgroundColor</a>, <a href="base/BackgroundTheme.html#getTintBackgroundColor(boolean)">getTintBackgroundColor</a>, <a href="base/BackgroundTheme.html#getTintBackgroundColor(boolean,boolean)">getTintBackgroundColor</a>, <a href="base/BackgroundTheme.html#isDarkTheme()">isDarkTheme</a>, <a href="base/BackgroundTheme.html#isInverseTheme()">isInverseTheme</a>, <a href="base/BackgroundTheme.html#isShowDividers()">isShowDividers</a>, <a href="base/BackgroundTheme.html#setBackgroundColor(int)">setBackgroundColor</a>, <a href="base/BackgroundTheme.html#setBackgroundColor(int,boolean)">setBackgroundColor</a>, <a href="base/BackgroundTheme.html#setTintBackgroundColor(int)">setTintBackgroundColor</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.CornerTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/CornerTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">CornerTheme</a></h3>
+<code><a href="base/CornerTheme.html#getCornerRadius()">getCornerRadius</a>, <a href="base/CornerTheme.html#getCornerRadius(boolean)">getCornerRadius</a>, <a href="base/CornerTheme.html#getCornerSizeDp()">getCornerSizeDp</a>, <a href="base/CornerTheme.html#getCornerSizeDp(boolean)">getCornerSizeDp</a>, <a href="base/CornerTheme.html#setCornerRadius(int)">setCornerRadius</a>, <a href="base/CornerTheme.html#setCornerRadiusDp(float)">setCornerRadiusDp</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.DynamicColor">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/DynamicColor.html" title="interface in com.pranavpandey.android.dynamic.theme.base">DynamicColor</a></h3>
+<code><a href="base/DynamicColor.html#getDynamicColors()">getDynamicColors</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.ErrorTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/ErrorTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">ErrorTheme</a></h3>
+<code><a href="base/ErrorTheme.html#getErrorColor()">getErrorColor</a>, <a href="base/ErrorTheme.html#getErrorColor(boolean)">getErrorColor</a>, <a href="base/ErrorTheme.html#getErrorColor(boolean,boolean)">getErrorColor</a>, <a href="base/ErrorTheme.html#getTintErrorColor()">getTintErrorColor</a>, <a href="base/ErrorTheme.html#getTintErrorColor(boolean)">getTintErrorColor</a>, <a href="base/ErrorTheme.html#getTintErrorColor(boolean,boolean)">getTintErrorColor</a>, <a href="base/ErrorTheme.html#setErrorColor(int)">setErrorColor</a>, <a href="base/ErrorTheme.html#setErrorColor(int,boolean)">setErrorColor</a>, <a href="base/ErrorTheme.html#setTintErrorColor(int)">setTintErrorColor</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.FallbackTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/FallbackTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">FallbackTheme</a></h3>
+<code><a href="base/FallbackTheme.html#getThemeFallback(boolean)">getThemeFallback</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.PrimaryTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/PrimaryTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">PrimaryTheme</a></h3>
+<code><a href="base/PrimaryTheme.html#getPrimaryColor()">getPrimaryColor</a>, <a href="base/PrimaryTheme.html#getPrimaryColor(boolean)">getPrimaryColor</a>, <a href="base/PrimaryTheme.html#getPrimaryColor(boolean,boolean)">getPrimaryColor</a>, <a href="base/PrimaryTheme.html#getPrimaryColorDark()">getPrimaryColorDark</a>, <a href="base/PrimaryTheme.html#getPrimaryColorDark(boolean)">getPrimaryColorDark</a>, <a href="base/PrimaryTheme.html#getPrimaryColorDark(boolean,boolean)">getPrimaryColorDark</a>, <a href="base/PrimaryTheme.html#getTintPrimaryColor()">getTintPrimaryColor</a>, <a href="base/PrimaryTheme.html#getTintPrimaryColor(boolean)">getTintPrimaryColor</a>, <a href="base/PrimaryTheme.html#getTintPrimaryColor(boolean,boolean)">getTintPrimaryColor</a>, <a href="base/PrimaryTheme.html#getTintPrimaryColorDark()">getTintPrimaryColorDark</a>, <a href="base/PrimaryTheme.html#getTintPrimaryColorDark(boolean)">getTintPrimaryColorDark</a>, <a href="base/PrimaryTheme.html#getTintPrimaryColorDark(boolean,boolean)">getTintPrimaryColorDark</a>, <a href="base/PrimaryTheme.html#setPrimaryColor(int)">setPrimaryColor</a>, <a href="base/PrimaryTheme.html#setPrimaryColor(int,boolean)">setPrimaryColor</a>, <a href="base/PrimaryTheme.html#setPrimaryColorDark(int)">setPrimaryColorDark</a>, <a href="base/PrimaryTheme.html#setPrimaryColorDark(int,boolean)">setPrimaryColorDark</a>, <a href="base/PrimaryTheme.html#setTintPrimaryColor(int)">setTintPrimaryColor</a>, <a href="base/PrimaryTheme.html#setTintPrimaryColorDark(int)">setTintPrimaryColorDark</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.ResourceTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/ResourceTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">ResourceTheme</a></h3>
+<code><a href="base/ResourceTheme.html#getThemeRes()">getThemeRes</a>, <a href="base/ResourceTheme.html#setThemeRes(int)">setThemeRes</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.StringTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/StringTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StringTheme</a></h3>
+<code><a href="base/StringTheme.html#toDynamicString()">toDynamicString</a>, <a href="base/StringTheme.html#toJsonString()">toJsonString</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.StrokeTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/StrokeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StrokeTheme</a></h3>
+<code><a href="base/StrokeTheme.html#getStrokeColor()">getStrokeColor</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.StyleTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/StyleTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StyleTheme</a></h3>
+<code><a href="base/StyleTheme.html#getStyle()">getStyle</a>, <a href="base/StyleTheme.html#setStyle(int)">setStyle</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.SurfaceTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/SurfaceTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">SurfaceTheme</a></h3>
+<code><a href="base/SurfaceTheme.html#getSurfaceColor()">getSurfaceColor</a>, <a href="base/SurfaceTheme.html#getSurfaceColor(boolean)">getSurfaceColor</a>, <a href="base/SurfaceTheme.html#getSurfaceColor(boolean,boolean)">getSurfaceColor</a>, <a href="base/SurfaceTheme.html#getTintSurfaceColor()">getTintSurfaceColor</a>, <a href="base/SurfaceTheme.html#getTintSurfaceColor(boolean)">getTintSurfaceColor</a>, <a href="base/SurfaceTheme.html#getTintSurfaceColor(boolean,boolean)">getTintSurfaceColor</a>, <a href="base/SurfaceTheme.html#isBackgroundSurface()">isBackgroundSurface</a>, <a href="base/SurfaceTheme.html#setSurfaceColor(int)">setSurfaceColor</a>, <a href="base/SurfaceTheme.html#setSurfaceColor(int,boolean)">setSurfaceColor</a>, <a href="base/SurfaceTheme.html#setTintSurfaceColor(int)">setTintSurfaceColor</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.TextTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/TextTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">TextTheme</a></h3>
+<code><a href="base/TextTheme.html#getFontScale()">getFontScale</a>, <a href="base/TextTheme.html#getFontScale(boolean)">getFontScale</a>, <a href="base/TextTheme.html#getFontScaleRelative()">getFontScaleRelative</a>, <a href="base/TextTheme.html#getHighlightColor()">getHighlightColor</a>, <a href="base/TextTheme.html#getHighlightColor(int)">getHighlightColor</a>, <a href="base/TextTheme.html#getTextPrimaryColor()">getTextPrimaryColor</a>, <a href="base/TextTheme.html#getTextPrimaryColor(boolean)">getTextPrimaryColor</a>, <a href="base/TextTheme.html#getTextPrimaryColor(boolean,boolean)">getTextPrimaryColor</a>, <a href="base/TextTheme.html#getTextPrimaryColorInverse()">getTextPrimaryColorInverse</a>, <a href="base/TextTheme.html#getTextPrimaryColorInverse(boolean)">getTextPrimaryColorInverse</a>, <a href="base/TextTheme.html#getTextPrimaryColorInverse(boolean,boolean)">getTextPrimaryColorInverse</a>, <a href="base/TextTheme.html#getTextSecondaryColor()">getTextSecondaryColor</a>, <a href="base/TextTheme.html#getTextSecondaryColor(boolean)">getTextSecondaryColor</a>, <a href="base/TextTheme.html#getTextSecondaryColor(boolean,boolean)">getTextSecondaryColor</a>, <a href="base/TextTheme.html#getTextSecondaryColorInverse()">getTextSecondaryColorInverse</a>, <a href="base/TextTheme.html#getTextSecondaryColorInverse(boolean)">getTextSecondaryColorInverse</a>, <a href="base/TextTheme.html#getTextSecondaryColorInverse(boolean,boolean)">getTextSecondaryColorInverse</a>, <a href="base/TextTheme.html#isFontScale()">isFontScale</a>, <a href="base/TextTheme.html#setFontScale(int)">setFontScale</a>, <a href="base/TextTheme.html#setTextPrimaryColor(int)">setTextPrimaryColor</a>, <a href="base/TextTheme.html#setTextPrimaryColor(int,boolean)">setTextPrimaryColor</a>, <a href="base/TextTheme.html#setTextPrimaryColorInverse(int)">setTextPrimaryColorInverse</a>, <a href="base/TextTheme.html#setTextSecondaryColor(int)">setTextSecondaryColor</a>, <a href="base/TextTheme.html#setTextSecondaryColor(int,boolean)">setTextSecondaryColor</a>, <a href="base/TextTheme.html#setTextSecondaryColorInverse(int)">setTextSecondaryColorInverse</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.TranslucentTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/TranslucentTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">TranslucentTheme</a></h3>
+<code><a href="base/TranslucentTheme.html#getAlpha()">getAlpha</a>, <a href="base/TranslucentTheme.html#getOpacity()">getOpacity</a>, <a href="base/TranslucentTheme.html#getOpacity(boolean)">getOpacity</a>, <a href="base/TranslucentTheme.html#isTranslucent()">isTranslucent</a>, <a href="base/TranslucentTheme.html#setOpacity(int)">setOpacity</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.TypeTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/TypeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">TypeTheme</a></h3>
+<code><a href="base/TypeTheme.html#getType()">getType</a>, <a href="base/TypeTheme.html#getType(boolean)">getType</a>, <a href="base/TypeTheme.html#setType(int)">setType</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.WidgetTheme">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/WidgetTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">WidgetTheme</a></h3>
+<code><a href="base/WidgetTheme.html#getHeader()">getHeader</a>, <a href="base/WidgetTheme.html#getHeaderString()">getHeaderString</a>, <a href="base/WidgetTheme.html#getWidgetId()">getWidgetId</a>, <a href="base/WidgetTheme.html#setHeader(int)">setHeader</a>, <a href="base/WidgetTheme.html#setHeaderString(java.lang.String)">setHeaderString</a>, <a href="base/WidgetTheme.html#setWidgetId(int)">setWidgetId</a></code></li>
 </ul>
 </li>
 </ul>
@@ -209,106 +326,20 @@ extends <a href="AppTheme.html" title="interface in com.pranavpandey.android.dyn
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ METHOD DETAIL ========== -->
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
-<li class="blockList"><a id="method.detail">
+<li class="blockList"><a id="constructor.detail">
 <!--   -->
 </a>
-<h3>Method Detail</h3>
-<a id="getWidgetId()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getWidgetId</h4>
-<pre class="methodSignature">int&nbsp;getWidgetId()</pre>
-<div class="block">Get the app widget id used by this theme.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The app widget id used by this theme.</dd>
-</dl>
-</li>
-</ul>
-<a id="setWidgetId(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setWidgetId</h4>
-<pre class="methodSignature">@NonNull
-<a href="AppWidgetTheme.html" title="type parameter in AppWidgetTheme">T</a>&nbsp;setWidgetId&#8203;(int&nbsp;widgetId)</pre>
-<div class="block">Set the widget id used by this theme.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>widgetId</code> - The widget id to be set.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The <a href="AppWidgetTheme.html" title="interface in com.pranavpandey.android.dynamic.theme"><code>AppWidgetTheme</code></a> object to allow for chaining of calls to set methods.</dd>
-</dl>
-</li>
-</ul>
-<a id="getHeader()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getHeader</h4>
-<pre class="methodSignature">int&nbsp;getHeader()</pre>
-<div class="block">Get the header state used by this theme.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The header state used by this theme.</dd>
-</dl>
-</li>
-</ul>
-<a id="getHeaderString()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getHeaderString</h4>
-<pre class="methodSignature">@NonNull
-java.lang.String&nbsp;getHeaderString()</pre>
-<div class="block">Returns the header state string used by this theme.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The header state string used by this theme.</dd>
-</dl>
-</li>
-</ul>
-<a id="setHeader(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setHeader</h4>
-<pre class="methodSignature">@NonNull
-<a href="AppWidgetTheme.html" title="type parameter in AppWidgetTheme">T</a>&nbsp;setHeader&#8203;(int&nbsp;header)</pre>
-<div class="block">Set the header state used by this theme.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>header</code> - The header state to be set.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The <a href="AppWidgetTheme.html" title="interface in com.pranavpandey.android.dynamic.theme"><code>AppWidgetTheme</code></a> object to allow for chaining of calls to set methods.</dd>
-</dl>
-</li>
-</ul>
-<a id="setHeaderString(java.lang.String)">
+<h3>Constructor Detail</h3>
+<a id="&lt;init&gt;()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>setHeaderString</h4>
-<pre class="methodSignature">@NonNull
-<a href="AppWidgetTheme.html" title="type parameter in AppWidgetTheme">T</a>&nbsp;setHeaderString&#8203;(@NonNull
-                  java.lang.String&nbsp;header)</pre>
-<div class="block">Set the header state used by this theme.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>header</code> - The header state to be set.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The <a href="AppWidgetTheme.html" title="interface in com.pranavpandey.android.dynamic.theme"><code>AppWidgetTheme</code></a> object to allow for chaining of calls to set methods.</dd>
-</dl>
+<h4>AppWidgetTheme</h4>
+<pre>public&nbsp;AppWidgetTheme()</pre>
 </li>
 </ul>
 </li>
@@ -339,7 +370,7 @@ java.lang.String&nbsp;getHeaderString()</pre>
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><h5>3.1.0</h5></div>
+<div class="aboutLanguage"><h5>null</h5></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_bottom">
@@ -365,14 +396,14 @@ java.lang.String&nbsp;getHeaderString()</pre>
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
-<li><a href="#method.detail">Method</a></li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Method</li>
 </ul>
 </div>
 <a id="skip.navbar.bottom">
