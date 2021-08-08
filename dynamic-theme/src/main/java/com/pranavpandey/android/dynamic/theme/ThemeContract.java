@@ -88,7 +88,7 @@ public class ThemeContract {
         String AUTHORITY = "com.pranavpandey.theme";
 
         /**
-         * Content provider uri for the presets table.
+         * Content provider URI for the presets table.
          */
         Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.pranavpandey.android.dynamic.theme.utils;
+package com.pranavpandey.android.dynamic.theme.util;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -54,11 +54,8 @@ import com.google.zxing.qrcode.encoder.ByteMatrix;
 import com.google.zxing.qrcode.encoder.Encoder;
 import com.pranavpandey.android.dynamic.theme.Theme;
 import com.pranavpandey.android.dynamic.theme.ThemeContract;
-import com.pranavpandey.android.dynamic.theme.base.AccentTheme;
-import com.pranavpandey.android.dynamic.theme.base.BackgroundTheme;
 import com.pranavpandey.android.dynamic.theme.base.CodeTheme;
 import com.pranavpandey.android.dynamic.theme.base.CornerTheme;
-import com.pranavpandey.android.dynamic.theme.base.PrimaryTheme;
 import com.pranavpandey.android.dynamic.theme.base.StringTheme;
 import com.pranavpandey.android.dynamic.utils.DynamicBitmapUtils;
 import com.pranavpandey.android.dynamic.utils.DynamicColorUtils;
@@ -163,6 +160,8 @@ public class DynamicThemeUtils {
             @Nullable  String prefix, @NonNull String extension) {
         if (prefix == null) {
             prefix = "";
+        } else {
+            prefix = prefix + "-";
         }
 
         return prefix + DynamicDeviceUtils.getDateWithSeparator(
@@ -177,7 +176,7 @@ public class DynamicThemeUtils {
      * @return The file name to save the theme.
      */
     public static @NonNull String getFileName(@NonNull String extension) {
-        return getFileName(Theme.Key.SHARE + "-", extension);
+        return getFileName(Theme.Key.SHARE, extension);
     }
 
     /**
@@ -559,7 +558,7 @@ public class DynamicThemeUtils {
     /**
      * Checks whether the intent is valid for the theme.
      *
-     * @param context The context to match the uri mime type.
+     * @param context The context to match the URI mime type.
      * @param intent The intent to get the data.
      *
      * @return {@code true} if the intent is valid for the theme.
@@ -654,22 +653,22 @@ public class DynamicThemeUtils {
     }
 
     /**
-     * Returns the encoded theme string with the url.
+     * Returns the encoded theme string with the URL.
      *
      * @param theme The theme to be processed.
      *
-     * @return The encoded theme string with the url.
+     * @return The encoded theme string with the URL.
      */
     public static @NonNull String getThemeUrl(@Nullable StringTheme<?> theme) {
         return Theme.URL + encodeTheme(theme);
     }
 
     /**
-     * Returns the theme uri from the intent.
+     * Returns the theme URI from the intent.
      *
-     * @param intent The intent to get the theme uri.
+     * @param intent The intent to get the theme URI.
      *
-     * @return The theme uri according to the intent data.
+     * @return The theme URI according to the intent data.
      *
      * @see Intent#EXTRA_TEXT
      * @see Intent#EXTRA_STREAM
@@ -694,12 +693,12 @@ public class DynamicThemeUtils {
     }
 
     /**
-     * Returns the theme data from the uri.
+     * Returns the theme data from the URI.
      *
      * @param context The context to retrieve the resources.
-     * @param uri The uri to get the theme data.
+     * @param uri The URI to get the theme data.
      *
-     * @return The theme data according to the uri.
+     * @return The theme data according to the URI.
      *
      * @see #getThemeUri(Intent)
      */
@@ -849,46 +848,33 @@ public class DynamicThemeUtils {
         final @ColorInt int finderInternalColor;
         final @Theme.Code.Style int style = theme.getCodeStyle();
 
-        if (theme instanceof BackgroundTheme) {
-            backgroundColor = DynamicColorUtils.removeAlpha(
-                    ((BackgroundTheme<?>) theme).getBackgroundColor());
-            dataColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
-                    .getContrastColor(((BackgroundTheme<?>) theme).getTintBackgroundColor(),
-                            backgroundColor, theme.getCodeContrastRatio()));
-        } else {
-            backgroundColor = Theme.Code.Color.BACKGROUND;
-            dataColor = Theme.Code.Color.DATA;
-        }
+        backgroundColor = DynamicColorUtils.removeAlpha(theme.getCodeBackgroundColor());
+        dataColor = DynamicColorUtils.removeAlpha(DynamicColorUtils.getContrastColor(
+                theme.getCodeDataColor(), backgroundColor, theme.getCodeContrastRatio()));
 
-        if (theme instanceof AccentTheme) {
-            overlayColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
-                    .getContrastColor(((AccentTheme<?>) theme).getAccentColor(),
-                            backgroundColor, theme.getCodeContrastRatio()));
+        if (theme.getCodeOverlayColor() != Theme.Color.UNKNOWN) {
+            overlayColor = DynamicColorUtils.removeAlpha(DynamicColorUtils.getContrastColor(
+                    theme.getCodeOverlayColor(), backgroundColor, theme.getCodeContrastRatio()));
         } else {
-            overlayColor = dataColor;
+            overlayColor = Theme.Color.UNKNOWN;
         }
 
         finderExternalColor = dataColor;
-        if (theme instanceof PrimaryTheme) {
-            finderInternalColor = DynamicColorUtils.removeAlpha(DynamicColorUtils
-                    .getContrastColor(((PrimaryTheme<?>) theme).getPrimaryColor(),
-                            backgroundColor, theme.getCodeContrastRatio()));
-        } else {
-            finderInternalColor = finderExternalColor;
-        }
+        finderInternalColor = DynamicColorUtils.removeAlpha(DynamicColorUtils.getContrastColor(
+                theme.getCodeFinderColor(), backgroundColor, theme.getCodeContrastRatio()));
 
         try {
             ByteMatrix byteMatrix = Encoder.encode(theme.getCodeData(),
                     ErrorCorrectionLevel.L, hints).getMatrix();
-            int quietZone = Theme.Code.QUIET_ZONE;
+            int quietZone = Theme.Size.QUIET_ZONE;
             int inputWidth = byteMatrix.getWidth();
             int inputHeight = byteMatrix.getHeight();
             int inputCenterX = inputWidth / 2;
             int inputCenterY = inputHeight / 2;
             int qrWidth = inputWidth + (quietZone * 2);
             int qrHeight = inputHeight + (quietZone * 2);
-            int outputWidth = Math.max(Theme.Code.SIZE, qrWidth);
-            int outputHeight = Math.max(Theme.Code.SIZE, qrHeight);
+            int outputWidth = Math.max(Theme.Size.DEFAULT, qrWidth);
+            int outputHeight = Math.max(Theme.Size.DEFAULT, qrHeight);
             int outputCenterX = outputWidth / 2;
             int outputCenterY = outputHeight / 2;
 
@@ -907,8 +893,8 @@ public class DynamicThemeUtils {
 
             final int FINDER_SIZE = 7;
             final float SCALE_DOWN_FACTOR = style == Theme.Code.Style.ROUND
-                    || style == Theme.Code.Style.OVAL ? 21f / 30f : 31f / 32f;
-            final int OVERLAY_SIZE = overlay != null ? Theme.Code.OVERLAY_SIZE : 0;
+                    || style == Theme.Code.Style.OVAL ? 21f / 30f : 1f;
+            final int OVERLAY_SIZE = overlay != null ? Theme.Size.OVERLAY : 0;
             final int OVERLAY_SIZE_CENTER = OVERLAY_SIZE / 2;
 
             int dataSize = (int) (multiple * SCALE_DOWN_FACTOR);
@@ -918,9 +904,9 @@ public class DynamicThemeUtils {
             final float corner;
 
             if (theme instanceof CornerTheme) {
-                corner = ((CornerTheme<?>) theme).getCornerSizeDp(false)
-                        == Theme.AUTO ? Theme.Code.Style.DEFAULT : Math.min(((CornerTheme<?>)
-                        theme).getCornerRadius(), finderDiameter / 2);
+                corner = ((CornerTheme<?>) theme).getCornerSizeDp(false) != Theme.Corner.AUTO
+                        ? Math.min(((CornerTheme<?>) theme).getCornerRadius(), finderDiameter / 2)
+                        : Theme.Code.Style.DEFAULT;
             } else {
                 corner = Theme.Code.Style.DEFAULT;
             }
@@ -964,9 +950,14 @@ public class DynamicThemeUtils {
                 Bitmap overlayBitmap = DynamicBitmapUtils.getBitmap(overlay,
                         overlaySize, overlaySize, false, 0);
 
-                if (overlayBitmap != null) {
+                if (overlayColor != Theme.Color.UNKNOWN) {
                     paint.setColorFilter(new PorterDuffColorFilter(
                             overlayColor, PorterDuff.Mode.SRC_ATOP));
+                } else {
+                    paint.setColorFilter(null);
+                }
+
+                if (overlayBitmap != null) {
                     canvas.drawBitmap(overlayBitmap, outputCenterX - overlaySize / 2f,
                             outputCenterY - overlaySize / 2f, paint);
                 }
@@ -984,7 +975,7 @@ public class DynamicThemeUtils {
      * @param x The x-axis start location.
      * @param y The y-axis start location.
      * @param diameter The diameter to be used.
-     * @param paint The paint ot be used.
+     * @param paint The paint to be used.
      * @param background The background color to be set.
      * @param parent The parent color to be set.
      * @param child The child color to be set.

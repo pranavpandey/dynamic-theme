@@ -16,6 +16,7 @@
 
 package com.pranavpandey.android.dynamic.theme;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 import com.pranavpandey.android.dynamic.theme.base.AutoTheme;
@@ -32,7 +33,7 @@ import com.pranavpandey.android.dynamic.theme.base.StyleTheme;
 import com.pranavpandey.android.dynamic.theme.base.TextTheme;
 import com.pranavpandey.android.dynamic.theme.base.TranslucentTheme;
 import com.pranavpandey.android.dynamic.theme.base.TypeTheme;
-import com.pranavpandey.android.dynamic.theme.utils.DynamicThemeUtils;
+import com.pranavpandey.android.dynamic.theme.util.DynamicThemeUtils;
 
 /**
  * An abstract class to implement an app theme.
@@ -57,13 +58,33 @@ public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, F
     }
 
     @Override
+    public @ColorInt int getCodeBackgroundColor() {
+        return getBackgroundColor();
+    }
+
+    @Override
+    public @ColorInt int getCodeDataColor() {
+        return getTintBackgroundColor();
+    }
+
+    @Override
+    public @ColorInt int getCodeFinderColor() {
+        return getPrimaryColor();
+    }
+
+    @Override
+    public @ColorInt int getCodeOverlayColor() {
+        return getAccentColor();
+    }
+
+    @Override
     public float getCodeContrastRatio() {
         return Math.max(Theme.Code.CONTRAST_RATIO, getContrastRatio());
     }
 
     @Override
     public @Theme.Code.Style int getCodeStyle() {
-        return getCornerSizeDp(false) == Theme.AUTO 
+        return getCornerSizeDp(false) == Theme.Corner.AUTO
                 || getCornerSizeDp() < Theme.Corner.MIN_ROUND
                 ? Theme.Code.Style.DEFAULT : getCornerSizeDp() < Theme.Corner.MIN_OVAL
                 ? Theme.Code.Style.ROUND : Theme.Code.Style.OVAL;

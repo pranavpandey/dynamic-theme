@@ -379,10 +379,82 @@ public @interface Theme {
     }
 
     /**
+     * Constant values for the font scale.
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(value = { Font.AUTO, Font.CUSTOM })
+    @interface Font {
+
+        /**
+         * Constant value for the unknown font scale.
+         */
+        int UNKNOWN = Color.UNKNOWN;
+
+        /**
+         * Constant value for the auto font scale.
+         */
+        int AUTO = Theme.AUTO;
+
+        /**
+         * Constant value for the custom font scale.
+         */
+        int CUSTOM = Theme.CUSTOM;
+
+        /**
+         * Minimum value for the font scale.
+         */
+        int MIN = 50;
+
+        /**
+         * Maximum value for the font scale.
+         */
+        int MAX = 150;
+
+        /**
+         * Default value for the font scale.
+         */
+        int DEFAULT = 100;
+
+        /**
+         * Default value for the font scale interval.
+         */
+        int INTERVAL = 1;
+
+        /**
+         * Factor to avoid inconsistency on configuration changes.
+         */
+        float FACTOR = 10f;
+
+        /**
+         * String constant values for the font scale.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
+        @interface ToString {
+
+            /**
+             * String constant for the auto font scale.
+             */
+            String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the custom font scale.
+             */
+            String CUSTOM = Theme.ToString.CUSTOM;
+        }
+    }
+
+    /**
      * Constant values for the corner size.
      */
     @Retention(RetentionPolicy.SOURCE)
+    @IntDef(value = { Corner.AUTO, Corner.CUSTOM })
     @interface Corner {
+
+        /**
+         * Constant value for the unknown corner size.
+         */
+        int UNKNOWN = Color.UNKNOWN;
 
         /**
          * Constant value for the auto corner size.
@@ -390,22 +462,22 @@ public @interface Theme {
         int AUTO = Theme.AUTO;
 
         /**
-         * Constant value for the unknown corner size.
+         * Constant value for the custom corner size.
          */
-        int UNKNOWN = Theme.CUSTOM;
+        int CUSTOM = Theme.CUSTOM;
 
         /**
-         * Minimum value for the corner in dips.
+         * Minimum value for the corner size in dips.
          */
         int MIN = 0;
 
         /**
-         * Maximum value for the corner in dips.
+         * Maximum value for the corner size in dips.
          */
         int MAX = 28;
 
         /**
-         * Default value for the corner in dips.
+         * Default value for the corner size in dips.
          */
         int DEFAULT = 2;
 
@@ -418,6 +490,11 @@ public @interface Theme {
          * Minimum corner size in dips to provide the oval theme overlay.
          */
         int MIN_OVAL = 16;
+
+        /**
+         * Default value for the corner size interval.
+         */
+        int INTERVAL = 2;
 
         /**
          * Factor to decide the maximum corner size for the widgets.
@@ -433,6 +510,24 @@ public @interface Theme {
          * Larger factor to decide the maximum corner size for the widgets.
          */
         float FACTOR_MAX_LARGE = 4f;
+
+        /**
+         * String constant values for the corner size.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
+        @interface ToString {
+
+            /**
+             * String constant for the auto corner size.
+             */
+            String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the custom corner size.
+             */
+            String CUSTOM = Theme.ToString.CUSTOM;
+        }
     }
 
     /**
@@ -496,7 +591,13 @@ public @interface Theme {
      * Constant values for the contrast.
      */
     @Retention(RetentionPolicy.SOURCE)
+    @IntDef(value = { Contrast.AUTO, Contrast.CUSTOM })
     @interface Contrast {
+
+        /**
+         * Constant value for the unknown contrast.
+         */
+        int UNKNOWN = Color.UNKNOWN;
 
         /**
          * Constant value for the auto contrast.
@@ -504,9 +605,9 @@ public @interface Theme {
         int AUTO = Theme.AUTO;
 
         /**
-         * Constant value for the unknown contrast.
+         * Constant value for the custom contrast.
          */
-        int UNKNOWN = Theme.CUSTOM;
+        int CUSTOM = Theme.CUSTOM;
 
         /**
          * Minimum value for the contrast.
@@ -527,13 +628,52 @@ public @interface Theme {
          * Default value for the contrast.
          */
         int DEFAULT = 45;
+
+        /**
+         * Default value for the contrast interval.
+         */
+        int INTERVAL = 5;
+
+        /**
+         * String constant values for the contrast.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
+        @interface ToString {
+
+            /**
+             * String constant for the auto contrast.
+             */
+            String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the custom contrast.
+             */
+            String CUSTOM = Theme.ToString.CUSTOM;
+        }
     }
 
     /**
      * Constant values for the opacity.
      */
     @Retention(RetentionPolicy.SOURCE)
+    @IntDef(value = { Opacity.AUTO, Opacity.CUSTOM })
     @interface Opacity {
+
+        /**
+         * Constant value for the unknown opacity.
+         */
+        int UNKNOWN = Color.UNKNOWN;
+
+        /**
+         * Constant value for the auto opacity.
+         */
+        int AUTO = Theme.AUTO;
+
+        /**
+         * Constant value for the custom opacity.
+         */
+        int CUSTOM = Theme.CUSTOM;
 
         /**
          * Minimum value for the opacity.
@@ -564,6 +704,29 @@ public @interface Theme {
          * Default value for the opacity.
          */
         int DEFAULT = MAX;
+
+        /**
+         * Default value for the opacity interval.
+         */
+        int INTERVAL = 1;
+
+        /**
+         * String constant values for the opacity.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
+        @interface ToString {
+
+            /**
+             * String constant for the auto opacity.
+             */
+            String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the custom opacity.
+             */
+            String CUSTOM = Theme.ToString.CUSTOM;
+        }
     }
 
     /**
@@ -603,16 +766,77 @@ public @interface Theme {
     }
 
     /**
+     * Interface to hold the theme size constants.
+     */
+    @interface Size {
+
+        /**
+         * Minimum value for the theme size in pixels.
+         */
+        int MIN = 20;
+
+        /**
+         * Maximum value for the theme size in pixels.
+         */
+        int MAX = 2000;
+
+        /**
+         * Constant value for the small theme size in pixels.
+         */
+        int SMALL = 256;
+
+        /**
+         * Constant value for the normal theme size in pixels.
+         */
+        int NORMAL = 512;
+
+        /**
+         * Constant value for the large theme size in pixels.
+         */
+        int LARGE = 1024;
+
+        /**
+         * Constant value for the theme size in pixels.
+         */
+        int DEFAULT = 480;
+
+        /**
+         * Factor for the minimum theme size.
+         */
+        float FACTOR_MIN = 1.5f;
+
+        /**
+         * Two times factor for the theme size.
+         */
+        int FACTOR_200 = 2;
+
+        /**
+         * Three times factor for the theme size.
+         */
+        int FACTOR_300 = 3;
+
+        /**
+         * Constant value for the theme code quiet zone.
+         */
+        int QUIET_ZONE = 2;
+
+        /**
+         * Constant value for the theme code overlay size in pixels.
+         */
+        int OVERLAY = 8;
+    }
+
+    /**
      * Constants for the theme keys.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { Key.BRACKETS, Key.QUOTE, Key.SPLIT, Key.DARK, Key.INVERSE,
-            Key.SHARE, Key.RES, Key.WIDGET_ID, Key.BACKGROUND, Key.TINT_BACKGROUND,
-            Key.SURFACE, Key.TINT_SURFACE, Key.PRIMARY, Key.TINT_PRIMARY,
-            Key.PRIMARY_DARK, Key.TINT_PRIMARY_DARK, Key.ACCENT, Key.TINT_ACCENT,
-            Key.ACCENT_DARK, Key.TINT_ACCENT_DARK, Key.ERROR, Key.TINT_ERROR,
-            Key.TEXT_PRIMARY, Key.TEXT_PRIMARY_INVERSE, Key.TEXT_SECONDARY,
-            Key.TEXT_SECONDARY_INVERSE, Key.FONT_SCALE, Key.CORNER_RADIUS,
+    @StringDef(value = { Key.BRACKETS, Key.QUOTE, Key.SPLIT, Key.DARK,
+            Key.INVERSE, Key.SHARE, Key.SHARE_ALT, Key.RES, Key.WIDGET_ID,
+            Key.BACKGROUND, Key.TINT_BACKGROUND, Key.SURFACE, Key.TINT_SURFACE,
+            Key.PRIMARY, Key.TINT_PRIMARY, Key.PRIMARY_DARK, Key.TINT_PRIMARY_DARK,
+            Key.ACCENT, Key.TINT_ACCENT, Key.ACCENT_DARK, Key.TINT_ACCENT_DARK,
+            Key.ERROR, Key.TINT_ERROR, Key.TEXT_PRIMARY, Key.TEXT_PRIMARY_INVERSE,
+            Key.TEXT_SECONDARY, Key.TEXT_SECONDARY_INVERSE, Key.FONT_SCALE, Key.CORNER_RADIUS,
             Key.BACKGROUND_AWARE, Key.STYLE, Key.TYPE, Key.HEADER, Key.OPACITY, Key.CONTRAST })
     @interface Key {
 
@@ -645,6 +869,11 @@ public @interface Theme {
          * Constant name for sharing the theme.
          */
         String SHARE = "dynamic-theme";
+
+        /**
+         * Constant name for sharing the alternate theme.
+         */
+        String SHARE_ALT = "dynamic-theme-alt";
 
         /**
          * Serialized name for the theme resource.
@@ -790,14 +1019,14 @@ public @interface Theme {
          * Short constants for the theme keys.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Key.BRACKETS, Short.QUOTE, Short.SPLIT, Short.DARK,
-                Short.INVERSE, Short.BACKGROUND, Short.TINT_BACKGROUND, Short.SURFACE,
-                Short.TINT_SURFACE, Short.PRIMARY, Short.TINT_PRIMARY, Short.PRIMARY_DARK,
-                Short.TINT_PRIMARY_DARK, Short.ACCENT, Short.TINT_ACCENT, Short.ACCENT_DARK,
-                Short.TINT_ACCENT_DARK, Short.ERROR, Short.TINT_ERROR, Short.TEXT_PRIMARY,
-                Short.TEXT_PRIMARY_INVERSE, Short.TEXT_SECONDARY, Short.TEXT_SECONDARY_INVERSE,
-                Short.FONT_SCALE, Short.CORNER_RADIUS, Short.BACKGROUND_AWARE, Short.STYLE,
-                Short.TYPE, Short.HEADER, Short.OPACITY, Short.CONTRAST })
+        @StringDef(value = { Key.BRACKETS, Short.QUOTE, Short.SPLIT, Short.DARK, Short.INVERSE,
+                Short.BACKGROUND, Short.TINT_BACKGROUND, Short.SURFACE, Short.TINT_SURFACE,
+                Short.PRIMARY, Short.TINT_PRIMARY, Short.PRIMARY_DARK, Short.TINT_PRIMARY_DARK,
+                Short.ACCENT, Short.TINT_ACCENT, Short.ACCENT_DARK, Short.TINT_ACCENT_DARK,
+                Short.ERROR, Short.TINT_ERROR, Short.TEXT_PRIMARY, Short.TEXT_PRIMARY_INVERSE,
+                Short.TEXT_SECONDARY, Short.TEXT_SECONDARY_INVERSE, Short.FONT_SCALE,
+                Short.CORNER_RADIUS, Short.BACKGROUND_AWARE, Short.STYLE, Short.TYPE,
+                Short.HEADER, Short.OPACITY, Short.CONTRAST })
         @interface Short {
 
             /**
@@ -1306,27 +1535,18 @@ public @interface Theme {
     /**
      * Interface to hold the theme code values.
      */
+    @Retention(RetentionPolicy.SOURCE)
     @interface Code {
 
         /**
-         * Constant value for the theme code size in pixels.
+         * Constant value for the theme code visible contrast.
          */
-        int SIZE = 480;
-
-        /**
-         * Constant value for the theme code quiet zone.
-         */
-        int QUIET_ZONE = 2;
+        int CONTRAST = Contrast.Code;
 
         /**
          * Constant value for the theme code visible contrast ratio.
          */
-        float CONTRAST_RATIO = 0.5f;
-
-        /**
-         * Constant value for the theme code overlay size in pixels.
-         */
-        int OVERLAY_SIZE = 8;
+        float CONTRAST_RATIO = Contrast.Code / (float) Contrast.MAX;
 
         /**
          * Interface to hold the theme code color constants.
@@ -1347,6 +1567,7 @@ public @interface Theme {
         /**
          * Interface to hold the theme code style constants.
          */
+        @Retention(RetentionPolicy.SOURCE)
         @IntDef(value = { Style.SQUARE, Style.ROUND, Style.OVAL })
         @interface Style {
 
@@ -1374,6 +1595,62 @@ public @interface Theme {
              * Default value for the code corners.
              */
             int CORNER = 0;
+        }
+
+        /**
+         * Constant values for the theme code overlay.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @IntDef(value = { Overlay.HIDE, Overlay.AUTO, Overlay.DYNAMIC, Overlay.CUSTOM })
+        @interface Overlay {
+
+            /**
+             * Constant value for no overlay.
+             */
+            int HIDE = Theme.DISABLE;
+
+            /**
+             * Constant value for the default overlay.
+             */
+            int AUTO = Theme.AUTO;
+
+            /**
+             * Constant value for the dynamic overlay.
+             */
+            int DYNAMIC = Theme.SYSTEM;
+
+            /**
+             * Constant value for the custom overlay.
+             */
+            int CUSTOM = Theme.CUSTOM;
+
+            /**
+             * String constant values for the theme code overlay.
+             */
+            @Retention(RetentionPolicy.SOURCE)
+            @StringDef(value = { ToString.HIDE, ToString.AUTO, ToString.DYNAMIC, ToString.CUSTOM })
+            @interface ToString  {
+
+                /**
+                 * String constant value for no overlay.
+                 */
+                String HIDE = Theme.ToString.DISABLE;
+
+                /**
+                 * String constant value for the default overlay.
+                 */
+                String AUTO = Theme.ToString.AUTO;
+
+                /**
+                 * String constant value for the dynamic overlay.
+                 */
+                String DYNAMIC = Theme.ToString.SYSTEM;
+
+                /**
+                 * String constant value for the custom overlay.
+                 */
+                String CUSTOM = Theme.ToString.CUSTOM;
+            }
         }
     }
 

@@ -42,6 +42,15 @@ public interface CornerTheme<T extends CornerTheme<T>> extends BaseTheme<T> {
     int getCornerRadius();
 
     /**
+     * Set the corner size used by this theme.
+     *
+     * @param cornerRadius The corner size to be set in pixels.
+     *
+     * @return The {@link T} object to allow for chaining of calls to set methods.
+     */
+    @NonNull T setCornerRadius(int cornerRadius);
+
+    /**
      * Returns the corner size used by this theme in dips.
      *
      * @param resolve {@code true} to resolve auto corner size in dips.
@@ -56,15 +65,6 @@ public interface CornerTheme<T extends CornerTheme<T>> extends BaseTheme<T> {
      * @return The corner size used by this theme in dips.
      */
     int getCornerSizeDp();
-
-    /**
-     * Set the corner size used by this theme.
-     *
-     * @param cornerRadius The corner size to be set in pixels.
-     *
-     * @return The {@link T} object to allow for chaining of calls to set methods.
-     */
-    @NonNull T setCornerRadius(int cornerRadius);
 
     /**
      * Set the corner size used by this theme.

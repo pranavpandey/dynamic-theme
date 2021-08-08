@@ -16,6 +16,7 @@
 
 package com.pranavpandey.android.dynamic.theme.base;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 import com.pranavpandey.android.dynamic.theme.Theme;
@@ -33,6 +34,34 @@ public interface CodeTheme<T extends CodeTheme<T>> extends StringTheme<T> {
      * @return The data for the theme code.
      */
     @NonNull String getCodeData();
+
+    /**
+     * Returns the color for the code background.
+     *
+     * @return The color for the code background.
+     */
+    @ColorInt int getCodeBackgroundColor();
+
+    /**
+     * Returns the color for the code data.
+     *
+     * @return The color for the code data.
+     */
+    @ColorInt int getCodeDataColor();
+
+    /**
+     * Returns the color for the code finder.
+     *
+     * @return The color for the finder data.
+     */
+    @ColorInt int getCodeFinderColor();
+
+    /**
+     * Returns the color for the code overlay.
+     *
+     * @return The color for the code overlay.
+     */
+    @ColorInt int getCodeOverlayColor();
 
     /**
      * Returns the code contrast ratio for by this theme.

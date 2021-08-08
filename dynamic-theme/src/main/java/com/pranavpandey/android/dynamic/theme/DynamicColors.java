@@ -77,6 +77,19 @@ public class DynamicColors implements Parcelable {
     }
 
     /**
+     * Read an object of this class from the parcel.
+     *
+     * @param in The parcel to read the values.
+     */
+    public DynamicColors(@NonNull Parcel in) {
+        this();
+
+        in.readMap(mOriginal, mOriginal.getClass().getClassLoader());
+        in.readMap(mDark, mDark.getClass().getClassLoader());
+        in.readMap(mLight, mDark.getClass().getClassLoader());
+    }
+
+    /**
      * Parcelable creator to create from parcel.
      */
     public static final Parcelable.Creator<DynamicColors> CREATOR =
@@ -92,22 +105,9 @@ public class DynamicColors implements Parcelable {
         }
     };
 
-    /**
-     * Read an object of this class from the parcel.
-     *
-     * @param in The parcel to read the values.
-     */
-    public DynamicColors(Parcel in) {
-        this();
-
-        in.readMap(mOriginal, mOriginal.getClass().getClassLoader());
-        in.readMap(mDark, mDark.getClass().getClassLoader());
-        in.readMap(mLight, mDark.getClass().getClassLoader());
-    }
-
     @Override
     public int describeContents() {
-        return 0;
+        return hashCode();
     }
 
     @Override

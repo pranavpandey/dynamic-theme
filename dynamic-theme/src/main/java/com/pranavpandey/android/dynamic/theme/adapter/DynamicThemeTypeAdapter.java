@@ -36,7 +36,7 @@ import com.pranavpandey.android.dynamic.theme.base.SurfaceTheme;
 import com.pranavpandey.android.dynamic.theme.base.TextTheme;
 import com.pranavpandey.android.dynamic.theme.base.TranslucentTheme;
 import com.pranavpandey.android.dynamic.theme.base.WidgetTheme;
-import com.pranavpandey.android.dynamic.theme.utils.DynamicThemeUtils;
+import com.pranavpandey.android.dynamic.theme.util.DynamicThemeUtils;
 
 import java.io.IOException;
 
