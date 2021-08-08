@@ -24,4 +24,45 @@
     <item name="adt_fill_alpha_secondary" format="float" type="dimen">0.6</item>
     <item name="adt_fill_alpha_dark" format="float" type="dimen">0.8</item>
 
+    <!-- Font -->
+    <integer name="adt_font_scale">100</integer>
+    <integer name="adt_font_scale_min">50</integer>
+    <integer name="adt_font_scale_max">150</integer>
+    <integer name="adt_font_scale_interval">1</integer>
+
+    <!-- Corner -->
+    <integer name="adt_corner_size">2</integer>
+    <integer name="adt_corner_size_min">0</integer>
+    <integer name="adt_corner_size_max">28</integer>
+    <integer name="adt_corner_size_min_round">8</integer>
+    <integer name="adt_corner_size_min_oval">16</integer>
+    <integer name="adt_corner_size_max_widget">28</integer>
+    <integer name="adt_corner_size_interval">2</integer>
+
+    <!-- Contrast -->
+    <integer name="adt_contrast">45</integer>
+    <integer name="adt_contrast_min">0</integer>
+    <integer name="adt_contrast_max">100</integer>
+    <integer name="adt_contrast_code">50</integer>
+    <integer name="adt_contrast_interval">5</integer>
+
+    <!-- Opacity -->
+    <integer name="adt_opacity">255</integer>
+    <integer name="adt_opacity_min">0</integer>
+    <integer name="adt_opacity_max">255</integer>
+    <integer name="adt_opacity_floating">235</integer>
+    <integer name="adt_opacity_widget">175</integer>
+    <integer name="adt_opacity_translucent">150</integer>
+    <integer name="adt_opacity_interval">1</integer>
+
+    <!-- Size -->
+    <integer name="adt_size">480</integer>
+    <integer name="adt_size_min">20</integer>
+    <integer name="adt_size_max">2000</integer>
+    <integer name="adt_size_small">256</integer>
+    <integer name="adt_size_normal">512</integer>
+    <integer name="adt_size_large">1024</integer>
+    <integer name="adt_size_quiet_zone">2</integer>
+    <integer name="adt_size_overlay">8</integer>
+
 </resources>

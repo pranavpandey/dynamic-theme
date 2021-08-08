@@ -28,4 +28,8 @@
     <color name="adt_purple">#CE93D8</color>
     <color name="adt_green">#E6EE9C</color>
 
+    <!-- Code -->
+    <color name="adt_code_background">#FFFFFF</color>
+    <color name="adt_code_data">#000000</color>
+
 </resources>
