@@ -17,15 +17,15 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 
 ```
 {
-  "backgroundColor": "#37474F",
+  "backgroundColor": "#455A64",
   "tintBackgroundColor": "auto",
   "surfaceColor": "auto",
   "tintSurfaceColor": "auto",
-  "primaryColor": "#37474F",
+  "primaryColor": "#FF455A64",
   "tintPrimaryColor": "auto",
   "primaryColorDark": "auto",
   "tintPrimaryColorDark": "auto",
-  "accentColor": "#CDDC39",
+  "accentColor": "#FFE6EE9C",
   "tintAccentColor": "auto",
   "accentColorDark": "auto",
   "tintAccentColorDark": "auto",
@@ -150,7 +150,7 @@ It can be installed by adding the following dependency to your `build.gradle` fi
 ```groovy
 dependencies {
     // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-theme:3.2.0'
+    implementation 'com.pranavpandey.android:dynamic-theme:4.0.0'
 }
 ```
 
