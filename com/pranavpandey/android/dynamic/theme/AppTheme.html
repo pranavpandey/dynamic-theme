@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -232,16 +232,44 @@ implements <a href="base/BaseTheme.html" title="interface in com.pranavpandey.an
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCodeStrokeColor()">getCodeStrokeColor</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns the color for the code stroke.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCodeStyle()">getCodeStyle</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns the style for the theme code.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThemeData()">getThemeData</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns the sharable data for the theme.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isDynamicColor()">isDynamicColor</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns whether to the dynamic colors are used by this theme.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isStroke()">isStroke</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns whether the stroke is required for this theme.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toJsonString()">toJsonString</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Converts this theme into its JSON equivalent.</div>
 </td>
 </tr>
 </table>
@@ -327,7 +355,7 @@ implements <a href="base/BaseTheme.html" title="interface in com.pranavpandey.an
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="base/StringTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StringTheme</a></h3>
-<code><a href="base/StringTheme.html#toDynamicString()">toDynamicString</a>, <a href="base/StringTheme.html#toJsonString()">toJsonString</a></code></li>
+<code><a href="base/StringTheme.html#toDynamicString()">toDynamicString</a>, <a href="base/StringTheme.html#toJsonString(boolean,boolean)">toJsonString</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.com.pranavpandey.android.dynamic.theme.base.StrokeTheme">
@@ -423,6 +451,41 @@ implements <a href="base/BaseTheme.html" title="interface in com.pranavpandey.an
 </dl>
 </li>
 </ul>
+<a id="isStroke()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isStroke</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isStroke()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="base/StrokeTheme.html#isStroke()">StrokeTheme</a></code></span></div>
+<div class="block">Returns whether the stroke is required for this theme.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="base/StrokeTheme.html#isStroke()">isStroke</a></code>&nbsp;in interface&nbsp;<code><a href="base/StrokeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StrokeTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a> extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a>&gt;&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> if the stroke is required for this theme.</dd>
+</dl>
+</li>
+</ul>
+<a id="getThemeData()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getThemeData</h4>
+<pre class="methodSignature">@NonNull
+public&nbsp;java.lang.String&nbsp;getThemeData()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="base/StringTheme.html#getThemeData()">StringTheme</a></code></span></div>
+<div class="block">Returns the sharable data for the theme.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="base/StringTheme.html#getThemeData()">getThemeData</a></code>&nbsp;in interface&nbsp;<code><a href="base/StringTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StringTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a> extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a>&gt;&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The sharable data for the theme.</dd>
+</dl>
+</li>
+</ul>
 <a id="getCodeData()">
 <!--   -->
 </a>
@@ -456,6 +519,24 @@ public&nbsp;int&nbsp;getCodeBackgroundColor()</pre>
 <dd><code><a href="base/CodeTheme.html#getCodeBackgroundColor()">getCodeBackgroundColor</a></code>&nbsp;in interface&nbsp;<code><a href="base/CodeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">CodeTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a> extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a>&gt;&gt;</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The color for the code background.</dd>
+</dl>
+</li>
+</ul>
+<a id="getCodeStrokeColor()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCodeStrokeColor</h4>
+<pre class="methodSignature">@ColorInt
+public&nbsp;int&nbsp;getCodeStrokeColor()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="base/CodeTheme.html#getCodeStrokeColor()">CodeTheme</a></code></span></div>
+<div class="block">Returns the color for the code stroke.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="base/CodeTheme.html#getCodeStrokeColor()">getCodeStrokeColor</a></code>&nbsp;in interface&nbsp;<code><a href="base/CodeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">CodeTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a> extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a>&gt;&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The color for the code stroke.</dd>
 </dl>
 </li>
 </ul>
@@ -533,7 +614,7 @@ public&nbsp;int&nbsp;getCodeOverlayColor()</pre>
 <a id="getCodeStyle()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getCodeStyle</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getCodeStyle()</pre>
@@ -544,6 +625,24 @@ public&nbsp;int&nbsp;getCodeOverlayColor()</pre>
 <dd><code><a href="base/CodeTheme.html#getCodeStyle()">getCodeStyle</a></code>&nbsp;in interface&nbsp;<code><a href="base/CodeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">CodeTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a> extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a>&gt;&gt;</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The style for the theme code.</dd>
+</dl>
+</li>
+</ul>
+<a id="toJsonString()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toJsonString</h4>
+<pre class="methodSignature">@NonNull
+public&nbsp;java.lang.String&nbsp;toJsonString()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="base/StringTheme.html#toJsonString()">StringTheme</a></code></span></div>
+<div class="block">Converts this theme into its JSON equivalent.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="base/StringTheme.html#toJsonString()">toJsonString</a></code>&nbsp;in interface&nbsp;<code><a href="base/StringTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StringTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a> extends <a href="AppTheme.html" title="class in com.pranavpandey.android.dynamic.theme">AppTheme</a>&lt;<a href="AppTheme.html" title="type parameter in AppTheme">T</a>&gt;&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The JSON equivalent of this theme.</dd>
 </dl>
 </li>
 </ul>
@@ -575,7 +674,7 @@ public&nbsp;int&nbsp;getCodeOverlayColor()</pre>
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><h5>null</h5></div>
+<div class="aboutLanguage"><h5>4.0.0</h5></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_bottom">

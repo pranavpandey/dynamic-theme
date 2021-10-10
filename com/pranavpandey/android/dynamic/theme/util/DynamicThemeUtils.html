@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9,"i27":9,"i28":9,"i29":9,"i30":9,"i31":9,"i32":9,"i33":9,"i34":9,"i35":9,"i36":9,"i37":9};
+var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9,"i27":9,"i28":9,"i29":9,"i30":9,"i31":9,"i32":9,"i33":9,"i34":9,"i35":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -89,13 +89,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -140,45 +140,6 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#PATTERN_LINE">PATTERN_LINE</a></span></code></th>
-<td class="colLast">
-<div class="block">Pattern to replace the next line.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#PATTERN_QUOTES">PATTERN_QUOTES</a></span></code></th>
-<td class="colLast">
-<div class="block">Pattern to replace extra quotes.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#PATTERN_SPACE">PATTERN_SPACE</a></span></code></th>
-<td class="colLast">
-<div class="block">Pattern to replace white space.</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section role="region">
 <ul class="blockList">
@@ -265,27 +226,19 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#formatTheme(java.lang.String)">formatTheme</a></span>&#8203;(java.lang.String&nbsp;string)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#format(java.lang.String)">format</a></span>&#8203;(java.lang.String&nbsp;string)</code></th>
 <td class="colLast">
 <div class="block">Formats the theme string and remove extra double quotes and white spaces.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>static <a href="https://developer.android.com/reference/android/graphics/Bitmap.html?is-external=true" title="class or interface in android.graphics" class="externalLink">Bitmap</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateThemeCode(com.pranavpandey.android.dynamic.theme.base.CodeTheme,android.graphics.drawable.Drawable)">generateThemeCode</a></span>&#8203;(<a href="../base/CodeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">CodeTheme</a>&lt;?&gt;&nbsp;theme,
-                 <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html?is-external=true" title="class or interface in android.graphics.drawable" class="externalLink">Drawable</a>&nbsp;overlay)</code></th>
-<td class="colLast">
-<div class="block">Generates a QR code from the dynamic theme.</div>
-</td>
-</tr>
-<tr id="i8" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFileName(java.lang.String)">getFileName</a></span>&#8203;(java.lang.String&nbsp;extension)</code></th>
 <td class="colLast">
 <div class="block">Returns the file name to save the theme.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFileName(java.lang.String,java.lang.String)">getFileName</a></span>&#8203;(java.lang.String&nbsp;prefix,
            java.lang.String&nbsp;extension)</code></th>
@@ -293,7 +246,7 @@ extends java.lang.Object</pre>
 <div class="block">Returns the file name to save the theme.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThemeData(android.content.Context,android.content.Intent)">getThemeData</a></span>&#8203;(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content" class="externalLink">Context</a>&nbsp;context,
             <a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink">Intent</a>&nbsp;intent)</code></th>
@@ -301,7 +254,7 @@ extends java.lang.Object</pre>
 <div class="block">Returns the theme data from the intent.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThemeData(android.content.Context,android.net.Uri)">getThemeData</a></span>&#8203;(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content" class="externalLink">Context</a>&nbsp;context,
             <a href="https://developer.android.com/reference/android/net/Uri.html?is-external=true" title="class or interface in android.net" class="externalLink">Uri</a>&nbsp;uri)</code></th>
@@ -309,14 +262,14 @@ extends java.lang.Object</pre>
 <div class="block">Returns the theme data from the URI.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>static java.util.HashMap&lt;java.lang.String,&#8203;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThemeMap()">getThemeMap</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns the key-value map to encode the theme string.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThemeName(android.content.Context,android.content.Intent,java.lang.String)">getThemeName</a></span>&#8203;(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content" class="externalLink">Context</a>&nbsp;context,
             <a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink">Intent</a>&nbsp;intent,
@@ -325,154 +278,154 @@ extends java.lang.Object</pre>
 <div class="block">Returns the theme name from the intent.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>static <a href="https://developer.android.com/reference/android/net/Uri.html?is-external=true" title="class or interface in android.net" class="externalLink">Uri</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThemeUri(android.content.Intent)">getThemeUri</a></span>&#8203;(<a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink">Intent</a>&nbsp;intent)</code></th>
 <td class="colLast">
 <div class="block">Returns the theme URI from the intent.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getThemeUrl(com.pranavpandey.android.dynamic.theme.base.StringTheme)">getThemeUrl</a></span>&#8203;(<a href="../base/StringTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StringTheme</a>&lt;?&gt;&nbsp;theme)</code></th>
 <td class="colLast">
 <div class="block">Returns the encoded theme string with the URL.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromBackgroundAware(int)">getValueFromBackgroundAware</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the background aware into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromBackgroundAware(java.lang.String)">getValueFromBackgroundAware</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the background aware string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromColor(int)">getValueFromColor</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the color integer into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromColor(java.lang.String)">getValueFromColor</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the color string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromContrast(int)">getValueFromContrast</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the contrast into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromContrast(java.lang.String)">getValueFromContrast</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the contrast string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromCornerRadius(int)">getValueFromCornerRadius</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the corner radius into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromCornerRadius(java.lang.String)">getValueFromCornerRadius</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the corner radius string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromFontScale(int)">getValueFromFontScale</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the font scale into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromFontScale(java.lang.String)">getValueFromFontScale</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the font scale string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromOpacity(int)">getValueFromOpacity</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the opacity into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromOpacity(java.lang.String)">getValueFromOpacity</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the opacity string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromStyle(int)">getValueFromStyle</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the style into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromStyle(java.lang.String)">getValueFromStyle</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the style string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromType(int)">getValueFromType</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the type into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromType(java.lang.String)">getValueFromType</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the type string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromVisibility(int)">getValueFromVisibility</a></span>&#8203;(int&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the visibility into its string equivalent.</div>
 </td>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code>static int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValueFromVisibility(java.lang.String)">getValueFromVisibility</a></span>&#8203;(java.lang.String&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the visibility string into its integer equivalent.</div>
 </td>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isValidTheme(java.lang.String)">isValidTheme</a></span>&#8203;(java.lang.String&nbsp;string)</code></th>
 <td class="colLast">
 <div class="block">Checks whether the string is a valid JSON.</div>
 </td>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isValidThemeIntent(android.content.Context,android.content.Intent)">isValidThemeIntent</a></span>&#8203;(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content" class="externalLink">Context</a>&nbsp;context,
                   <a href="https://developer.android.com/reference/android/content/Intent.html?is-external=true" title="class or interface in android.content" class="externalLink">Intent</a>&nbsp;intent)</code></th>
@@ -480,20 +433,13 @@ extends java.lang.Object</pre>
 <div class="block">Checks whether the intent is valid for the theme.</div>
 </td>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code>static java.io.File</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requestThemeFile(android.content.Context,java.lang.String,java.lang.String)">requestThemeFile</a></span>&#8203;(<a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content" class="externalLink">Context</a>&nbsp;context,
                 java.lang.String&nbsp;theme,
                 java.lang.String&nbsp;data)</code></th>
 <td class="colLast">
 <div class="block">Request to return a dynamic theme file.</div>
-</td>
-</tr>
-<tr id="i37" class="rowColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#scanThemeCode(android.graphics.Bitmap)">scanThemeCode</a></span>&#8203;(<a href="https://developer.android.com/reference/android/graphics/Bitmap.html?is-external=true" title="class or interface in android.graphics" class="externalLink">Bitmap</a>&nbsp;bitmap)</code></th>
-<td class="colLast">
-<div class="block">Scans the dynamic theme QR code.</div>
 </td>
 </tr>
 </table>
@@ -513,58 +459,6 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="PATTERN_LINE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>PATTERN_LINE</h4>
-<pre>public static final&nbsp;java.lang.String PATTERN_LINE</pre>
-<div class="block">Pattern to replace the next line.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../../constant-values.html#com.pranavpandey.android.dynamic.theme.util.DynamicThemeUtils.PATTERN_LINE">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="PATTERN_QUOTES">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>PATTERN_QUOTES</h4>
-<pre>public static final&nbsp;java.lang.String PATTERN_QUOTES</pre>
-<div class="block">Pattern to replace extra quotes.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../../constant-values.html#com.pranavpandey.android.dynamic.theme.util.DynamicThemeUtils.PATTERN_QUOTES">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="PATTERN_SPACE">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>PATTERN_SPACE</h4>
-<pre>public static final&nbsp;java.lang.String PATTERN_SPACE</pre>
-<div class="block">Pattern to replace white space.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../../constant-values.html#com.pranavpandey.android.dynamic.theme.util.DynamicThemeUtils.PATTERN_SPACE">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -951,15 +845,15 @@ public static&nbsp;java.lang.String&nbsp;getValueFromVisibility&#8203;(int&nbsp;
 </dl>
 </li>
 </ul>
-<a id="formatTheme(java.lang.String)">
+<a id="format(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>formatTheme</h4>
+<h4>format</h4>
 <pre class="methodSignature">@NonNull
-public static&nbsp;java.lang.String&nbsp;formatTheme&#8203;(@NonNull
-                                           java.lang.String&nbsp;string)</pre>
+public static&nbsp;java.lang.String&nbsp;format&#8203;(@NonNull
+                                      java.lang.String&nbsp;string)</pre>
 <div class="block">Formats the theme string and remove extra double quotes and white spaces.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1096,7 +990,7 @@ public static&nbsp;java.lang.String&nbsp;getThemeData&#8203;(@Nullable
 <div class="block">Returns the theme data from the URI.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>context</code> - The context to retrieve the resources.</dd>
+<dd><code>context</code> - The context to be used.</dd>
 <dd><code>uri</code> - The URI to get the theme data.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The theme data according to the URI.</dd>
@@ -1119,7 +1013,7 @@ public static&nbsp;java.lang.String&nbsp;getThemeData&#8203;(@Nullable
 <div class="block">Returns the theme data from the intent.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>context</code> - The context to retrieve the resources.</dd>
+<dd><code>context</code> - The context to be used.</dd>
 <dd><code>intent</code> - The intent to get the theme data.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The theme data according to the intent data.</dd>
@@ -1144,7 +1038,7 @@ public static&nbsp;java.lang.String&nbsp;getThemeName&#8203;(@Nullable
 <div class="block">Returns the theme name from the intent.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>context</code> - The context to retrieve the resources.</dd>
+<dd><code>context</code> - The context to be used.</dd>
 <dd><code>intent</code> - The intent to get the theme name.</dd>
 <dd><code>defaultName</code> - The default name for the theme.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -1214,52 +1108,13 @@ public static&nbsp;<a href="https://developer.android.com/reference/android/grap
 </dl>
 </li>
 </ul>
-<a id="generateThemeCode(com.pranavpandey.android.dynamic.theme.base.CodeTheme,android.graphics.drawable.Drawable)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>generateThemeCode</h4>
-<pre class="methodSignature">@Nullable
-public static&nbsp;<a href="https://developer.android.com/reference/android/graphics/Bitmap.html?is-external=true" title="class or interface in android.graphics" class="externalLink">Bitmap</a>&nbsp;generateThemeCode&#8203;(@Nullable
-                                       <a href="../base/CodeTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">CodeTheme</a>&lt;?&gt;&nbsp;theme,
-                                       @Nullable
-                                       <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html?is-external=true" title="class or interface in android.graphics.drawable" class="externalLink">Drawable</a>&nbsp;overlay)</pre>
-<div class="block">Generates a QR code from the dynamic theme.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>theme</code> - The theme to generate the QR code.</dd>
-<dd><code>overlay</code> - The optional QR code overlay.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The generated QR code from the dynamic theme.</dd>
-</dl>
-</li>
-</ul>
-<a id="scanThemeCode(android.graphics.Bitmap)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>scanThemeCode</h4>
-<pre class="methodSignature">@Nullable
-public static&nbsp;java.lang.String&nbsp;scanThemeCode&#8203;(@Nullable
-                                             <a href="https://developer.android.com/reference/android/graphics/Bitmap.html?is-external=true" title="class or interface in android.graphics" class="externalLink">Bitmap</a>&nbsp;bitmap)</pre>
-<div class="block">Scans the dynamic theme QR code.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>bitmap</code> - The bitmap to be scanned.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The dynamic theme string from the QR code bitmap.</dd>
-</dl>
-</li>
-</ul>
 <a id="broadcastDynamicTheme(android.content.Context,java.lang.String,java.lang.String,java.lang.String,boolean)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>broadcastDynamicTheme</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;broadcastDynamicTheme&#8203;(@NonNull
+<pre class="methodSignature">public static&nbsp;void&nbsp;broadcastDynamicTheme&#8203;(@Nullable
                                          <a href="https://developer.android.com/reference/android/content/Context.html?is-external=true" title="class or interface in android.content" class="externalLink">Context</a>&nbsp;context,
                                          @Nullable
                                          java.lang.String&nbsp;theme,
@@ -1333,7 +1188,7 @@ public static&nbsp;java.lang.String&nbsp;scanThemeCode&#8203;(@Nullable
 <li><a href="../../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><h5>null</h5></div>
+<div class="aboutLanguage"><h5>4.0.0</h5></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_bottom">
@@ -1358,13 +1213,13 @@ public static&nbsp;java.lang.String&nbsp;scanThemeCode&#8203;(@Nullable
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

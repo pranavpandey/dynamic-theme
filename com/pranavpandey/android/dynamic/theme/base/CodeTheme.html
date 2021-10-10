@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -202,6 +202,13 @@ extends <a href="StringTheme.html" title="interface in com.pranavpandey.android.
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCodeStrokeColor()">getCodeStrokeColor</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns the color for the code stroke.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCodeStyle()">getCodeStyle</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns the style for the theme code.</div>
@@ -213,7 +220,7 @@ extends <a href="StringTheme.html" title="interface in com.pranavpandey.android.
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;com.pranavpandey.android.dynamic.theme.base.<a href="StringTheme.html" title="interface in com.pranavpandey.android.dynamic.theme.base">StringTheme</a></h3>
-<code><a href="StringTheme.html#toDynamicString()">toDynamicString</a>, <a href="StringTheme.html#toJsonString()">toJsonString</a></code></li>
+<code><a href="StringTheme.html#getThemeData()">getThemeData</a>, <a href="StringTheme.html#toDynamicString()">toDynamicString</a>, <a href="StringTheme.html#toJsonString()">toJsonString</a>, <a href="StringTheme.html#toJsonString(boolean,boolean)">toJsonString</a></code></li>
 </ul>
 </li>
 </ul>
@@ -258,6 +265,21 @@ int&nbsp;getCodeBackgroundColor()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The color for the code background.</dd>
+</dl>
+</li>
+</ul>
+<a id="getCodeStrokeColor()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCodeStrokeColor</h4>
+<pre class="methodSignature">@ColorInt
+int&nbsp;getCodeStrokeColor()</pre>
+<div class="block">Returns the color for the code stroke.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The color for the code stroke.</dd>
 </dl>
 </li>
 </ul>
@@ -362,7 +384,7 @@ int&nbsp;getCodeOverlayColor()</pre>
 <li><a href="../../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><h5>null</h5></div>
+<div class="aboutLanguage"><h5>4.0.0</h5></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_bottom">
