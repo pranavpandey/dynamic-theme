@@ -21,6 +21,9 @@ import androidx.annotation.IntDef;
 import androidx.annotation.StringDef;
 
 import com.google.zxing.common.CharacterSetECI;
+import com.pranavpandey.android.dynamic.util.DynamicFileUtils;
+import com.pranavpandey.android.dynamic.util.DynamicIntentUtils;
+import com.pranavpandey.android.dynamic.util.DynamicUnitUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -29,8 +32,6 @@ import java.lang.annotation.RetentionPolicy;
  * Constant values for the theme.
  */
 @Retention(RetentionPolicy.SOURCE)
-@IntDef(value = { Theme.AUTO, Theme.CUSTOM, Theme.APP, Theme.DAY,
-        Theme.NIGHT, Theme.WIDGET, Theme.REMOTE })
 public @interface Theme {
 
     /**
@@ -92,6 +93,16 @@ public @interface Theme {
      * Mime type for the theme image file.
      */
     String MIME_IMAGE = "image/png";
+
+    /**
+     * Mime type to select the theme image file.
+     */
+    String MIME_IMAGE_PICK = "image/*";
+
+    /**
+     * Mime type to select the theme file.
+     */
+    String MIME_PICK = DynamicFileUtils.MIME_ALL;
     
     /**
      * Mime type matcher for the theme image file.
@@ -187,8 +198,8 @@ public @interface Theme {
      * String constant values for the theme.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { ToString.AUTO, ToString.CUSTOM, ToString.APP,
-            ToString.DAY, ToString.NIGHT, ToString.WIDGET, ToString.REMOTE })
+    @StringDef(value = { ToString.APP, ToString.AUTO, ToString.CUSTOM, ToString.DISABLE,
+            ToString.SYSTEM, ToString.DAY, ToString.NIGHT, ToString.WIDGET, ToString.REMOTE })
     @interface ToString {
 
         /**
@@ -241,7 +252,6 @@ public @interface Theme {
      * Constant values for the night theme.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Night.AUTO, Night.CUSTOM, Night.SYSTEM, Night.BATTERY })
     @interface Night {
 
         /**
@@ -268,7 +278,6 @@ public @interface Theme {
          * String constant values for the night theme.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.CUSTOM, ToString.SYSTEM, ToString.BATTERY })
         @interface ToString {
 
             /**
@@ -297,14 +306,17 @@ public @interface Theme {
      * String constant values for the dynamic theme intent.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { Intent.ACTION, Intent.EXTRA_THEME,
-            Intent.EXTRA_VALUE, Intent.EXTRA_DATA })
     @interface Intent {
 
         /**
          * Intent action constant for the dynamic theme.
          */
         String ACTION = "com.pranavpandey.theme.intent.action.DYNAMIC_THEME";
+
+        /**
+         * Intent action constant to capture the dynamic theme.
+         */
+        String ACTION_CAPTURE = DynamicIntentUtils.ACTION_MATRIX_CAPTURE_RESULT;
 
         /**
          * Intent extra key for the theme data.
@@ -320,13 +332,17 @@ public @interface Theme {
          * Intent extra key for the theme data.
          */
         String EXTRA_DATA = "adt_extra_data";
+
+        /**
+         * Intent extra key for the captured theme data.
+         */
+        String EXTRA_DATA_CAPTURE = DynamicIntentUtils.EXTRA_MATRIX_DATA;
     }
 
     /**
      * Constant values for the dynamic theme.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Dynamic.AUTO, Dynamic.VALUE, Dynamic.DATA, Dynamic.DISABLE })
     @interface Dynamic {
 
         /**
@@ -353,7 +369,6 @@ public @interface Theme {
          * String constant values for the dynamic theme.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.VALUE, ToString.DATA, ToString.DISABLE })
         @interface ToString {
 
             /**
@@ -382,7 +397,6 @@ public @interface Theme {
      * Constant values for the font scale.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Font.AUTO, Font.CUSTOM })
     @interface Font {
 
         /**
@@ -429,7 +443,6 @@ public @interface Theme {
          * String constant values for the font scale.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
         @interface ToString {
 
             /**
@@ -448,7 +461,6 @@ public @interface Theme {
      * Constant values for the corner size.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Corner.AUTO, Corner.CUSTOM })
     @interface Corner {
 
         /**
@@ -497,6 +509,11 @@ public @interface Theme {
         int INTERVAL = 2;
 
         /**
+         * Factor to adjust the corner size for the header.
+         */
+        float FACTOR_CORNER = 1f;
+
+        /**
          * Factor to decide the maximum corner size for the widgets.
          */
         float FACTOR_MAX = 2f;
@@ -515,7 +532,6 @@ public @interface Theme {
          * String constant values for the corner size.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
         @interface ToString {
 
             /**
@@ -534,8 +550,6 @@ public @interface Theme {
      * Constant values for the background aware functionality.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { BackgroundAware.AUTO, BackgroundAware.UNKNOWN,
-            BackgroundAware.DISABLE, BackgroundAware.ENABLE })
     @interface BackgroundAware {
 
         /**
@@ -562,7 +576,6 @@ public @interface Theme {
          * String constant values for the background aware functionality.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.UNKNOWN, ToString.DISABLE, ToString.ENABLE })
         @interface ToString {
 
             /**
@@ -591,7 +604,6 @@ public @interface Theme {
      * Constant values for the contrast.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Contrast.AUTO, Contrast.CUSTOM })
     @interface Contrast {
 
         /**
@@ -622,7 +634,7 @@ public @interface Theme {
         /**
          * Minimum value for the code contrast.
          */
-        int Code = 50;
+        int CODE = 50;
 
         /**
          * Default value for the contrast.
@@ -638,7 +650,6 @@ public @interface Theme {
          * String constant values for the contrast.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
         @interface ToString {
 
             /**
@@ -657,7 +668,6 @@ public @interface Theme {
      * Constant values for the opacity.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Opacity.AUTO, Opacity.CUSTOM })
     @interface Opacity {
 
         /**
@@ -701,6 +711,16 @@ public @interface Theme {
         int TRANSLUCENT = 150;
 
         /**
+         * Constant for the stroke opacity.
+         */
+        int STROKE = MAX;
+
+        /**
+         * Constant for the minimum stroke opacity.
+         */
+        int STROKE_MIN = 100;
+
+        /**
          * Default value for the opacity.
          */
         int DEFAULT = MAX;
@@ -714,7 +734,6 @@ public @interface Theme {
          * String constant values for the opacity.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
         @interface ToString {
 
             /**
@@ -733,7 +752,6 @@ public @interface Theme {
      * Constant values for the dynamic theme style.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Style.AUTO, Style.CUSTOM })
     @interface Style {
 
         /**
@@ -750,7 +768,6 @@ public @interface Theme {
          * String constant values for the dynamic theme style.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.CUSTOM })
         @interface ToString {
 
             /**
@@ -773,12 +790,12 @@ public @interface Theme {
         /**
          * Minimum value for the theme size in pixels.
          */
-        int MIN = 20;
+        int MIN = 16;
 
         /**
          * Maximum value for the theme size in pixels.
          */
-        int MAX = 2000;
+        int MAX = 2048;
 
         /**
          * Constant value for the small theme size in pixels.
@@ -801,6 +818,16 @@ public @interface Theme {
         int DEFAULT = 480;
 
         /**
+         * Constant for the stroke size in dips.
+         */
+        int STROKE = 1;
+
+        /**
+         * Constant for the stroke size in pixels.
+         */
+        int STROKE_PIXEL = DynamicUnitUtils.convertDpToPixels(STROKE);
+
+        /**
          * Factor for the minimum theme size.
          */
         float FACTOR_MIN = 1.5f;
@@ -816,14 +843,14 @@ public @interface Theme {
         int FACTOR_300 = 3;
 
         /**
+         * Factor for the theme code overlay.
+         */
+        float FACTOR_OVERLAY = 0.2f;
+
+        /**
          * Constant value for the theme code quiet zone.
          */
         int QUIET_ZONE = 2;
-
-        /**
-         * Constant value for the theme code overlay size in pixels.
-         */
-        int OVERLAY = 8;
     }
 
     /**
@@ -1019,7 +1046,7 @@ public @interface Theme {
          * Short constants for the theme keys.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Key.BRACKETS, Short.QUOTE, Short.SPLIT, Short.DARK, Short.INVERSE,
+        @StringDef(value = { Short.BRACKETS, Short.QUOTE, Short.SPLIT, Short.DARK, Short.INVERSE,
                 Short.BACKGROUND, Short.TINT_BACKGROUND, Short.SURFACE, Short.TINT_SURFACE,
                 Short.PRIMARY, Short.TINT_PRIMARY, Short.PRIMARY_DARK, Short.TINT_PRIMARY_DARK,
                 Short.ACCENT, Short.TINT_ACCENT, Short.ACCENT_DARK, Short.TINT_ACCENT_DARK,
@@ -1318,7 +1345,6 @@ public @interface Theme {
      * Interface to hold the color constants.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Color.APP, Color.SYSTEM, Color.WALLPAPER })
     @interface Color {
 
         /**
@@ -1345,7 +1371,6 @@ public @interface Theme {
          * Interface to hold the string color constants.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.APP, ToString.SYSTEM, Color.ToString.WALLPAPER })
         @interface ToString {
 
             /**
@@ -1490,7 +1515,6 @@ public @interface Theme {
      * Constant values for the visibility.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Visibility.AUTO, Visibility.HIDE, Visibility.SHOW })
     @interface Visibility {
 
         /**
@@ -1512,7 +1536,6 @@ public @interface Theme {
          * String constant values for the visibility.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { ToString.AUTO, ToString.HIDE, ToString.SHOW })
         @interface ToString {
 
             /**
@@ -1541,12 +1564,12 @@ public @interface Theme {
         /**
          * Constant value for the theme code visible contrast.
          */
-        int CONTRAST = Contrast.Code;
+        int CONTRAST = Contrast.CODE;
 
         /**
          * Constant value for the theme code visible contrast ratio.
          */
-        float CONTRAST_RATIO = Contrast.Code / (float) Contrast.MAX;
+        float CONTRAST_RATIO = Contrast.CODE / (float) Contrast.MAX;
 
         /**
          * Interface to hold the theme code color constants.
@@ -1597,17 +1620,39 @@ public @interface Theme {
             int CORNER = 0;
         }
 
+        @interface Correction {
+
+            /**
+             * Maximum data count for the high correction level.
+             */
+            int HIGH = 75;
+
+            /**
+             * Maximum data count for the medium correction level.
+             */
+            int MEDIUM = 150;
+
+            /**
+             * Maximum data count for the low correction level.
+             */
+            int LOW = 500;
+        }
+
         /**
          * Constant values for the theme code overlay.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @IntDef(value = { Overlay.HIDE, Overlay.AUTO, Overlay.DYNAMIC, Overlay.CUSTOM })
         @interface Overlay {
 
             /**
              * Constant value for no overlay.
              */
             int HIDE = Theme.DISABLE;
+
+            /**
+             * Constant value for the app overlay.
+             */
+            int APP = Theme.APP;
 
             /**
              * Constant value for the default overlay.
@@ -1628,13 +1673,17 @@ public @interface Theme {
              * String constant values for the theme code overlay.
              */
             @Retention(RetentionPolicy.SOURCE)
-            @StringDef(value = { ToString.HIDE, ToString.AUTO, ToString.DYNAMIC, ToString.CUSTOM })
             @interface ToString  {
 
                 /**
                  * String constant value for no overlay.
                  */
                 String HIDE = Theme.ToString.DISABLE;
+
+                /**
+                 * String constant value for the app overlay.
+                 */
+                String APP = Theme.ToString.APP;
 
                 /**
                  * String constant value for the default overlay.
@@ -1658,10 +1707,6 @@ public @interface Theme {
      * Theme actions to perform the operations accordingly.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { Action.SELECT_ALL, Action.SELECT_APP, Action.SELECT, Action.INVALID,
-            Action.APPLY, Action.COPY, Action.SHARE, Action.SHARE_DATA, Action.SHARE_FILE,
-            Action.SHARE_CODE, Action.EDIT, Action.SAVE,  Action.SAVE_FILE, Action.SAVE_CODE,
-            Action.IMPORT, Action.IMPORT_FILE, Action.DELETE })
     @interface Action {
 
         /**
@@ -1746,8 +1791,13 @@ public @interface Theme {
         int IMPORT_FILE = 12;
 
         /**
+         * Constant for the theme capture action.
+         */
+        int CAPTURE = 13;
+
+        /**
          * Constant for the delete theme action.
          */
-        int DELETE = 13;
+        int DELETE = 21;
     }
 }

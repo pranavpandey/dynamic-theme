@@ -20,7 +20,7 @@ buildscript {
             'minSdk'    : 14,
             'targetSdk' : 31,
             'buildTools': '31.0.0',
-            'dynamic'   : '4.2.0',
+            'dynamic'   : '4.3.1',
             'gson'      : '2.8.6',
             'palette'   : '1.0.0',
             'zxing'     : '3.3.3'

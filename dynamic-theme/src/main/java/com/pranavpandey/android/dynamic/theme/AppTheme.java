@@ -16,9 +16,12 @@
 
 package com.pranavpandey.android.dynamic.theme;
 
+import android.graphics.Color;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
+import com.google.gson.Gson;
 import com.pranavpandey.android.dynamic.theme.base.AutoTheme;
 import com.pranavpandey.android.dynamic.theme.base.BackgroundAware;
 import com.pranavpandey.android.dynamic.theme.base.BaseTheme;
@@ -34,6 +37,7 @@ import com.pranavpandey.android.dynamic.theme.base.TextTheme;
 import com.pranavpandey.android.dynamic.theme.base.TranslucentTheme;
 import com.pranavpandey.android.dynamic.theme.base.TypeTheme;
 import com.pranavpandey.android.dynamic.theme.util.DynamicThemeUtils;
+import com.pranavpandey.android.dynamic.util.DynamicColorUtils;
 
 /**
  * An abstract class to implement an app theme.
@@ -53,6 +57,13 @@ public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, F
     }
 
     @Override
+    public boolean isStroke() {
+        return DynamicColorUtils.removeAlpha(getBackgroundColor())
+                == DynamicColorUtils.removeAlpha(getSurfaceColor())
+                && Color.alpha(getSurfaceColor()) < Theme.Opacity.STROKE;
+    }
+
+    @Override
     public @NonNull String getCodeData() {
         return DynamicThemeUtils.getThemeUrl(this);
     }
@@ -60,6 +71,11 @@ public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, F
     @Override
     public @ColorInt int getCodeBackgroundColor() {
         return getBackgroundColor();
+    }
+
+    @Override
+    public @ColorInt int getCodeStrokeColor() {
+        return getStrokeColor();
     }
 
     @Override
@@ -84,9 +100,13 @@ public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, F
 
     @Override
     public @Theme.Code.Style int getCodeStyle() {
-        return getCornerSizeDp(false) == Theme.Corner.AUTO
-                || getCornerSizeDp() < Theme.Corner.MIN_ROUND
+        return getCornerSizeDp() < Theme.Corner.MIN_ROUND
                 ? Theme.Code.Style.DEFAULT : getCornerSizeDp() < Theme.Corner.MIN_OVAL
                 ? Theme.Code.Style.ROUND : Theme.Code.Style.OVAL;
+    }
+
+    @Override
+    public @NonNull String toJsonString() {
+        return new Gson().toJson(this);
     }
 }

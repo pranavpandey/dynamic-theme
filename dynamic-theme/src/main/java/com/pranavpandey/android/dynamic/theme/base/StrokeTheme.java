@@ -26,6 +26,13 @@ import androidx.annotation.ColorInt;
 public interface StrokeTheme<T extends StrokeTheme<T>> extends BaseTheme<T> {
 
     /**
+     * Returns whether the stroke is required for this theme.
+     *
+     * @return {@code true} if the stroke is required for this theme.
+     */
+    boolean isStroke();
+
+    /**
      * Returns the stroke color used by this theme.
      *
      * @return The stroke color used by this theme.

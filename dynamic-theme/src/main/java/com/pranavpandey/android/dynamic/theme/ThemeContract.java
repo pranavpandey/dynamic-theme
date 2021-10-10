@@ -132,7 +132,6 @@ public class ThemeContract {
          * Interface to hold the theme preset type.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @IntDef(value = { DEFAULT, CUSTOM })
         @interface Type {
 
             /**
@@ -169,7 +168,6 @@ public class ThemeContract {
              * String constant values for the theme presets.
              */
             @Retention(RetentionPolicy.SOURCE)
-            @StringDef(value = { ToString.DEFAULT, ToString.CUSTOM })
             @interface ToString {
 
                 /**

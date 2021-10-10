@@ -43,6 +43,13 @@ public interface CodeTheme<T extends CodeTheme<T>> extends StringTheme<T> {
     @ColorInt int getCodeBackgroundColor();
 
     /**
+     * Returns the color for the code stroke.
+     *
+     * @return The color for the code stroke.
+     */
+    @ColorInt int getCodeStrokeColor();
+
+    /**
      * Returns the color for the code data.
      *
      * @return The color for the code data.
