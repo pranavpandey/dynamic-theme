@@ -547,7 +547,7 @@ public class DynamicCodeUtils {
             return null;
         }
 
-        return generateCode(theme, theme.getCodeData(), overlay);
+        return generateCode(theme, theme.getThemeData(), overlay);
     }
 
     /**

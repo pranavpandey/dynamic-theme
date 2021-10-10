@@ -66,12 +66,35 @@ public class DynamicThemeTypeAdapter<T extends BaseTheme<T>> extends TypeAdapter
     private final @NonNull T mDynamicTheme;
 
     /**
+     * {@code true} to resolve the values.
+     */
+    private final boolean mResolve;
+
+    /**
+     * {@code true} to resolve the inverse values.
+     */
+    private final boolean mInverse;
+
+    /**
      * Constructor to initialize an object of this class.
      *
      * @param dynamicTheme The dynamic theme to be used.
      */
     public DynamicThemeTypeAdapter(@NonNull T dynamicTheme) {
+        this(dynamicTheme, false, false);
+    }
+
+    /**
+     * Constructor to initialize an object of this class.
+     *
+     * @param dynamicTheme The dynamic theme to be used.
+     * @param resolve {@code true} to resolve the values.
+     * @param inverse {@code true} to resolve the inverse values.
+     */
+    public DynamicThemeTypeAdapter(@NonNull T dynamicTheme, boolean resolve, boolean inverse) {
         this.mDynamicTheme = dynamicTheme;
+        this.mResolve = resolve;
+        this.mInverse = inverse;
     }
 
     @Override
@@ -82,97 +105,97 @@ public class DynamicThemeTypeAdapter<T extends BaseTheme<T>> extends TypeAdapter
             if (value instanceof BackgroundTheme) {
                 writer.name(Theme.Key.BACKGROUND);
                 writer.value(DynamicThemeUtils.getValueFromColor(((BackgroundTheme<?>)
-                        value).getBackgroundColor(false, false)));
+                        value).getBackgroundColor(mResolve, mInverse)));
                 writer.name(Theme.Key.TINT_BACKGROUND);
                 writer.value(DynamicThemeUtils.getValueFromColor(((BackgroundTheme<?>)
-                        value).getTintBackgroundColor(false, false)));
+                        value).getTintBackgroundColor(mResolve, mInverse)));
             }
 
             if (value instanceof SurfaceTheme) {
                 writer.name(Theme.Key.SURFACE);
                 writer.value(DynamicThemeUtils.getValueFromColor(((SurfaceTheme<?>)
-                        value).getSurfaceColor(false, false)));
+                        value).getSurfaceColor(mResolve, mInverse)));
                 writer.name(Theme.Key.TINT_SURFACE);
                 writer.value(DynamicThemeUtils.getValueFromColor(((SurfaceTheme<?>)
-                        value).getTintSurfaceColor(false, false)));
+                        value).getTintSurfaceColor(mResolve, mInverse)));
             }
 
             if (value instanceof PrimaryTheme) {
                 writer.name(Theme.Key.PRIMARY);
                 writer.value(DynamicThemeUtils.getValueFromColor(((PrimaryTheme<?>)
-                        value).getPrimaryColor(false, false)));
+                        value).getPrimaryColor(mResolve, mInverse)));
                 writer.name(Theme.Key.TINT_PRIMARY);
                 writer.value(DynamicThemeUtils.getValueFromColor(((PrimaryTheme<?>)
-                        value).getTintPrimaryColor(false, false)));
+                        value).getTintPrimaryColor(mResolve, mInverse)));
                 writer.name(Theme.Key.PRIMARY_DARK);
                 writer.value(DynamicThemeUtils.getValueFromColor(((PrimaryTheme<?>)
-                        value).getPrimaryColorDark(false, false)));
+                        value).getPrimaryColorDark(mResolve, mInverse)));
                 writer.name(Theme.Key.TINT_PRIMARY_DARK);
                 writer.value(DynamicThemeUtils.getValueFromColor(((PrimaryTheme<?>)
-                        value).getTintPrimaryColorDark(false, false)));
+                        value).getTintPrimaryColorDark(mResolve, mInverse)));
             }
 
             if (value instanceof AccentTheme) {
                 writer.name(Theme.Key.ACCENT);
                 writer.value(DynamicThemeUtils.getValueFromColor(((AccentTheme<?>)
-                        value).getAccentColor(false, false)));
+                        value).getAccentColor(mResolve, mInverse)));
                 writer.name(Theme.Key.TINT_ACCENT);
                 writer.value(DynamicThemeUtils.getValueFromColor(((AccentTheme<?>)
-                        value).getTintAccentColor(false, false)));
+                        value).getTintAccentColor(mResolve, mInverse)));
                 writer.name(Theme.Key.ACCENT_DARK);
                 writer.value(DynamicThemeUtils.getValueFromColor(((AccentTheme<?>)
-                        value).getAccentColorDark(false, false)));
+                        value).getAccentColorDark(mResolve, mInverse)));
                 writer.name(Theme.Key.TINT_ACCENT_DARK);
                 writer.value(DynamicThemeUtils.getValueFromColor(((AccentTheme<?>)
-                        value).getTintAccentColorDark(false, false)));
+                        value).getTintAccentColorDark(mResolve, mInverse)));
             }
 
             if (value instanceof ErrorTheme) {
                 writer.name(Theme.Key.ERROR);
                 writer.value(DynamicThemeUtils.getValueFromColor(((ErrorTheme<?>)
-                        value).getErrorColor(false, false)));
+                        value).getErrorColor(mResolve, mInverse)));
                 writer.name(Theme.Key.TINT_ERROR);
                 writer.value(DynamicThemeUtils.getValueFromColor(((ErrorTheme<?>)
-                        value).getTintErrorColor(false, false)));
+                        value).getTintErrorColor(mResolve, mInverse)));
             }
 
             if (value instanceof TextTheme) {
                 writer.name(Theme.Key.TEXT_PRIMARY);
                 writer.value(DynamicThemeUtils.getValueFromColor(((TextTheme<?>)
-                        value).getTextPrimaryColor(false, false)));
+                        value).getTextPrimaryColor(mResolve, mInverse)));
                 writer.name(Theme.Key.TEXT_PRIMARY_INVERSE);
                 writer.value(DynamicThemeUtils.getValueFromColor(((TextTheme<?>)
-                        value).getTextPrimaryColorInverse(false, false)));
+                        value).getTextPrimaryColorInverse(mResolve, mInverse)));
                 writer.name(Theme.Key.TEXT_SECONDARY);
                 writer.value(DynamicThemeUtils.getValueFromColor(((TextTheme<?>)
-                        value).getTextSecondaryColor(false, false)));
+                        value).getTextSecondaryColor(mResolve, mInverse)));
                 writer.name(Theme.Key.TEXT_SECONDARY_INVERSE);
                 writer.value(DynamicThemeUtils.getValueFromColor(((TextTheme<?>)
-                        value).getTextSecondaryColorInverse(false, false)));
+                        value).getTextSecondaryColorInverse(mResolve, mInverse)));
                 writer.name(Theme.Key.FONT_SCALE);
                 writer.value(DynamicThemeUtils.getValueFromFontScale(((TextTheme<?>)
-                        value).getFontScale(false)));
+                        value).getFontScale(mResolve)));
             }
 
             if (value instanceof CornerTheme) {
                 writer.name(Theme.Key.CORNER_RADIUS);
                 writer.value(DynamicThemeUtils.getValueFromCornerRadius(
-                        ((CornerTheme<?>) value).getCornerRadius(false)));
+                        ((CornerTheme<?>) value).getCornerRadius(mResolve)));
             }
 
             if (value instanceof BackgroundAware) {
                 writer.name(Theme.Key.BACKGROUND_AWARE);
                 writer.value(DynamicThemeUtils.getValueFromBackgroundAware(
-                        ((BackgroundAware<?>) value).getBackgroundAware(false)));
+                        ((BackgroundAware<?>) value).getBackgroundAware(mResolve)));
                 writer.name(Theme.Key.CONTRAST);
                 writer.value(DynamicThemeUtils.getValueFromContrast(
-                        ((BackgroundAware<?>) value).getContrast(false)));
+                        ((BackgroundAware<?>) value).getContrast(mResolve)));
             }
 
             if (value instanceof TranslucentTheme) {
                 writer.name(Theme.Key.OPACITY);
                 writer.value(DynamicThemeUtils.getValueFromOpacity(
-                        ((TranslucentTheme<?>) value).getOpacity(false)));
+                        ((TranslucentTheme<?>) value).getOpacity(mResolve)));
             }
 
             if (value instanceof StyleTheme) {

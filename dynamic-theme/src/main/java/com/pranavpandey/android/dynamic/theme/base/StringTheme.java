@@ -28,6 +28,16 @@ public interface StringTheme<T extends StringTheme<T>> extends BaseTheme<T> {
     /**
      * Converts this theme into its JSON equivalent.
      *
+     * @param resolve {@code true} to resolve the values.
+     * @param inverse {@code true} to resolve the inverse values.
+     *
+     * @return The JSON equivalent of this theme.
+     */
+    @NonNull String toJsonString(boolean resolve, boolean inverse);
+
+    /**
+     * Converts this theme into its JSON equivalent.
+     *
      * @return The JSON equivalent of this theme.
      */
     @NonNull String toJsonString();
@@ -38,4 +48,11 @@ public interface StringTheme<T extends StringTheme<T>> extends BaseTheme<T> {
      * @return The converted JSON string.
      */
     @NonNull String toDynamicString();
+
+    /**
+     * Returns the sharable data for the theme.
+     *
+     * @return The sharable data for the theme.
+     */
+    @NonNull String getThemeData();
 }

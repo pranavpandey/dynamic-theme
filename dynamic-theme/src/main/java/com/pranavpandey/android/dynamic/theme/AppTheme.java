@@ -64,8 +64,13 @@ public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, F
     }
 
     @Override
-    public @NonNull String getCodeData() {
+    public @NonNull String getThemeData() {
         return DynamicThemeUtils.getThemeUrl(this);
+    }
+
+    @Override
+    public @NonNull String getCodeData() {
+        return getThemeData();
     }
 
     @Override
