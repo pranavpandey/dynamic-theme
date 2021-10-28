@@ -370,7 +370,7 @@ public class DynamicThemeTypeAdapter<T extends BaseTheme<T>> extends TypeAdapter
                     case Theme.Key.CORNER_RADIUS:
                     case Theme.Key.Short.CORNER_RADIUS:
                         if (mDynamicTheme instanceof CornerTheme) {
-                            ((CornerTheme<?>) mDynamicTheme).setCornerRadiusDp(DynamicThemeUtils
+                            ((CornerTheme<?>) mDynamicTheme).setCornerSize(DynamicThemeUtils
                                     .getValueFromCornerRadius(reader.nextString()));
                         }
                         break;

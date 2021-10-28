@@ -20,7 +20,6 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 import androidx.annotation.IntDef;
-import androidx.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

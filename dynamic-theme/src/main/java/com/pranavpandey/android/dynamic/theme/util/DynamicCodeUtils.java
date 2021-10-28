@@ -326,7 +326,7 @@ public class DynamicCodeUtils {
 
             if (theme instanceof CornerTheme) {
                 corner = ((CornerTheme<?>) theme).getCornerRadius();
-                cornerDp = ((CornerTheme<?>) theme).getCornerSizeDp();
+                cornerDp = ((CornerTheme<?>) theme).getCornerSize();
 
                 final int startWidth = (outputWidth - codeWidth * multiple) / 2;
                 final int startHeight = (outputHeight - codeHeight * multiple) / 2;

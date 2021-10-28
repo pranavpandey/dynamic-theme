@@ -105,8 +105,8 @@ public abstract class AppTheme<T extends AppTheme<T>> implements BaseTheme<T>, F
 
     @Override
     public @Theme.Code.Style int getCodeStyle() {
-        return getCornerSizeDp() < Theme.Corner.MIN_ROUND
-                ? Theme.Code.Style.DEFAULT : getCornerSizeDp() < Theme.Corner.MIN_OVAL
+        return getCornerSize() < Theme.Corner.MIN_ROUND
+                ? Theme.Code.Style.DEFAULT : getCornerSize() < Theme.Corner.MIN_OVAL
                 ? Theme.Code.Style.ROUND : Theme.Code.Style.OVAL;
     }
 
