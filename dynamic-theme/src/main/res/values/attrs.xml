@@ -482,7 +482,7 @@
         <!-- true to apply corner radius for surface widgets according to the app theme.
              When disabled, widgets corner radius will be applied according to the default
              implementation. -->
-        <attr name="adt_dynamicCornerRadius" format="boolean|reference" />
+        <attr name="adt_dynamicCornerSize" format="boolean|reference" />
         <!-- true to enable elevation on the same background for surface widgets.
              When disabled, widgets elevation will be disabled (or 0) if the dynamic theme
              surface color is exactly same as background color. -->

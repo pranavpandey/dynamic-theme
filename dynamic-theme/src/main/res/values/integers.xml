@@ -57,12 +57,10 @@
 
     <!-- Size -->
     <integer name="adt_size">480</integer>
-    <integer name="adt_size_min">20</integer>
-    <integer name="adt_size_max">2000</integer>
+    <integer name="adt_size_min">16</integer>
+    <integer name="adt_size_max">2048</integer>
     <integer name="adt_size_small">256</integer>
     <integer name="adt_size_normal">512</integer>
     <integer name="adt_size_large">1024</integer>
-    <integer name="adt_size_quiet_zone">2</integer>
-    <integer name="adt_size_overlay">8</integer>
 
 </resources>
