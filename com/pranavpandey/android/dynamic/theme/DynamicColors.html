@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -256,6 +256,11 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;obj)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(java.util.Map,int,int)">get</a></span>&#8203;(java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;colors,
    int&nbsp;colorType,
@@ -264,28 +269,28 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Get the color according to its type from the supplied map.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAll()">getAll</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns all the colors including original, light and dark.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDark()">getDark</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the map of mutated (dark) colors.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLight()">getLight</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the map of mutated (light) colors.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMutated(int,int,com.pranavpandey.android.dynamic.theme.base.DynamicColor)">getMutated</a></span>&#8203;(int&nbsp;colorType,
           int&nbsp;fallback,
@@ -294,21 +299,21 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Get the mutated color according to its type.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMutated(com.pranavpandey.android.dynamic.theme.base.DynamicColor)">getMutated</a></span>&#8203;(<a href="base/DynamicColor.html" title="interface in com.pranavpandey.android.dynamic.theme.base">DynamicColor</a>&lt;?&gt;&nbsp;theme)</code></th>
 <td class="colLast">
 <div class="block">Get the map of mutated colors according to the supplied theme.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOriginal()">getOriginal</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the map of original colors.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOriginal(int,int)">getOriginal</a></span>&#8203;(int&nbsp;colorType,
            int&nbsp;fallback)</code></th>
@@ -316,14 +321,14 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Get the original color according to its type.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mutate(com.pranavpandey.android.dynamic.theme.base.DynamicColor)">mutate</a></span>&#8203;(<a href="base/DynamicColor.html" title="interface in com.pranavpandey.android.dynamic.theme.base">DynamicColor</a>&lt;?&gt;&nbsp;theme)</code></th>
 <td class="colLast">
 <div class="block">Mutate original colors for the supplied app theme.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mutate(java.util.Map,java.util.Map,com.pranavpandey.android.dynamic.theme.base.DynamicColor)">mutate</a></span>&#8203;(java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;dark,
       java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;light,
@@ -332,7 +337,7 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Mutate original colors for the supplied app theme.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#put(java.util.Map,int,int)">put</a></span>&#8203;(java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;colors,
    int&nbsp;colorType,
@@ -341,7 +346,7 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Store the color according to its type in the supplied map.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#put(java.util.Map,android.app.WallpaperColors)">put</a></span>&#8203;(java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;colors,
    <a href="https://developer.android.com/reference/android/app/WallpaperColors.html?is-external=true" title="class or interface in android.app" class="externalLink">WallpaperColors</a>&nbsp;newColors)</code></th>
@@ -349,7 +354,7 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Store the wallpaper colors in the supplied map.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#put(java.util.Map,java.util.Map)">put</a></span>&#8203;(java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;colors,
    java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;newColors)</code></th>
@@ -357,7 +362,7 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Store the colors in the supplied map.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putDark(int,int)">putDark</a></span>&#8203;(int&nbsp;colorType,
        int&nbsp;color)</code></th>
@@ -365,21 +370,21 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Store the color according to its type in the mutated (dark) map.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putDark(android.app.WallpaperColors)">putDark</a></span>&#8203;(<a href="https://developer.android.com/reference/android/app/WallpaperColors.html?is-external=true" title="class or interface in android.app" class="externalLink">WallpaperColors</a>&nbsp;colors)</code></th>
 <td class="colLast">
 <div class="block">Store the wallpaper colors in the mutated (dark) map.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putDark(java.util.Map)">putDark</a></span>&#8203;(java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;colors)</code></th>
 <td class="colLast">
 <div class="block">Store the colors in the mutated (dark) map.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putLight(int,int)">putLight</a></span>&#8203;(int&nbsp;colorType,
         int&nbsp;color)</code></th>
@@ -387,21 +392,21 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Store the color according to its type in the mutated (light) map.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putLight(android.app.WallpaperColors)">putLight</a></span>&#8203;(<a href="https://developer.android.com/reference/android/app/WallpaperColors.html?is-external=true" title="class or interface in android.app" class="externalLink">WallpaperColors</a>&nbsp;colors)</code></th>
 <td class="colLast">
 <div class="block">Store the wallpaper colors in the mutated (light) map.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putLight(java.util.Map)">putLight</a></span>&#8203;(java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;colors)</code></th>
 <td class="colLast">
 <div class="block">Store the colors in the mutated (light) map.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putOriginal(int,int)">putOriginal</a></span>&#8203;(int&nbsp;colorType,
            int&nbsp;color)</code></th>
@@ -409,21 +414,26 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <div class="block">Store the color according to its type in the original map.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putOriginal(android.app.WallpaperColors)">putOriginal</a></span>&#8203;(<a href="https://developer.android.com/reference/android/app/WallpaperColors.html?is-external=true" title="class or interface in android.app" class="externalLink">WallpaperColors</a>&nbsp;colors)</code></th>
 <td class="colLast">
 <div class="block">Store the wallpaper colors in the original map.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#putOriginal(java.util.Map)">putOriginal</a></span>&#8203;(java.util.Map&lt;java.lang.Integer,&#8203;java.lang.Integer&gt;&nbsp;colors)</code></th>
 <td class="colLast">
 <div class="block">Store the colors in the original map.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i25" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#writeToParcel(android.os.Parcel,int)">writeToParcel</a></span>&#8203;(<a href="https://developer.android.com/reference/android/os/Parcel.html?is-external=true" title="class or interface in android.os" class="externalLink">Parcel</a>&nbsp;dest,
              int&nbsp;flags)</code></th>
@@ -435,7 +445,7 @@ implements <a href="https://developer.android.com/reference/android/os/Parcelabl
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -930,11 +940,39 @@ public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;getAll()</pre>
 <a id="clear()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>clear</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;clear()</pre>
 <div class="block">Clear original and mutated colors.</div>
+</li>
+</ul>
+<a id="equals(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(@Nullable
+                      java.lang.Object&nbsp;obj)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a id="toString()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toString</h4>
+<pre class="methodSignature">@NonNull
+public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -965,7 +1003,7 @@ public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;getAll()</pre>
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><h5>4.1.0</h5></div>
+<div class="aboutLanguage"><h5>4.2.0</h5></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_bottom">
