@@ -38,6 +38,7 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
   "fontScale": "auto",
   "cornerRadius": "auto",
   "backgroundAware": "auto",
+  "contrast": "auto",
   "opacity": "auto",
   "style": "auto"
 }
@@ -91,6 +92,7 @@ A `JSON` is the original format for the dynamic theme that provides cross-app fu
   "fontScale": "auto|integer",
   "cornerRadius": "auto|integer",
   "backgroundAware": "auto|disable|enable",
+  "contrast": "auto|integer",
   "opacity": "auto|integer",
   "style": "auto|custom",
   "header": "auto|hide|show"
@@ -119,8 +121,9 @@ can be imported easily in various apps or platforms.
 | textPrimaryColor   | 12  | textPrimaryColorInverse   | 12Z |
 | textSecondaryColor | 14  | textSecondaryColorInverse | 14Z |
 | fontScale          | 16  | cornerRadius              | 17  |
-| backgroundAware    | 18  | opacity                   | 20  |
-| style              | 23  | header                    | 19  |
+| backgroundAware    | 18  | contrast                  | 25  |
+| opacity            | 20  | style                     | 23  |
+| header             | 19  |
 
 #### Values
 
@@ -150,7 +153,7 @@ It can be installed by adding the following dependency to your `build.gradle` fi
 ```groovy
 dependencies {
     // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-theme:4.1.0'
+    implementation 'com.pranavpandey.android:dynamic-theme:4.2.0'
 }
 ```
 

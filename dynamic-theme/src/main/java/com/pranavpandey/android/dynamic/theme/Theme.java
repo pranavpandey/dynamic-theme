@@ -1620,6 +1620,9 @@ public @interface Theme {
             int CORNER = 0;
         }
 
+        /**
+         * Interface to hold the theme code correction constants.
+         */
         @interface Correction {
 
             /**
