@@ -25,6 +25,7 @@ import android.os.Parcelable;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.util.ObjectsCompat;
 
 import com.pranavpandey.android.dynamic.theme.base.DynamicColor;
 import com.pranavpandey.android.dynamic.util.DynamicColorUtils;
@@ -438,5 +439,22 @@ public class DynamicColors implements Parcelable {
         getOriginal().clear();
         getDark().clear();
         getLight().clear();
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (!(obj instanceof DynamicColors)) {
+            return super.equals(obj);
+        }
+
+        DynamicColors newColors = (DynamicColors) obj;
+        return ObjectsCompat.equals(getOriginal(), newColors.getOriginal())
+                && ObjectsCompat.equals(getDark(), newColors.getDark())
+                && ObjectsCompat.equals(getLight(), newColors.getLight());
+    }
+
+    @Override
+    public @NonNull String toString() {
+        return getOriginal().toString() + getDark().toString() + getLight().toString();
     }
 }
