@@ -20,7 +20,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 /**
- * A {@link BaseTheme} to implement a text theme.
+ * A {@link BaseTheme} to implement the text theme.
  *
  * @param <T> The type of the dynamic theme.
  */

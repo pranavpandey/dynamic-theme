@@ -21,7 +21,7 @@ import androidx.annotation.NonNull;
 import com.pranavpandey.android.dynamic.theme.Theme;
 
 /**
- * A {@link BaseTheme} to implement a background aware theme.
+ * A {@link BaseTheme} to implement the background aware theme.
  *
  * @param <T> The type of the dynamic theme.
  */

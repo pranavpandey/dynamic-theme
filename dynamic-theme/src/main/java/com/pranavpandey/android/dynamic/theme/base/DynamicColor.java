@@ -21,7 +21,7 @@ import androidx.annotation.NonNull;
 import com.pranavpandey.android.dynamic.theme.DynamicColors;
 
 /**
- * A {@link BaseTheme} to implement a dynamic color theme.
+ * A {@link BaseTheme} to implement the dynamic color theme.
  *
  * @param <T> The type of the dynamic theme.
  */

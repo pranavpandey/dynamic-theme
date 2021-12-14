@@ -20,7 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
 
 /**
- * A {@link BaseTheme} to implement a resource theme.
+ * A {@link BaseTheme} to implement the resource theme.
  *
  * @param <T> The type of the dynamic theme.
  */

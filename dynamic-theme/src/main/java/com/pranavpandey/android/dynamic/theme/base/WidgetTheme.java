@@ -21,7 +21,7 @@ import androidx.annotation.NonNull;
 import com.pranavpandey.android.dynamic.theme.Theme;
 
 /**
- * A {@link BaseTheme} to implement a widget theme.
+ * A {@link BaseTheme} to implement the widget theme.
  *
  * @param <T> The type of the dynamic theme.
  * @param <V> The type of the app theme.

@@ -19,7 +19,7 @@ package com.pranavpandey.android.dynamic.theme.base;
 import androidx.annotation.NonNull;
 
 /**
- * A {@link BaseTheme} to implement an auto theme.
+ * A {@link BaseTheme} to implement the auto theme.
  *
  * @param <T> The type of the dynamic theme.
  */

@@ -19,7 +19,7 @@ package com.pranavpandey.android.dynamic.theme.base;
 import androidx.annotation.ColorInt;
 
 /**
- * A {@link BaseTheme} to implement a stroke theme.
+ * A {@link BaseTheme} to implement the stroke theme.
  *
  * @param <T> The type of the dynamic theme.
  */

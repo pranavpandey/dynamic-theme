@@ -22,7 +22,7 @@ import androidx.annotation.NonNull;
 import com.pranavpandey.android.dynamic.theme.Theme;
 
 /**
- * A {@link BaseTheme} to implement a code theme.
+ * A {@link BaseTheme} to implement the code theme.
  *
  * @param <T> The type of the dynamic theme.
  */
