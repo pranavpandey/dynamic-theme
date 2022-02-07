@@ -40,6 +40,7 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
   "backgroundAware": "auto",
   "contrast": "auto",
   "opacity": "auto",
+  "elevation": "auto",
   "style": "auto"
 }
 ```
@@ -94,6 +95,7 @@ A `JSON` is the original format for the dynamic theme that provides cross-app fu
   "backgroundAware": "auto|disable|enable",
   "contrast": "auto|integer",
   "opacity": "auto|integer",
+  "elevation": "auto|disable|enable",
   "style": "auto|custom",
   "header": "auto|hide|show"
 }
@@ -107,23 +109,23 @@ can be imported easily in various apps or platforms.
 
 #### Mappings
 
-| JSON               | URL | JSON                      | URL |
-| :----------------- | --- | :------------------------ | --- |
-| {,}                |     | ""                        |     |
-| Split (Key)        | -   | Dark \| Inverse           | Z   |
-| backgroundColor    | 0   | tintBackgroundColor       | 1   |
-| surfaceColor       | 2   | tintSurfaceColor          | 3   |
-| primaryColor       | 4   | tintPrimaryColor          | 5   |
-| primaryColorDark   | 4Z  | tintPrimaryColorDark      | 7   |
-| accentColor        | 8   | tintAccentColor           | 9   |
-| accentColorDark    | 8Z  | tintAccentColorDark       | 11  |
-| errorColor         | 21  | tintErrorColor            | 22  |
-| textPrimaryColor   | 12  | textPrimaryColorInverse   | 12Z |
-| textSecondaryColor | 14  | textSecondaryColorInverse | 14Z |
-| fontScale          | 16  | cornerRadius              | 17  |
-| backgroundAware    | 18  | contrast                  | 25  |
-| opacity            | 20  | style                     | 23  |
-| header             | 19  |
+| JSON                 | URL | JSON                      | URL |
+|:---------------------|-----|:--------------------------|-----|
+| {,}                  |     | ""                        |     |
+| Split (Key)          | -   | Dark \| Inverse           | Z   |
+| backgroundColor      | 0   | tintBackgroundColor       | 1   |
+| surfaceColor         | 2   | tintSurfaceColor          | 3   |
+| primaryColor         | 4   | tintPrimaryColor          | 5   |
+| primaryColorDark     | 4Z  | tintPrimaryColorDark      | 7   |
+| accentColor          | 8   | tintAccentColor           | 9   |
+| accentColorDark      | 8Z  | tintAccentColorDark       | 11  |
+| errorColor           | 21  | tintErrorColor            | 22  |
+| textPrimaryColor     | 12  | textPrimaryColorInverse   | 12Z |
+| textSecondaryColor   | 14  | textSecondaryColorInverse | 14Z |
+| fontScale            | 16  | cornerRadius              | 17  |
+| backgroundAware      | 18  | contrast                  | 25  |
+| opacity              | 20  | elevation                 | 26  |
+| style                | 23  | header                    | 19  |
 
 #### Values
 
