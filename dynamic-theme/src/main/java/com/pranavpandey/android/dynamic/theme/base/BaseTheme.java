@@ -16,9 +16,28 @@
 
 package com.pranavpandey.android.dynamic.theme.base;
 
+import androidx.annotation.NonNull;
+
 /**
  * An interface to implement the base theme.
  *
  * @param <T> The type of the dynamic theme.
  */
-public interface BaseTheme<T extends BaseTheme<T>> { }
+public interface BaseTheme<T extends BaseTheme<T>> {
+
+    /**
+     * Returns whether this theme is host and can have child themes.
+     *
+     * @return {@code true} if this theme is host and can have child themes.
+     */
+    boolean isHost();
+
+    /**
+     * Sets whether this theme is host and can have child themes.
+     *
+     * @param host {@code true} to set the theme as host.
+     *
+     * @return The {@link T} object to allow for chaining of calls to set methods.
+     */
+    @NonNull T setHost(boolean host);
+}

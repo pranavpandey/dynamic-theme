@@ -912,7 +912,7 @@ public @interface Theme {
      */
     @Retention(RetentionPolicy.SOURCE)
     @StringDef(value = { Key.BRACKETS, Key.QUOTE, Key.SPLIT, Key.DARK,
-            Key.INVERSE, Key.SHARE, Key.SHARE_ALT, Key.RES, Key.WIDGET_ID,
+            Key.INVERSE, Key.SHARE, Key.SHARE_ALT, Key.HOST, Key.RES, Key.WIDGET_ID,
             Key.BACKGROUND, Key.TINT_BACKGROUND, Key.SURFACE, Key.TINT_SURFACE,
             Key.PRIMARY, Key.TINT_PRIMARY, Key.PRIMARY_DARK, Key.TINT_PRIMARY_DARK,
             Key.ACCENT, Key.TINT_ACCENT, Key.ACCENT_DARK, Key.TINT_ACCENT_DARK,
@@ -956,6 +956,11 @@ public @interface Theme {
          * Constant name for sharing the alternate theme.
          */
         String SHARE_ALT = "dynamic-theme-alt";
+
+        /**
+         * Serialized name for the host.
+         */
+        String HOST = "host";
 
         /**
          * Serialized name for the theme resource.
