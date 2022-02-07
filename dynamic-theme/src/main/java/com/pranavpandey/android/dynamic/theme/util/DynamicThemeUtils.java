@@ -94,6 +94,7 @@ public class DynamicThemeUtils {
         map.put(Theme.Key.HEADER, Theme.Key.Short.HEADER);
         map.put(Theme.Key.OPACITY, Theme.Key.Short.OPACITY);
         map.put(Theme.Key.CONTRAST, Theme.Key.Short.CONTRAST);
+        map.put(Theme.Key.ELEVATION, Theme.Key.Short.ELEVATION);
         map.put(Theme.Value.AUTO, Theme.Value.Short.AUTO);
         map.put(Theme.Value.APP, Theme.Value.Short.APP);
         map.put(Theme.Value.DAY, Theme.Value.Short.DAY);
@@ -330,6 +331,50 @@ public class DynamicThemeUtils {
             return Theme.AUTO;
         } else {
             return Integer.parseInt(value);
+        }
+    }
+
+    /**
+     * Converts the elevation into its string equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The string equivalent of the elevation.
+     */
+    public static @Theme.Value @NonNull String getValueFromElevation(
+            @Theme.Elevation int value) {
+        switch (value) {
+            case Theme.Elevation.DISABLE:
+                return Theme.Value.DISABLE;
+            case Theme.Elevation.ENABLE:
+                return Theme.Value.ENABLE;
+            case Theme.Elevation.UNKNOWN:
+            case Theme.Elevation.AUTO:
+            default:
+                return Theme.Value.AUTO;
+        }
+    }
+
+    /**
+     * Converts the elevation string into its integer equivalent.
+     *
+     * @param value The value to be converted.
+     *
+     * @return The integer equivalent of the elevation.
+     */
+    public static @Theme.Elevation int getValueFromElevation(
+            @Theme.Value @NonNull String value) {
+        switch (value) {
+            case Theme.Value.DISABLE:
+            case Theme.Value.Short.DISABLE:
+                return Theme.Elevation.DISABLE;
+            case Theme.Value.ENABLE:
+            case Theme.Value.Short.ENABLE:
+                return Theme.Elevation.ENABLE;
+            case Theme.Value.AUTO:
+            case Theme.Value.Short.AUTO:
+            default:
+                return Theme.Elevation.AUTO;
         }
     }
 

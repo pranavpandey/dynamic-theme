@@ -749,6 +749,60 @@ public @interface Theme {
     }
 
     /**
+     * Constant values for the elevation functionality.
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @interface Elevation {
+
+        /**
+         * Constant for the automatic elevation.
+         */
+        int AUTO = Theme.AUTO;
+
+        /**
+         * Constant for the unknown elevation.
+         */
+        int UNKNOWN = Theme.CUSTOM;
+
+        /**
+         * Constant to disable the elevation.
+         */
+        int DISABLE = 0;
+
+        /**
+         * Constant to enable the elevation.
+         */
+        int ENABLE = 1;
+
+        /**
+         * String constant values for the elevation functionality.
+         */
+        @Retention(RetentionPolicy.SOURCE)
+        @interface ToString {
+
+            /**
+             * String constant for the automatic elevation.
+             */
+            String AUTO = Theme.ToString.AUTO;
+
+            /**
+             * String constant for the unknown elevation.
+             */
+            String UNKNOWN = Theme.ToString.CUSTOM;
+
+            /**
+             * String constant to disable the elevation.
+             */
+            String DISABLE = "0";
+
+            /**
+             * String constant to enable the elevation.
+             */
+            String ENABLE = "1";
+        }
+    }
+
+    /**
      * Constant values for the dynamic theme style.
      */
     @Retention(RetentionPolicy.SOURCE)
@@ -863,8 +917,9 @@ public @interface Theme {
             Key.PRIMARY, Key.TINT_PRIMARY, Key.PRIMARY_DARK, Key.TINT_PRIMARY_DARK,
             Key.ACCENT, Key.TINT_ACCENT, Key.ACCENT_DARK, Key.TINT_ACCENT_DARK,
             Key.ERROR, Key.TINT_ERROR, Key.TEXT_PRIMARY, Key.TEXT_PRIMARY_INVERSE,
-            Key.TEXT_SECONDARY, Key.TEXT_SECONDARY_INVERSE, Key.FONT_SCALE, Key.CORNER_RADIUS,
-            Key.BACKGROUND_AWARE, Key.STYLE, Key.TYPE, Key.HEADER, Key.OPACITY, Key.CONTRAST })
+            Key.TEXT_SECONDARY, Key.TEXT_SECONDARY_INVERSE, Key.FONT_SCALE,
+            Key.CORNER_RADIUS, Key.BACKGROUND_AWARE, Key.STYLE, Key.TYPE, Key.HEADER,
+            Key.OPACITY, Key.CONTRAST, Key.ELEVATION })
     @interface Key {
 
         /**
@@ -1043,6 +1098,11 @@ public @interface Theme {
         String CONTRAST = "contrast";
 
         /**
+         * Serialized name for the elevation.
+         */
+        String ELEVATION = "elevation";
+
+        /**
          * Short constants for the theme keys.
          */
         @Retention(RetentionPolicy.SOURCE)
@@ -1053,7 +1113,7 @@ public @interface Theme {
                 Short.ERROR, Short.TINT_ERROR, Short.TEXT_PRIMARY, Short.TEXT_PRIMARY_INVERSE,
                 Short.TEXT_SECONDARY, Short.TEXT_SECONDARY_INVERSE, Short.FONT_SCALE,
                 Short.CORNER_RADIUS, Short.BACKGROUND_AWARE, Short.STYLE, Short.TYPE,
-                Short.HEADER, Short.OPACITY, Short.CONTRAST })
+                Short.HEADER, Short.OPACITY, Short.CONTRAST, Short.ELEVATION })
         @interface Short {
 
             /**
@@ -1210,6 +1270,11 @@ public @interface Theme {
              * Short serialized name for the contrast.
              */
             String CONTRAST = "25";
+
+            /**
+             * Short serialized name for the elevation.
+             */
+            String ELEVATION = "26";
         }
     }
 

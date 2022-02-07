@@ -449,6 +449,17 @@
             <!-- Constant to enable the background aware. -->
             <enum name="enable" value="1" />
         </attr>
+        <!-- Elevation options to adjust shadow accordingly. -->
+        <attr name="adt_elevation" format="enum">
+            <!-- Constant for the automatic elevation. -->
+            <enum name="auto" value="-3" />
+            <!-- Constant for the unknown elevation. -->
+            <enum name="unknown" value="-2" />
+            <!-- Constant to disable the elevation. -->
+            <enum name="disable" value="0" />
+            <!-- Constant to enable the elevation. -->
+            <enum name="enable" value="1" />
+        </attr>
         <!-- Theme string that will be applied to the supported views. -->
         <attr name="adt_theme" format="string|reference" />
         <!-- Color value if the background color type is set to custom. -->
@@ -483,10 +494,9 @@
              When disabled, widgets corner radius will be applied according to the default
              implementation. -->
         <attr name="adt_dynamicCornerSize" format="boolean|reference" />
-        <!-- true to enable elevation on the same background for surface widgets.
-             When disabled, widgets elevation will be disabled (or 0) if the dynamic theme
-             surface color is exactly same as background color. -->
-        <attr name="adt_elevationOnSameBackground" format="boolean|reference" />
+        <!-- true to force elevation irrespective of the theme configurations.
+             When disabled, widgets will follow the dynamic theme elevation. -->
+        <attr name="adt_forceElevation" format="boolean|reference" />
         <!-- true if the view is floating like popup, dialog, etc. -->
         <attr name="adt_floatingView" format="boolean|reference" />
         <!-- Color for the card background. -->

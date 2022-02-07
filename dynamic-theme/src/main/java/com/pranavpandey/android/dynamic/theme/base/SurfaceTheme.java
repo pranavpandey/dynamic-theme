@@ -20,11 +20,11 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 /**
- * A {@link BaseTheme} to implement the surface theme.
+ * An {@link ElevationTheme} to implement the surface theme.
  *
  * @param <T> The type of the dynamic theme.
  */
-public interface SurfaceTheme<T extends SurfaceTheme<T>> extends BaseTheme<T> {
+public interface SurfaceTheme<T extends SurfaceTheme<T>> extends ElevationTheme<T> {
 
     /**
      * Returns the surface color used by this theme.

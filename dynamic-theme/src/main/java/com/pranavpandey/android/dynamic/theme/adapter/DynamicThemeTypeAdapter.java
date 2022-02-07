@@ -29,6 +29,7 @@ import com.pranavpandey.android.dynamic.theme.base.BackgroundAware;
 import com.pranavpandey.android.dynamic.theme.base.BackgroundTheme;
 import com.pranavpandey.android.dynamic.theme.base.BaseTheme;
 import com.pranavpandey.android.dynamic.theme.base.CornerTheme;
+import com.pranavpandey.android.dynamic.theme.base.ElevationTheme;
 import com.pranavpandey.android.dynamic.theme.base.ErrorTheme;
 import com.pranavpandey.android.dynamic.theme.base.PrimaryTheme;
 import com.pranavpandey.android.dynamic.theme.base.StyleTheme;
@@ -196,6 +197,12 @@ public class DynamicThemeTypeAdapter<T extends BaseTheme<T>> extends TypeAdapter
                 writer.name(Theme.Key.OPACITY);
                 writer.value(DynamicThemeUtils.getValueFromOpacity(
                         ((TranslucentTheme<?>) value).getOpacity(mResolve)));
+            }
+
+            if (value instanceof ElevationTheme) {
+                writer.name(Theme.Key.ELEVATION);
+                writer.value(DynamicThemeUtils.getValueFromElevation(
+                        ((ElevationTheme<?>) value).getElevation(mResolve)));
             }
 
             if (value instanceof StyleTheme) {
@@ -394,6 +401,13 @@ public class DynamicThemeTypeAdapter<T extends BaseTheme<T>> extends TypeAdapter
                         if (mDynamicTheme instanceof TranslucentTheme) {
                             ((TranslucentTheme<?>) mDynamicTheme).setOpacity(DynamicThemeUtils
                                     .getValueFromOpacity(reader.nextString()));
+                        }
+                        break;
+                    case Theme.Key.ELEVATION:
+                    case Theme.Key.Short.ELEVATION:
+                        if (mDynamicTheme instanceof ElevationTheme) {
+                            ((ElevationTheme<?>) mDynamicTheme).setElevation(DynamicThemeUtils
+                                    .getValueFromElevation(reader.nextString()));
                         }
                         break;
                     case Theme.Key.STYLE:
