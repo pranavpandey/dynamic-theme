@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Pranav Pandey
+ * Copyright 2017-2022 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,10 @@
 
 package com.pranavpandey.android.dynamic.theme.util;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.WallpaperColors;
+import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -24,12 +28,16 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresPermission;
+import androidx.palette.graphics.Palette;
 
+import com.pranavpandey.android.dynamic.theme.AppTheme;
 import com.pranavpandey.android.dynamic.theme.Theme;
 import com.pranavpandey.android.dynamic.theme.ThemeContract;
 import com.pranavpandey.android.dynamic.theme.base.StringTheme;
@@ -38,6 +46,7 @@ import com.pranavpandey.android.dynamic.util.DynamicColorUtils;
 import com.pranavpandey.android.dynamic.util.DynamicDeviceUtils;
 import com.pranavpandey.android.dynamic.util.DynamicFileUtils;
 import com.pranavpandey.android.dynamic.util.DynamicIntentUtils;
+import com.pranavpandey.android.dynamic.util.DynamicSdkUtils;
 import com.pranavpandey.android.dynamic.util.DynamicUnitUtils;
 
 import org.json.JSONObject;
@@ -657,6 +666,45 @@ public class DynamicThemeUtils {
     }
 
     /**
+     * Try to map the theme with the supplied colors.
+     *
+     * @param theme The theme to be mapped.
+     * @param colors The color map to be used.
+     *
+     * @return The mapped theme according to the supplied colors.
+     */
+    public static @NonNull AppTheme<?> mapTheme(
+            @NonNull AppTheme<?> theme, @Nullable Map<Integer, Integer> colors) {
+        if (colors == null || colors.isEmpty()) {
+            return theme;
+        }
+
+        Integer color;
+
+        if (colors.containsKey(Theme.ColorType.BACKGROUND)
+                && (color = colors.get(Theme.ColorType.BACKGROUND)) != null) {
+            theme.setBackgroundColor(color, false);
+        }
+
+        if (colors.containsKey(Theme.ColorType.SURFACE)
+                && (color = colors.get(Theme.ColorType.SURFACE)) != null) {
+            theme.setSurfaceColor(color, false);
+        }
+
+        if (colors.containsKey(Theme.ColorType.PRIMARY)
+                && (color = colors.get(Theme.ColorType.PRIMARY)) != null) {
+            theme.setPrimaryColor(color, false);
+        }
+
+        if (colors.containsKey(Theme.ColorType.ACCENT)
+                && (color = colors.get(Theme.ColorType.ACCENT)) != null) {
+            theme.setAccentColor(color, false);
+        }
+
+        return theme;
+    }
+
+    /**
      * Returns the encoded theme string with the URL.
      *
      * @param theme The theme to be processed.
@@ -880,5 +928,102 @@ public class DynamicThemeUtils {
             @Nullable @Theme.ToString String theme,
             @Nullable @Theme.ToString String value, @Nullable String data) {
         broadcastDynamicTheme(context, theme, value, data, false);
+    }
+
+    /**
+     * Try to extract the bitmap colors.
+     *
+     * @param bitmap The bitmap to be used.
+     *
+     * @return The extracted the bitmap colors map.
+     *
+     * @see Theme.ColorType
+     */
+    public static @Nullable Map<Integer, Integer> getBitmapColors(@Nullable Bitmap bitmap) {
+        if (bitmap == null) {
+            return null;
+        }
+
+        Palette palette = new Palette.Builder(bitmap).generate();
+        Map<Integer, Integer> colors = new HashMap<>();
+
+        if (palette.getDominantSwatch() != null) {
+            colors.put(Theme.ColorType.BACKGROUND, palette.getDominantSwatch().getRgb());
+        } else if (palette.getVibrantSwatch() != null) {
+            colors.put(Theme.ColorType.BACKGROUND, palette.getVibrantSwatch().getRgb());
+        }
+
+        if (palette.getLightMutedSwatch() != null) {
+            colors.put(Theme.ColorType.PRIMARY, palette.getLightMutedSwatch().getRgb());
+        } else if (palette.getDarkMutedSwatch() != null) {
+            colors.put(Theme.ColorType.PRIMARY, palette.getDarkMutedSwatch().getRgb());
+        } else if (palette.getMutedSwatch() != null) {
+            colors.put(Theme.ColorType.PRIMARY, palette.getMutedSwatch().getRgb());
+        } else if (palette.getDominantSwatch() != null) {
+            colors.put(Theme.ColorType.PRIMARY, palette.getDominantSwatch().getRgb());
+        } else if (palette.getVibrantSwatch() != null) {
+            colors.put(Theme.ColorType.PRIMARY, palette.getVibrantSwatch().getRgb());
+        }
+
+        if (palette.getLightVibrantSwatch() != null) {
+            colors.put(Theme.ColorType.ACCENT, palette.getLightVibrantSwatch().getRgb());
+        } else if (palette.getDarkVibrantSwatch() != null) {
+            colors.put(Theme.ColorType.ACCENT, palette.getDarkVibrantSwatch().getRgb());
+        } else if (palette.getDominantSwatch() != null) {
+            colors.put(Theme.ColorType.ACCENT, palette.getDominantSwatch().getRgb());
+        }
+
+        return colors;
+    }
+
+    /**
+     * Try to extract the wallpaper colors.
+     *
+     * <p>It requires {@link android.Manifest.permission#READ_EXTERNAL_STORAGE} permission on
+     * API 26 and below.
+     *
+     * @param context The context to get the wallpaper manager.
+     *
+     * @return The extracted the wallpaper colors map.
+     *
+     * @see #getBitmapColors(Bitmap)
+     * @see Theme.ColorType
+     */
+    @TargetApi(Build.VERSION_CODES.O_MR1)
+    @RequiresPermission(value = Manifest.permission.READ_EXTERNAL_STORAGE, conditional = true)
+    public static @Nullable Map<Integer, Integer> getWallpaperColors(@Nullable Context context) {
+        if (context == null) {
+            return null;
+        } else if (!DynamicSdkUtils.is27()) {
+            return getBitmapColors(DynamicBitmapUtils.getBitmap(
+                    WallpaperManager.getInstance(context).getDrawable()));
+        }
+
+        WallpaperColors wallpaperColors = WallpaperManager.getInstance(
+                context).getWallpaperColors(WallpaperManager.FLAG_SYSTEM);
+        Map<Integer, Integer> colors = new HashMap<>();
+
+        if (wallpaperColors != null) {
+            colors.put(Theme.ColorType.ACCENT,
+                    wallpaperColors.getPrimaryColor().toArgb());
+
+            if (wallpaperColors.getSecondaryColor() != null) {
+                colors.put(Theme.ColorType.PRIMARY,
+                        wallpaperColors.getSecondaryColor().toArgb());
+            } else {
+                colors.put(Theme.ColorType.PRIMARY,
+                        wallpaperColors.getPrimaryColor().toArgb());
+            }
+
+            if (wallpaperColors.getTertiaryColor() != null) {
+                colors.put(Theme.ColorType.BACKGROUND,
+                        wallpaperColors.getTertiaryColor().toArgb());
+            } else {
+                colors.put(Theme.ColorType.BACKGROUND,
+                        wallpaperColors.getPrimaryColor().toArgb());
+            }
+        }
+
+        return colors;
     }
 }
