@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Pranav Pandey
+ * Copyright 2017-2022 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,13 +19,8 @@ package com.pranavpandey.android.dynamic.theme;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import androidx.annotation.IntDef;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
-import static com.pranavpandey.android.dynamic.theme.ThemeContract.Preset.Type.CUSTOM;
-import static com.pranavpandey.android.dynamic.theme.ThemeContract.Preset.Type.DEFAULT;
 
 /**
  * Theme contract class to hold the database values.
@@ -57,7 +52,6 @@ public class ThemeContract {
      * Interface to hold the content provider match codes.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { DEFAULT, CUSTOM })
     public @interface Code {
 
         /**

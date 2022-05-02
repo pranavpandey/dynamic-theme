@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Pranav Pandey
+ * Copyright 2017-2022 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,6 @@
 package com.pranavpandey.android.dynamic.theme;
 
 import androidx.annotation.ColorInt;
-import androidx.annotation.IntDef;
-import androidx.annotation.StringDef;
 
 import com.google.zxing.common.CharacterSetECI;
 import com.pranavpandey.android.dynamic.util.DynamicFileUtils;
@@ -198,8 +196,6 @@ public @interface Theme {
      * String constant values for the theme.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { ToString.APP, ToString.AUTO, ToString.CUSTOM, ToString.DISABLE,
-            ToString.SYSTEM, ToString.DAY, ToString.NIGHT, ToString.WIDGET, ToString.REMOTE })
     @interface ToString {
 
         /**
@@ -911,15 +907,6 @@ public @interface Theme {
      * Constants for the theme keys.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { Key.BRACKETS, Key.QUOTE, Key.SPLIT, Key.DARK,
-            Key.INVERSE, Key.SHARE, Key.SHARE_ALT, Key.HOST, Key.RES, Key.WIDGET_ID,
-            Key.BACKGROUND, Key.TINT_BACKGROUND, Key.SURFACE, Key.TINT_SURFACE,
-            Key.PRIMARY, Key.TINT_PRIMARY, Key.PRIMARY_DARK, Key.TINT_PRIMARY_DARK,
-            Key.ACCENT, Key.TINT_ACCENT, Key.ACCENT_DARK, Key.TINT_ACCENT_DARK,
-            Key.ERROR, Key.TINT_ERROR, Key.TEXT_PRIMARY, Key.TEXT_PRIMARY_INVERSE,
-            Key.TEXT_SECONDARY, Key.TEXT_SECONDARY_INVERSE, Key.FONT_SCALE,
-            Key.CORNER_RADIUS, Key.BACKGROUND_AWARE, Key.STYLE, Key.TYPE, Key.HEADER,
-            Key.OPACITY, Key.CONTRAST, Key.ELEVATION })
     @interface Key {
 
         /**
@@ -1111,14 +1098,6 @@ public @interface Theme {
          * Short constants for the theme keys.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Short.BRACKETS, Short.QUOTE, Short.SPLIT, Short.DARK, Short.INVERSE,
-                Short.BACKGROUND, Short.TINT_BACKGROUND, Short.SURFACE, Short.TINT_SURFACE,
-                Short.PRIMARY, Short.TINT_PRIMARY, Short.PRIMARY_DARK, Short.TINT_PRIMARY_DARK,
-                Short.ACCENT, Short.TINT_ACCENT, Short.ACCENT_DARK, Short.TINT_ACCENT_DARK,
-                Short.ERROR, Short.TINT_ERROR, Short.TEXT_PRIMARY, Short.TEXT_PRIMARY_INVERSE,
-                Short.TEXT_SECONDARY, Short.TEXT_SECONDARY_INVERSE, Short.FONT_SCALE,
-                Short.CORNER_RADIUS, Short.BACKGROUND_AWARE, Short.STYLE, Short.TYPE,
-                Short.HEADER, Short.OPACITY, Short.CONTRAST, Short.ELEVATION })
         @interface Short {
 
             /**
@@ -1287,8 +1266,6 @@ public @interface Theme {
      * Constants for the theme values.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef(value = { Value.SPLIT, Value.HASH, Value.AUTO, Value.APP, Value.DAY,
-            Value.NIGHT, Value.CUSTOM, Value.DISABLE, Value.ENABLE, Value.HIDE, Value.SHOW })
     @interface Value {
 
         /**
@@ -1350,8 +1327,6 @@ public @interface Theme {
          * Short constants for the theme values.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @StringDef(value = { Short.SPLIT, Short.HASH, Short.AUTO, Short.APP, Short.DAY,
-                Short.NIGHT, Short.CUSTOM, Short.DISABLE, Short.ENABLE, Short.HIDE, Short.SHOW })
         @interface Short {
 
             /**
@@ -1465,14 +1440,6 @@ public @interface Theme {
      * {@link R.attr#adt_colorType}.
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(value = { ColorType.UNKNOWN, ColorType.NONE, ColorType.CUSTOM,
-            ColorType.BACKGROUND, ColorType.TINT_BACKGROUND, ColorType.SURFACE,
-            ColorType.TINT_SURFACE, ColorType.PRIMARY, ColorType.TINT_PRIMARY,
-            ColorType.PRIMARY_DARK, ColorType.TINT_PRIMARY_DARK, ColorType.ACCENT,
-            ColorType.TINT_ACCENT, ColorType.ACCENT_DARK, ColorType.TINT_ACCENT_DARK,
-            ColorType.ERROR, ColorType.TINT_ERROR, ColorType.TEXT_PRIMARY,
-            ColorType.TEXT_PRIMARY_INVERSE, ColorType.TEXT_SECONDARY,
-            ColorType.TEXT_SECONDARY_INVERSE })
     @interface ColorType {
 
         /**
@@ -1661,7 +1628,6 @@ public @interface Theme {
          * Interface to hold the theme code style constants.
          */
         @Retention(RetentionPolicy.SOURCE)
-        @IntDef(value = { Style.SQUARE, Style.ROUND, Style.OVAL })
         @interface Style {
 
             /**
