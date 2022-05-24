@@ -246,7 +246,7 @@ Let's give it a try to explore its other useful features.
 - Preview them natively in the supported apps and widgets.
 - Experimental option to enable dark mode in devices that don't have a system setting.
 
-[Palettes - Theme Manager](https://play.google.com/store/apps/details?id=com.pranavpandey.theme)
+[Palettes](https://play.google.com/store/apps/details?id=com.pranavpandey.theme)
 
 ---
 
