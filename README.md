@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme.png" width="160" height="160" align="right" hspace="20">
+<img src="./graphics/icon.png" width="160" height="160" align="right" hspace="20">
 
 # Dynamic Theme
 
@@ -13,7 +13,7 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 <br/>Since v3.1.0, it is dependent on Java 8 due to the dependency on
 [Dynamic Utils](https://github.com/pranavpandey/dynamic-utils).
 
-<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-code.png" width="400">&nbsp;&nbsp;<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/dynamic-theme-preview.png" width="400">
+<img src="./graphics/code.png" width="400">&nbsp;&nbsp;<img src="./graphics/preview.png" width="400">
 
 ```
 {
@@ -233,7 +233,7 @@ The following rules will be applied by this library:
 
 ---
 
-<img src="https://raw.githubusercontent.com/pranavpandey/dynamic-theme/master/graphics/palettes.png" width="160" height="160" align="right" hspace="20">
+<img src="./graphics/palettes.png" width="160" height="160" align="right" hspace="20">
 
 ## Palettes
 
