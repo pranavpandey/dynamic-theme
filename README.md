@@ -237,16 +237,15 @@ The following rules will be applied by this library:
 
 ## Palettes
 
-Palettes is a universal manager for apps supporting the dynamic theme on Android. 
-It provides some default configurations that can be extended to create custom ones. 
-Let's give it a try to explore its other useful features.
+[Palettes](https://play.google.com/store/apps/details?id=com.pranavpandey.theme) is 
+a universal manager for apps supporting the dynamic theme on Android. It provides 
+some default configurations that can be extended to create custom ones. Let's give 
+it a try to explore its other useful features.
 
 - A collection of theme presets that can be applied in the supported apps.
 - Extend them to create custom ones according to the requirement.
 - Preview them natively in the supported apps and widgets.
 - Experimental option to enable dark mode in devices that don't have a system setting.
-
-[Palettes](https://play.google.com/store/apps/details?id=com.pranavpandey.theme)
 
 ---
 
