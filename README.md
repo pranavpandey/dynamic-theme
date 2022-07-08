@@ -8,10 +8,9 @@
 
 A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 
-> It uses [AndroidX](https://developer.android.com/jetpack/androidx/) so, first
-[migrate](https://developer.android.com/jetpack/androidx/migrate) your project to AndroidX.
+> It uses [AndroidX][androidx] so, first [migrate][androidx-migrate] your project to AndroidX.
 <br/>Since v3.1.0, it is dependent on Java 8 due to the dependency on
-[Dynamic Utils](https://github.com/pranavpandey/dynamic-utils).
+[Dynamic Utils][dynamic-utils].
 
 <img src="./graphics/code.png" width="400">&nbsp;&nbsp;<img src="./graphics/preview.png" width="400">
 
@@ -49,13 +48,13 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 
 ## Contents
 
-- [Format](https://github.com/pranavpandey/dynamic-theme#format)
-- [Installation](https://github.com/pranavpandey/dynamic-theme#installation)
-- [Usage](https://github.com/pranavpandey/dynamic-theme#usage)
-    - [Dependency](https://github.com/pranavpandey/dynamic-theme#dependency)
-    - [Proguard](https://github.com/pranavpandey/dynamic-theme#proguard)
-- [Palettes](https://github.com/pranavpandey/dynamic-theme#palettes)
-- [License](https://github.com/pranavpandey/dynamic-theme#license)
+- [Format](#format)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Dependency](#dependency)
+    - [Proguard](#proguard)
+- [Palettes](#palettes)
+- [License](#license)
 
 ---
 
@@ -165,7 +164,7 @@ dependencies {
 
 It can be used in raw JSON format or can be implemented on the Android (Java) platform.
 
-> For complete reference, please read the [documentation](https://pranavpandey.github.io/dynamic-theme).
+> For complete reference, please read the [documentation][documentation].
 
 ### Android (Java)
 
@@ -207,14 +206,13 @@ public class DynamicAppTheme implements AppTheme<DynamicAppTheme> {
 
 ### Dependency
 
-It depends on the [dynamic-utils](https://github.com/pranavpandey/dynamic-utils) to perform
+It depends on the [dynamic-utils][dynamic-utils] to perform
 various internal operations. So, its functions can also be used to perform other useful operations.
 
 ### Proguard
 
-This library uses [Gson](https://github.com/google/gson) and has custom strategy to process the 
-theme data. It will automatically apply the appropriate rules if proguard is enabled in the 
-project.
+This library uses [Gson][gson] and has custom strategy to process the theme data. 
+It will automatically apply the appropriate rules if proguard is enabled in the project.
 
 The following rules will be applied by this library:
 
@@ -237,10 +235,9 @@ The following rules will be applied by this library:
 
 ## Palettes
 
-[Palettes](https://play.google.com/store/apps/details?id=com.pranavpandey.theme) is 
-a universal manager for apps supporting the dynamic theme on Android. It provides 
-some default configurations that can be extended to create custom ones. Let's give 
-it a try to explore its other useful features.
+[Palettes][palettes] is a universal manager for apps supporting the dynamic theme on Android. 
+It provides some default configurations that can be extended to create custom ones. 
+Let's give it a try to explore its other useful features.
 
 - A collection of theme presets that can be applied in the supported apps.
 - Extend them to create custom ones according to the requirement.
@@ -274,7 +271,15 @@ Pranav Pandey
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-    
-[app theme]: https://github.com/pranavpandey/dynamic-theme/blob/master/dynamic-theme/src/main/java/com/pranavpandey/android/dynamic/theme/AppTheme.java
-[app widget theme]: https://github.com/pranavpandey/dynamic-theme/blob/master/dynamic-theme/src/main/java/com/pranavpandey/android/dynamic/theme/AppWidgetTheme.java
+
+
+[androidx]: https://developer.android.com/jetpack/androidx
+[androidx core]: https://developer.android.com/jetpack/androidx/releases/core
+[androidx-migrate]: https://developer.android.com/jetpack/androidx/migrate
+[documentation]: https://pranavpandey.github.io/dynamic-theme 
+[app theme]: ./dynamic-theme/src/main/java/com/pranavpandey/android/dynamic/theme/AppTheme.java
+[app widget theme]: ./dynamic-theme/src/main/java/com/pranavpandey/android/dynamic/theme/AppWidgetTheme.java
 [theme implementation]: https://github.com/pranavpandey/dynamic-support/blob/master/dynamic-support/src/main/java/com/pranavpandey/android/dynamic/support/model/DynamicAppTheme.java
+[dynamic-utils]: https://github.com/pranavpandey/dynamic-utils
+[gson]: https://github.com/google/gson 
+[palettes]: https://play.google.com/store/apps/details?id=com.pranavpandey.theme 
