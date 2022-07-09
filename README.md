@@ -61,7 +61,7 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 ## Format
 
 A dynamic theme can be represented as a `JSON`, `URL` or a `File` with `.theme` extension 
-containing the JSON text. Use the Palettes app for Android to create or share the dynamic themes 
+containing the JSON text. Use the Palettes app for Android to create or share dynamic themes 
 in various formats. However, the most suitable way is to share it via a URL that can be imported 
 easily on various platforms.
 
@@ -164,7 +164,7 @@ dependencies {
 
 It can be used in raw JSON format or can be implemented on the Android (Java) platform.
 
-> For complete reference, please read the [documentation][documentation].
+> For a complete reference, please read the [documentation][documentation].
 
 ### Android (Java)
 
@@ -231,7 +231,8 @@ The following rules will be applied by this library:
 
 ---
 
-<img src="./graphics/palettes.png" width="160" height="160" align="right" hspace="20">
+<img src="./graphics/apps/pranavpandey-palettes.png"
+  width="140" height="140" align="right" hspace="20">
 
 ## Palettes
 
