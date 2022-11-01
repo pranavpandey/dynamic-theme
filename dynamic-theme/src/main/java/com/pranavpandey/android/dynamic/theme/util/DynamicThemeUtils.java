@@ -104,6 +104,7 @@ public class DynamicThemeUtils {
         map.put(Theme.Key.OPACITY, Theme.Key.Short.OPACITY);
         map.put(Theme.Key.CONTRAST, Theme.Key.Short.CONTRAST);
         map.put(Theme.Key.ELEVATION, Theme.Key.Short.ELEVATION);
+        map.put(Theme.Value.SYSTEM, Theme.Value.Short.SYSTEM);
         map.put(Theme.Value.AUTO, Theme.Value.Short.AUTO);
         map.put(Theme.Value.APP, Theme.Value.Short.APP);
         map.put(Theme.Value.DAY, Theme.Value.Short.DAY);
@@ -187,7 +188,7 @@ public class DynamicThemeUtils {
      * @return The string equivalent of the font scale.
      */
     public static @NonNull String getValueFromFontScale(int value) {
-        if (value == Theme.AUTO) {
+        if (value == Theme.Font.AUTO) {
             return Theme.Value.AUTO;
         } else {
             return String.valueOf(value);
@@ -203,7 +204,7 @@ public class DynamicThemeUtils {
      */
     public static int getValueFromFontScale(@NonNull String value) {
         if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
-            return Theme.AUTO;
+            return Theme.Font.AUTO;
         } else {
             return Integer.parseInt(value);
         }
@@ -217,10 +218,13 @@ public class DynamicThemeUtils {
      * @return The string equivalent of the corner radius.
      */
     public static @NonNull String getValueFromCornerRadius(int value) {
-        if (value == Theme.AUTO) {
-            return Theme.Value.AUTO;
-        } else {
-            return String.valueOf(DynamicUnitUtils.convertPixelsToDp(value));
+        switch (value) {
+            case Theme.Corner.AUTO:
+                return Theme.Value.AUTO;
+            case Theme.Corner.SYSTEM:
+                return Theme.Value.SYSTEM;
+            default:
+                return String.valueOf(DynamicUnitUtils.convertPixelsToDp(value));
         }
     }
 
@@ -232,10 +236,15 @@ public class DynamicThemeUtils {
      * @return The integer equivalent of the corner radius.
      */
     public static int getValueFromCornerRadius(@NonNull String value) {
-        if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
-            return Theme.AUTO;
-        } else {
-            return Integer.parseInt(value);
+        switch (value) {
+            case Theme.Value.AUTO:
+            case Theme.Value.Short.AUTO:
+                return Theme.Corner.AUTO;
+            case Theme.Value.SYSTEM:
+            case Theme.Value.Short.SYSTEM:
+                return Theme.Corner.SYSTEM;
+            default:
+                return Integer.parseInt(value);
         }
     }
 
@@ -291,7 +300,7 @@ public class DynamicThemeUtils {
      * @return The string equivalent of the contrast.
      */
     public static @Theme.Value @NonNull String getValueFromContrast(int value) {
-        if (value == Theme.AUTO) {
+        if (value == Theme.Contrast.AUTO) {
             return Theme.Value.AUTO;
         } else {
             return Integer.toString(value);
@@ -307,7 +316,7 @@ public class DynamicThemeUtils {
      */
     public static int getValueFromContrast(@NonNull String value) {
         if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
-            return Theme.AUTO;
+            return Theme.Contrast.AUTO;
         } else {
             return Integer.parseInt(value);
         }
@@ -321,7 +330,7 @@ public class DynamicThemeUtils {
      * @return The string equivalent of the opacity.
      */
     public static @Theme.Value @NonNull String getValueFromOpacity(int value) {
-        if (value == Theme.AUTO) {
+        if (value == Theme.Opacity.AUTO) {
             return Theme.Value.AUTO;
         } else {
             return Integer.toString(value);
@@ -337,7 +346,7 @@ public class DynamicThemeUtils {
      */
     public static int getValueFromOpacity(@NonNull String value) {
         if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
-            return Theme.AUTO;
+            return Theme.Opacity.AUTO;
         } else {
             return Integer.parseInt(value);
         }

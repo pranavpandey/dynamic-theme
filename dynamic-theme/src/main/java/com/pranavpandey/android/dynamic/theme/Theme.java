@@ -143,9 +143,9 @@ public @interface Theme {
     int DEFAULT_RES = -1;
 
     /**
-     * Constant to open the theme.
+     * Constant for the auto system theme.
      */
-    int OPEN = -5;
+    int AUTO_SYSTEM = -5;
 
     /**
      * Constant for the app theme.
@@ -153,7 +153,7 @@ public @interface Theme {
     int APP = -4;
 
     /**
-     * Constant for the automatic theme.
+     * Constant for the auto theme.
      */
     int AUTO = -3;
 
@@ -199,12 +199,17 @@ public @interface Theme {
     @interface ToString {
 
         /**
+         * Constant for the auto system theme.
+         */
+        String AUTO_SYSTEM = "-5";
+
+        /**
          * String constant for the app theme.
          */
         String APP = "-4";
 
         /**
-         * String constant for the automatic theme.
+         * String constant for the auto theme.
          */
         String AUTO = "-3";
 
@@ -470,6 +475,11 @@ public @interface Theme {
         int AUTO = Theme.AUTO;
 
         /**
+         * Constant value for the system corner size.
+         */
+        int SYSTEM = Theme.AUTO_SYSTEM;
+
+        /**
          * Constant value for the custom corner size.
          */
         int CUSTOM = Theme.CUSTOM;
@@ -536,6 +546,11 @@ public @interface Theme {
             String AUTO = Theme.ToString.AUTO;
 
             /**
+             * String constant for the system corner size.
+             */
+            String SYSTEM = Theme.ToString.AUTO_SYSTEM;
+
+            /**
              * String constant for the custom corner size.
              */
             String CUSTOM = Theme.ToString.CUSTOM;
@@ -549,7 +564,7 @@ public @interface Theme {
     @interface BackgroundAware {
 
         /**
-         * Constant for the automatic background aware.
+         * Constant for the auto background aware.
          */
         int AUTO = Theme.AUTO;
 
@@ -575,7 +590,7 @@ public @interface Theme {
         @interface ToString {
 
             /**
-             * String constant for the automatic background aware.
+             * String constant for the auto background aware.
              */
             String AUTO = Theme.ToString.AUTO;
 
@@ -751,7 +766,7 @@ public @interface Theme {
     @interface Elevation {
 
         /**
-         * Constant for the automatic elevation.
+         * Constant for the auto elevation.
          */
         int AUTO = Theme.AUTO;
 
@@ -777,7 +792,7 @@ public @interface Theme {
         @interface ToString {
 
             /**
-             * String constant for the automatic elevation.
+             * String constant for the auto elevation.
              */
             String AUTO = Theme.ToString.AUTO;
 
@@ -1279,6 +1294,11 @@ public @interface Theme {
         String HASH = "#";
 
         /**
+         * Constant for the system value.
+         */
+        String SYSTEM = "system";
+
+        /**
          * Constant for the auto value.
          */
         String AUTO = "auto";
@@ -1338,6 +1358,11 @@ public @interface Theme {
              * Short constant for the hash value.
              */
             String HASH = "X";
+
+            /**
+             * Short constant for the system value.
+             */
+            String SYSTEM = "M";
 
             /**
              * Short constant for the auto value.
@@ -1555,7 +1580,7 @@ public @interface Theme {
     @interface Visibility {
 
         /**
-         * Constant for the automatic visibility.
+         * Constant for the auto visibility.
          */
         int AUTO = Theme.AUTO;
 
@@ -1576,7 +1601,7 @@ public @interface Theme {
         @interface ToString {
 
             /**
-             * String constant for the automatic visibility.
+             * String constant for the auto visibility.
              */
             String AUTO = Theme.ToString.AUTO;
 

@@ -440,7 +440,7 @@
         </attr>
         <!-- Background aware options to adjust colors accordingly. -->
         <attr name="adt_backgroundAware" format="enum">
-            <!-- Constant for the automatic background aware. -->
+            <!-- Constant for the auto background aware. -->
             <enum name="auto" value="-3" />
             <!-- Constant for the unknown background aware. -->
             <enum name="unknown" value="-2" />
@@ -451,7 +451,7 @@
         </attr>
         <!-- Elevation options to adjust shadow accordingly. -->
         <attr name="adt_elevation" format="enum">
-            <!-- Constant for the automatic elevation. -->
+            <!-- Constant for the auto elevation. -->
             <enum name="auto" value="-3" />
             <!-- Constant for the unknown elevation. -->
             <enum name="unknown" value="-2" />
