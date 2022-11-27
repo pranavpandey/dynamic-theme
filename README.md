@@ -90,7 +90,7 @@ A `JSON` is the original format for the dynamic theme that provides cross-app fu
   "textSecondaryColor": "auto|color",
   "textSecondaryColorInverse": "auto|color",
   "fontScale": "auto|integer",
-  "cornerRadius": "auto|integer",
+  "cornerRadius": "auto|system|integer",
   "backgroundAware": "auto|disable|enable",
   "contrast": "auto|integer",
   "opacity": "auto|integer",
@@ -129,9 +129,9 @@ can be imported easily in various apps or platforms.
 #### Values
 
 | JSON          | URL | JSON   | URL |
-| :-------------| --- | :----- | --- |
+| :-------------| --- | :----- |-----|
 | Split (Value) | v   | #      | X   |
-| auto          | A   |
+| auto          | A   | system | M   |
 | disable       | D   | enable | E   |
 | hide          | H   | show   | S   |
 
@@ -154,7 +154,7 @@ It can be installed by adding the following dependency to your `build.gradle` fi
 ```groovy
 dependencies {
     // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-theme:4.3.2'
+    implementation 'com.pranavpandey.android:dynamic-theme:4.4.0'
 }
 ```
 
