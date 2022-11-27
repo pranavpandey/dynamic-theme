@@ -321,6 +321,18 @@ public class DynamicCodeUtils {
             int outputWidth = Math.max(Theme.Size.DEFAULT, codeWidth);
             int outputHeight = Math.max(Theme.Size.DEFAULT, codeHeight);
             int multiple = Math.min(outputWidth / codeWidth, outputHeight / codeHeight);
+
+            final int FINDER_SIZE = 7;
+            final float OVERLAY_FACTOR = Theme.Size.FACTOR_OVERLAY;
+            final float PADDING_FACTOR = style == Theme.Code.Style.OVAL ? 1.85f : 2f;
+            final int OVERLAY_SIZE = overlay != null ? (int) (Math.min(
+                    inputWidth, inputHeight) * OVERLAY_FACTOR) : 0;
+            final int OVERLAY_SIZE_CENTER = OVERLAY_SIZE / 2;
+            final float SCALE_DOWN_FACTOR = (style == Theme.Code.Style.ROUND
+                    || style == Theme.Code.Style.OVAL ? 21f / 30f : 1f);
+
+            int overlaySize = (int) (multiple * (OVERLAY_SIZE
+                    - (Theme.Size.FACTOR_OVERLAY_PADDING * OVERLAY_SIZE)));
             float corner = Theme.Corner.MIN;
             int cornerDp = Theme.Corner.MIN;
 
@@ -342,22 +354,11 @@ public class DynamicCodeUtils {
             int inputCenterY = inputHeight / 2;
             int outputCenterX = outputWidth / 2;
             int outputCenterY = outputHeight / 2;
-
-            final int FINDER_SIZE = 7;
-            final float SCALE_DOWN_FACTOR = style == Theme.Code.Style.ROUND
-                    || style == Theme.Code.Style.OVAL ? 21f / 30f : 1f;
-            final float PADDING_FACTOR = style == Theme.Code.Style.OVAL ? 1.85f : 2f;
-            final int OVERLAY_SIZE = overlay != null ? (int) (Math.min(
-                    inputWidth, inputHeight) * Theme.Size.FACTOR_OVERLAY) : 0;
-            final int OVERLAY_SIZE_CENTER = OVERLAY_SIZE / 2;
-
             int leftPadding = (int) ((outputWidth - (inputWidth * multiple)) / PADDING_FACTOR);
             int topPadding = (int) ((outputHeight - (inputHeight * multiple)) / PADDING_FACTOR);
             int dataSize = (int) (multiple * SCALE_DOWN_FACTOR);
             int dataRadius = dataSize / 2;
             int finderDiameter = multiple * FINDER_SIZE;
-            int overlaySize = (int) (multiple * (OVERLAY_SIZE
-                    - (Theme.Size.FACTOR_OVERLAY * OVERLAY_SIZE)));
             float cornerData = Theme.Corner.MIN;
 
             if (theme instanceof CornerTheme) {
@@ -409,6 +410,7 @@ public class DynamicCodeUtils {
                                 && inputY >= inputCenterY - OVERLAY_SIZE_CENTER
                                 && inputY <= inputCenterY + OVERLAY_SIZE_CENTER)) {
                             paint.setColor(dataColor);
+
                             if (style == Theme.Code.Style.OVAL) {
                                 canvasCode.drawCircle(outputX, outputY, dataRadius, paint);
                             } else {

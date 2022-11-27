@@ -913,6 +913,11 @@ public @interface Theme {
         float FACTOR_OVERLAY = 0.2f;
 
         /**
+         * Padding factor for the theme code overlay.
+         */
+        float FACTOR_OVERLAY_PADDING = 0.2f;
+
+        /**
          * Constant value for the theme code quiet zone.
          */
         int QUIET_ZONE = 2;
