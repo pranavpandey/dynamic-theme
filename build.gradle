@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Pranav Pandey
+ * Copyright 2019-2023 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ buildscript {
             'minSdk'    : 14,
             'targetSdk' : 33,
             'buildTools': '33.0.2',
-            'dynamic'   : '4.4.7',
+            'dynamic'   : '4.4.8',
             'gson'      : '2.9.1',
             'palette'   : '1.0.0',
             'zxing'     : '3.3.3'
@@ -67,8 +67,8 @@ ext {
     mavenDir = 'com/pranavpandey/android'
     mavenArtifactId = 'dynamic-theme'
     mavenInceptionYear = '2019'
-    mavenVersion = '4.4.0'
-    mavenVersionCode = 17
+    mavenVersion = '4.4.1'
+    mavenVersionCode = 18
 
     developerId = 'pranavpandey'
     developerName = 'Pranav Pandey'
