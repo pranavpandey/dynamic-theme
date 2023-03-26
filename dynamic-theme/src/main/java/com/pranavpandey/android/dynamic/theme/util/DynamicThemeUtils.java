@@ -778,7 +778,8 @@ public class DynamicThemeUtils {
             } else if (DynamicFileUtils.isValidMimeType(context, uri,
                     Theme.MIME_IMAGE_MATCH, Theme.EXTENSION_IMAGE)) {
                 data = DynamicCodeUtils.getTheme(DynamicBitmapUtils.getBitmap(context, uri));
-            } else {
+            } else if (DynamicFileUtils.isValidMimeType(context, uri,
+                    Theme.MIME, Theme.EXTENSION)) {
                 data = DynamicFileUtils.readStringFromFile(context, uri);
             }
         } catch (Exception ignored) {
