@@ -999,8 +999,9 @@ public class DynamicThemeUtils {
      * @see #getBitmapColors(Bitmap)
      * @see Theme.ColorType
      */
-    @TargetApi(Build.VERSION_CODES.O_MR1)
-    @RequiresPermission(value = Manifest.permission.READ_EXTERNAL_STORAGE, conditional = true)
+    @TargetApi(Build.VERSION_CODES.R)
+    @RequiresPermission(anyOf = { Manifest.permission.MANAGE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE }, conditional = true)
     public static @Nullable Map<Integer, Integer> getWallpaperColors(@Nullable Context context) {
         if (context == null) {
             return null;
