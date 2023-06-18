@@ -300,10 +300,13 @@ public class DynamicThemeUtils {
      * @return The string equivalent of the contrast.
      */
     public static @Theme.Value @NonNull String getValueFromContrast(int value) {
-        if (value == Theme.Contrast.AUTO) {
-            return Theme.Value.AUTO;
-        } else {
-            return Integer.toString(value);
+        switch (value) {
+            case Theme.Contrast.AUTO:
+                return Theme.Value.AUTO;
+            case Theme.Contrast.SYSTEM:
+                return Theme.Value.SYSTEM;
+            default:
+                return Integer.toString(value);
         }
     }
 
@@ -315,10 +318,15 @@ public class DynamicThemeUtils {
      * @return The integer equivalent of the contrast.
      */
     public static int getValueFromContrast(@NonNull String value) {
-        if (Theme.Value.AUTO.equals(value) || Theme.Value.Short.AUTO.equals(value)) {
-            return Theme.Contrast.AUTO;
-        } else {
-            return Integer.parseInt(value);
+        switch (value) {
+            case Theme.Value.AUTO:
+            case Theme.Value.Short.AUTO:
+                return Theme.Contrast.AUTO;
+            case Theme.Value.SYSTEM:
+            case Theme.Value.Short.SYSTEM:
+                return Theme.Contrast.SYSTEM;
+            default:
+                return Integer.parseInt(value);
         }
     }
 

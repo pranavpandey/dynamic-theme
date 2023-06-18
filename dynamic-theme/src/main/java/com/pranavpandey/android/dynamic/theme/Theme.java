@@ -401,17 +401,17 @@ public @interface Theme {
     @interface Font {
 
         /**
-         * Constant value for the unknown font scale.
+         * Constant for the unknown font scale.
          */
         int UNKNOWN = Color.UNKNOWN;
 
         /**
-         * Constant value for the auto font scale.
+         * Constant for the auto font scale.
          */
         int AUTO = Theme.AUTO;
 
         /**
-         * Constant value for the custom font scale.
+         * Constant for the custom font scale.
          */
         int CUSTOM = Theme.CUSTOM;
 
@@ -465,22 +465,22 @@ public @interface Theme {
     @interface Corner {
 
         /**
-         * Constant value for the unknown corner size.
+         * Constant for the unknown corner size.
          */
         int UNKNOWN = Color.UNKNOWN;
 
         /**
-         * Constant value for the auto corner size.
+         * Constant for the auto corner size.
          */
         int AUTO = Theme.AUTO;
 
         /**
-         * Constant value for the system corner size.
+         * Constant for the system corner size.
          */
         int SYSTEM = Theme.AUTO_SYSTEM;
 
         /**
-         * Constant value for the custom corner size.
+         * Constant for the custom corner size.
          */
         int CUSTOM = Theme.CUSTOM;
 
@@ -618,17 +618,22 @@ public @interface Theme {
     @interface Contrast {
 
         /**
-         * Constant value for the unknown contrast.
+         * Constant for the unknown contrast.
          */
         int UNKNOWN = Color.UNKNOWN;
 
         /**
-         * Constant value for the auto contrast.
+         * Constant for the auto contrast.
          */
         int AUTO = Theme.AUTO;
 
         /**
-         * Constant value for the custom contrast.
+         * Constant for the auto system contrast.
+         */
+        int SYSTEM = Theme.AUTO_SYSTEM;
+
+        /**
+         * Constant for the custom contrast.
          */
         int CUSTOM = Theme.CUSTOM;
 
@@ -669,6 +674,11 @@ public @interface Theme {
             String AUTO = Theme.ToString.AUTO;
 
             /**
+             * String constant for the auto system contrast.
+             */
+            String SYSTEM = Theme.ToString.AUTO_SYSTEM;
+
+            /**
              * String constant for the custom contrast.
              */
             String CUSTOM = Theme.ToString.CUSTOM;
@@ -682,17 +692,17 @@ public @interface Theme {
     @interface Opacity {
 
         /**
-         * Constant value for the unknown opacity.
+         * Constant for the unknown opacity.
          */
         int UNKNOWN = Color.UNKNOWN;
 
         /**
-         * Constant value for the auto opacity.
+         * Constant for the auto opacity.
          */
         int AUTO = Theme.AUTO;
 
         /**
-         * Constant value for the custom opacity.
+         * Constant for the custom opacity.
          */
         int CUSTOM = Theme.CUSTOM;
 
@@ -1719,22 +1729,22 @@ public @interface Theme {
             int HIDE = Theme.DISABLE;
 
             /**
-             * Constant value for the app overlay.
+             * Constant for the app overlay.
              */
             int APP = Theme.APP;
 
             /**
-             * Constant value for the default overlay.
+             * Constant for the default overlay.
              */
             int AUTO = Theme.AUTO;
 
             /**
-             * Constant value for the dynamic overlay.
+             * Constant for the dynamic overlay.
              */
             int DYNAMIC = Theme.SYSTEM;
 
             /**
-             * Constant value for the custom overlay.
+             * Constant for the custom overlay.
              */
             int CUSTOM = Theme.CUSTOM;
 
@@ -1750,22 +1760,22 @@ public @interface Theme {
                 String HIDE = Theme.ToString.DISABLE;
 
                 /**
-                 * String constant value for the app overlay.
+                 * String constant for the app overlay.
                  */
                 String APP = Theme.ToString.APP;
 
                 /**
-                 * String constant value for the default overlay.
+                 * String constant for the default overlay.
                  */
                 String AUTO = Theme.ToString.AUTO;
 
                 /**
-                 * String constant value for the dynamic overlay.
+                 * String constant for the dynamic overlay.
                  */
                 String DYNAMIC = Theme.ToString.SYSTEM;
 
                 /**
-                 * String constant value for the custom overlay.
+                 * String constant for the custom overlay.
                  */
                 String CUSTOM = Theme.ToString.CUSTOM;
             }
