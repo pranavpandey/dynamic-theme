@@ -11,6 +11,7 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 > It uses [AndroidX][androidx] so, first [migrate][androidx-migrate] your project to AndroidX.
 <br/>Since v3.1.0, it is dependent on Java 8 due to the dependency on
 [Dynamic Utils][dynamic-utils].
+<br/>Since v4.5.1, it is targeting Java 17 to provide maximum compatibility.
 
 <img src="./graphics/code.png" width="400">&nbsp;&nbsp;<img src="./graphics/preview.png" width="400">
 
