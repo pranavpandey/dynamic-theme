@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2022 Pranav Pandey
+ * Copyright 2019-2024 Pranav Pandey
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -610,14 +610,14 @@ public class DynamicThemeUtils {
                     || (theme != null && theme.contains(Theme.QUERY)
                     && (theme.contains(Theme.HOST) || theme.contains(Theme.SCHEME_CUSTOM)));
         } else {
-            String data = intent.getData() != null ? intent.getData().toString() : null;
+            String theme = intent.getData() != null ? intent.getData().toString() : null;
 
             return DynamicFileUtils.isValidMimeType(context,
-                    intent, Theme.MIME, Theme.EXTENSION)
+                    intent.getData(), Theme.MIME, Theme.EXTENSION)
                     || DynamicFileUtils.isValidMimeType(context,
-                    intent, Theme.MIME_IMAGE_MATCH, Theme.EXTENSION)
-                    || (data != null && data.contains(Theme.QUERY)
-                    && (data.contains(Theme.HOST) || data.contains(Theme.SCHEME_CUSTOM)));
+                    intent.getData(), Theme.MIME_IMAGE_MATCH, Theme.EXTENSION)
+                    || (theme != null && theme.contains(Theme.QUERY)
+                    && (theme.contains(Theme.HOST) || theme.contains(Theme.SCHEME_CUSTOM)));
         }
     }
 
@@ -749,12 +749,13 @@ public class DynamicThemeUtils {
         }
 
         try {
-            if (Intent.ACTION_SEND.equals(intent.getAction())
-                    && intent.getStringExtra(Intent.EXTRA_TEXT) != null
-                    && isValidTheme(intent.getStringExtra(Intent.EXTRA_TEXT))) {
-                return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT));
+            if (Intent.ACTION_SEND.equals(intent.getAction())) {
+                return intent.getStringExtra(Intent.EXTRA_TEXT) != null
+                        && isValidTheme(intent.getStringExtra(Intent.EXTRA_TEXT))
+                        ? Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT))
+                        : DynamicIntentUtils.getStreamOrData(intent, Intent.ACTION_SEND);
             } else {
-                return DynamicIntentUtils.getStreamOrData(intent, Intent.ACTION_SEND);
+                return DynamicIntentUtils.getStreamOrData(intent, Intent.ACTION_VIEW);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -784,16 +785,16 @@ public class DynamicThemeUtils {
             if (uri.getQueryParameterNames().contains(Theme.PARAMETER)) {
                 data = DynamicThemeUtils.decodeTheme(uri.getQueryParameter(Theme.PARAMETER));
             } else if (DynamicFileUtils.isValidMimeType(context, uri,
-                    Theme.MIME_IMAGE_MATCH, Theme.EXTENSION_IMAGE)) {
-                data = DynamicCodeUtils.getTheme(DynamicBitmapUtils.getBitmap(context, uri));
-            } else if (DynamicFileUtils.isValidMimeType(context, uri,
                     Theme.MIME, Theme.EXTENSION)) {
                 data = DynamicFileUtils.readStringFromFile(context, uri);
+            } else if (DynamicFileUtils.isValidMimeType(context, uri,
+                    Theme.MIME_IMAGE_MATCH, Theme.EXTENSION_IMAGE)) {
+                data = DynamicCodeUtils.getTheme(DynamicBitmapUtils.getBitmap(context, uri));
             }
         } catch (Exception ignored) {
         }
 
-        return data;
+        return isValidTheme(data) ? data : null;
     }
 
     /**
