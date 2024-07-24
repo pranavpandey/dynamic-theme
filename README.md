@@ -12,6 +12,7 @@ A text (JSON) based theme engine for Android 4.0 (API 14) and above.
 <br/>Since v3.1.0, it is dependent on Java 8 due to the dependency on
 [Dynamic Utils][dynamic-utils].
 <br/>Since v4.5.1, it is targeting Java 17 to provide maximum compatibility.
+<br/>Since v4.6.0, the minimum SDK is Android 4.4 (API 19) to comply with the latest policies.
 
 <img src="./graphics/code.png" width="400">&nbsp;&nbsp;<img src="./graphics/preview.png" width="400">
 
@@ -155,7 +156,7 @@ It can be installed by adding the following dependency to your `build.gradle` fi
 ```groovy
 dependencies {
     // For AndroidX enabled projects.
-    implementation 'com.pranavpandey.android:dynamic-theme:4.5.1'
+    implementation 'com.pranavpandey.android:dynamic-theme:4.6.0'
 }
 ```
 
