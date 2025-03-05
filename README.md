@@ -1,4 +1,4 @@
-<img src="./graphics/icon.png" width="160" height="160" align="right" hspace="20">
+<img src="./graphics/icon.png" height="160">
 
 # Dynamic Theme
 
@@ -6,8 +6,9 @@
 [![Build Status](https://travis-ci.org/pranavpandey/dynamic-theme.svg?branch=master)](https://travis-ci.org/pranavpandey/dynamic-theme)
 [![Release](https://img.shields.io/maven-central/v/com.pranavpandey.android/dynamic-theme)](https://search.maven.org/artifact/com.pranavpandey.android/dynamic-theme)
 
-A text (JSON) based theme engine for Android 4.0 (API 14) and above.
+**A text (JSON) based theme engine for Android 4.0 (API 14) and above.**
 
+> [!IMPORTANT]
 > It uses [AndroidX][androidx] so, first [migrate][androidx-migrate] your project to AndroidX.
 <br/>Since v3.1.0, it is dependent on Java 8 due to the dependency on
 [Dynamic Utils][dynamic-utils].
@@ -233,8 +234,7 @@ The following rules will be applied by this library:
 
 ---
 
-<img src="./graphics/apps/pranavpandey-palettes.png"
-  width="140" height="140" align="right" hspace="20">
+<img src="./graphics/apps/pranavpandey-palettes.png" height="140">
 
 ## Palettes
 
