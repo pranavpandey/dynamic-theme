@@ -63,4 +63,11 @@ public interface TranslucentTheme<T extends TranslucentTheme<T>> extends BaseThe
      * @return {@code true} if this theme is translucent.
      */
     boolean isTranslucent();
+
+    /**
+     * Checks whether this theme has a translucent window.
+     *
+     * @return {@code true} if this theme has a translucent window.
+     */
+    boolean isTranslucentWindow();
 }
