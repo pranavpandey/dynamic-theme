@@ -598,24 +598,24 @@ public class DynamicThemeUtils {
             return false;
         }
 
+        Uri themeUri = DynamicIntentUtils.getStreamOrData(intent, Intent.EXTRA_STREAM);
+
         if (Intent.ACTION_SEND.equals(intent.getAction())) {
             String theme = intent.getStringExtra(Intent.EXTRA_TEXT);
 
             return DynamicFileUtils.isValidMimeType(context,
-                    (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM),
-                    Theme.MIME, Theme.EXTENSION)
+                    themeUri, Theme.MIME, Theme.EXTENSION)
                     || DynamicFileUtils.isValidMimeType(context,
-                    (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM),
-                    Theme.MIME_IMAGE_MATCH, Theme.EXTENSION)
+                    themeUri, Theme.MIME_IMAGE_MATCH, Theme.EXTENSION)
                     || (theme != null && theme.contains(Theme.QUERY)
                     && (theme.contains(Theme.HOST) || theme.contains(Theme.SCHEME_CUSTOM)));
         } else {
-            String theme = intent.getData() != null ? intent.getData().toString() : null;
+            String theme = themeUri != null ? themeUri.toString() : null;
 
             return DynamicFileUtils.isValidMimeType(context,
-                    intent.getData(), Theme.MIME, Theme.EXTENSION)
+                    themeUri, Theme.MIME, Theme.EXTENSION)
                     || DynamicFileUtils.isValidMimeType(context,
-                    intent.getData(), Theme.MIME_IMAGE_MATCH, Theme.EXTENSION)
+                    themeUri, Theme.MIME_IMAGE_MATCH, Theme.EXTENSION)
                     || (theme != null && theme.contains(Theme.QUERY)
                     && (theme.contains(Theme.HOST) || theme.contains(Theme.SCHEME_CUSTOM)));
         }
