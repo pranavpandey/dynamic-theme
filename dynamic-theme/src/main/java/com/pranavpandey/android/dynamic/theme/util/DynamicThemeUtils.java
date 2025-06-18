@@ -1046,4 +1046,57 @@ public class DynamicThemeUtils {
 
         return colors;
     }
+
+    /**
+     * Try to extract the expressive wallpaper colors.
+     *
+     * <p>It requires {@link android.Manifest.permission#READ_EXTERNAL_STORAGE} permission on
+     * API 26 and below.
+     *
+     * @param context The context to get the wallpaper manager.
+     *
+     * @return The extracted the expressive wallpaper colors map.
+     *
+     * @see #getBitmapColors(Bitmap)
+     * @see Theme.ColorType
+     */
+    @TargetApi(Build.VERSION_CODES.R)
+    @RequiresPermission(anyOf = { Manifest.permission.MANAGE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE }, conditional = true)
+    public static @Nullable Map<Integer, Integer> getWallpaperColorsExpressive(
+            @Nullable Context context) {
+        if (context == null) {
+            return null;
+        } else if (!DynamicSdkUtils.is27()) {
+            return getBitmapColors(DynamicBitmapUtils.getBitmap(
+                    WallpaperManager.getInstance(context).getDrawable()));
+        }
+
+        WallpaperColors wallpaperColors = WallpaperManager.getInstance(
+                context).getWallpaperColors(WallpaperManager.FLAG_SYSTEM);
+        Map<Integer, Integer> colors = new HashMap<>();
+
+        if (wallpaperColors != null) {
+            colors.put(Theme.ColorType.BACKGROUND,
+                    wallpaperColors.getPrimaryColor().toArgb());
+
+            if (wallpaperColors.getSecondaryColor() != null) {
+                colors.put(Theme.ColorType.ACCENT,
+                        wallpaperColors.getSecondaryColor().toArgb());
+            } else {
+                colors.put(Theme.ColorType.ACCENT,
+                        wallpaperColors.getPrimaryColor().toArgb());
+            }
+
+            if (wallpaperColors.getTertiaryColor() != null) {
+                colors.put(Theme.ColorType.PRIMARY,
+                        wallpaperColors.getTertiaryColor().toArgb());
+            } else {
+                colors.put(Theme.ColorType.PRIMARY,
+                        wallpaperColors.getPrimaryColor().toArgb());
+            }
+        }
+
+        return colors;
+    }
 }
