@@ -16,6 +16,7 @@
 
 package com.pranavpandey.android.dynamic.theme.receiver;
 
+import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -35,12 +36,25 @@ public abstract class DynamicThemeReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final @NonNull Context context, @Nullable Intent intent) {
-        if (intent != null && Theme.Intent.ACTION.equals(intent.getAction())) {
+        if (intent == null) {
+            return;
+        }
+
+        if (Theme.Intent.ACTION.equals(intent.getAction())) {
             if (intent.hasExtra(Theme.Intent.EXTRA_THEME)
                     || intent.hasExtra(Theme.Intent.EXTRA_DATA)) {
                 onReceiveTheme(intent.getStringExtra(Theme.Intent.EXTRA_THEME),
                         intent.getStringExtra(Theme.Intent.EXTRA_VALUE),
                         intent.getStringExtra(Theme.Intent.EXTRA_DATA));
+            }
+        } else if (Theme.Intent.ACTION_APP_WIDGET.equals(intent.getAction())
+                || intent.hasExtra(AppWidgetManager.EXTRA_APPWIDGET_ID)) {
+            int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
+                    AppWidgetManager.INVALID_APPWIDGET_ID);
+
+            if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
+                onAppWidget(appWidgetId, intent.getStringExtra(Theme.Intent.EXTRA_PREFS),
+                        intent.getStringExtra(Theme.Intent.EXTRA_THEME));
             }
         }
     }
@@ -54,4 +68,14 @@ public abstract class DynamicThemeReceiver extends BroadcastReceiver {
      */
     protected abstract void onReceiveTheme(@Nullable @Theme.ToString String theme,
             @Nullable @Theme.ToString String value, @Nullable String data);
+
+    /**
+     * This method will be called when an app widget is added via pinning.
+     *
+     * @param appWidgetId The generated app widget id.
+     * @param prefs The received shared preferences name.
+     * @param theme The received widget theme or settings.
+     */
+    protected void onAppWidget(int appWidgetId,
+            @Nullable String prefs, @Nullable String theme) { }
 }

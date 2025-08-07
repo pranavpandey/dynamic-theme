@@ -315,9 +315,19 @@ public @interface Theme {
         String ACTION = "com.pranavpandey.theme.intent.action.DYNAMIC_THEME";
 
         /**
+         * Intent action constant for the app widget.
+         */
+        String ACTION_APP_WIDGET = "com.pranavpandey.theme.intent.action.APP_WIDGET";
+
+        /**
          * Intent action constant to capture the dynamic theme.
          */
         String ACTION_CAPTURE = DynamicIntentUtils.ACTION_MATRIX_CAPTURE_RESULT;
+
+        /**
+         * Intent extra key for the theme data.
+         */
+        String EXTRA_PREFS = "adt_extra_prefs";
 
         /**
          * Intent extra key for the theme data.
