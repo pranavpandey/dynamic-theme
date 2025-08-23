@@ -106,6 +106,16 @@ public class ThemeContract {
             String _ID = BaseColumns._ID;
 
             /**
+             * Column name for the preset author.
+             */
+            String AUTHOR = "author";
+
+            /**
+             * Column name for the preset title.
+             */
+            String TITLE = "title";
+
+            /**
              * Column name for the preset theme string.
              */
             String THEME = "theme";
